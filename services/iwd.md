@@ -28,7 +28,7 @@ iwctl
 
 #### interfaces
 
-**/etc/network/interfaces**
+_/etc/network/interfaces_
 
 ```conf
 allow-hotplug wlan0
