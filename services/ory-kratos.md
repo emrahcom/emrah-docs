@@ -45,6 +45,8 @@ lxc.cgroup.devices.allow = c 10:200 rwm
 - `/etc/hosts`
 - `/etc/network/interfaces`
 
+---
+
 #### kratos
 
 ##### base packages
@@ -112,6 +114,8 @@ docker-compose -f quickstart.yml down -v
 docker-compose -f quickstart.yml rm -fsv
 docker ps
 ```
+
+---
 
 #### links
 
