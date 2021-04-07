@@ -1,6 +1,6 @@
-# Vue.js
+## Vue.js
 
-## purge old nodejs
+#### purge old nodejs
 
 ```bash
 apt-get purge nodejs
@@ -9,7 +9,7 @@ rm -rf /usr/lib/node_modules
 rm -rf /usr/local/lib/node_modules
 ```
 
-## install nodejs
+#### install nodejs
 
 ```bash
 curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
@@ -23,7 +23,7 @@ node --version
 npm --version
 ```
 
-## npm update
+#### npm update
 
 DON'T upgrade or install!
 
@@ -32,7 +32,7 @@ npm update -g npm
 npm --version
 ```
 
-## install vue-cli
+#### install vue-cli
 
 ```bash
 npm install -g @vue/cli
@@ -42,7 +42,7 @@ npm install -g @vue/compiler-sfc
 vue --version
 ```
 
-## create project
+#### create project
 
 ```bash
 vue create project-name
@@ -63,7 +63,7 @@ vue ui
 chromium http://localhost:8000
 ```
 
-## customize
+#### customize
 
 ```bash
 cd proje-name
@@ -73,28 +73,28 @@ ln -s ../node_modules src/   # do this if the vue command will be used
                              # but npm seems more stable
 ```
 
-## run serve
+#### run serve
 
 ```bash
 cd project-name
 npm run serve
 ```
 
-## lint
+#### lint
 
 ```bash
 cd project-name
 npm run lint
 ```
 
-## deployment
+#### deployment
 
 ```bash
 npm run build
 cp -arp dist /var/www/html
 ```
 
-## upgrade app
+#### upgrade app
 
 ```bash
 vue upgrade
