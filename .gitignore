@@ -1,0 +1,16 @@
+*~
+*.sw?
+*.log*
+
+node_modules
+dist
+
+*.pyc
+__pycache__
+
+.vscode
+.DS_Store
+.env.local
+.env.*.local
+
+
