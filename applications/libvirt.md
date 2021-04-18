@@ -22,6 +22,14 @@ adduser my-account libvirt
 virt-manager
 ```
 
+#### virtual machine
+
+Install `open-vm-tools` if the guess is a Debian VM.
+
+```bash
+apt-get install open-vm-tools
+```
+
 #### links
 
 - https://libvirt.org/
