@@ -20,3 +20,22 @@ Partitions
 - crypto | X GB | sda3 | mount to /
 
 No swap during the installation.
+
+#### element-desktop
+
+```bash
+wget -O /usr/share/keyrings/riot-im-archive-keyring.gpg \
+    https://packages.riot.im/debian/riot-im-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/riot-im-archive-keyring.gpg] \
+https://riot.im/packages/debian bullseye main" >> /etc/apt/sources.list
+
+apt-get update
+apt-get install element-desktop
+```
+
+`~/.spectrwm.conf`
+
+```conf
+program[element-desktop]= element-desktop
+bind[element-desktop]   = MOD+shift+m
+```
