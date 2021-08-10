@@ -21,6 +21,58 @@ Partitions
 
 No swap during the installation.
 
+#### base system
+
+##### initial packages
+
+```bash
+apt-get update
+apt-get autoclean
+apt-get dist-upgrade
+apt-get autoremove --purge
+
+apt-get install zsh tmux vim autojump
+apt-get install openssh-server bridge-utils
+
+apt-get purge installation-report reportbug nano
+apt-get purge os-prober
+apt-get autoremove --purge
+```
+
+##### /etc/apt/sources.list
+
+```
+deb https://deb.debian.org/debian bullseye main non-free contrib
+deb-src https://deb.debian.org/debian bullseye main non-free contrib
+
+deb https://deb.debian.org/debian bullseye-updates main non-free contrib
+deb-src https://deb.debian.org/debian bullseye-updates main non-free contrib
+
+deb https://security.debian.org/debian-security bullseye-security main contrib non-free
+deb-src https://security.debian.org/debian-security bullseye-security main contrib non-free
+```
+
+##### /etc/apt/apt.conf.d/80recommends
+
+```
+APT::Install-Recommends "0";
+APT::Install-Suggests "0";
+```
+
+##### repo update
+
+```bash
+apt-get update
+```
+
+##### /etc/ssh/sshd_config.d/emrah.conf
+
+```conf
+Port 22
+PasswordAuthentication no
+GatewayPorts yes
+```
+
 #### element-desktop
 
 ```bash
