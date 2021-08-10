@@ -32,7 +32,8 @@ apt-get dist-upgrade
 apt-get autoremove --purge
 
 apt-get install zsh tmux vim autojump
-apt-get install openssh-server bridge-utils
+apt-get install openssh-server
+apt-get install procps net-tools bridge-utils
 
 apt-get purge installation-report reportbug nano
 apt-get purge os-prober
