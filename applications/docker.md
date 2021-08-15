@@ -31,4 +31,4 @@ lxc.apparmor.allow_nesting = 1
 lxc.cgroup2.devices.allow = c 10:200 rwm
 ```
 
-**It doesn't work in an ephemeral container.**
+_It doesn't work in an ephemeral container._
