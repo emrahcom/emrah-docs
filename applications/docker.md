@@ -32,3 +32,13 @@ lxc.cgroup2.devices.allow = c 10:200 rwm
 ```
 
 _It doesn't work in an ephemeral container._
+
+#### commands
+
+```bash
+docker ps
+docker exec -it <CONTAINER-ID> /bin/sh
+```
+
+- -i interactive
+- -t tty
