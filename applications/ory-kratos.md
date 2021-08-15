@@ -40,8 +40,8 @@ docker ps
 
 #### config
 
-`contrib/quickstart/kratos/email-password/kratos.yml`
-`contrib/quickstart/kratos/email-password/identity.schema.json`
+- `contrib/quickstart/kratos/email-password/kratos.yml`
+- `contrib/quickstart/kratos/email-password/identity.schema.json`
 
 #### links
 
