@@ -74,7 +74,15 @@ PasswordAuthentication no
 GatewayPorts yes
 ```
 
-#### element-desktop
+#### packages
+
+##### tools
+
+```bash
+apt-get install jq jc
+```
+
+##### element-desktop
 
 ```bash
 wget -O /usr/share/keyrings/riot-im-archive-keyring.gpg \
