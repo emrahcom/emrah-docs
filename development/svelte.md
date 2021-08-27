@@ -31,7 +31,7 @@ npm run dev
 Edit `package.json` to listen all IPs
 
 ```
-"start": "sirv public --no-clear --host 0.0.0.0",
+"start": "sirv public --no-clear --host",
 ```
 
 #### links
