@@ -105,6 +105,10 @@ npm run preview -- --host --port 3000
 npm run check
 ```
 
+```bash
+deno fmt --check src/
+```
+
 #### links
 
 - [svelte.dev](https://svelte.dev/)
