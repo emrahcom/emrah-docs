@@ -109,6 +109,18 @@ npm run check
 deno fmt --check src/
 ```
 
+#### routes
+
+Put pages inside `src/routes`
+
+```bash
+cat >src/routes/hello.svelte <<EOF
+<h1>hello</h1>
+EOF
+```
+
+Go to `http://ip-address:3000/hello`
+
 #### links
 
 - [svelte.dev](https://svelte.dev/)
