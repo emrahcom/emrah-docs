@@ -123,6 +123,28 @@ EOF
 
 Go to `http://ip-address:3000/hello`
 
+#### layout
+
+```html
+<script lang="ts" context="module">
+export async function load({page, fetch, session, context}) {
+  try {
+    const url = "https://kratos.mydomain.corp/sessions/whoami";
+    const res = await fetch(url, {credentials: "include"})
+
+    if (res.status != 200) throw new Error("no authorization");
+  } catch {
+    return {
+      status: 302,
+      redirect: "https://secureapp.mydomain.corp/auth/login"
+    }
+  }
+}
+</script>
+
+<slot></slot>
+```
+
 #### links
 
 - [svelte.dev](https://svelte.dev/)
