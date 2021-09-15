@@ -46,3 +46,22 @@ git push --set-upstream origin fix-my-branch
 - Pull request
 
 `Compare & pull request` on `GitHub` panel
+
+- List all branches
+
+```bash
+git branch -a
+```
+
+- Delete local branch
+
+```bash
+git switch master
+git branch -d fix-my-branch
+```
+
+- Delete remote branch
+
+```bash
+git push origin --delete fix-my-branch
+```
