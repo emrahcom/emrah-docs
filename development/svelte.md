@@ -89,6 +89,23 @@ const config = {
 export default config;
 ```
 
+#### package.json
+
+Don't use default `prettier` format.
+
+```json
+{
+  ...
+  "scripts": {
+    ...
+    "lint": "eslint --ignore-path .gitignore .",
+    "prettier": "prettier --ignore-path .gitignore  --check --plugin-search-dir=. .",
+    ...
+  }
+  ...
+}
+```
+
 #### build
 
 ```bash
@@ -105,10 +122,13 @@ npm run preview -- --host --port 3000
 
 ```bash
 npm run check
+npm run lint
 ```
 
 ```bash
-deno fmt --check src/
+cd src
+deno fmt --check
+deno lint
 ```
 
 #### routes
