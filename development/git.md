@@ -15,7 +15,13 @@ git clone ssh://git@github.com:22/emrahcom/forked-repo.git repo-emrah
 ```
 cd repo-emrah
 git remote add upstream https://github.com/developer/repo.git
+```
+
+- Update the clone
+
+```
 git pull upstream master
+git push
 ```
 
 - Create a new branch
