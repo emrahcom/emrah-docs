@@ -81,6 +81,9 @@ const config = {
       assets: "build",
       fallback: null,
     }),
+    files: {
+      lib: "src/lib",
+    },
     hydrate: true,
     ssr: false,
   },
@@ -100,9 +103,23 @@ Don't use default `prettier` format.
     ...
     "lint": "eslint --ignore-path .gitignore .",
     "prettier": "prettier --ignore-path .gitignore  --check --plugin-search-dir=. .",
+    "format": "prettier --ignore-path .gitignore  --write --plugin-search-dir=. .",
     ...
   }
   ...
+}
+```
+
+#### .prettierrc
+
+```json
+{
+  "printWidth": 80,
+  "quoteProps": "preserve",
+  "singleQuote": false,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "useTabs": false
 }
 ```
 
