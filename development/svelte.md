@@ -7,8 +7,14 @@ Tested on `Debian 11 Bullseye`
 run as `root`
 
 ```bash
-apt-get --no-install-recommends install git patch
-apt-get --no-install-recommends install npm
+apt-get install gnupg git build-essential
+
+curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+echo "deb https://deb.nodesource.com/node_16.x bullseye main" > \
+    /etc/apt/sources.list.d/nodesource.list
+
+apt-get update
+apt-get install nodejs
 ```
 
 #### app folder
