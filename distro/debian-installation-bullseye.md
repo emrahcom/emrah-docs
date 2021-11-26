@@ -87,7 +87,7 @@ apt-get install gnupg jq
 ```bash
 wget -qO /tmp/ungoogled-chromium.gpg.key \
     https://download.opensuse.org/repositories/home:/ungoogled_chromium/Debian_Bullseye/Release.key
-cat /tmp/ungoogled-chromium.gpg.key| gpg --dearmor \
+cat /tmp/ungoogled-chromium.gpg.key | gpg --dearmor \
     >/usr/share/keyrings/ungoogled-chromium.gpg
 echo "deb [signed-by=/usr/share/keyrings/ungoogled-chromium.gpg] \
 http://download.opensuse.org/repositories/home:/ungoogled_chromium/Debian_Bullseye/ \
