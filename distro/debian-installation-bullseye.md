@@ -94,6 +94,7 @@ http://download.opensuse.org/repositories/home:/ungoogled_chromium/Debian_Bullse
 /" >>/etc/apt/sources.list
 
 apt-get update
+apt-get install libgtk-3-0
 apt-get install ungoogled-chromium
 ```
 
