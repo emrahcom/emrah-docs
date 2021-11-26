@@ -79,7 +79,29 @@ GatewayPorts yes
 ##### tools
 
 ```bash
-apt-get install jq jc
+apt-get install gnupg jq
+```
+
+##### ungoogled-chromium
+
+```bash
+wget -qO /tmp/ungoogled-chromium.gpg.key \
+    https://download.opensuse.org/repositories/home:/ungoogled_chromium/Debian_Bullseye/Release.key
+cat /tmp/ungoogled-chromium.gpg.key| gpg --dearmor \
+    >/usr/share/keyrings/ungoogled-chromium.gpg
+echo "deb [signed-by=/usr/share/keyrings/ungoogled-chromium.gpg] \
+http://download.opensuse.org/repositories/home:/ungoogled_chromium/Debian_Bullseye/ \
+/" >>/etc/apt/sources.list
+
+apt-get update
+apt-get install ungoogled-chromium
+```
+
+`~/.spectrwm.conf`
+
+```conf
+program[chromium]= chromium
+bind[chromium]   = MOD+shift+c
 ```
 
 ##### element-desktop
@@ -88,7 +110,7 @@ apt-get install jq jc
 wget -O /usr/share/keyrings/riot-im-archive-keyring.gpg \
     https://packages.riot.im/debian/riot-im-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/riot-im-archive-keyring.gpg] \
-https://riot.im/packages/debian bullseye main" >> /etc/apt/sources.list
+https://riot.im/packages/debian bullseye main" >>/etc/apt/sources.list
 
 apt-get update
 apt-get install element-desktop
