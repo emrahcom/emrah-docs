@@ -7,11 +7,13 @@ Tested on `Debian 11 Bullseye`
 run as `root`
 
 ```bash
-apt-get install gnupg git build-essential
-
-curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-echo "deb https://deb.nodesource.com/node_16.x bullseye main" > \
-    /etc/apt/sources.list.d/nodesource.list
+wget -qO /tmp/nodesource.gpg.key \
+    https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+cat /tmp/nodesource.gpg.key | gpg --dearmor \
+    >/usr/share/keyrings/nodesource.gpg
+echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] \
+    https://deb.nodesource.com/node_16.x bullseye main" \
+    >>/etc/apt/sources.list
 
 apt-get update
 apt-get install nodejs
