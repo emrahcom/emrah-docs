@@ -49,6 +49,7 @@ Edit `.gitignore`
 *.log
 .DS_Store
 node_modules
+package-lock.json
 /build
 /.svelte-kit
 /package
@@ -71,8 +72,9 @@ npm install @sveltejs/adapter-static@next --save-dev
 Edit `svelte.config.js`
 
 ```javascript
-import preprocess from "svelte-preprocess";
+//import adapter from '@sveltejs/adapter-auto';
 import adapter from "@sveltejs/adapter-static";
+import preprocess from "svelte-preprocess";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -81,19 +83,14 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
+    adapter: adapter(),
+
     // hydrate the <div id="svelte"> element in src/app.html
     target: "#svelte",
-    adapter: adapter({
-      // default options are shown
-      pages: "build",
-      assets: "build",
-      fallback: null,
-    }),
+
     files: {
       lib: "src/lib",
     },
-    hydrate: true,
-    ssr: false,
   },
 };
 
