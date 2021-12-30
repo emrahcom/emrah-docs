@@ -138,3 +138,13 @@ apt-get install element-desktop
 program[element-desktop]= element-desktop
 bind[element-desktop]   = MOD+shift+m
 ```
+
+#### applications
+
+##### firefox-esr
+
+- read aloud
+  - increase the speed
+  - edit shortcuts
+    - play/pause ALT+L
+    - stop ALT+k
