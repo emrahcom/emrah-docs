@@ -187,6 +187,20 @@ export async function load({page, fetch, session, context}) {
 <slot></slot>
 ```
 
+#### hooks
+
+Create `src/hooks.ts` to disable `ssr`
+
+```javascript
+export async function handle({ event, resolve }) {
+  const response = await resolve(event, {
+    ssr: fa;se,
+  });
+
+  return response;
+}
+```
+
 #### links
 
 - [svelte.dev](https://svelte.dev/)
