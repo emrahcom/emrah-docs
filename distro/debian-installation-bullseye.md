@@ -99,6 +99,8 @@ apt-get install nodejs
 
 ##### google chrome
 
+For reference... Don't install, use `chromium`
+
 ```bash
 wget -qO /tmp/google-chrome.gpg.key \
     https://dl.google.com/linux/linux_signing_key.pub
@@ -127,7 +129,7 @@ bind[chrome]   = MOD+shift+c
 
 ##### ungoogled-chromium
 
-For reference... Don't install
+For reference... Don't install, use `chromium`
 
 ```bash
 wget -qO /tmp/ungoogled-chromium.gpg.key \
@@ -172,3 +174,16 @@ bind[element-desktop]   = MOD+shift+m
   - edit shortcuts
     - play/pause ALT+L
     - stop ALT+k
+
+##### chromium
+
+```bash
+apt-get install chromium chromium-sandbox
+```
+
+`~/.spectrwm.conf`
+
+```conf
+program[chromium]= chromium
+bind[chromium]   = MOD+shift+c
+```
