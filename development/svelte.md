@@ -53,6 +53,9 @@ package-lock.json
 /build
 /.svelte-kit
 /package
+.env
+.env.*
+!.env.example
 ```
 
 #### run
@@ -85,9 +88,6 @@ const config = {
   kit: {
     adapter: adapter(),
 
-    // hydrate the <div id="svelte"> element in src/app.html
-    target: "#svelte",
-
     files: {
       lib: "src/lib",
     },
@@ -95,6 +95,19 @@ const config = {
 };
 
 export default config;
+```
+
+Edit src/hooks.ts
+
+```javascript
+/** @type {import('@sveltejs/kit').Handle} */
+export async function handle({ event, resolve }) {
+  const response = await resolve(event, {
+    ssr: false,
+  });
+
+  return response;
+}
 ```
 
 #### package.json
@@ -151,54 +164,6 @@ npm run lint
 cd src
 deno fmt --check
 deno lint
-```
-
-#### routes
-
-Put pages inside `src/routes`
-
-```bash
-cat >src/routes/hello.svelte <<EOF
-<h1>hello</h1>
-EOF
-```
-
-Go to `http://ip-address:3000/hello`
-
-#### layout
-
-```html
-<script lang="ts" context="module">
-export async function load({page, fetch, session, context}) {
-  try {
-    const url = "https://kratos.mydomain.corp/sessions/whoami";
-    const res = await fetch(url, {credentials: "include"})
-
-    if (res.status != 200) throw new Error("no authorization");
-  } catch {
-    return {
-      status: 302,
-      redirect: "https://secureapp.mydomain.corp/auth/login"
-    }
-  }
-}
-</script>
-
-<slot></slot>
-```
-
-#### hooks
-
-Create `src/hooks.ts` to disable `ssr`
-
-```javascript
-export async function handle({ event, resolve }) {
-  const response = await resolve(event, {
-    ssr: fa;se,
-  });
-
-  return response;
-}
 ```
 
 #### links
