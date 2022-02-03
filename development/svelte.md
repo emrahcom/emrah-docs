@@ -141,6 +141,12 @@ Don't use default `prettier` format.
 }
 ```
 
+#### run dev
+
+```bash
+npm run dev -- --host --port 3000
+```
+
 #### build
 
 ```bash
