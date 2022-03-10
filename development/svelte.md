@@ -118,6 +118,7 @@ Don't use default `prettier` format.
     "lint": "eslint --ignore-path .gitignore .",
     "prettier": "prettier --ignore-path .gitignore  --check --plugin-search-dir=. .",
     "format": "prettier --ignore-path .gitignore  --write --plugin-search-dir=. .",
+    "all": "npm run prettier && npm run check && npm run lint && npm run dev"
     ...
   }
   ...
@@ -157,9 +158,15 @@ npm run preview -- --host --port 3000
 
 #### check
 
+if `.svelte-kit` folder is not created yet, run `npm run dev` first.
+
 ```bash
 npm run check
 npm run lint
+
+# or
+
+npm run all
 ```
 
 ```bash
