@@ -165,6 +165,49 @@ program[element-desktop]= element-desktop
 bind[element-desktop]   = MOD+shift+m
 ```
 
+#### services
+
+##### iwd
+
+```bash
+apt-get purge wpasupplicant
+apt-get autoremove --purge
+
+apt-get install iwd
+```
+
+_/etc/network/interfaces_
+
+```conf
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+```
+
+Disable autostart otherwise causes slow boot.
+
+```bash
+systemctl disable iwd.service
+```
+
+visudo
+
+```
+emrah   ALL=NOPASSWD:/usr/bin/systemctl start iwd.service
+emrah   ALL=NOPASSWD:/usr/bin/systemctl stop iwd.service
+emrah   ALL=NOPASSWD:/usr/bin/systemctl restart iwd.service
+```
+
+#### desktop
+
+_/home/emrah/.xinitrc_
+
+```
+sudo /usr/bin/systemctl start iwd.service
+mozilla2ram
+xset r rate 250 40
+exec /usr/bin/spectrwm
+```
+
 #### applications
 
 ##### firefox-esr
