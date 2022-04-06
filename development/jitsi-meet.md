@@ -50,7 +50,8 @@ make
 
 #### nginx conf
 
-Change all `/usr/share/jitsi-meet` as `/home/your-user-name/jitsi-meet`.
+Change all `/usr/share/jitsi-meet` as `/home/your-user-name/jitsi-meet` in your
+`Nginx` site config file.
 
 Restart `nginx`
 
