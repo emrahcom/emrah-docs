@@ -2,6 +2,12 @@
 
 Mail server on Debian Bullseye
 
+#### Ports
+
+- `25/TCP` SMTP
+- `110/TCP` POP
+- `143/TCP` IMAP
+
 #### DNS
 
 ##### PTR record
@@ -148,6 +154,13 @@ smtpd_sasl_security_options = noanonymous
 smtpd_sasl_local_domain = $myhostname
 smtpd_recipient_restrictions = permit_mynetworks, permit_auth_destination,
 permit_sasl_authenticated, reject
+```
+
+##### restart
+
+```bash
+newaliases
+systemctl restart postfix.service
 ```
 
 #### links
