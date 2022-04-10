@@ -186,6 +186,8 @@ inet_protocols = ipv4
 disable_vrfy_command = yes
 smtpd_helo_required = yes
 message_size_limit = 1024000
+smtpd_sender_restrictions = permit_mynetworks, reject_unknown_sender_domain, reject_non_fqdn_sender
+smtpd_helo_restrictions = permit_mynetworks, reject_unknown_hostname, reject_non_fqdn_hostname, reject_invalid_hostname, permit
 
 # SMTP-Auth settings
 smtpd_sasl_type = dovecot
@@ -203,6 +205,10 @@ smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
 smtpd_tls_cert_file = /etc/letsencrypt/live/mail.mydomain.corp/fullchain.pem
 smtpd_tls_key_file = /etc/letsencrypt/live/mail.mydomain.corp/privkey.pem
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+
+# virtual domains
+virtual_alias_domains = virtual.host
+virtual_alias_maps = hash:/etc/postfix/virtual
 ```
 
 _/etc/postfix/master.cf_
