@@ -442,6 +442,30 @@ service dict {
 systemctl restart dovecot.service
 ```
 
+### virtual accounts
+
+_/etc/postfix/virtual-mailbox_
+
+```conf
+# [user account] [mailbox]
+
+myname@mydomain.corp   mydomain.corp/mydomain/Maildir/
+myname@myvirtualdomain.corp   myvirtualdomain.corp/mydomain/Maildir/
+```
+
+##### password
+
+```bash
+doveadm pw -s CRAM-MD5
+```
+
+_/etc/dovecot/users_
+
+```conf
+myname@mydomain.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+myname@myvirtualdomain.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
 ### pflogsumm
 
 ##### packages
