@@ -95,11 +95,11 @@ apt-get -y install postfix sasl2-bin ca-certificates
 
 ```bash
 cp /usr/share/postfix/main.cf.dist /etc/postfix/main.cf
-
-`myhostname` and `mydomain` will be updated according to actual values.
 ```
 
 _/etc/postfix/main.cf_
+
+`myhostname` and `mydomain` will be updated according to actual values.
 
 ```conf
 compatibility_level = 2
