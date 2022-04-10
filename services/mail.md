@@ -90,8 +90,39 @@ dig TXT virtualdomain.corp
 
 #### certbot
 
+##### lxc
+
+If it's in a container
+
+```bash
+mkdir -p /var/lib/lxc/mail/rootfs/var/www/html
+```
+
+_/var/lib/lxc/mail/config_
+
+```conf
+lxc.mount.entry = /var/www/html var/www/html none bind 0 0
+```
+
+##### packages
+
 ```bash
 apt-get --install-recommends install certbot
+```
+
+##### config
+
+```bash
+FQDN=mail.mydomain.corp
+
+certbot certonly --dry-run --non-interactive -m info@$FQDN --agree-tos \
+    --duplicate --webroot -w /var/www/html -d $FQDN
+certbot certonly --non-interactive -m info@$FQDN --agree-tos \
+    --duplicate --webroot -w /var/www/html -d $FQDN
+
+find /etc/letsencrypt/archive -name 'privkey*.pem' -exec chmod 640 {} \;
+chmod 750 /etc/letsencrypt/{archive,live}
+chown root:ssl-cert /etc/letsencrypt/{archive,live} -R
 ```
 
 #### postfix
