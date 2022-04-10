@@ -2,7 +2,7 @@
 
 Mail server on Debian Bullseye
 
-#### Ports
+### Ports
 
 - `25/TCP` SMTP
 - `110/TCP` POP3
@@ -12,7 +12,7 @@ Mail server on Debian Bullseye
 - `993/TCP` IMAPS
 - `995/TCP` POP3S
 
-#### DNS
+### DNS
 
 ##### PTR record
 
