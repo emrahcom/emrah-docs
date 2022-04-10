@@ -1,4 +1,4 @@
-## mail
+## mail server
 
 Mail server on Debian Bullseye
 
