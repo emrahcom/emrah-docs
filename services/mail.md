@@ -425,6 +425,20 @@ service dict {
 systemctl restart dovecot.service
 ```
 
+### pflogsumm
+
+##### packages
+
+```bash
+apt-get -y --install-recommends install pflogsumm
+```
+
+##### run
+
+```bash
+pflogsumm -d yesterday /var/log/mail.log
+```
+
 ### links
 
 - [server-world](https://www.server-world.info/en/note?os=Debian_11&p=mail&f=1)
