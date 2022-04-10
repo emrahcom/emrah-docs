@@ -109,7 +109,7 @@ lxc.mount.entry = /var/www/html var/www/html none bind 0 0
 ##### packages
 
 ```bash
-apt-get --install-recommends install certbot
+apt-get -y --install-recommends install certbot
 ```
 
 ##### config
@@ -125,6 +125,37 @@ certbot certonly --non-interactive -m info@$FQDN --agree-tos \
 find /etc/letsencrypt/archive -name 'privkey*.pem' -exec chmod 640 {} \;
 chmod 750 /etc/letsencrypt/{archive,live}
 chown root:ssl-cert /etc/letsencrypt/{archive,live} -R
+```
+
+### amavis, clamav
+
+##### packages
+
+```bash
+apt-get -y --install-recommends install amavisd-new clamav-daemon
+```
+
+##### config
+
+_/etc/amavis/conf.d/15-content_filter_mode_
+
+```conf
+use strict;
+
+@bypass_virus_checks_maps = (
+   \%bypass_virus_checks, \@bypass_virus_checks_acl, \$bypass_virus_checks_re)
+
+1;
+```
+
+```bash
+echo "mydomain.corp" >/etc/mailname
+```
+
+##### restart
+
+```bash
+systemctl restart amavis.service clamav-daemon.service
 ```
 
 ### postfix
@@ -160,8 +191,7 @@ myorigin = $mydomain
 inet_interfaces = all
 #mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
 mydestination = $myhostname, localhost
-#local_recipient_maps = unix:passwd.byname $alias_maps
-local_recipient_maps =
+local_recipient_maps = unix:passwd.byname $alias_maps
 unknown_local_recipient_reject_code = 550
 #mynetworks_style = subnet (if it is in an isolated network)
 mynetworks_style = host
@@ -190,6 +220,7 @@ smtpd_helo_required = yes
 message_size_limit = 1024000
 smtpd_sender_restrictions = permit_mynetworks, reject_unknown_sender_domain, reject_non_fqdn_sender
 smtpd_helo_restrictions = permit_mynetworks, reject_unknown_hostname, reject_non_fqdn_hostname, reject_invalid_hostname, permit
+content_filter=smtp-amavis:[127.0.0.1]:10024
 
 # SMTP-Auth settings
 smtpd_sasl_type = dovecot
@@ -215,7 +246,7 @@ virtual_alias_maps = hash:/etc/postfix/virtual
 
 _/etc/postfix/master.cf_
 
-uncommented lines
+uncommented following lines and add the content filter.
 
 ```conf
 submission inet n       -       y       -       -       smtpd
@@ -226,13 +257,50 @@ smtps     inet  n       -       y       -       -       smtpd
   -o syslog_name=postfix/smtps
   -o smtpd_tls_wrappermode=yes
   -o smtpd_sasl_auth_enable=yes
+
+# content filter
+smtp-amavis unix -    -    n    -    2 smtp
+    -o smtp_data_done_timeout=1200
+    -o smtp_send_xforward_command=yes
+    -o disable_dns_lookups=yes
+127.0.0.1:10025 inet n    -    n    -    - smtpd
+    -o content_filter=
+    -o local_recipient_maps=
+    -o relay_recipient_maps=
+    -o smtpd_restriction_classes=
+    -o smtpd_client_restrictions=
+    -o smtpd_helo_restrictions=
+    -o smtpd_sender_restrictions=
+    -o smtpd_recipient_restrictions=permit_mynetworks,reject
+    -o mynetworks=127.0.0.0/8
+    -o strict_rfc821_envelopes=yes
+    -o smtpd_error_sleep_time=0
+    -o smtpd_soft_error_limit=1001
+    -o smtpd_hard_error_limit=1000
+```
+
+_/etc/postfix/virtual_
+
+```conf
+myname@mail.virtualdomain.corp  myname
 ```
 
 ##### restart
 
 ```bash
+postmap /etc/postfix/virtual
 newaliases
+
 systemctl restart postfix.service
+```
+
+##### alias
+
+Run the following commands when `/etc/aliases` changed
+
+```bash
+newaliases
+systemctl reload postfix.service
 ```
 
 ### dovecot
