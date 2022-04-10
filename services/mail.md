@@ -7,6 +7,8 @@ Mail server on Debian Bullseye
 - `25/TCP` SMTP
 - `110/TCP` POP3
 - `143/TCP` IMAP
+- `465/TCP` SMTPS
+- `587/TCP` SMTP-submission
 - `993/TCP` IMAPS
 - `995/TCP` POP3S
 
@@ -193,18 +195,41 @@ smtpd_sasl_security_options = noanonymous
 smtpd_sasl_local_domain = $myhostname
 smtpd_recipient_restrictions = permit_mynetworks, permit_auth_destination,
 permit_sasl_authenticated, reject
+
+# SMTP-submission, SMTPS
+smtpd_use_tls = yes
+smtp_tls_mandatory_protocols = !SSLv2, !SSLv3
+smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
+smtpd_tls_cert_file = /etc/letsencrypt/live/mail.mydomain.corp/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/mail.mydomain.corp/privkey.pem
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+```
+
+_/etc/postfix/master.cf_
+
+uncommented lines
+
+```conf
+submission inet n       -       y       -       -       smtpd
+  -o syslog_name=postfix/submission
+  -o smtpd_sasl_auth_enable=yes
+
+smtps     inet  n       -       y       -       -       smtpd
+  -o syslog_name=postfix/smtps
+  -o smtpd_tls_wrappermode=yes
+  -o smtpd_sasl_auth_enable=yes
 ```
 
 ##### restart
-
-#### dovecot
-
-##### packages
 
 ```bash
 newaliases
 systemctl restart postfix.service
 ```
+
+#### dovecot
+
+##### packages
 
 ```bash
 apt-get -y --no-install-recommends install dovecot-core dovecot-pop3d \
@@ -242,6 +267,16 @@ namespace inbox {
 mail_privileged_group = mail
 protocol !indexer-worker {
 }
+```
+
+_/etc/dovecot/conf.d/10-ssl.conf_
+
+```conf
+ssl = yes
+ssl_cert = </etc/letsencrypt/live/mail.mydomain.corp/fullchain.pem
+ssl_key = </etc/letsencrypt/live/mail.mydomain.corp/privkey.pem
+ssl_client_ca_dir = /etc/ssl/certs
+ssl_dh = </usr/share/dovecot/dh.pem
 ```
 
 _/etc/dovecot/conf.d/10-master.conf_
