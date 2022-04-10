@@ -1,4 +1,4 @@
-## mail server
+# mail server
 
 Mail server on Debian Bullseye
 
@@ -62,7 +62,7 @@ To check:
 dig TXT mydomain.corp
 ```
 
-#### DNS for virtual domains
+### DNS for virtual domains
 
 ##### MX record
 
@@ -90,7 +90,7 @@ To check:
 dig TXT virtualdomain.corp
 ```
 
-#### certbot
+### certbot
 
 ##### lxc
 
@@ -127,7 +127,7 @@ chmod 750 /etc/letsencrypt/{archive,live}
 chown root:ssl-cert /etc/letsencrypt/{archive,live} -R
 ```
 
-#### postfix
+### postfix
 
 ##### packages
 
@@ -227,7 +227,7 @@ newaliases
 systemctl restart postfix.service
 ```
 
-#### dovecot
+### dovecot
 
 ##### packages
 
@@ -349,7 +349,7 @@ service dict {
 systemctl restart dovecot.service
 ```
 
-#### links
+### links
 
 - [server-world](https://www.server-world.info/en/note?os=Debian_11&p=mail&f=1)
 - [SPF, DKIM, DMARC](https://www.linode.com/docs/guides/configure-spf-and-dkim-in-postfix-on-debian-9/)
