@@ -80,6 +80,15 @@ To check:
 dig TXT virtualdomain.corp
 ```
 
+#### postfix
+
+```bash
+debconf-set-selections <<< \
+    "postfix postfix/main_mailer_type select No configuration"
+
+apt-get -y install postfix sasl2-bin ca-certificates
+```
+
 #### links
 
 - [server-world](https://www.server-world.info/en/note?os=Debian_11&p=mail&f=1)
