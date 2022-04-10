@@ -88,6 +88,12 @@ To check:
 dig TXT virtualdomain.corp
 ```
 
+#### certbot
+
+```bash
+apt-get --install-recommends install certbot
+```
+
 #### postfix
 
 ##### packages
@@ -168,6 +174,7 @@ permit_sasl_authenticated, reject
 newaliases
 systemctl restart postfix.service
 ```
+
 ```bash
 apt-get -y --no-install-recommends install dovecot-core dovecot-pop3d \
     dovecot-imapd
