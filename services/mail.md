@@ -5,8 +5,10 @@ Mail server on Debian Bullseye
 #### Ports
 
 - `25/TCP` SMTP
-- `110/TCP` POP
+- `110/TCP` POP3
 - `143/TCP` IMAP
+- `993/TCP` IMAPS
+- `995/TCP` POP3S
 
 #### DNS
 
@@ -94,7 +96,7 @@ dig TXT virtualdomain.corp
 debconf-set-selections <<< \
     "postfix postfix/main_mailer_type select No configuration"
 
-apt-get -y install postfix sasl2-bin ca-certificates
+apt-get -y --no-install-recommends install postfix sasl2-bin ca-certificates
 ```
 
 ##### config
@@ -158,9 +160,120 @@ permit_sasl_authenticated, reject
 
 ##### restart
 
+#### dovecot
+
+##### packages
+
 ```bash
 newaliases
 systemctl restart postfix.service
+```
+```bash
+apt-get -y --no-install-recommends install dovecot-core dovecot-pop3d \
+    dovecot-imapd
+```
+
+##### config
+
+_/etc/dovecot/dovecot.conf_
+
+```conf
+!include_try /usr/share/dovecot/protocols.d/*.protocol
+listen = *
+dict {
+}
+!include conf.d/*.conf
+!include_try local.conf
+```
+
+_/etc/dovecot/conf.d/10-auth.conf_
+
+```conf
+disable_plaintext_auth = no
+auth_mechanisms = plain login
+!include auth-system.conf.ext
+```
+
+_/etc/dovecot/conf.d/10-mail.conf_
+
+```conf
+mail_location = maildir:~/Maildir
+namespace inbox {
+  inbox = yes
+}
+mail_privileged_group = mail
+protocol !indexer-worker {
+}
+```
+
+_/etc/dovecot/conf.d/10-master.conf_
+
+```conf
+service imap-login {
+  inet_listener imap {
+    #port = 143
+  }
+  inet_listener imaps {
+    #port = 993
+    #ssl = yes
+  }
+}
+
+service pop3-login {
+  inet_listener pop3 {
+    #port = 110
+  }
+  inet_listener pop3s {
+    #port = 995
+    #ssl = yes
+  }
+}
+
+service submission-login {
+  inet_listener submission {
+    #port = 587
+  }
+}
+
+service lmtp {
+  unix_listener lmtp {
+    #mode = 0666
+  }
+}
+
+service imap {
+}
+
+service pop3 {
+}
+
+service submission {
+}
+
+service auth {
+  unix_listener auth-userdb {
+  }
+
+  unix_listener /var/spool/postfix/private/auth {
+    mode = 0666
+    user = postfix
+    group = postfix
+  }
+}
+
+service auth-worker {
+}
+
+service dict {
+  unix_listener dict {
+  }
+}
+```
+
+##### restart
+
+```bash
+systemctl restart dovecot.service
 ```
 
 #### links
