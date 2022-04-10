@@ -46,6 +46,40 @@ value must be quoted. e.g. `"v=spf1 mx -all"`
 
 `v=spf1 mx -all`
 
+To check:
+
+```bash
+dig TXT mydomain.corp
+```
+
+#### DNS for virtual domains
+
+##### MX record
+
+Create a new `MX` record which points to the mail server. Don't forget the
+trailing dot after the host address:
+
+`MX  @  mail.mydomain.corp.  0  600`
+
+To check:
+
+```bash
+dig MX virtualdomain.corp
+```
+
+##### SPF record
+
+Create a new `TXT` record. Use `@` as host. For some DNS service, the following
+value must be quoted. e.g. `"v=spf1 mx -all"`
+
+`v=spf1 mx -all`
+
+To check:
+
+```bash
+dig TXT virtualdomain.corp
+```
+
 #### links
 
 - [server-world](https://www.server-world.info/en/note?os=Debian_11&p=mail&f=1)
