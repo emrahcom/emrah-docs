@@ -169,6 +169,12 @@ debconf-set-selections <<< \
 apt-get -y --no-install-recommends install postfix sasl2-bin ca-certificates
 ```
 
+##### admin user for virtual mailboxes
+
+```bash
+adduser --uid 20000 --disabled-password --disabled-login vmail
+```
+
 ##### config
 
 ```bash
@@ -189,8 +195,7 @@ myhostname = mail.mydomain.corp
 mydomain = mydomain.corp
 myorigin = $mydomain
 inet_interfaces = all
-#mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
-mydestination = $myhostname, localhost
+#mydestination = $myhostname, localhost.$mydomain, localhost
 local_recipient_maps = unix:passwd.byname $alias_maps
 unknown_local_recipient_reject_code = 550
 #mynetworks_style = subnet (if it is in an isolated network)
@@ -240,8 +245,11 @@ smtpd_tls_key_file = /etc/letsencrypt/live/mail.mydomain.corp/privkey.pem
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 
 # virtual domains
-virtual_alias_domains = virtual.host
-virtual_alias_maps = hash:/etc/postfix/virtual
+virtual_mailbox_domains = mydomain.corp, myvirtualdomain.corp
+virtual_mailbox_base = /home/vmail
+virtual_mailbox_maps = hash:/etc/postfix/virtual-mailbox
+virtual_uid_maps = static:20000
+virtual_gid_maps = static:20000
 ```
 
 _/etc/postfix/master.cf_
@@ -279,28 +287,11 @@ smtp-amavis unix -    -    n    -    2 smtp
     -o smtpd_hard_error_limit=1000
 ```
 
-_/etc/postfix/virtual_
-
-```conf
-myname@mail.virtualdomain.corp  myname
-```
-
 ##### restart
 
 ```bash
-postmap /etc/postfix/virtual
 newaliases
-
 systemctl restart postfix.service
-```
-
-##### alias
-
-Run the following commands when `/etc/aliases` changed
-
-```bash
-newaliases
-systemctl reload postfix.service
 ```
 
 ### dovecot
@@ -329,14 +320,40 @@ _/etc/dovecot/conf.d/10-auth.conf_
 
 ```conf
 disable_plaintext_auth = no
-auth_mechanisms = plain login
+auth_mechanisms = cram-md5 plain login
 !include auth-system.conf.ext
+!include auth-passwdfile.conf.ext
+!include auth-static.conf.ext
+```
+
+_/etc/dovecot/conf.d/auth-passwdfile.conf.ext_
+
+```conf
+passdb {
+  driver = passwd-file
+  # args = scheme=CRYPT username_format=%u /etc/dovecot/users
+  args = scheme=CRAM-MD5 username_format=%u /etc/dovecot/users
+}
+
+#userdb {
+#  driver = passwd-file
+#  args = username_format=%u /etc/dovecot/users
+#}
+```
+
+_/etc/dovecot/conf.d/auth-static.conf.ext_
+
+```conf
+userdb {
+  driver = static
+  args = uid=vmail gid=vmail home=/home/%u
+}
 ```
 
 _/etc/dovecot/conf.d/10-mail.conf_
 
 ```conf
-mail_location = maildir:~/Maildir
+mail_location = maildir:/home/vmail/%d/%n/Maildir
 namespace inbox {
   inbox = yes
 }
