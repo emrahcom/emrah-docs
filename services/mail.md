@@ -6,13 +6,25 @@ Mail server on Debian Bullseye
 
 ##### PTR record
 
-Use host name as the droplet name on DigitalOcean.\
+Use host name as droplet name on DigitalOcean.\
 e.g. `mail.mydomain.corp`
+
+To check:
+
+```bash
+dig -x [IP address]
+```
 
 ##### A record
 
 Create an `A` record for the mail server.\
 e.g. `mail.mydomain.corp`
+
+To check:
+
+```bash
+dig mail.mydomain.corp
+```
 
 ##### MX record
 
@@ -21,9 +33,16 @@ trailing dot after the host address:
 
 `MX  @  mail.mydomain.corp.  0  600`
 
+To check:
+
+```bash
+dig MX mydomain.corp
+```
+
 ##### SPF record
 
-Create a new `TXT` record
+Create a new `TXT` record. Use `@` as host. For some DNS service, the following
+value must be quoted. e.g. `"v=spf1 mx -all"`
 
 `v=spf1 mx -all`
 
