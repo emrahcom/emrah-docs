@@ -448,7 +448,7 @@ trailing dot after the host address:
 To check:
 
 ```bash
-dig MX mydomain.corp
+dig mydomain.corp MX
 ```
 
 ##### SPF record
@@ -461,7 +461,7 @@ value must be quoted. e.g. `"v=spf1 mx -all"`
 To check:
 
 ```bash
-dig TXT mydomain.corp
+dig mydomain.corp TXT
 ```
 
 ##### DKIM record
@@ -469,6 +469,12 @@ dig TXT mydomain.corp
 Create a new `TXT` record. Use `SELECTOR._domainkey.mail` as host. According to
 the example, it is `202204._domainkey.mail`. Get the content from
 `/etc/dkimkeys/202204.txt`.
+
+To check:
+
+```bash
+dig 202204._domainkey.mail.mydomain.corp TXT
+```
 
 ### DNS for virtual domains
 
@@ -482,7 +488,7 @@ trailing dot after the host address:
 To check:
 
 ```bash
-dig MX virtualdomain.corp
+dig virtualdomain.corp MX
 ```
 
 ##### SPF record
@@ -495,7 +501,7 @@ value must be quoted. e.g. `"v=spf1 mx -all"`
 To check:
 
 ```bash
-dig TXT virtualdomain.corp
+dig virtualdomain.corp TXT
 ```
 
 ### virtual accounts
