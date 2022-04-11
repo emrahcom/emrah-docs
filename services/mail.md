@@ -86,7 +86,7 @@ echo "mydomain.corp" >/etc/mailname
 ##### admin user for virtual mailboxes
 
 ```bash
-adduser --uid 20000 --disabled-password --disabled-login vmail
+adduser vmail --uid 20000 --disabled-password --disabled-login --gecos ''
 ```
 
 ##### opendkim
@@ -479,8 +479,6 @@ myname@myvirtualdomain.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ### pflogsumm
-
-##### run
 
 ```bash
 pflogsumm -d yesterday /var/log/mail.log
