@@ -1,6 +1,6 @@
 # mail server
 
-Mail server on Debian Bullseye
+Mail server on Debian Bullseye.
 
 ### certbot
 
@@ -53,7 +53,8 @@ apt-get -y --no-install-recommends install postfix sasl2-bin ca-certificates
 ##### dovecot
 
 ```bash
-apt-get -y --no-install-recommends install dovecot-core dovecot-imapd
+apt-get -y --no-install-recommends install dovecot-core dovecot-pop3d \
+    dovecot-imapd
 ```
 
 ##### amavis, clamav
@@ -74,103 +75,27 @@ apt-get -y --install-recommends install opendkim opendkim-tools
 apt-get -y --install-recommends install pflogsumm
 ```
 
-### Ports
+### config
 
-- `25/TCP` SMTP
-- `110/TCP` POP3
-- `143/TCP` IMAP
-- `465/TCP` SMTPS
-- `587/TCP` SMTP-submission
-- `993/TCP` IMAPS
-- `995/TCP` POP3S
-
-### DNS
-
-##### PTR record
-
-Use host name as droplet name on DigitalOcean.\
-e.g. `mail.mydomain.corp`
-
-To check:
+##### mailname
 
 ```bash
-dig -x [IP address]
+echo "mydomain.corp" >/etc/mailname
 ```
 
-##### A record
-
-Create an `A` record for the mail server.\
-e.g. `mail.mydomain.corp`
-
-To check:
+##### admin user for virtual mailboxes
 
 ```bash
-dig mail.mydomain.corp
+adduser --uid 20000 --disabled-password --disabled-login vmail
 ```
 
-##### MX record
-
-Create a new `MX` record which points to the mail server. Don't forget the
-trailing dot after the host address:
-
-`MX  @  mail.mydomain.corp.  0  600`
-
-To check:
+##### opendkim
 
 ```bash
-dig MX mydomain.corp
+adduser postfix opendkim
 ```
 
-##### SPF record
-
-Create a new `TXT` record. Use `@` as host. For some DNS service, the following
-value must be quoted. e.g. `"v=spf1 mx -all"`
-
-`v=spf1 mx -all`
-
-To check:
-
-```bash
-dig TXT mydomain.corp
-```
-
-### DNS for virtual domains
-
-##### MX record
-
-Create a new `MX` record which points to the mail server. Don't forget the
-trailing dot after the host address:
-
-`MX  @  mail.mydomain.corp.  0  600`
-
-To check:
-
-```bash
-dig MX virtualdomain.corp
-```
-
-##### SPF record
-
-Create a new `TXT` record. Use `@` as host. For some DNS service, the following
-value must be quoted. e.g. `"v=spf1 mx -all"`
-
-`v=spf1 mx -all`
-
-To check:
-
-```bash
-dig TXT virtualdomain.corp
-```
-
-### amavis, clamav
-
-##### packages
-
-```bash
-apt-get -y --install-recommends install amavisd-new clamav-daemon
-```
-
-##### config
+##### amavix, clamav
 
 _/etc/amavis/conf.d/15-content_filter_mode_
 
@@ -184,150 +109,10 @@ use strict;
 ```
 
 ```bash
-echo "mydomain.corp" >/etc/mailname
-```
-
-##### restart
-
-```bash
 systemctl restart amavis.service clamav-daemon.service
 ```
 
-### postfix
-
-##### packages
-
-
-##### admin user for virtual mailboxes
-
-```bash
-adduser --uid 20000 --disabled-password --disabled-login vmail
-```
-
-##### config
-
-```bash
-cp /usr/share/postfix/main.cf.dist /etc/postfix/main.cf
-```
-
-_/etc/postfix/main.cf_
-
-`myhostname` and `mydomain` will be updated according to actual values.
-
-```conf
-compatibility_level = 2
-command_directory = /usr/sbin
-daemon_directory = /usr/lib/postfix/sbin
-data_directory = /var/lib/postfix
-mail_owner = postfix
-myhostname = mail.mydomain.corp
-mydomain = mydomain.corp
-myorigin = $mydomain
-inet_interfaces = all
-#mydestination = $myhostname, localhost.$mydomain, localhost
-local_recipient_maps = unix:passwd.byname $alias_maps
-unknown_local_recipient_reject_code = 550
-#mynetworks_style = subnet (if it is in an isolated network)
-mynetworks_style = host
-#mynetworks = 127.0.0.0/8, 172.22.22.0/24
-mynetworks = 127.0.0.0/8
-alias_maps = hash:/etc/aliases
-alias_database = hash:/etc/aliases
-home_mailbox = Maildir/
-smtpd_banner = $myhostname ESMTP
-debugger_command =
-         PATH=/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin
-         ddd $daemon_directory/$process_name $process_id & sleep 5
-sendmail_path = /usr/sbin/postfix
-newaliases_path = /usr/bin/newaliases
-mailq_path = /usr/bin/mailq
-setgid_group = postdrop
-# html_directory =
-# manpage_directory =
-# sample_directory =
-# readme_directory =
-inet_protocols = ipv4
-
-# additional settings
-disable_vrfy_command = yes
-smtpd_helo_required = yes
-message_size_limit = 1024000
-smtpd_sender_restrictions = permit_mynetworks, reject_unknown_sender_domain, reject_non_fqdn_sender
-smtpd_helo_restrictions = permit_mynetworks, reject_unknown_hostname, reject_non_fqdn_hostname, reject_invalid_hostname, permit
-content_filter=smtp-amavis:[127.0.0.1]:10024
-
-# SMTP-Auth settings
-smtpd_sasl_type = dovecot
-smtpd_sasl_path = private/auth
-smtpd_sasl_auth_enable = yes
-smtpd_sasl_security_options = noanonymous
-smtpd_sasl_local_domain = $myhostname
-smtpd_recipient_restrictions = permit_mynetworks, permit_auth_destination,
-permit_sasl_authenticated, reject
-
-# SMTP-submission, SMTPS
-smtpd_use_tls = yes
-smtp_tls_mandatory_protocols = !SSLv2, !SSLv3
-smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
-smtpd_tls_cert_file = /etc/letsencrypt/live/mail.mydomain.corp/fullchain.pem
-smtpd_tls_key_file = /etc/letsencrypt/live/mail.mydomain.corp/privkey.pem
-smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
-
-# virtual domains
-virtual_mailbox_domains = mydomain.corp, myvirtualdomain.corp
-virtual_mailbox_base = /home/vmail
-virtual_mailbox_maps = hash:/etc/postfix/virtual-mailbox
-virtual_uid_maps = static:20000
-virtual_gid_maps = static:20000
-```
-
-_/etc/postfix/master.cf_
-
-uncommented following lines and add the content filter.
-
-```conf
-submission inet n       -       y       -       -       smtpd
-  -o syslog_name=postfix/submission
-  -o smtpd_sasl_auth_enable=yes
-
-smtps     inet  n       -       y       -       -       smtpd
-  -o syslog_name=postfix/smtps
-  -o smtpd_tls_wrappermode=yes
-  -o smtpd_sasl_auth_enable=yes
-
-# content filter
-smtp-amavis unix -    -    n    -    2 smtp
-    -o smtp_data_done_timeout=1200
-    -o smtp_send_xforward_command=yes
-    -o disable_dns_lookups=yes
-127.0.0.1:10025 inet n    -    n    -    - smtpd
-    -o content_filter=
-    -o local_recipient_maps=
-    -o relay_recipient_maps=
-    -o smtpd_restriction_classes=
-    -o smtpd_client_restrictions=
-    -o smtpd_helo_restrictions=
-    -o smtpd_sender_restrictions=
-    -o smtpd_recipient_restrictions=permit_mynetworks,reject
-    -o mynetworks=127.0.0.0/8
-    -o strict_rfc821_envelopes=yes
-    -o smtpd_error_sleep_time=0
-    -o smtpd_soft_error_limit=1001
-    -o smtpd_hard_error_limit=1000
-```
-
-##### restart
-
-```bash
-newaliases
-systemctl restart postfix.service
-```
-
-### dovecot
-
-##### packages
-
-##### config
+##### dovecot
 
 _/etc/dovecot/dovecot.conf_
 
@@ -460,10 +245,213 @@ service dict {
 }
 ```
 
-##### restart
-
 ```bash
 systemctl restart dovecot.service
+```
+
+##### postfix
+
+```bash
+cp /usr/share/postfix/main.cf.dist /etc/postfix/main.cf
+```
+
+_/etc/postfix/main.cf_
+
+`myhostname` and `mydomain` will be updated according to actual values.
+
+```conf
+compatibility_level = 2
+command_directory = /usr/sbin
+daemon_directory = /usr/lib/postfix/sbin
+data_directory = /var/lib/postfix
+mail_owner = postfix
+myhostname = mail.mydomain.corp
+mydomain = mydomain.corp
+myorigin = $mydomain
+inet_interfaces = all
+#mydestination = $myhostname, localhost.$mydomain, localhost
+local_recipient_maps = unix:passwd.byname $alias_maps
+unknown_local_recipient_reject_code = 550
+#mynetworks_style = subnet (if it is in an isolated network)
+mynetworks_style = host
+#mynetworks = 127.0.0.0/8, 172.22.22.0/24
+mynetworks = 127.0.0.0/8
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+home_mailbox = Maildir/
+smtpd_banner = $myhostname ESMTP
+debugger_command =
+         PATH=/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin
+         ddd $daemon_directory/$process_name $process_id & sleep 5
+sendmail_path = /usr/sbin/postfix
+newaliases_path = /usr/bin/newaliases
+mailq_path = /usr/bin/mailq
+setgid_group = postdrop
+# html_directory =
+# manpage_directory =
+# sample_directory =
+# readme_directory =
+inet_protocols = ipv4
+
+# additional settings
+disable_vrfy_command = yes
+smtpd_helo_required = yes
+message_size_limit = 1024000
+smtpd_sender_restrictions = permit_mynetworks, reject_unknown_sender_domain, reject_non_fqdn_sender
+smtpd_helo_restrictions = permit_mynetworks, reject_unknown_hostname, reject_non_fqdn_hostname, reject_invalid_hostname, permit
+content_filter=smtp-amavis:[127.0.0.1]:10024
+
+# SMTP-Auth settings
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_local_domain = $myhostname
+smtpd_recipient_restrictions = permit_mynetworks, permit_auth_destination,
+permit_sasl_authenticated, reject
+
+# SMTP-submission, SMTPS
+smtpd_use_tls = yes
+smtp_tls_mandatory_protocols = !SSLv2, !SSLv3
+smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
+smtpd_tls_cert_file = /etc/letsencrypt/live/mail.mydomain.corp/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/mail.mydomain.corp/privkey.pem
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+
+# virtual domains
+virtual_mailbox_domains = mydomain.corp, myvirtualdomain.corp
+virtual_mailbox_base = /home/vmail
+virtual_mailbox_maps = hash:/etc/postfix/virtual-mailbox
+virtual_uid_maps = static:20000
+virtual_gid_maps = static:20000
+```
+
+_/etc/postfix/master.cf_
+
+uncommented following lines and add the content filter.
+
+```conf
+submission inet n       -       y       -       -       smtpd
+  -o syslog_name=postfix/submission
+  -o smtpd_sasl_auth_enable=yes
+
+smtps     inet  n       -       y       -       -       smtpd
+  -o syslog_name=postfix/smtps
+  -o smtpd_tls_wrappermode=yes
+  -o smtpd_sasl_auth_enable=yes
+
+# content filter
+smtp-amavis unix -    -    n    -    2 smtp
+    -o smtp_data_done_timeout=1200
+    -o smtp_send_xforward_command=yes
+    -o disable_dns_lookups=yes
+127.0.0.1:10025 inet n    -    n    -    - smtpd
+    -o content_filter=
+    -o local_recipient_maps=
+    -o relay_recipient_maps=
+    -o smtpd_restriction_classes=
+    -o smtpd_client_restrictions=
+    -o smtpd_helo_restrictions=
+    -o smtpd_sender_restrictions=
+    -o smtpd_recipient_restrictions=permit_mynetworks,reject
+    -o mynetworks=127.0.0.0/8
+    -o strict_rfc821_envelopes=yes
+    -o smtpd_error_sleep_time=0
+    -o smtpd_soft_error_limit=1001
+    -o smtpd_hard_error_limit=1000
+```
+
+```bash
+newaliases
+systemctl restart postfix.service
+```
+
+### Ports
+
+- `25/TCP` SMTP
+- `110/TCP` POP3
+- `143/TCP` IMAP
+- `465/TCP` SMTPS
+- `587/TCP` SMTP-submission
+- `993/TCP` IMAPS
+- `995/TCP` POP3S
+
+### DNS
+
+##### PTR record
+
+Use host name as droplet name on DigitalOcean.\
+e.g. `mail.mydomain.corp`
+
+To check:
+
+```bash
+dig -x [IP address]
+```
+
+##### A record
+
+Create an `A` record for the mail server.\
+e.g. `mail.mydomain.corp`
+
+To check:
+
+```bash
+dig mail.mydomain.corp
+```
+
+##### MX record
+
+Create a new `MX` record which points to the mail server. Don't forget the
+trailing dot after the host address:
+
+`MX  @  mail.mydomain.corp.  0  600`
+
+To check:
+
+```bash
+dig MX mydomain.corp
+```
+
+##### SPF record
+
+Create a new `TXT` record. Use `@` as host. For some DNS service, the following
+value must be quoted. e.g. `"v=spf1 mx -all"`
+
+`v=spf1 mx -all`
+
+To check:
+
+```bash
+dig TXT mydomain.corp
+```
+
+### DNS for virtual domains
+
+##### MX record
+
+Create a new `MX` record which points to the mail server. Don't forget the
+trailing dot after the host address:
+
+`MX  @  mail.mydomain.corp.  0  600`
+
+To check:
+
+```bash
+dig MX virtualdomain.corp
+```
+
+##### SPF record
+
+Create a new `TXT` record. Use `@` as host. For some DNS service, the following
+value must be quoted. e.g. `"v=spf1 mx -all"`
+
+`v=spf1 mx -all`
+
+To check:
+
+```bash
+dig TXT virtualdomain.corp
 ```
 
 ### virtual accounts
@@ -488,16 +476,6 @@ _/etc/dovecot/users_
 ```conf
 myname@mydomain.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 myname@myvirtualdomain.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
-
-### DKIM
-
-##### packages
-
-##### config
-
-```bash
-adduser postfix opendkim
 ```
 
 ### pflogsumm
