@@ -334,6 +334,12 @@ smtpd_sender_restrictions = permit_mynetworks, reject_unknown_sender_domain, rej
 smtpd_helo_restrictions = permit_mynetworks, reject_unknown_hostname, reject_non_fqdn_hostname, reject_invalid_hostname, permit
 content_filter=smtp-amavis:[127.0.0.1]:10024
 
+# milter
+smtpd_milters =
+  unix:/milter-greylist/milter-greylist.sock
+  unix:/opendkim/opendkim.sock
+  unix:/clamav/clamav-milter.ctl
+
 # SMTP-Auth settings
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
