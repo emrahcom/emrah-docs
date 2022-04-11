@@ -466,6 +466,20 @@ myname@mydomain.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 myname@myvirtualdomain.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
+### DKIM
+
+##### packages
+
+```bash
+apt-get -y --install-recommends install opendkim opendkim-tools
+```
+
+##### config
+
+```bash
+adduser postfix opendkim
+```
+
 ### pflogsumm
 
 ##### packages
