@@ -91,8 +91,41 @@ adduser vmail --uid 20000 --disabled-password --disabled-login --gecos ''
 
 ##### opendkim
 
+Use a custom name for selector. `YYYYMM` format in the example.
+
 ```bash
+opendkim-genkey -D /etc/dkimkeys -s 202204
+```
+
+Create a `TXT` record using the whole content of the selector.
+
+```bash
+cat /etc/dkimkeys/202204.txt
+```
+
+_/etc/opendkim.conf_
+
+```conf
+Syslog                  yes
+SyslogSuccess           yes
+Canonicalization        relaxed/simple
+OversignHeaders         From
+Domain                  mail.mydomain.corp
+Selector                202204
+KeyFile                 /etc/dkimkeys/202204.private
+UserID                  opendkim
+UMask                   007
+#Socket                 local:/run/opendkim/opendkim.sock
+Socket                  local:/var/spool/postfix/opendkim/opendkim.sock
+PidFile                 /run/opendkim/opendkim.pid
+TrustAnchorFile         /usr/share/dns/root.key
+```
+
+```bash
+mkdir /var/spool/postfix/opendkim
+chown opendkim:opendkim /var/spool/postfix/opendkim/
 adduser postfix opendkim
+systemctl restart opendkim.service
 ```
 
 ##### amavix, clamav
