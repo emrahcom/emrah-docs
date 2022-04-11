@@ -53,8 +53,7 @@ apt-get -y --no-install-recommends install postfix sasl2-bin ca-certificates
 ##### dovecot
 
 ```bash
-apt-get -y --no-install-recommends install dovecot-core dovecot-pop3d \
-    dovecot-imapd
+apt-get -y --no-install-recommends install dovecot-core dovecot-imapd
 ```
 
 ##### amavis, clamav
@@ -67,6 +66,12 @@ apt-get -y --install-recommends install amavisd-new clamav-daemon
 
 ```bash
 apt-get -y --install-recommends install opendkim opendkim-tools
+```
+
+### pflogsumm
+
+```bash
+apt-get -y --install-recommends install pflogsumm
 ```
 
 ### Ports
@@ -496,12 +501,6 @@ adduser postfix opendkim
 ```
 
 ### pflogsumm
-
-##### packages
-
-```bash
-apt-get -y --install-recommends install pflogsumm
-```
 
 ##### run
 
