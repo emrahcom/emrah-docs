@@ -2,6 +2,73 @@
 
 Mail server on Debian Bullseye
 
+### certbot
+
+##### lxc
+
+If it's in a container
+
+```bash
+mkdir -p /var/lib/lxc/mail/rootfs/var/www/html
+```
+
+_/var/lib/lxc/mail/config_
+
+```conf
+lxc.mount.entry = /var/www/html var/www/html none bind 0 0
+```
+
+##### packages
+
+```bash
+apt-get -y --install-recommends install certbot
+```
+
+##### config
+
+```bash
+FQDN=mail.mydomain.corp
+
+certbot certonly --dry-run --non-interactive -m info@$FQDN --agree-tos \
+    --duplicate --webroot -w /var/www/html -d $FQDN
+certbot certonly --non-interactive -m info@$FQDN --agree-tos \
+    --duplicate --webroot -w /var/www/html -d $FQDN
+
+find /etc/letsencrypt/archive -name 'privkey*.pem' -exec chmod 640 {} \;
+chmod 750 /etc/letsencrypt/{archive,live}
+chown root:ssl-cert /etc/letsencrypt/{archive,live} -R
+```
+
+### packages
+
+##### postfix
+
+```bash
+debconf-set-selections <<< \
+    "postfix postfix/main_mailer_type select No configuration"
+
+apt-get -y --no-install-recommends install postfix sasl2-bin ca-certificates
+```
+
+##### dovecot
+
+```bash
+apt-get -y --no-install-recommends install dovecot-core dovecot-pop3d \
+    dovecot-imapd
+```
+
+##### amavis, clamav
+
+```bash
+apt-get -y --install-recommends install amavisd-new clamav-daemon
+```
+
+##### opendkim
+
+```bash
+apt-get -y --install-recommends install opendkim opendkim-tools
+```
+
 ### Ports
 
 - `25/TCP` SMTP
@@ -90,43 +157,6 @@ To check:
 dig TXT virtualdomain.corp
 ```
 
-### certbot
-
-##### lxc
-
-If it's in a container
-
-```bash
-mkdir -p /var/lib/lxc/mail/rootfs/var/www/html
-```
-
-_/var/lib/lxc/mail/config_
-
-```conf
-lxc.mount.entry = /var/www/html var/www/html none bind 0 0
-```
-
-##### packages
-
-```bash
-apt-get -y --install-recommends install certbot
-```
-
-##### config
-
-```bash
-FQDN=mail.mydomain.corp
-
-certbot certonly --dry-run --non-interactive -m info@$FQDN --agree-tos \
-    --duplicate --webroot -w /var/www/html -d $FQDN
-certbot certonly --non-interactive -m info@$FQDN --agree-tos \
-    --duplicate --webroot -w /var/www/html -d $FQDN
-
-find /etc/letsencrypt/archive -name 'privkey*.pem' -exec chmod 640 {} \;
-chmod 750 /etc/letsencrypt/{archive,live}
-chown root:ssl-cert /etc/letsencrypt/{archive,live} -R
-```
-
 ### amavis, clamav
 
 ##### packages
@@ -162,12 +192,6 @@ systemctl restart amavis.service clamav-daemon.service
 
 ##### packages
 
-```bash
-debconf-set-selections <<< \
-    "postfix postfix/main_mailer_type select No configuration"
-
-apt-get -y --no-install-recommends install postfix sasl2-bin ca-certificates
-```
 
 ##### admin user for virtual mailboxes
 
@@ -297,11 +321,6 @@ systemctl restart postfix.service
 ### dovecot
 
 ##### packages
-
-```bash
-apt-get -y --no-install-recommends install dovecot-core dovecot-pop3d \
-    dovecot-imapd
-```
 
 ##### config
 
@@ -469,10 +488,6 @@ myname@myvirtualdomain.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ### DKIM
 
 ##### packages
-
-```bash
-apt-get -y --install-recommends install opendkim opendkim-tools
-```
 
 ##### config
 
