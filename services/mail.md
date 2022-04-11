@@ -346,8 +346,7 @@ smtpd_sasl_path = private/auth
 smtpd_sasl_auth_enable = yes
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_local_domain = $myhostname
-smtpd_recipient_restrictions = permit_mynetworks, permit_auth_destination,
-permit_sasl_authenticated, reject
+smtpd_recipient_restrictions = permit_mynetworks, permit_auth_destination, permit_sasl_authenticated, reject
 
 # SMTP-submission, SMTPS
 smtpd_use_tls = yes
@@ -464,6 +463,12 @@ To check:
 ```bash
 dig TXT mydomain.corp
 ```
+
+##### DKIM record
+
+Create a new `TXT` record. Use `SELECTOR._domainkey.mail` as host. According to
+the example, it is `202204._domainkey.mail`. Get the content from
+`/etc/dkimkeys/202204.txt`.
 
 ### DNS for virtual domains
 
