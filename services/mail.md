@@ -497,4 +497,5 @@ pflogsumm -d yesterday /var/log/mail.log
 ### links
 
 - [server-world](https://www.server-world.info/en/note?os=Debian_11&p=mail&f=1)
+- [OpenDKIM](https://tech.ginnojo.jp/index.php/mail/opendkim)
 - [SPF, DKIM, DMARC](https://www.linode.com/docs/guides/configure-spf-and-dkim-in-postfix-on-debian-9/)
