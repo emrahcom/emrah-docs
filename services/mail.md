@@ -466,8 +466,8 @@ dig mydomain.corp TXT
 
 ##### DKIM record
 
-Create a new `TXT` record. Use `SELECTOR._domainkey.mail` as host. According to
-the example, it is `202204._domainkey.mail`. Get the content from
+Create a new `TXT` record. Use `SELECTOR._domainkey.SUBDOMAIN` as host.
+According to the example, it is `202204._domainkey.mail`. Get the content from
 `/etc/dkimkeys/202204.txt`.
 
 To check:
