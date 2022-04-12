@@ -414,12 +414,12 @@ systemctl restart postfix.service
 ### Ports
 
 - `25/TCP` SMTP
-- `110/TCP` POP3
-- `143/TCP` IMAP
-- `465/TCP` SMTPS
+- `110/TCP` POP3 (closed on firewall)
+- `143/TCP` IMAP (closed on firewall)
+- `465/TCP` SMTPS (closed on firewall)
 - `587/TCP` SMTP-submission
 - `993/TCP` IMAPS
-- `995/TCP` POP3S
+- `995/TCP` POP3S (closed on firewall, only IMAPS allowed)
 
 ### DNS
 
