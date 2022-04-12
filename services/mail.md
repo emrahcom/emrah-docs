@@ -130,13 +130,22 @@ _/etc/dkimkeys/signingtable_
 _/etc/dkimkeys/keytable_
 
 ```conf
-mydomain                mydomain.corp:202204:/etc/opendkim/keys/202204.private
-myvirtual               myvirtual.corp:202204:/etc/opendkim/keys/202204.private
+mydomain                mydomain.corp:202204:/etc/dkimkeys/202204.private
+myvirtual               myvirtual.corp:202204:/etc/dkimkeys/202204.private
 ```
 
 ```bash
+chown opendkim:opendkim /etc/dkimkeys -R
 adduser postfix opendkim
+
 systemctl restart opendkim.service
+```
+
+To check (**no output when there is no error**)
+
+```bash
+opendkim-testkey -d mydomain.corp -s 202204
+opendkim-testkey -d myvirtual.corp -s 202204
 ```
 
 ##### amavix, clamav
