@@ -21,7 +21,7 @@ lxc.mount.entry = /var/www/html var/www/html none bind 0 0
 ##### packages
 
 ```bash
-apt-get -y --install-recommends install certbot
+apt-get -y --install-recommends install certbot ssl-cert
 ```
 
 ##### config
