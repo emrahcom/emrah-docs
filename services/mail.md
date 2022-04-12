@@ -165,11 +165,13 @@ use strict;
 systemctl restart amavis.service clamav-daemon.service
 ```
 
-If there is no enough RAM, disable `clamav`
+If there is no enough RAM, disable `clamav` and amavis
 
 ```bash
 systemctl stop clamav-daemon.service
 systemctl disable clamav-daemon.service
+systemctl stop amavis.service
+systemctl disable amavis.service
 ```
 
 ##### dovecot
@@ -306,6 +308,7 @@ service dict {
 ```
 
 ```bash
+adduser dovecot ssl-cert
 systemctl restart dovecot.service
 ```
 
@@ -359,7 +362,8 @@ smtpd_helo_required = yes
 message_size_limit = 1024000
 smtpd_sender_restrictions = permit_mynetworks, reject_unknown_sender_domain, reject_non_fqdn_sender
 smtpd_helo_restrictions = permit_mynetworks, reject_unknown_hostname, reject_non_fqdn_hostname, reject_invalid_hostname, permit
-content_filter=smtp-amavis:[127.0.0.1]:10024
+# dont run amavis by default
+#content_filter=smtp-amavis:[127.0.0.1]:10024
 
 # milter
 smtpd_milters = inet:localhost:8891
@@ -404,28 +408,31 @@ smtps     inet  n       -       y       -       -       smtpd
   -o smtpd_tls_wrappermode=yes
   -o smtpd_sasl_auth_enable=yes
 
+# dont run amavis by default
 # content filter
-smtp-amavis unix -    -    n    -    2 smtp
-    -o smtp_data_done_timeout=1200
-    -o smtp_send_xforward_command=yes
-    -o disable_dns_lookups=yes
-127.0.0.1:10025 inet n    -    n    -    - smtpd
-    -o content_filter=
-    -o local_recipient_maps=
-    -o relay_recipient_maps=
-    -o smtpd_restriction_classes=
-    -o smtpd_client_restrictions=
-    -o smtpd_helo_restrictions=
-    -o smtpd_sender_restrictions=
-    -o smtpd_recipient_restrictions=permit_mynetworks,reject
-    -o mynetworks=127.0.0.0/8
-    -o strict_rfc821_envelopes=yes
-    -o smtpd_error_sleep_time=0
-    -o smtpd_soft_error_limit=1001
-    -o smtpd_hard_error_limit=1000
+#smtp-amavis unix -    -    n    -    2 smtp
+#    -o smtp_data_done_timeout=1200
+#    -o smtp_send_xforward_command=yes
+#    -o disable_dns_lookups=yes
+#127.0.0.1:10025 inet n    -    n    -    - smtpd
+#    -o content_filter=
+#    -o local_recipient_maps=
+#    -o relay_recipient_maps=
+#    -o smtpd_restriction_classes=
+#    -o smtpd_client_restrictions=
+#    -o smtpd_helo_restrictions=
+#    -o smtpd_sender_restrictions=
+#    -o smtpd_recipient_restrictions=permit_mynetworks,reject
+#    -o mynetworks=127.0.0.0/8
+#    -o strict_rfc821_envelopes=yes
+#    -o smtpd_error_sleep_time=0
+#    -o smtpd_soft_error_limit=1001
+#    -o smtpd_hard_error_limit=1000
 ```
 
 ```bash
+adduser postfix ssl-cert
+
 newaliases
 systemctl restart postfix.service
 ```
