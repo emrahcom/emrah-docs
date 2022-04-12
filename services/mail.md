@@ -487,7 +487,7 @@ dig mydomain.corp TXT
 
 Create a new `TXT` record. Use `SELECTOR._domainkey.SUBDOMAIN` as host.
 According to the example, it is `202204._domainkey.mail`. Get the content from
-`/etc/dkimkeys/202204.txt`.
+`/etc/dkimkeys/202204.txt`. The value must be a single line without quoted.
 
 To check:
 
