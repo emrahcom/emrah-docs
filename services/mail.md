@@ -545,6 +545,20 @@ dig 202204._domainkey.mydomain.corp TXT
 dig 202204._domainkey.myvirtual.corp TXT
 ```
 
+##### DMARC record
+
+Create a new `TXT` record for `_dmarc`.
+
+`v=DMARC1;p=reject;rua=mailto:postmaster@mydomain.corp`
+`v=DMARC1;p=reject;rua=mailto:postmaster@myvirtual.corp`
+
+To check
+
+```bash
+dig _dmarc.mydomain.corp TXT
+dig _dmarc.myvirtual.corp TXT
+```
+
 ### virtual accounts
 
 _/etc/postfix/virtual-mailbox_
