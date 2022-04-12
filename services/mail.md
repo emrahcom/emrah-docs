@@ -39,6 +39,27 @@ chmod 750 /etc/letsencrypt/{archive,live}
 chown root:ssl-cert /etc/letsencrypt/{archive,live} -R
 ```
 
+```bash
+mkdir /etc/systemd/system/certbot.service.d/
+```
+
+_/etc/systemd/system/certbot.service.d/override.conf_
+
+```conf
+[Service]
+ExecStartPost=find /etc/letsencrypt/archive -name 'privkey*.pem' -exec chmod 640 {} \;
+ExecStartPost=chmod 750 /etc/letsencrypt/archive
+ExecStartPost=chmod 750 /etc/letsencrypt/live
+ExecStartPost=chown root:ssl-cert /etc/letsencrypt/archive -R
+ExecStartPost=chown root:ssl-cert /etc/letsencrypt/live -R
+ExecStartPost=systemctl reload postfix.service dovecot.service
+```
+
+```bash
+systemctl daemon-reload
+systemctl restart certbot.service
+```
+
 ### packages
 
 ##### postfix
