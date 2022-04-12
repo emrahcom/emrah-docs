@@ -549,8 +549,8 @@ dig 202204._domainkey.myvirtual.corp TXT
 
 Create a new `TXT` record for `_dmarc`.
 
-`v=DMARC1;p=reject;rua=mailto:postmaster@mydomain.corp`
-`v=DMARC1;p=reject;rua=mailto:postmaster@myvirtual.corp`
+`v=DMARC1;p=reject;rua=mailto:dmarc@mydomain.corp`
+`v=DMARC1;p=reject;rua=mailto:dmarc@myvirtual.corp`
 
 To check
 
