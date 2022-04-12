@@ -415,10 +415,10 @@ systemctl restart postfix.service
 
 - `25/TCP` SMTP
 - `110/TCP` POP3 (closed on firewall)
-- `143/TCP` IMAP (closed on firewall)
+- `143/TCP` IMAP
 - `465/TCP` SMTPS (closed on firewall)
 - `587/TCP` SMTP-submission
-- `993/TCP` IMAPS
+- `993/TCP` IMAPS (closed on firewall)
 - `995/TCP` POP3S (closed on firewall, only IMAPS allowed)
 
 `nftables` rules for `eb` container. Added lines...
@@ -427,8 +427,8 @@ systemctl restart postfix.service
 table ip eb-nat {
   chain prerouting {
     iif "eth0" tcp dport 25 dnat to 172.22.22.x
+    iif "eth0" tcp dport 143 dnat to 172.22.22.x
     iif "eth0" tcp dport 587 dnat to 172.22.22.x
-    iif "eth0" tcp dport 993 dnat to 172.22.22.x
   }
 }
 ```
