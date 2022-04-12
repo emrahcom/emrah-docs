@@ -170,7 +170,7 @@ _/etc/dovecot/conf.d/10-auth.conf_
 ```conf
 disable_plaintext_auth = no
 auth_mechanisms = cram-md5 plain login
-!include auth-system.conf.ext
+#!include auth-system.conf.ext
 !include auth-passwdfile.conf.ext
 !include auth-static.conf.ext
 ```
@@ -195,7 +195,7 @@ _/etc/dovecot/conf.d/auth-static.conf.ext_
 ```conf
 userdb {
   driver = static
-  args = uid=vmail gid=vmail home=/home/%u
+  args = uid=vmail gid=vmail home=/home/vmail/%d/%n
 }
 ```
 
@@ -419,7 +419,7 @@ systemctl restart postfix.service
 - `465/TCP` SMTPS (closed on firewall)
 - `587/TCP` SMTP-submission
 - `993/TCP` IMAPS (closed on firewall)
-- `995/TCP` POP3S (closed on firewall, only IMAPS allowed)
+- `995/TCP` POP3S (closed on firewall, only IMAP STARTTLS allowed)
 
 `nftables` rules for `eb` container. Added lines...
 
@@ -427,8 +427,8 @@ systemctl restart postfix.service
 table ip eb-nat {
   chain prerouting {
     iif "eth0" tcp dport 25 dnat to 172.22.22.x
-    iif "eth0" tcp dport 143 dnat to 172.22.22.x
     iif "eth0" tcp dport 587 dnat to 172.22.22.x
+    iif "eth0" tcp dport 993 dnat to 172.22.22.x
   }
 }
 ```
@@ -532,6 +532,12 @@ _/etc/postfix/virtual-mailbox_
 
 myname@mydomain.corp   mydomain.corp/myname/Maildir/
 myname@myvirtualdomain.corp   myvirtualdomain.corp/myname/Maildir/
+```
+
+Run the following command every time mailbox is updated.
+
+```bash
+postmap /etc/postfix/virtual-mailbox
 ```
 
 ##### password
