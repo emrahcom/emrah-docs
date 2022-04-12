@@ -116,14 +116,12 @@ KeyFile                 /etc/dkimkeys/202204.private
 UserID                  opendkim
 UMask                   007
 #Socket                 local:/run/opendkim/opendkim.sock
-Socket                  local:/var/spool/postfix/opendkim/opendkim.sock
+Socket                  inet:8891@localhost
 PidFile                 /run/opendkim/opendkim.pid
 TrustAnchorFile         /usr/share/dns/root.key
 ```
 
 ```bash
-mkdir /var/spool/postfix/opendkim
-chown opendkim:opendkim /var/spool/postfix/opendkim/
 adduser postfix opendkim
 systemctl restart opendkim.service
 ```
@@ -342,10 +340,8 @@ smtpd_helo_restrictions = permit_mynetworks, reject_unknown_hostname, reject_non
 content_filter=smtp-amavis:[127.0.0.1]:10024
 
 # milter
-smtpd_milters =
-  unix:/milter-greylist/milter-greylist.sock
-  unix:/opendkim/opendkim.sock
-  unix:/clamav/clamav-milter.ctl
+smtpd_milters = inet:localhost:8891
+non_smtpd_milters = $smtpd_milters
 
 # SMTP-Auth settings
 smtpd_sasl_type = dovecot
