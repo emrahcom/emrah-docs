@@ -78,7 +78,7 @@ apt-get -y --no-install-recommends install dovecot-core dovecot-pop3d \
     dovecot-imapd
 ```
 
-##### amavis, clamav
+##### amavis, clamav (optional)
 
 ```bash
 apt-get -y --install-recommends install amavisd-new clamav-daemon
