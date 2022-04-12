@@ -421,6 +421,18 @@ systemctl restart postfix.service
 - `993/TCP` IMAPS
 - `995/TCP` POP3S (closed on firewall, only IMAPS allowed)
 
+`nftables` rules for `eb` container. Added lines...
+
+```conf
+table ip eb-nat {
+  chain prerouting {
+    iif "eth0" tcp dport 25 dnat to 172.22.22.x
+    iif "eth0" tcp dport 587 dnat to 172.22.22.x
+    iif "eth0" tcp dport 993 dnat to 172.22.22.x
+  }
+}
+```
+
 ### DNS
 
 ##### PTR record
