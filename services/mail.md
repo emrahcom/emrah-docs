@@ -145,6 +145,13 @@ use strict;
 systemctl restart amavis.service clamav-daemon.service
 ```
 
+If there is no enough RAM, disable `clamav`
+
+```bash
+systemctl stop clamav-daemon.service
+systemctl disable clamav-daemon.service
+```
+
 ##### dovecot
 
 _/etc/dovecot/dovecot.conf_
