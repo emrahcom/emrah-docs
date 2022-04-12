@@ -530,8 +530,8 @@ _/etc/postfix/virtual-mailbox_
 ```conf
 # [user account] [mailbox]
 
-myname@mydomain.corp   mydomain.corp/mydomain/Maildir/
-myname@myvirtualdomain.corp   myvirtualdomain.corp/mydomain/Maildir/
+myname@mydomain.corp   mydomain.corp/myname/Maildir/
+myname@myvirtualdomain.corp   myvirtualdomain.corp/myname/Maildir/
 ```
 
 ##### password
