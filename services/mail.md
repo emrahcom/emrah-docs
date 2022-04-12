@@ -110,15 +110,28 @@ Syslog                  yes
 SyslogSuccess           yes
 Canonicalization        relaxed/simple
 OversignHeaders         From
-Domain                  mail.mydomain.corp
-Selector                202204
-KeyFile                 /etc/dkimkeys/202204.private
+SigningTable            refile:/etc/dkimkeys/signingtable
+KeyTable                file:/etc/dkimkeys/keytable
 UserID                  opendkim
 UMask                   007
 #Socket                 local:/run/opendkim/opendkim.sock
 Socket                  inet:8891@localhost
 PidFile                 /run/opendkim/opendkim.pid
 TrustAnchorFile         /usr/share/dns/root.key
+```
+
+_/etc/dkimkeys/signingtable_
+
+```conf
+*@mydomain.corp         mydomain
+*@myvirtual.corp        myvirtual
+```
+
+_/etc/dkimkeys/keytable_
+
+```conf
+mydomain                mydomain.corp:202204:/etc/opendkim/keys/202204.private
+myvirtual               myvirtual.corp:202204:/etc/opendkim/keys/202204.private
 ```
 
 ```bash
@@ -342,6 +355,7 @@ content_filter=smtp-amavis:[127.0.0.1]:10024
 # milter
 smtpd_milters = inet:localhost:8891
 non_smtpd_milters = $smtpd_milters
+internal_mail_filter_classes = bounce
 
 # SMTP-Auth settings
 smtpd_sasl_type = dovecot
@@ -360,7 +374,7 @@ smtpd_tls_key_file = /etc/letsencrypt/live/mail.mydomain.corp/privkey.pem
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 
 # virtual domains
-virtual_mailbox_domains = mydomain.corp, myvirtualdomain.corp
+virtual_mailbox_domains = mydomain.corp, myvirtual.corp
 virtual_mailbox_base = /home/vmail
 virtual_mailbox_maps = hash:/etc/postfix/virtual-mailbox
 virtual_uid_maps = static:20000
@@ -429,7 +443,7 @@ table ip eb-nat {
 }
 ```
 
-### DNS
+### DNS records
 
 ##### PTR record
 
@@ -464,6 +478,7 @@ To check:
 
 ```bash
 dig mydomain.corp MX
+dig myvirtual.corp MX
 ```
 
 ##### SPF record
@@ -477,46 +492,20 @@ To check:
 
 ```bash
 dig mydomain.corp TXT
+dig myvirtual.corp TXT
 ```
 
 ##### DKIM record
 
-Create a new `TXT` record. Use `SELECTOR._domainkey.SUBDOMAIN` as host.
-According to the example, it is `202204._domainkey.mail`. Get the content from
+Create a new `TXT` record. Use `SELECTOR._domainkey` as host. According to the
+example, it is `202204._domainkey`. Get the content from
 `/etc/dkimkeys/202204.txt`. The value must be a single line without quoted.
 
 To check:
 
 ```bash
-dig 202204._domainkey.mail.mydomain.corp TXT
-```
-
-### DNS for virtual domains
-
-##### MX record
-
-Create a new `MX` record which points to the mail server. Don't forget the
-trailing dot after the host address:
-
-`MX  @  mail.mydomain.corp.  0  600`
-
-To check:
-
-```bash
-dig virtualdomain.corp MX
-```
-
-##### SPF record
-
-Create a new `TXT` record. Use `@` as host. For some DNS service, the following
-value must be quoted. e.g. `"v=spf1 mx -all"`
-
-`v=spf1 mx -all`
-
-To check:
-
-```bash
-dig virtualdomain.corp TXT
+dig 202204._domainkey.mydomain.corp TXT
+dig 202204._domainkey.myvirtual.corp TXT
 ```
 
 ### virtual accounts
@@ -527,7 +516,7 @@ _/etc/postfix/virtual-mailbox_
 # [user account] [mailbox]
 
 myname@mydomain.corp   mydomain.corp/myname/Maildir/
-myname@myvirtualdomain.corp   myvirtualdomain.corp/myname/Maildir/
+myname@myvirtual.corp   myvirtual.corp/myname/Maildir/
 ```
 
 Run the following command every time mailbox is updated.
@@ -546,7 +535,7 @@ _/etc/dovecot/users_
 
 ```conf
 myname@mydomain.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-myname@myvirtualdomain.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+myname@myvirtual.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ### pflogsumm
@@ -558,6 +547,5 @@ pflogsumm -d yesterday /var/log/mail.log
 ### links
 
 - [server-world](https://www.server-world.info/en/note?os=Debian_11&p=mail&f=1)
-- [OpenDKIM](https://tech.ginnojo.jp/index.php/mail/opendkim)
 - [OpenDKIM in Debian Wiki](https://wiki.debian.org/opendkim)
 - [SPF, DKIM, DMARC](https://www.linode.com/docs/guides/configure-spf-and-dkim-in-postfix-on-debian-9/)
