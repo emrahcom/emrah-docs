@@ -382,7 +382,7 @@ disable_vrfy_command = yes
 smtpd_helo_required = yes
 message_size_limit = 1024000
 smtpd_sender_restrictions = permit_mynetworks, reject_unknown_sender_domain, reject_non_fqdn_sender
-smtpd_helo_restrictions = permit_mynetworks, reject_unknown_hostname, reject_non_fqdn_hostname, reject_invalid_hostname, permit
+smtpd_helo_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unknown_hostname, reject_non_fqdn_hostname, reject_invalid_hostname, permit
 # dont run amavis by default
 #content_filter=smtp-amavis:[127.0.0.1]:10024
 
