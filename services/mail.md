@@ -595,6 +595,11 @@ myname@myvirtual.corp:{CRAM-MD5}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 pflogsumm -d yesterday /var/log/mail.log
 ```
 
+### clients
+
+If there is a proxy for clients, add related IP to the proxy's `/etc/hosts` when
+the proxy and the mail server are on the same host.
+
 ### links
 
 - [server-world](https://www.server-world.info/en/note?os=Debian_11&p=mail&f=1)
