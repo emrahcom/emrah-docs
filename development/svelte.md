@@ -27,13 +27,13 @@ run as `user`
 mkdir -p ~/git-repo
 cd ~/git-repo
 
-npm init svelte@next myapp
+npm create svelte my-app
   Ok to proceed? (y) y
-  Which Svelte app template?
-    Skeleton project
-  Use TypeScript? Yes
+  Which Svelte app template? Skeleton project
+  Add type checking with TypeScript? Yes, using TypeScript syntax
   Add ESLint for code linting? Yes
   Add Prettier for code formatting? Yes
+  Add Playwright for browser testing? No
 
 cd myapp
 npm install
