@@ -144,10 +144,6 @@ if `.svelte-kit` folder is not created yet, run `npm run dev` first.
 ```bash
 npm run check
 npm run lint
-
-# or
-
-npm run all
 ```
 
 ```bash
