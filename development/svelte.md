@@ -106,25 +106,6 @@ export async function handle({ event, resolve }) {
 }
 ```
 
-#### package.json
-
-Don't use default `prettier` format.
-
-```json
-{
-  ...
-  "scripts": {
-    "all": "npm run prettier && npm run check && npm run lint && npm run dev",
-    ...
-    "lint": "eslint --ignore-path .gitignore .",
-    "prettier": "prettier --ignore-path .gitignore  --check --plugin-search-dir=. .",
-    "format": "prettier --ignore-path .gitignore  --write --plugin-search-dir=. ."
-    ...
-  }
-  ...
-}
-```
-
 #### .prettierrc
 
 ```json
