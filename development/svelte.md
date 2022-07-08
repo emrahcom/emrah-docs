@@ -19,7 +19,7 @@ apt-get update
 apt-get install nodejs
 ```
 
-#### app folder
+#### create app
 
 run as `user`
 
@@ -39,71 +39,30 @@ cd myapp
 npm install
 ```
 
-#### .gitignore
-
-Edit `.gitignore`
-
-```config
-*~
-*.sw?
-*.log
-.DS_Store
-node_modules
-package-lock.json
-/build
-/.svelte-kit
-/package
-.env
-.env.*
-!.env.example
-```
-
-#### run
-
-```bash
-npm run dev -- --host --port 3000
-```
-
 #### adapter
 
-Install an adapter before building.
+Install an adapter.
 
 ```bash
-npm install @sveltejs/adapter-static@next --save-dev
+npm install @sveltejs/adapter-node@next --save-dev
 ```
 
 Edit `svelte.config.js`
 
 ```javascript
 //import adapter from '@sveltejs/adapter-auto';
-import adapter from "@sveltejs/adapter-static";
-import preprocess from "svelte-preprocess";
-
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-  // Consult https://github.com/sveltejs/svelte-preprocess
-  // for more information about preprocessors
-  preprocess: preprocess(),
-
-  kit: {
-    adapter: adapter(),
-  },
-};
-
-export default config;
+import adapter from "@sveltejs/adapter-node";
 ```
 
-Edit src/hooks.ts
+#### .gitignore
 
-```javascript
-/** @type {import('@sveltejs/kit').Handle} */
-export async function handle({ event, resolve }) {
-  const response = await resolve(event, {
-    ssr: false,
-  });
+Add the followings into `.gitignore`
 
-  return response;
-}
+```config
+*~
+*.sw?
+*.log
+package-lock.json
 ```
 
 #### .prettierrc
@@ -119,7 +78,7 @@ export async function handle({ event, resolve }) {
 }
 ```
 
-#### run dev
+#### run (dev)
 
 ```bash
 npm run dev -- --host --port 3000
@@ -131,10 +90,10 @@ npm run dev -- --host --port 3000
 npm run build
 ```
 
-#### preview
+#### run (prod)
 
 ```bash
-npm run preview -- --host --port 3000
+node build/index.js
 ```
 
 #### check
