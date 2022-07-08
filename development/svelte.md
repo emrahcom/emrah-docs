@@ -78,6 +78,19 @@ package-lock.json
 }
 ```
 
+#### check
+
+```bash
+npm run check
+npm run lint
+```
+
+```bash
+cd src
+deno fmt --check
+deno lint
+```
+
 #### run (dev)
 
 ```bash
@@ -94,21 +107,6 @@ npm run build
 
 ```bash
 node build/index.js
-```
-
-#### check
-
-if `.svelte-kit` folder is not created yet, run `npm run dev` first.
-
-```bash
-npm run check
-npm run lint
-```
-
-```bash
-cd src
-deno fmt --check
-deno lint
 ```
 
 #### links
