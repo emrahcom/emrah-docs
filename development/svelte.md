@@ -44,7 +44,7 @@ npm install
 Install an adapter.
 
 ```bash
-npm install @sveltejs/adapter-node@next
+npm install @sveltejs/adapter-node@next --save-dev
 ```
 
 Edit `svelte.config.js`
