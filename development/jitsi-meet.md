@@ -36,7 +36,7 @@ npm run build
 
 #### jitsi-meet
 
-don't run as `root`
+don't run as `root`, reserve at least 16 GB RAM.
 
 ```bash
 cd
