@@ -8,7 +8,7 @@ completely legal action but the virtual machine expires after 90 days.
 - Go to
 [Virtual Machines](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/).
 
-- Select `MSEdge on Win10 (x64) Stable 1809` as virtual machine.
+- Select `MSEdge on Win10 (x64) Stable` as virtual machine.
 
 - Select `VirtualBox` as VM platform.
 
