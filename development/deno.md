@@ -12,7 +12,7 @@ LATEST=$(curl -sSf https://github.com/denoland/deno/releases | \
 echo $LATEST
 
 cd /tmp
-wget -O deno.zip https://github.com/$LATEST
+wget -T 30 -O deno.zip https://github.com/$LATEST
 unzip deno.zip
 ./deno --version
 
