@@ -71,3 +71,41 @@ git branch -d fix-my-branch
 ```bash
 git push origin --delete fix-my-branch
 ```
+
+#### Signed commit
+
+##### GPG key
+
+```bash
+gpg --full-generate-key
+  4 - RSA (sign only)
+  4096
+  0
+  y
+  Real name: <name>
+  Email address: <the same e-mail which is in .gitconfig'
+  Okay
+  <passphrase>
+```
+
+##### Git config
+
+```bash
+gpg --list-secret-keys --keyid-format=long
+  sec   rsa4096/<KEY> 2020-02-14 [SC]
+
+git config --global user.signingkey <KEY>
+git config --global commit.gpgsign true
+```
+
+##### Upload signed key to GitHub
+
+```bash
+gpg --armor --export <KEY>
+```
+
+- `Profile`
+- `settings`
+- `SSH and GPG keys`
+- `New GPG key`
+- Paste `gpg --armor --export` output
