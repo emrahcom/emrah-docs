@@ -109,3 +109,11 @@ gpg --armor --export <KEY>
 - `SSH and GPG keys`
 - `New GPG key`
 - Paste `gpg --armor --export` output
+
+##### gpg tty
+
+Add the following into `.zshrc` or `.bashrc`
+
+```bash
+export GPG_TTY=$(tty)
+```
