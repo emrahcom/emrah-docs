@@ -230,3 +230,32 @@ apt-get install chromium chromium-sandbox
 program[chromium]= chromium
 bind[chromium]   = MOD+shift+c
 ```
+
+##### zsh
+
+`~/.zshrc`
+
+```bash
+alias x='ssh-agent startx'
+alias startx='ssh-agent startx'
+alias xoutput='xrandr --output eDP-1 --mode 1368x768 --primary --output DP-1 --auto --scale 1x1 --left-of eDP-1 --output HDMI-1 --auto --scale 1x1 --left-of eDP-1'
+alias xoutput2='xrandr --output eDP-1 --auto --primary --output DP-1 --auto --scale 1x1 --left-of eDP-1 --output HDMI-1 --auto --scale 1x1 --left-of eDP-1'
+alias xmirror='xrandr --output eDP-1 --auto --primary --output HDMI-1 --auto --scale-from 1366x768 --same-as eDP-1'
+
+alias ls='ls --color=auto'
+alias vv='vim $(fzf)'
+alias cdf='cd $(find . -type d | fzf)'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+source /usr/share/autojump/autojump.sh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+export PATH=$PATH:~/bin
+export TMOUT=1800
+setopt autocd
+setopt hist_ignore_space
+export GPG_TTY=$(tty)
+```
