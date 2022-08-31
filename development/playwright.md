@@ -48,7 +48,10 @@ run as `root`
 
 ```bash
 cd /tmp
+
 npx playwright install-deps
+# or
+npx playwright install-deps chromium
 ```
 
 #### test
