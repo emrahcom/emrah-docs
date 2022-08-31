@@ -106,3 +106,37 @@ A desktop environment is needed.
 ```bash
 npx playwright codegen URL
 ```
+
+#### Jitsi sample
+
+```javascript
+const { chromium } = require("playwright");
+
+async function main() {
+  const browser = await chromium.launch({ headless: false });
+  const context = await browser.newContext();
+  await context.grantPermissions([])
+
+  const page = await context.newPage();
+  await page.goto("https://meet.jit.si/test-1234");
+  await page.locator('input[type="checkbox"]').check();
+  await page.locator('[aria-label="Close"]').click();
+  await page.locator('[placeholder="Enter your name here"]').fill('teacher');
+  await page.locator('[data-testid="prejoin\\.joinMeeting"]').click();
+  await page.locator('[aria-label="More actions"]').click();
+  await page.locator('[aria-label="Toggle video sharing"]').click();
+  await page.locator('[placeholder="YouTube link or direct video link"]').fill('https://youtu.be/U-xjYyIOPAs');
+  await page.locator('button:has-text("Share")').click();
+
+  await page.waitForSelector('[id="sharedVideoPlayer"]');
+  const hdl = await page.$('[id="sharedVideoPlayer"]');
+  const iframe = await hdl.contentFrame();
+  await iframe.waitForSelector('[title="Replay"]', { timeout: 0 });
+
+  await page.locator('[aria-label="More actions"]').click();
+  await page.locator('[aria-label="Toggle video sharing"]').click();
+  await browser.close();
+}
+
+main();
+```
