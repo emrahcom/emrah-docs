@@ -41,3 +41,21 @@ npm init playwright
   Install Playwright operating system dependencies?
     false
 ```
+
+#### install dependencies
+
+run as `root`
+
+```bash
+cd /tmp
+npx playwright install-deps
+```
+
+#### test
+
+run as `user`
+
+```bash
+npx playwright test
+npx playwright show-report
+```
