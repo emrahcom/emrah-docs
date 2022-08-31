@@ -7,6 +7,9 @@ Tested on `Debian 11 Bullseye`
 run as `root`
 
 ```bash
+apt-get update
+apt-get install wget gpg
+
 wget -qO /tmp/nodesource.gpg.key \
     https://deb.nodesource.com/gpgkey/nodesource.gpg.key
 cat /tmp/nodesource.gpg.key | gpg --dearmor \
@@ -17,6 +20,7 @@ echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] \
 
 apt-get update
 apt-get install nodejs
+node --version
 ```
 
 ```bash
@@ -28,7 +32,7 @@ apt-get install libopengl0 libwoff1 libgles2
 run as `user`
 
 ```bash
-mkdir -p myplay
+mkdir myplay
 cd myplay
 
 npm init playwright
@@ -44,14 +48,16 @@ npm init playwright
 
 #### install dependencies
 
+Show dependencies
+
+```bash
+npx playwright install-deps --dry-run
+```
+
 run as `root`
 
 ```bash
-cd /tmp
-
 npx playwright install-deps
-# or
-npx playwright install-deps chromium
 ```
 
 #### test
@@ -61,4 +67,42 @@ run as `user`
 ```bash
 npx playwright test
 npx playwright show-report
+```
+
+#### package.json
+
+```javascript
+  "browserName": "chromium",
+```
+
+#### sample code
+
+_index.ts_
+
+```javascript
+const { chromium } = require("playwright");
+
+async function main() {
+  const browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage();
+  await page.goto("https://emrah.com/");
+  await page.locator('text=Jitok').click();
+  await browser.close();
+}
+
+main();
+```
+
+#### run
+
+```bash
+node index.ts
+```
+
+#### codegen
+
+A desktop environment is needed.
+
+```bash
+npx playwright codegen URL
 ```
