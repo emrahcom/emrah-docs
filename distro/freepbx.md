@@ -28,6 +28,35 @@ Download `iso` from [freepbx.org](https://www.freepbx.org/downloads/)
 - Set `root` password
 - reboot
 
+#### system customization
+
+- packages
+
+```bash
+yum check-updates
+yum install tmux
+```
+
+- ssh
+  - custom port
+  - upload public SSH key
+
+- static IP
+
+  _/etc/sysconfig/network-scripts/ifcfg-eth0_
+
+```config
+BOOTPROTO="static"
+IPADDR=172.17.17.33
+NETMASK=255.255.255.0
+GATEWAY=172.17.17.1
+DNS1=172.17.17.1
+```
+
+```bash
+systemctl restart network
+```
+
 #### links
 
 - https://www.freepbx.org/downloads/
