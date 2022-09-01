@@ -57,6 +57,16 @@ DNS1=172.17.17.1
 systemctl restart network
 ```
 
+#### FreePBX initial customization
+
+- Go to `https://<FreePBX-IP>`
+- Fill required fields
+  - `Username`
+  - `Password`
+  - `Confirm Password`
+  - `Notifications Email Address`
+  - Click `Setup System` button
+
 #### links
 
 - https://www.freepbx.org/downloads/
