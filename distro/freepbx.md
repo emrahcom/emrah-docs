@@ -45,19 +45,19 @@ yum install tmux
 
 - static IP
 
-**/etc/sysconfig/network-scripts/ifcfg-eth0**
+  **/etc/sysconfig/network-scripts/ifcfg-eth0**
 
-```config
-BOOTPROTO="static"
-IPADDR=172.17.17.33
-NETMASK=255.255.255.0
-GATEWAY=172.17.17.1
-DNS1=172.17.17.1
-```
+  ```config
+  BOOTPROTO="static"
+  IPADDR=172.17.17.33
+  NETMASK=255.255.255.0
+  GATEWAY=172.17.17.1
+  DNS1=172.17.17.1
+  ```
 
-```bash
-systemctl restart network
-```
+  ```bash
+  systemctl restart network
+  ```
 
 #### FreePBX admin setup
 
