@@ -16,7 +16,7 @@ Download `iso` from [freepbx.org](https://www.freepbx.org/downloads/)
 - select `SNG7-PBX...` as image
 - Select `CentOS 7` as OS
 - 2048 MB RAM / 2 cores
-- ~20 GB storage
+- ~10 GB storage
 - properties
   - name: freepbx
   - network: bridge / br0 (depends on your environment)
@@ -43,7 +43,7 @@ yum install tmux
 
 - static IP
 
-  _/etc/sysconfig/network-scripts/ifcfg-eth0_
+  `/etc/sysconfig/network-scripts/ifcfg-eth0_`
 
 ```config
 BOOTPROTO="static"
@@ -57,7 +57,7 @@ DNS1=172.17.17.1
 systemctl restart network
 ```
 
-#### FreePBX initial customization
+#### FreePBX admin setup
 
 - Go to `https://<FreePBX-IP>`
 - Fill required fields
@@ -67,6 +67,16 @@ systemctl restart network
   - `Notifications Email Address`
   - Click `Setup System` button
 
+#### FreePBX configuration
+
+- Go to `https://<FreePBX-IP>`
+- Click `FreePBX Administration`
+- Skip activation (_this is only a test setup_)
+- Skip, skip, skip...
+- Set language
+- Disable firewall by clicking `Abort` (_this is only a test setup_)
+
 #### links
 
 - https://www.freepbx.org/downloads/
+- https://wiki.freepbx.org/display/FPG/Configuring+Your+PBX
