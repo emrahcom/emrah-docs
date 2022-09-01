@@ -43,7 +43,7 @@ yum install tmux
 
 - static IP
 
-  `/etc/sysconfig/network-scripts/ifcfg-eth0_`
+**/etc/sysconfig/network-scripts/ifcfg-eth0**
 
 ```config
 BOOTPROTO="static"
@@ -80,12 +80,14 @@ systemctl restart network
 
 - Click `Settings` -> `Asterisk SIP settings`
 - Set `External Address` and `Local Networks` by clicking
-  `Detect Network Settings`. On my setup
-  - `External IP`: `85.110.x.y`
-  - `Local networks`
-    - `192.168.1.0/24`
-    - `172.17.17.0/24`
-- `Video Support`: `enabled`
+  `Detect Network Settings`.
+  \
+  On my setup:
+  - `External IP`: _85.110.x.y_
+  - `Local networks`:
+    - _192.168.1.0/24_
+    - _172.17.17.0/24_
+- `Video Support`: _enabled_
 - `Submit`
 
 #### links
