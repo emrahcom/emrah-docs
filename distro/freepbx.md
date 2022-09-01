@@ -76,6 +76,18 @@ systemctl restart network
 - Set language
 - Disable firewall by clicking `Abort` (_this is only a test setup_)
 
+#### Asterisk Sip Settings
+
+- Click `Settings` -> `Asterisk SIP settings`
+- Set `External Address` and `Local Networks` by clicking
+  `Detect Network Settings`. On my setup
+  - `External IP`: `85.110.x.y`
+  - `Local networks`
+    - `192.168.1.0/24`
+    - `172.17.17.0/24`
+- `Video Support`: `enabled`
+- `Submit`
+
 #### links
 
 - https://www.freepbx.org/downloads/
