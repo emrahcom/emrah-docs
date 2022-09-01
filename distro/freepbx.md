@@ -18,8 +18,10 @@ Download `iso` from [freepbx.org](https://www.freepbx.org/downloads/)
 - 2048 MB RAM / 2 cores
 - ~10 GB storage
 - properties
-  - name: freepbx
-  - network: bridge / br0 (depends on your environment)
+  - `name`: _freepbx_
+  - `network`: _bridge / br0_
+    \
+    _depends on your environment_
 
 - Select the recommended\
   FreePBX 16 installation (Asteriks 18)
