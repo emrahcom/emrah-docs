@@ -49,10 +49,10 @@ yum install tmux
 
   ```config
   BOOTPROTO="static"
-  IPADDR=172.17.17.33
-  NETMASK=255.255.255.0
-  GATEWAY=172.17.17.1
-  DNS1=172.17.17.1
+  IPADDR="172.17.17.33"
+  NETMASK="255.255.255.0"
+  GATEWAY="172.17.17.1"
+  DNS1="172.17.17.1"
   ```
 
   ```bash
