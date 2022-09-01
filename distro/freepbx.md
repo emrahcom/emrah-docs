@@ -59,6 +59,13 @@ yum install tmux
   systemctl restart network
   ```
 
+- Disable `fail2ban` for testing period
+
+```bash
+systemctl stop fail2ban
+systemctl disable fail2ban
+```
+
 #### FreePBX admin setup
 
 - Go to `https://<FreePBX-IP>`
