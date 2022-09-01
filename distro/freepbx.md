@@ -92,6 +92,14 @@ yum install tmux
 - `Video Support`: _enabled_
 - `Submit`
 
+#### Sip client (zoiper)
+
+Download the Linux client from [zoiper.com](https://www.zoiper.com/)
+
+```bash
+dpkg -i Zoiper5_5.5.13_x86_64.deb
+```
+
 #### links
 
 - https://www.freepbx.org/downloads/
