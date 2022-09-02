@@ -24,6 +24,8 @@ host=dynamic
 secret=1001
 disallow=all
 allow=ulaw
+allow=vp8
+videosupport=yes
 
 [1002]
 type=friend
@@ -32,6 +34,8 @@ host=dynamic
 secret=1002
 disallow=all
 allow=ulaw
+allow=vp8
+videosupport=yes
 ```
 
 #### extensions.conf
