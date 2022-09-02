@@ -34,6 +34,20 @@ disallow=all
 allow=ulaw
 ```
 
+#### extensions.conf
+
+```config
+[from-internal]
+
+exten => 1001,1,Dial(SIP/1001,20)
+exten => 1002,1,Dial(SIP/1002,20)
+
+exten => 1000,1,Answer()
+same = n,Wait(1)
+same = n,Playback(hello-world)
+same = n, Hangup()
+```
+
 #### links
 
 - https://www.how2shout.com/linux/how-to-install-asterisk-voip-server-on-debian-11-10/
