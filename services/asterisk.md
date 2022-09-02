@@ -55,3 +55,4 @@ same = n, Hangup()
 #### links
 
 - https://www.how2shout.com/linux/how-to-install-asterisk-voip-server-on-debian-11-10/
+- https://github.com/antonraharja/book-asterisk-101
