@@ -36,6 +36,16 @@ disallow=all
 allow=ulaw
 allow=vp8
 videosupport=yes
+
+[8888]
+type=friend
+context=from-internal
+host=dynamic
+secret=8888
+disallow=all
+allow=ulaw
+allow=vp8
+videosupport=yes
 ```
 
 #### extensions.conf
@@ -45,11 +55,18 @@ videosupport=yes
 
 exten => 1001,1,Dial(SIP/1001,20)
 exten => 1002,1,Dial(SIP/1002,20)
+exten => 8888,1,Dial(SIP/8888,20)
 
 exten => 1000,1,Answer()
 same = n,Wait(1)
 same = n,Playback(hello-world)
 same = n, Hangup()
+```
+
+#### SIP traffic
+
+```bash
+ngrep -q "." port 5060
 ```
 
 #### links
