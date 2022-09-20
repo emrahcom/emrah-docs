@@ -46,38 +46,49 @@ systemctl restart asterisk
 ##### pjsip.conf
 
 ```conf
-[transport-udp-nat]
-type=transport
-protocol=udp
-bind=0.0.0.0
-local_net=172.22.22.0/24
-external_media_address=172.17.17.18
-external_signaling_address=172.17.17.18
-
-[1001]
+; endpoint template
+[my-endpoint](!)
 type=endpoint
 context=phones
 disallow=all
 allow=ulaw
 transport=transport-udp-nat
-auth=1001
-aors=1001
 direct_media=no
-rtp_symmetric=yes
-force_rport=yes
-rewrite_contact=yes
+;rtp_symmetric=yes
+;force_rport=yes
+;rewrite_contact=yes
 ;ice_support=yes
 
-[1001]
+; auth template
+[my-auth](!)
 type=auth
 auth_type=userpass
-username=1001
-password=pwd1001
 
-[1001]
+; aor template
+[my-aor](!)
 type=aor
 max_contacts=1
 remove_existing=true
+
+[1001](my-endpoint)
+auth=1001
+aors=1001
+
+[1001](my-auth)
+username=1001
+password=1001
+
+[1001](my-aor)
+
+[1002](my-endpoint)
+auth=1002
+aors=1002
+
+[1002](my-auth)
+username=1002
+password=1002
+
+[1002](my-aor)
 ```
 
 ```bash
