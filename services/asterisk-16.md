@@ -1,4 +1,4 @@
-## Asterisk
+## Asterisk 16
 
 Tested on `Debian 11 Bullseye`
 
