@@ -2,7 +2,7 @@
 
 Tested in `Bookworm` container on `Debian 11 Bullseye` host.
 
-#### installation
+### installation
 
 ```bash
 apt-get install asterisk --install-recommends
@@ -11,7 +11,7 @@ systemctl status asterisk
 asterisk -V
 ```
 
-#### configuration
+### configuration
 
 ##### disable `chan_sip.so`
 
