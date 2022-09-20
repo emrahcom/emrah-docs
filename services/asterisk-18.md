@@ -66,3 +66,16 @@ password=pwd1001
 type=aor
 max_contacts=1
 ```
+
+```bash
+systemctl restart asterisk
+
+asterisk -r
+CLI> pjsip list endpoints
+CLI> pjsip list auths
+CLI> pjsip list aors
+
+CLI> pjsip show endpoint 1001
+CLI> pjsip show auth 1001
+CLI> pjsip show aor 1001
+```
