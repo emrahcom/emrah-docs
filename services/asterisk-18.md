@@ -53,6 +53,7 @@ bind=0.0.0.0
 local_net=172.22.22.0/24
 external_media_address=172.17.17.18
 external_signaling_address=172.17.17.18
+direct_media=no
 
 [1001]
 type=endpoint
