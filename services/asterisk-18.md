@@ -4,6 +4,10 @@ Tested in `Bookworm` container on `Debian 11 Bullseye` host.
 
 ### installation
 
+##### nat
+
+- incoming `UDP/5060`
+
 ##### freeradius-utils
 
 ```bash
