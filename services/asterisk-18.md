@@ -13,13 +13,15 @@ asterisk -V
 
 #### configuration
 
-- disable `chan_sip.so`
-  \
-  in `/etc/asterisk/modules.conf`
+##### disable `chan_sip.so`
+
+In `/etc/asterisk/modules.conf`
 
 ```conf
 noload => chan_sip.so
 ```
+
+Restart the service:
 
 ```bash
 systemctl restart asterisk
