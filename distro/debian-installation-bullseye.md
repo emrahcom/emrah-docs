@@ -172,7 +172,6 @@ bind[element-desktop]   = MOD+shift+m
 auto edummy0
 iface edummy0 inet manual
 pre-up /sbin/ip link add edummy0 type dummy
-pre-up /sbin/ip link set edummy0 mtu 1400
 up /sbin/ip link set edummy0 address 52:54:05:22:06:30
 
 # private bridge
@@ -180,7 +179,6 @@ auto br0
 iface br0 inet static
 address 172.17.17.1
 netmask 255.255.255.0
-mtu 1400
 bridge_ports edummy0
 bridge_stp off
 bridge_fd 0
@@ -203,7 +201,6 @@ _/etc/network/interfaces_
 ```conf
 allow-hotplug wlan0
 iface wlan0 inet dhcp
-pre-up /sbin/ip link set wlan0 mtu 1400
 ```
 
 Disable autostart otherwise causes slow boot.
