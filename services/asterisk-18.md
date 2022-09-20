@@ -4,6 +4,15 @@ Tested in `Bookworm` container on `Debian 11 Bullseye` host.
 
 ### installation
 
+##### freeradius-utils
+
+```bash
+apt-get install freeradius-utils --install-recommends
+ln -s radcli /etc/radiusclient-ng
+```
+
+##### asterisk
+
 ```bash
 apt-get install asterisk --install-recommends
 
