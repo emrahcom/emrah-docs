@@ -69,6 +69,9 @@ package-lock.json
 
 ```json
 {
+  "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }],
+  "plugins": ["prettier-plugin-svelte"],
+  "pluginSearchDirs": ["."],
   "printWidth": 80,
   "quoteProps": "preserve",
   "singleQuote": false,
@@ -76,6 +79,17 @@ package-lock.json
   "trailingComma": "all",
   "useTabs": false
 }
+```
+
+#### vite.config.js
+
+Add HMR port if needed.
+
+```json
+server: {
+  hmr: {
+    clientPort: 3000,
+},
 ```
 
 #### check
