@@ -72,7 +72,7 @@ npx playwright show-report
 #### package.json
 
 ```javascript
-  "browserName": "chromium",
+"browserName": "chromium",
 ```
 
 #### sample code
@@ -86,7 +86,7 @@ async function main() {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto("https://emrah.com/");
-  await page.locator('text=Jitok').click();
+  await page.locator("text=Jitok").click();
   await browser.close();
 }
 
@@ -115,17 +115,19 @@ const { chromium } = require("playwright");
 async function main() {
   const browser = await chromium.launch({ headless: false });
   const context = await browser.newContext();
-  await context.grantPermissions([])
+  await context.grantPermissions([]);
 
   const page = await context.newPage();
   await page.goto("https://meet.jit.si/test-1234");
   await page.locator('input[type="checkbox"]').check();
   await page.locator('[aria-label="Close"]').click();
-  await page.locator('[placeholder="Enter your name here"]').fill('teacher');
+  await page.locator('[placeholder="Enter your name here"]').fill("teacher");
   await page.locator('[data-testid="prejoin\\.joinMeeting"]').click();
   await page.locator('[aria-label="More actions"]').click();
   await page.locator('[aria-label="Toggle video sharing"]').click();
-  await page.locator('[placeholder="YouTube link or direct video link"]').fill('https://youtu.be/U-xjYyIOPAs');
+  await page.locator('[placeholder="YouTube link or direct video link"]').fill(
+    "https://youtu.be/U-xjYyIOPAs",
+  );
   await page.locator('button:has-text("Share")').click();
 
   await page.waitForSelector('[id="sharedVideoPlayer"]');
