@@ -113,3 +113,16 @@ CLI> pjsip show endpoint 1001
 CLI> pjsip show auth 1001
 CLI> pjsip show aor 1001
 ```
+
+##### extensions.conf
+
+```conf
+[phones]
+exten => 1001,1,Verbose(2,${EXTEN})
+ same => n,Dial(PJSIP/1001,20)
+ same => n,HangUp()
+
+exten => 1002,1,Verbose(2,${EXTEN})
+ same => n,Dial(PJSIP/1002,20)
+ same => n,HangUp()
+```
