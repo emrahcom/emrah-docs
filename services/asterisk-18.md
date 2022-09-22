@@ -68,6 +68,7 @@ direct_media=no
 rtp_symmetric=yes
 force_rport=yes
 ;ice_support=yes
+device_state_busy_at=1
 
 ; auth template
 [my-auth](!)
