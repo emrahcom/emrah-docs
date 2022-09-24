@@ -122,11 +122,15 @@ CLI> pjsip show aor 1001
 
 ```conf
 [phones]
-exten => 1001,1,Verbose(2,${EXTEN})
+exten => 1001,1,Verbose(3,${EXTEN})
  same => n,Dial(PJSIP/1001,20)
+ same => n,Playtones(congestion)
+ same => n,Congestion(3)
  same => n,HangUp()
 
-exten => 1002,1,Verbose(2,${EXTEN})
+exten => 1002,1,Verbose(3,${EXTEN})
  same => n,Dial(PJSIP/1002,20)
+ same => n,Playtones(congestion)
+ same => n,Congestion(3)
  same => n,HangUp()
 ```
