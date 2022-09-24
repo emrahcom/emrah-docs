@@ -69,6 +69,7 @@ transport=transport-udp-nat
 direct_media=no
 rtp_symmetric=yes
 force_rport=yes
+rewrite_contact=yes
 ;ice_support=yes
 device_state_busy_at=1
 
