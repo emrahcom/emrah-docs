@@ -83,6 +83,8 @@ auth_type=userpass
 type=aor
 max_contacts=1
 remove_existing=true
+qualify_frequency=60
+qualify_timeout=3.0
 
 [1001](my-endpoint)
 auth=1001
