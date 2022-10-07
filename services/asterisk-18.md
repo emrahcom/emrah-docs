@@ -27,6 +27,12 @@ systemctl status asterisk
 asterisk -V
 ```
 
+##### tools
+
+```bash
+apt-get install sngrep ngrep
+```
+
 ### configuration
 
 ##### disable `chan_sip.so` module
