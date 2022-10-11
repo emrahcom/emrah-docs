@@ -46,9 +46,19 @@ apt-get --install-recommends install freeswitch-meta-all
   \
   `iif "enp1s0" udp dport 16384-32768 dnat to 172.22.22.18`
 
+##### default password
+
+Change the default password.
+
+_/etc/freeswitch/vars.xml_
+
+```xml
+<X-PRE-PROCESS cmd="set" data="default_password=NEW-PASSWORD"/>
+```
+
 ##### external SIP IP
 
-For internal test environent
+For internal test environent:
 
 _/etc/freeswitch/vars.xml_
 
