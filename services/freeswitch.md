@@ -10,6 +10,27 @@ Tested in `Bullseye` container on `Debian 11 Bullseye` host.
 - `profile` -> `personal access tokens` -> `new token`
 - keep the generated token in a safe place
 
+##### repo
+
+```bash
+apt-get update
+apt-get install gnupg wget
+
+TOKEN=<the-access-token>
+echo "machine freeswitch.signalwire.com login signalwire password $TOKEN" \
+  >/etc/apt/auth.conf
+chmod 600 /etc/apt/auth.conf
+
+wget --http-user=signalwire --http-password=$TOKEN \
+  -O /usr/share/keyrings/freeswitch.gpg \
+  https://freeswitch.signalwire.com/repo/deb/debian-release/signalwire-freeswitch-repo.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/freeswitch.gpg]" \
+  "https://freeswitch.signalwire.com/repo/deb/debian-release/ bullseye main" \
+  >/etc/apt/sources.list.d/freeswitch.list
+apt-get update
+```
+
 ##### nat
 
 - incoming `UDP/5060`
