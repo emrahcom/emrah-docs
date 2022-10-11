@@ -4,6 +4,12 @@ Tested in `Bullseye` container on `Debian 11 Bullseye` host.
 
 ### installation
 
+##### access token
+
+- create an account on (SignalWire)[https://id.signalwire.com/]
+- `profile` -> `personal access tokens` -> `new token`
+- keep the generated token in a safe place
+
 ##### nat
 
 - incoming `UDP/5060`
