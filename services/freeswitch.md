@@ -69,7 +69,12 @@ _/etc/freeswitch/vars.xml_
 
 ### testing
 
-- call `9664` (_the hold music_)
+- `9195`: _instant echo_
+- `9196`: _delayed echo_
+- `9664`: _hold music_
+- `9193`: _record video_
+- `9194`: _play recorded video_
+- `9001`: _conference_
 
 ##### links
 
