@@ -12,3 +12,7 @@ Tested in `Bullseye` container on `Debian 11 Bullseye` host.
   `iif "enp1s0" udp dport 10000-20000 dnat to 172.22.22.18`
 
 ##### links
+
+- https://github.com/signalwire/freeswitch
+- https://freeswitch.org/confluence/display/FREESWITCH/Debian
+- https://freeswitch.org/confluence/display/FREESWITCH/HOWTO+Create+a+SignalWire+Personal+Access+Token
