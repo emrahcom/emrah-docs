@@ -37,14 +37,27 @@ apt-get update
 apt-get --install-recommends install freeswitch-meta-all
 ```
 
+### configuration
+
 ##### nat
 
 - incoming `UDP/5060`
-- incoming `UDP/16384-32768
+- incoming `UDP/16384-32768`
   \
   `iif "enp1s0" udp dport 16384-32768 dnat to 172.22.22.18`
 
-##### testing
+##### external SIP IP
+
+For internal test environent
+
+_/etc/freeswitch/vars.xml_
+
+```xml
+<X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=172.17.17.36"/>
+<X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=172.17.17.36"/>
+```
+
+### testing
 
 - call `9664` (_the hold music_)
 
