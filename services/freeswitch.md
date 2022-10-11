@@ -44,6 +44,10 @@ apt-get --install-recommends install freeswitch-meta-all
   \
   `iif "enp1s0" udp dport 16384-32768 dnat to 172.22.22.18`
 
+##### testing
+
+- call `9664` (_the hold music_)
+
 ##### links
 
 - https://github.com/signalwire/freeswitch
