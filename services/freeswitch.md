@@ -31,6 +31,12 @@ echo "deb [signed-by=/usr/share/keyrings/freeswitch.gpg]" \
 apt-get update
 ```
 
+##### packages
+
+```bash
+apt-get --install-recommends install freeswitch-meta-all
+```
+
 ##### nat
 
 - incoming `UDP/5060`
