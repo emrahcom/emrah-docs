@@ -40,9 +40,9 @@ apt-get --install-recommends install freeswitch-meta-all
 ##### nat
 
 - incoming `UDP/5060`
-- incoming `UDP/10000-20000`
+- incoming `UDP/16384-32768
   \
-  `iif "enp1s0" udp dport 10000-20000 dnat to 172.22.22.18`
+  `iif "enp1s0" udp dport 16384-32768 dnat to 172.22.22.18`
 
 ##### links
 
