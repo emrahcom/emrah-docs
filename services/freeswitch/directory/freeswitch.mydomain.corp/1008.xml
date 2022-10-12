@@ -1,0 +1,15 @@
+<include>
+  <user id="1008">
+    <params>
+      <param name="password" value="pwd1008"/>
+      <param name="vm-password" value="1008"/>
+    </params>
+    <variables>
+      <variable name="toll_allow" value="local"/>
+      <variable name="accountcode" value="1008"/>
+      <variable name="user_context" value="mydomain"/>
+      <variable name="effective_caller_id_name" value="Extension 1008"/>
+      <variable name="effective_caller_id_number" value="1008"/>
+    </variables>
+  </user>
+</include>
