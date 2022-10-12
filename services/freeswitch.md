@@ -56,6 +56,15 @@ _/etc/freeswitch/vars.xml_
 <X-PRE-PROCESS cmd="set" data="default_password=NEW-PASSWORD"/>
 ```
 
+##### domain or IP
+
+_/etc/freeswitch/vars.xml_
+
+```xml
+<X-PRE-PROCESS cmd="set" data="domain=$${local_ip_v4}"/>
+<X-PRE-PROCESS cmd="set" data="domain=freeswitch.mydomain.corp"/>
+```
+
 ##### external SIP IP
 
 For internal test environent:
