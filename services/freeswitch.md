@@ -58,9 +58,8 @@ Change the default password.
 
 ##### domain or IP
 
-[/etc/freeswitch/vars.xml](./freeswitch/vars.xml)
-
-Don't update `domain`. This is only for info.
+Don't update `domain` in [/etc/freeswitch/vars.xml](./freeswitch/vars.xml). This
+is only for info.
 
 ```xml
 <X-PRE-PROCESS cmd="set" data="domain=$${local_ip_v4}"/>
