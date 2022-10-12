@@ -60,14 +60,14 @@ Change the default password.
 
 [/etc/freeswitch/vars.xml](./freeswitch/vars.xml)
 
-Don't update this file. This is only for info.
+Don't update `domain`. This is only for info.
 
 ```xml
 <X-PRE-PROCESS cmd="set" data="domain=$${local_ip_v4}"/>
 <X-PRE-PROCESS cmd="set" data="domain=freeswitch.mydomain.corp"/>
 ```
 
-For multi-tenant system comment the followings in
+For multi-tenant system, comment followings in
 [/etc/freeswitch/sip_profiles/internal.xml](./freeswitch/sip_profiles/internal.xml)
 
 ```xml
@@ -78,7 +78,8 @@ For multi-tenant system comment the followings in
 
 ##### external SIP IP
 
-For internal test environent:
+For internal test environent, set `host IP` as `external_ip` if `FreeSwitch` is
+in the container:
 
 [/etc/freeswitch/vars.xml](./freeswitch/vars.xml)
 
