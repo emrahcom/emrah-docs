@@ -91,6 +91,10 @@ in the container:
 
 See [/etc/freeswitch/directory/](./freeswitch/directory/) for a sample.
 
+##### Dialplan
+
+See [/etc/freeswitch/dialplan/](./freeswitch/dialplan/) for a sample.
+
 ### Testing
 
 - `9195`: _instant echo_
