@@ -67,6 +67,15 @@ Don't update this file. This is only for info.
 <X-PRE-PROCESS cmd="set" data="domain=freeswitch.mydomain.corp"/>
 ```
 
+For multi-tenant system comment the followings in
+`/etc/freeswitch/sip_profiles/internal.xml`:
+
+```xml
+<!-- <param name="force-register-domain" value="$${domain}"/> -->
+<!-- <param name="force-subscription-domain" value="$${domain}"/> -->
+<!-- <param name="force-register-db-domain" value="$${domain}"/> -->
+```
+
 ##### external SIP IP
 
 For internal test environent:
