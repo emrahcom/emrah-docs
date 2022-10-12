@@ -68,7 +68,7 @@ Don't update this file. This is only for info.
 ```
 
 For multi-tenant system comment the followings in
-_/etc/freeswitch/sip_profiles/internal.xml_:
+[/etc/freeswitch/sip_profiles/internal.xml](./freeswitch/sip_profiles/internal.xml)
 
 ```xml
 <!-- <param name="force-register-domain" value="$${domain}"/> -->
