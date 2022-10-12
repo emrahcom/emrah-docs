@@ -50,7 +50,7 @@ apt-get --install-recommends install freeswitch-meta-all
 
 Change the default password.
 
-_/etc/freeswitch/vars.xml_
+[/etc/freeswitch/vars.xml](./freeswitch/vars.xml)
 
 ```xml
 <X-PRE-PROCESS cmd="set" data="default_password=NEW-PASSWORD"/>
@@ -58,7 +58,7 @@ _/etc/freeswitch/vars.xml_
 
 ##### domain or IP
 
-_/etc/freeswitch/vars.xml_
+[/etc/freeswitch/vars.xml](./freeswitch/vars.xml)
 
 Don't update this file. This is only for info.
 
@@ -80,7 +80,7 @@ For multi-tenant system comment the followings in
 
 For internal test environent:
 
-_/etc/freeswitch/vars.xml_
+[/etc/freeswitch/vars.xml](./freeswitch/vars.xml)
 
 ```xml
 <X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=172.17.17.36"/>
