@@ -87,6 +87,10 @@ in the container:
 <X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=172.17.17.36"/>
 ```
 
+##### directory
+
+See [/etc/freeswitch/directory/](./freeswitch/directory/) for a sample.
+
 ### testing
 
 - `9195`: _instant echo_
