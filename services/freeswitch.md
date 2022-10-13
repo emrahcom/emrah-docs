@@ -93,6 +93,12 @@ See [/etc/freeswitch/directory/](./freeswitch/directory/) for a sample.
 
 ##### Dialplan
 
+- Disable voicemail
+
+```xml
+<action application="set" data="continue_on_fail=false"/>
+```
+
 See [/etc/freeswitch/dialplan/](./freeswitch/dialplan/) for a sample.
 
 ### Testing
