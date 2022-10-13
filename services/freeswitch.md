@@ -118,3 +118,4 @@ See [/etc/freeswitch/dialplan/](./freeswitch/dialplan/) for a sample.
 - https://github.com/signalwire/freeswitch
 - https://freeswitch.org/confluence/display/FREESWITCH/Debian
 - https://freeswitch.org/confluence/display/FREESWITCH/HOWTO+Create+a+SignalWire+Personal+Access+Token
+- https://freeswitch.org/confluence/display/FREESWITCH/mod_conference
