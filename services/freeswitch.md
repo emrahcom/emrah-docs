@@ -96,7 +96,10 @@ See [/etc/freeswitch/directory/](./freeswitch/directory/) for a sample.
 - Disable voicemail
 
 ```xml
-<action application="set" data="continue_on_fail=false"/>
+<extension name="Local_Extension">
+  <condition field="destination_number" expression="^(10[01][0-9])$">
+    ...
+    <action application="set" data="continue_on_fail=false"/>
 ```
 
 See [/etc/freeswitch/dialplan/](./freeswitch/dialplan/) for a sample.
