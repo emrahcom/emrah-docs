@@ -114,7 +114,7 @@
 	<!-- <action application="set" data="sip_exclude_contact=${network_addr}"/> -->
 	<action application="set" data="hangup_after_bridge=true"/>
 	<!--<action application="set" data="continue_on_fail=NORMAL_TEMPORARY_FAILURE,USER_BUSY,NO_ANSWER,TIMEOUT,NO_ROUTE_DESTINATION"/> -->
-	<action application="set" data="continue_on_fail=true"/>
+	<action application="set" data="continue_on_fail=false"/>
 	<action application="hash" data="insert/${domain_name}-call_return/${dialed_extension}/${caller_id_number}"/>
 	<action application="hash" data="insert/${domain_name}-last_dial_ext/${dialed_extension}/${uuid}"/>
 	<action application="set" data="called_party_callgroup=${user_data(${dialed_extension}@${domain_name} var callgroup)}"/>
