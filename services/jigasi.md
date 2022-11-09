@@ -1,7 +1,7 @@
 ## Jigasi
 
 
-### Jitsi sources/list
+### Jitsi sources.list
 
 ```bash
 apt-get install gnupg
