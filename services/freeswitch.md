@@ -4,13 +4,13 @@ Tested in `Bullseye` container on `Debian 11 Bullseye` host.
 
 ## Installation
 
-### Access Token
+#### Access Token
 
 - create an account on [SignalWire](https://id.signalwire.com/)
 - `profile` -> `personal access tokens` -> `new token`
 - keep the generated token in a safe place
 
-### Repo
+#### Repo
 
 ```bash
 apt-get update
@@ -31,7 +31,7 @@ echo "deb [signed-by=/usr/share/keyrings/freeswitch.gpg]" \
 apt-get update
 ```
 
-### Packages
+#### Packages
 
 ```bash
 apt-get --install-recommends install freeswitch-meta-all
@@ -39,14 +39,14 @@ apt-get --install-recommends install freeswitch-meta-all
 
 ## Configuration
 
-### NAT
+#### NAT
 
 - incoming `UDP/5060`
 - incoming `UDP/16384-32768`
   \
   `iif "enp1s0" udp dport 16384-32768 dnat to 172.22.22.18`
 
-### Default Password
+#### Default Password
 
 Change the default password.
 
@@ -56,7 +56,7 @@ Change the default password.
 <X-PRE-PROCESS cmd="set" data="default_password=NEW-PASSWORD"/>
 ```
 
-### Domain or IP
+#### Domain or IP
 
 Don't update `domain` in [/etc/freeswitch/vars.xml](./freeswitch/vars.xml). This
 is only for info.
@@ -75,7 +75,7 @@ For multi-tenant system, comment followings in
 <!-- <param name="force-register-db-domain" value="$${domain}"/> -->
 ```
 
-### External SIP IP
+#### External SIP IP
 
 For internal test environent, set `host IP` as `external_ip` if `FreeSwitch` is
 in the container:
@@ -87,11 +87,11 @@ in the container:
 <X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=172.17.17.36"/>
 ```
 
-### Directory
+#### Directory
 
 See [/etc/freeswitch/directory/](./freeswitch/directory/) for a sample.
 
-### Dialplan
+#### Dialplan
 
 - Disable voicemail
 
