@@ -113,6 +113,12 @@ See [/etc/freeswitch/dialplan/](./freeswitch/dialplan/) for a sample.
 - `9194`: _play recorded video_
 - `9001`: _conference_
 
+## FreeSwitch CLI
+
+```bash
+fs_cli
+```
+
 ## Links
 
 - https://github.com/signalwire/freeswitch
