@@ -24,3 +24,20 @@ deb [signed-by=/usr/share/keyrings/jitsi.gpg] https://download.jitsi.org stable/
 ```bash
 apt-get update
 ```
+
+### Jigasi installation
+
+```bash
+SIP_ACCOUNT="1000@sip.mydomain.corp"
+SIP_PASSWD="mysecret"
+JITSI_FQDN="jitsi.mydomain.corp"
+
+debconf-set-selections <<< \
+    "jigasi jigasi/sip-account string $SIP_ACCOUNT"
+debconf-set-selections <<< \
+    "jigasi jigasi/sip-password password $SIP_PASSWD"
+debconf-set-selections <<< \
+    "jigasi jitsi-videobridge/jvb-hostname string $JITSI_FQDN"
+
+apt-get install --instal-recommends jigasi
+```
