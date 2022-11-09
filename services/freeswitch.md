@@ -119,6 +119,10 @@ See [/etc/freeswitch/dialplan/](./freeswitch/dialplan/) for a sample.
 fs_cli
 ```
 
+- `help`
+- `show <tab>`
+- `show registrations`
+
 ## Links
 
 - https://github.com/signalwire/freeswitch
