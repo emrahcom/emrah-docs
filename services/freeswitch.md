@@ -125,9 +125,19 @@ fs_cli
 
 ## Debug
 
+### sngrep
+
 ```bash
 apt-get install sngrep
 sngrep
+```
+
+### loglevel
+
+In `fs_cli`
+
+```
+sofia loglevel all 9
 ```
 
 ## Links
