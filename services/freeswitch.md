@@ -123,6 +123,13 @@ fs_cli
 - `show <tab>`
 - `show registrations`
 
+## Debug
+
+```bash
+apt-get install sngrep
+sngrep
+```
+
 ## Links
 
 - https://github.com/signalwire/freeswitch
