@@ -2,6 +2,12 @@
 
 Tested on `Debian 11 Bullseye`
 
+### packages
+
+```bash
+apt-get install git
+```
+
 ### repo
 
 ```bash
