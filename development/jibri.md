@@ -21,3 +21,8 @@ git clone https://github.com/jitsi/jibri.git
 cd jibri
 mvn package
 ```
+
+### deployment
+
+Copy `target/jibri-8.0-SNAPSHOT-jar-with-dependencies.jar` as
+`/opt/jitsi/jibri/jibri.jar` to `Jibri` server.
