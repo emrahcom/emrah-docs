@@ -13,3 +13,10 @@ apt-get install git
 ```bash
 git clone https://github.com/jitsi/jibri.git
 ```
+
+### build
+
+```bash
+cd jibri
+mvn package
+```
