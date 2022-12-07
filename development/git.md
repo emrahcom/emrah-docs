@@ -20,7 +20,8 @@ git remote add upstream https://github.com/developer/repo.git
 - Update the clone
 
 ```
-git pull upstream master
+#git pull upstream master
+git pull upstream main
 git push
 ```
 
@@ -62,7 +63,8 @@ git branch -a
 - Delete local branch
 
 ```bash
-git switch master
+#git switch master
+git switch main
 git branch -d fix-my-branch
 ```
 
