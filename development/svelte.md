@@ -2,11 +2,11 @@
 
 Tested on `Debian 11 Bullseye`
 
-#### packages
+### packages
 
 Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs.md).
 
-#### create app
+### create app
 
 run as `user`
 
@@ -26,7 +26,7 @@ cd myapp
 npm install
 ```
 
-#### adapter
+### adapter
 
 Install an adapter.
 
@@ -41,7 +41,7 @@ Edit `svelte.config.js`
 import adapter from "@sveltejs/adapter-node";
 ```
 
-#### .gitignore
+### .gitignore
 
 Add the followings into `.gitignore`
 
@@ -52,7 +52,7 @@ Add the followings into `.gitignore`
 package-lock.json
 ```
 
-#### .prettierrc
+### .prettierrc
 
 ```json
 {
@@ -68,7 +68,7 @@ package-lock.json
 }
 ```
 
-#### vite.config.js
+### vite.config.js
 
 Add HMR port if needed.
 
@@ -79,7 +79,7 @@ server: {
 },
 ```
 
-#### check
+### check
 
 ```bash
 npm run check
@@ -92,25 +92,25 @@ deno fmt --check
 deno lint
 ```
 
-#### run (dev)
+### run (dev)
 
 ```bash
 npm run dev -- --host --port 3000
 ```
 
-#### build
+### build
 
 ```bash
 npm run build
 ```
 
-#### run (prod)
+### run (prod)
 
 ```bash
 node build/index.js
 ```
 
-#### links
+### links
 
 - [svelte.dev](https://svelte.dev/)
 - [sveltekit](https://kit.svelte.dev/)
