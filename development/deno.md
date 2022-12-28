@@ -1,6 +1,6 @@
 ## deno
 
-#### install
+### install
 
 ```bash
 cd /tmp
@@ -12,35 +12,35 @@ cp /tmp/deno /usr/local/bin/
 deno --version
 ```
 
-#### help
+### help
 
 ```bash
 deno help
 deno help run
 ```
 
-#### run
+### run
 
 ```bash
 deno run --allow-net index.ts
 deno run --watch --unstable --allow-net index.ts
 ```
 
-#### format check
+### format check
 
 ```bash
 deno fmt --check
 deno fmt --check index.ts
 ```
 
-#### lint
+### lint
 
 ```bash
 deno lint
 deno lint index.ts
 ```
 
-#### cache
+### cache
 
 ```bash
 rm -rf .cache/deno
