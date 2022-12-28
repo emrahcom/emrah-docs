@@ -2,7 +2,7 @@
 
 #### packages
 
-Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs).
+Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs.md).
 
 #### install vue-cli
 
