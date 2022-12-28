@@ -1,4 +1,4 @@
-## svelte
+# svelte
 
 Tested on `Debian 11 Bullseye`
 
