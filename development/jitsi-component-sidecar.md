@@ -1,4 +1,4 @@
-## jitsi-component-sidecar
+# jitsi-component-sidecar
 
 Tested on `Debian 11 Bullseye`
 
