@@ -2,7 +2,7 @@
 
 Tested on `Debian 11 Bullseye`
 
-#### packages
+### packages
 
 run as `root`
 
@@ -17,4 +17,16 @@ echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] \
 
 apt-get update
 apt-get install nodejs
+```
+
+### purge
+
+If `nodejs` is already installed from the Debian repo, purge it as below before
+installing it from the `nodejs` repo.
+
+```bash
+apt-get purge nodejs
+
+rm -rf /usr/lib/node_modules
+rm -rf /usr/local/lib/node_modules
 ```
