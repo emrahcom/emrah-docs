@@ -19,6 +19,12 @@ apt-get update
 apt-get install nodejs
 ```
 
+### npm upgrade
+
+```bash
+npm install npm -g
+```
+
 ### purge
 
 If `nodejs` is already installed from the Debian repo, purge it as below before
