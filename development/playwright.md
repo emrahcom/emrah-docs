@@ -2,7 +2,7 @@
 
 Tested on `Debian 11 Bullseye`
 
-#### packages
+### packages
 
 Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs.md).
 
@@ -10,7 +10,7 @@ Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs.md).
 apt-get install libopengl0 libwoff1 libgles2
 ```
 
-#### create app
+### create app
 
 run as `user`
 
@@ -29,7 +29,7 @@ npm init playwright
     false
 ```
 
-#### install dependencies
+### install dependencies
 
 Show dependencies
 
@@ -43,7 +43,7 @@ run as `root`
 npx playwright install-deps
 ```
 
-#### test
+### test
 
 run as `user`
 
@@ -52,13 +52,13 @@ npx playwright test
 npx playwright show-report
 ```
 
-#### package.json
+### package.json
 
 ```javascript
 "browserName": "chromium",
 ```
 
-#### sample code
+### sample code
 
 _index.ts_
 
@@ -76,13 +76,13 @@ async function main() {
 main();
 ```
 
-#### run
+### run
 
 ```bash
 node index.ts
 ```
 
-#### codegen
+### codegen
 
 A desktop environment is needed.
 
@@ -90,7 +90,7 @@ A desktop environment is needed.
 npx playwright codegen URL
 ```
 
-#### Jitsi sample
+### Jitsi sample
 
 ```javascript
 const { chromium } = require("playwright");
