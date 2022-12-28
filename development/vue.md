@@ -1,6 +1,6 @@
 ## Vue.js
 
-#### install nodejs
+#### packages
 
 Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs).
 
@@ -15,6 +15,8 @@ vue --version
 ```
 
 #### create project
+
+As `user`
 
 ```bash
 vue create project-name
