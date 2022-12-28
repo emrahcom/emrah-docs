@@ -1,40 +1,8 @@
 ## Vue.js
 
-#### purge old nodejs
-
-```bash
-apt-get purge nodejs
-
-rm -rf /usr/lib/node_modules
-rm -rf /usr/local/lib/node_modules
-```
-
 #### install nodejs
 
-```bash
-wget -qO /tmp/nodesource.gpg.key \
-    https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-cat /tmp/nodesource.gpg.key | gpg --dearmor \
-    >/usr/share/keyrings/nodesource.gpg
-echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] \
-    https://deb.nodesource.com/node_16.x bullseye main" \
-    >>/etc/apt/sources.list
-
-apt-get update
-apt-get install nodejs
-
-node --version
-npm --version
-```
-
-#### npm update
-
-DON'T upgrade or install!
-
-```bash
-npm update -g npm
-npm --version
-```
+See [nodejs](./nodejs.md)
 
 #### install vue-cli
 
