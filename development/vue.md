@@ -1,10 +1,10 @@
 ## Vue.js
 
-#### packages
+### packages
 
 Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs.md).
 
-#### install vue-cli
+### install vue-cli
 
 ```bash
 npm install -g @vue/cli
@@ -14,7 +14,7 @@ npm install -g @vue/compiler-sfc
 vue --version
 ```
 
-#### create project
+### create project
 
 As `user`
 
@@ -37,7 +37,7 @@ vue ui
 chromium http://localhost:8000
 ```
 
-#### customize
+### customize
 
 ```bash
 cd proje-name
@@ -47,28 +47,28 @@ ln -s ../node_modules src/   # do this if the vue command will be used
                              # but npm seems more stable
 ```
 
-#### run serve
+### run serve
 
 ```bash
 cd project-name
 npm run serve
 ```
 
-#### lint
+### lint
 
 ```bash
 cd project-name
 npm run lint
 ```
 
-#### deployment
+### deployment
 
 ```bash
 npm run build
 cp -arp dist /var/www/html
 ```
 
-#### upgrade app
+### upgrade app
 
 ```bash
 vue upgrade
