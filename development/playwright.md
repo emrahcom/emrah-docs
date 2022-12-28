@@ -4,7 +4,7 @@ Tested on `Debian 11 Bullseye`
 
 #### packages
 
-Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs).
+Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs.md).
 
 ```bash
 apt-get install libopengl0 libwoff1 libgles2
