@@ -1,4 +1,4 @@
-## deno
+# deno
 
 ### install
 
