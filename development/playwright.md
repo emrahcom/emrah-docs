@@ -1,4 +1,4 @@
-## playwrigh
+# playwrigh
 
 Tested on `Debian 11 Bullseye`
 
