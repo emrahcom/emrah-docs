@@ -2,11 +2,11 @@
 
 Tested on `Debian 11 Bullseye`
 
-#### packages
+### packages
 
 Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs.md).
 
-#### lib-jitsi-meet
+### lib-jitsi-meet
 
 don't run as `root`
 
@@ -19,7 +19,7 @@ npm install
 npm run build
 ```
 
-#### jitsi-meet
+### jitsi-meet
 
 don't run as `root`, reserve at least 16 GB RAM.
 
@@ -33,7 +33,7 @@ npm install
 make
 ```
 
-#### nginx conf
+### nginx conf
 
 Change all `/usr/share/jitsi-meet` as `/home/your-user-name/jitsi-meet` in your
 `Nginx` site config file.
