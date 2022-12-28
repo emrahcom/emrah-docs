@@ -1,6 +1,6 @@
 ## git
 
-#### github pull request
+### github pull request
 
 - Fork the repo using `GitHub` panel
 
@@ -74,9 +74,9 @@ git branch -d fix-my-branch
 git push origin --delete fix-my-branch
 ```
 
-#### Signed commit
+### Signed commit
 
-##### GPG key
+#### GPG key
 
 ```bash
 gpg --full-generate-key
@@ -90,7 +90,7 @@ gpg --full-generate-key
   <passphrase>
 ```
 
-##### Git config
+#### Git config
 
 ```bash
 gpg --list-secret-keys --keyid-format=long
@@ -100,7 +100,7 @@ git config --global user.signingkey <KEY>
 git config --global commit.gpgsign true
 ```
 
-##### Upload signed key to GitHub
+#### Upload signed key to GitHub
 
 ```bash
 gpg --armor --export <KEY>
@@ -112,7 +112,7 @@ gpg --armor --export <KEY>
 - `New GPG key`
 - Paste `gpg --armor --export` output
 
-##### gpg tty
+#### gpg tty
 
 Add the following into `.zshrc` or `.bashrc`
 
