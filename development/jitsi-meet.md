@@ -1,4 +1,4 @@
-## jitsi-meet
+# jitsi-meet
 
 Tested on `Debian 11 Bullseye`
 
