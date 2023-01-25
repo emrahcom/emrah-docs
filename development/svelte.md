@@ -14,7 +14,7 @@ run as `user`
 mkdir -p ~/git-repo
 cd ~/git-repo
 
-npm create svelte my-app
+npm create svelte@latest my-app
   Ok to proceed? (y) y
   Which Svelte app template? Skeleton project
   Add type checking with TypeScript? Yes, using TypeScript syntax
@@ -22,7 +22,7 @@ npm create svelte my-app
   Add Prettier for code formatting? Yes
   Add Playwright for browser testing? No
 
-cd myapp
+cd my-app
 npm install
 ```
 
@@ -39,17 +39,6 @@ Edit `svelte.config.js`
 ```javascript
 //import adapter from '@sveltejs/adapter-auto';
 import adapter from "@sveltejs/adapter-node";
-```
-
-### .gitignore
-
-Add the followings into `.gitignore`
-
-```config
-*~
-*.sw?
-*.log
-package-lock.json
 ```
 
 ### .prettierrc
