@@ -31,7 +31,7 @@ npm install
 Install an adapter.
 
 ```bash
-npm install @sveltejs/adapter-node@next --save-dev
+npm i -D @sveltejs/adapter-node
 ```
 
 Edit `svelte.config.js`
@@ -45,19 +45,23 @@ import adapter from "@sveltejs/adapter-node";
 
 ```json
 {
-  "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }],
+  "useTabs": false,
+  "singleQuote": false,
+  "trailingComma": "all",
+  "printWidth": 80,
   "plugins": ["prettier-plugin-svelte"],
   "pluginSearchDirs": ["."],
-  "printWidth": 80,
+  "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }],
   "quoteProps": "preserve",
-  "singleQuote": false,
-  "tabWidth": 2,
-  "trailingComma": "all",
-  "useTabs": false
+  "tabWidth": 2
 }
 ```
 
-### vite.config.js
+```bash
+npm run format
+```
+
+### vite.config.ts
 
 Add HMR port if needed.
 
