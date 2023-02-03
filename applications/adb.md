@@ -28,3 +28,19 @@ apt-get install adb
 - `Settings`
 - `Developer options`
 - Enable `USB debugging`
+
+### Connecting to the phone
+
+- start the `adb` server. Use the normal user account
+
+  ```bash
+  adb start-server
+  ```
+
+- Attach the phone using a USB cable
+- `Allow USB debugging` message on the phone, allow it
+- List attached devices
+
+  ```bash
+  adb devices
+  ```
