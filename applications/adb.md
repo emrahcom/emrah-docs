@@ -22,3 +22,9 @@ apt-get install adb
 - `Settings`
 - `Developer options`
 - `Off`
+
+#### Enabling USB debugging
+
+- `Settings`
+- `Developer options`
+- Enable `USB debugging`
