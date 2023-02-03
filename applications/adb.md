@@ -4,8 +4,16 @@ Tested on `Debian Bullseye`
 
 #### installation
 
+Add `backports` into `/etc/apt/sources.list`
+
+```
+deb https://deb.debian.org/debian bullseye-backports main
+```
+
 ```bash
+apt-get update
 apt-get install adb
+apt-get install scrcpy/bullseye-backports
 ```
 
 #### Enabling the debug mode on phone
@@ -29,7 +37,7 @@ apt-get install adb
 - `Developer options`
 - Enable `USB debugging`
 
-### Connecting to the phone
+#### Attaching the phone
 
 - start the `adb` server. Use the normal user account
 
@@ -44,3 +52,9 @@ apt-get install adb
   ```bash
   adb devices
   ```
+
+#### Screen mirroring
+
+```bash
+scrcpy
+```
