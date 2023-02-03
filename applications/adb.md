@@ -8,7 +8,7 @@ Tested on `Debian Bullseye`
 apt-get install adb
 ```
 
-### Debug mode on phone
+#### Enabling the debug mode on phone
 
 - `Settings`
 - `About phone`
@@ -16,3 +16,9 @@ apt-get install adb
 - `Build number`
 - Click 7 times
 - Enter `password` then the developer mode will be turned on
+
+#### Disabling the debug mode on phone
+
+- `Settings`
+- `Developer options`
+- `Off`
