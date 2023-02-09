@@ -2,19 +2,19 @@
 
 ### installation
 
-On `GNULinux`, download `AppImage` from [linphone.org](https://linphone.org/)
-for `H264` support.
+On `GNULinux`, download `AppImage` from
+[https://download.linphone.org/releases/linux/app/](https://linphone.org/) for
+`H.264` support.
 
 After download:
 
 ```bash
-mkdir -p ~/bin
-cp Linphone-4.4.1.AppImage ~/bin/
-chmod 755 ~/bin/Linphone-4.4.1.AppImage
-```
+cp Linphone-5.0.10.AppImage /usr/local/bin/
+chmod 755 /usr/local/bin/Linphone-5.0.10.AppImage
 
-_Linphone-4.4.8.AppImage cannot allow H264 in my tests but
-Linphone-4.4.1.AppImage works. Probably there is a new bug._
+mkdir -p ~/bin
+ln -s /usr/local/bin/Linphone-5.0.10.AppImage ~/bin/linphone
+```
 
 ### clear old config
 
@@ -25,6 +25,15 @@ rm -rf ~/.config/linphone
 rm -rf ~/.local/share/linphone
 ```
 
-### H264 support
+### after installation
 
-![Linphone H264 support](./images/linphone-h264.png)
+- Add account
+- Set `audio` devices
+- Set `video` to `720p`
+- Set `auto answer` to `2000ms`
+- Set `auto answer (with video)`
+- Add `H.264` support
+
+### H.264 support
+
+![Linphone H.264 support](./images/linphone-h264.png)
