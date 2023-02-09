@@ -3,8 +3,8 @@
 ### installation
 
 On `GNULinux`, download `AppImage` from
-[https://download.linphone.org/releases/linux/app/](https://linphone.org/) for
-`H.264` support.
+[Linphone](https://download.linphone.org/releases/linux/app/) for `H.264`
+support.
 
 After download:
 
