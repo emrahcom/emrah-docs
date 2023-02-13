@@ -49,3 +49,10 @@ cp UCS-KVM-Image-5.0-3.qcow2 /var/lib/libvirt/images/ucs-20230213.qcow2
   - Host
     - FQDN: `ucs.mydomain.corp`
     - LDAP: `dc=mydomain,dc=corp`
+- License
+  - Save the license key which is sent by e-mail
+  - Got to the web interface: https://ucs.mydomain.corp
+  - Login as `administrator`
+  - Go to `Welcome`
+  - Import a license
+  - Import from file
