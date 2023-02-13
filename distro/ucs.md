@@ -12,6 +12,40 @@ Tested on `Virt-Manager` on `Debian 11 Bullseye`
 or
 
 ```bash
-wget -O /tmp/UCS-KVM-Image.qcow2 \
+wget -O ~/downloads/UCS-KVM-Image-5.0-3.qcow2 \
     https://updates.software-univention.de/download/images/UCS-KVM-Image.qcow2
 ```
+
+### Installation
+
+```bash
+cp UCS-KVM-Image-5.0-3.qcow2 /var/lib/libvirt/images/ucs-20230213.qcow2
+```
+
+`Virt-Manager`
+
+- Create a new machine
+- Import existing disk image
+- Choose `/var/lib/libvirt/images/ucs-20230213.qcow2`
+- Choose `Debian 10` as OS
+- Hardware
+  - 8192 MB RAM
+  - 2 CPU cores
+- Network
+  - bridge: `br1`
+- Installer
+  - English
+  - Localization (default)
+  - Network (static)
+    - Address: `172.18.18.20`
+    - Netmask: `255.255.255.0`
+    - Gateway: `172.18.18.1`
+    - DNS: `172.18.18.1`
+  - Create a new UCS domain
+  - Organization
+    - `emrah`
+    - a valid e-mail
+    - pass
+  - Host
+    - FQDN: `ucs.mydomain.corp`
+    - LDAP: `dc=mydomain,dc=corp`
