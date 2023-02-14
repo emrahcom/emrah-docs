@@ -64,8 +64,8 @@ cp UCS-KVM-Image-5.0-3.qcow2 /var/lib/libvirt/images/ucs-20230213.qcow2
 
 ### License
 
-- Save the license key which is sent by e-mail
-- Got to the web interface: `https://ucs.mydomain.corp`
+- Save the license key which is sent by an e-mail.
+- Go to the web interface: `https://ucs.mydomain.corp`
 - Login as `administrator`
 - Go to `Welcome`
 - Import a license
@@ -82,7 +82,7 @@ univention-app install keycloak
 
 `admin`'s password is in `/etc/keycloak.secret`.
 
-- `Keycloak admin panel` in on `https://ucs-sso-ng.mydomain.corp/admin/`
+- `Keycloak admin panel` is on `https://ucs-sso-ng.mydomain.corp/admin/`
 - Updating `/etc/keycloak.secret` doesn't change the password.
 - The `administrator` account cannot join the panel even the document says it
   should be.
