@@ -16,14 +16,16 @@ wget -O ~/downloads/UCS-KVM-Image-5.0-3.qcow2 \
     https://updates.software-univention.de/download/images/UCS-KVM-Image.qcow2
 ```
 
-### FQDNs an IPs
+### FQDNs and IPs
 
-- ucs.mydomain.corp
-- ucs-sso.mydomain.corp
-- ucs-sso-ng.mydomain.corp
+- `ucs.mydomain.corp`
+- `ucs-sso.mydomain.corp`
+- `ucs-sso-ng.mydomain.corp`
 
-- 172.17.0.0/16 is already reserved for `Docker` containers. Don't use an IP
-  from this block as the server IP
+- `172.17.0.0/16` is already reserved for `Docker` containers. Don't use an IP
+  from this block as the server IP.
+- `172.16.1.0/24` started to be used by `UCS` after `Keycloak` installation.
+  Don't use an IP from this block as the server IP.
 - An IP from 172.18.18.0/24 on `br1` is OK
 
 ### Installation
