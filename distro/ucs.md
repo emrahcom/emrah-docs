@@ -60,7 +60,6 @@ cp UCS-KVM-Image-5.0-3.qcow2 /var/lib/libvirt/images/ucs-20230213.qcow2
     - FQDN: `ucs.mydomain.corp`
     - LDAP: `dc=mydomain,dc=corp`
 
-
 ### License
 
 - Save the license key which is sent by e-mail
@@ -72,9 +71,27 @@ cp UCS-KVM-Image-5.0-3.qcow2 /var/lib/libvirt/images/ucs-20230213.qcow2
 
 ### Keycloak
 
-- https://ucs.mydomain.corp/
-- `App Center`
-- `Keycloak`
-- install
-  - Default values
-  - ??
+Don't use `App Center`, it fails in this release. Install through `ssh`:
+
+```bash
+ssh -p 22 -l root ucs.mydomain.corp
+univention-app install keycloak
+```
+
+`admin`'s password is in `/etc/keycloak.secret`.
+
+- `Keycloak admin panel` in on `https://ucs-sso-ng.mydomain.corp/admin/`
+- Updating `/etc/keycloak.secret` doesn't change the password.
+- The `administrator` account cannot join the panel even the document says it
+  should be.
+
+Update `admin`'s password on
+
+- `https://ucs-sso-ng.mydomain.corp/admin/`
+- `Users` in `Master` realm
+- `admin` -> `Credentials` -> `Password` -> `Reset password`
+- Do not check `Temporary`
+
+### Links
+
+- https://docs.software-univention.de/keycloak-app/latest/installation.html
