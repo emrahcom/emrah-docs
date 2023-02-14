@@ -1,6 +1,6 @@
 ## Univention Corporate Server (UCS)
 
-Tested on `Virt-Manager` on `Debian 11 Bullseye`
+Tested on `Virt-Manager` on `Debian 11 Bullseye`.
 
 ### Download
 
@@ -15,6 +15,16 @@ or
 wget -O ~/downloads/UCS-KVM-Image-5.0-3.qcow2 \
     https://updates.software-univention.de/download/images/UCS-KVM-Image.qcow2
 ```
+
+### FQDNs an IPs
+
+- ucs.mydomain.corp
+- ucs-sso.mydomain.corp
+- ucs-sso-ng.mydomain.corp
+
+- 172.17.0.0/16 is already reserved for `Docker` containers. Don't use an IP
+  from this block as the server IP
+- An IP from 172.18.18.0/24 on `br1` is OK
 
 ### Installation
 
@@ -51,20 +61,20 @@ cp UCS-KVM-Image-5.0-3.qcow2 /var/lib/libvirt/images/ucs-20230213.qcow2
     - LDAP: `dc=mydomain,dc=corp`
 
 
-### Configuration
+### License
 
-- License
-  - Save the license key which is sent by e-mail
-  - Got to the web interface: `https://ucs.mydomain.corp`
-  - Login as `administrator`
-  - Go to `Welcome`
-  - Import a license
-  - Import from file
+- Save the license key which is sent by e-mail
+- Got to the web interface: `https://ucs.mydomain.corp`
+- Login as `administrator`
+- Go to `Welcome`
+- Import a license
+- Import from file
 
-- Authentication
-  - https://ucs.mydomain.corp/
-  - `App Center`
-  - `Keycloak`
-  - install
-    - Default values
-    - ??
+### Keycloak
+
+- https://ucs.mydomain.corp/
+- `App Center`
+- `Keycloak`
+- install
+  - Default values
+  - ??
