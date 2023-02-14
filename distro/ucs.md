@@ -26,7 +26,7 @@ wget -O ~/downloads/UCS-KVM-Image-5.0-3.qcow2 \
   from this block as the server IP.
 - `172.16.1.0/24` started to be used by `UCS` after `Keycloak` installation.
   Don't use an IP from this block as the server IP.
-- An IP from 172.18.18.0/24 on `br1` is OK
+- An IP from `172.18.18.0/24` on `br1` is OK
 
 ### Installation
 
