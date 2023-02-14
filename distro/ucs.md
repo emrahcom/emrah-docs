@@ -94,6 +94,8 @@ Update `admin`'s password on
 - `admin` -> `Credentials` -> `Password` -> `Reset password`
 - Do not check `Temporary`
 
+**Create a shapshot after this step**
+
 ### Links
 
 - https://docs.software-univention.de/keycloak-app/latest/installation.html
