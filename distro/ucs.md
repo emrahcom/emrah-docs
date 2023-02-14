@@ -94,7 +94,7 @@ Update `admin`'s password on
 - `admin` -> `Credentials` -> `Password` -> `Reset password`
 - Do not check `Temporary`
 
-**Create a shapshot after this step**
+**Warning:** _Create a shapshot after this step_
 
 ### Links
 
