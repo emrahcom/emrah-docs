@@ -105,6 +105,21 @@ Update `admin`'s password on
 
 **Warning:** _Create a shapshot after this step_
 
+### SSO
+
+- `https://ucs-sso-ng.mydomain.corp/admin/`
+- `Create realm` -> `ucs`
+- Add a user
+
+- `https://ucs.mydomain.corp`
+- `System` -> `Univention Configuration Registry` -> `umc/saml/idp-server`\
+  `https://ucs-sso-ng.mydomain.corp/realms/ucs/protocol/saml/descriptor`
+- `Domain` -> `Portal` -> `login-saml` -> `Activated` -> `Save`
+- `System` -> `System services` -> `slapd` -> `restart`
+
+There is stil a problem. User is redirected to
+`https://ucs-sso-ng.mydomain.corp/realms/ucs/protocol/saml` which doesn't work.
+
 ### Links
 
 - https://docs.software-univention.de/keycloak-app/latest/installation.html
