@@ -123,3 +123,4 @@ There is stil a problem. User is redirected to
 ### Links
 
 - https://docs.software-univention.de/keycloak-app/latest/installation.html
+- https://www.keycloak.org/docs/19.0.3/server_admin/#_client-saml-configuration
