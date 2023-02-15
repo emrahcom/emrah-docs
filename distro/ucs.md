@@ -73,7 +73,16 @@ cp UCS-KVM-Image-5.0-3.qcow2 /var/lib/libvirt/images/ucs-20230213.qcow2
 
 ### Keycloak
 
-Don't use `App Center`, it fails in this release. Install through `ssh`:
+Installing `Keycloak` through the web panel fails sometimes. No idea why...
+
+- `https://ucs.mydomain.corp`
+- `App Center`
+- `Keycloak`
+- `Install`
+- No need to change defaults
+- `Start Installation`
+
+or through `ssh`:
 
 ```bash
 ssh -p 22 -l root ucs.mydomain.corp
