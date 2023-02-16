@@ -89,6 +89,13 @@ ssh -p 22 -l root ucs.mydomain.corp
 univention-app install keycloak
 ```
 
+Run `50keycloak`:
+
+- `Domain` -> `Domain Join`
+- Select `50keycloak` -> `Execute`
+- `Run join scripts`
+- `Restart` (_UMC server components_)
+
 `admin`'s password is in `/etc/keycloak.secret`.
 
 - `Keycloak admin panel` is on `https://ucs-sso-ng.mydomain.corp/admin/`
