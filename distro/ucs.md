@@ -96,19 +96,9 @@ Run `50keycloak`:
 - `Run join scripts`
 - `Restart` (_UMC server components_)
 
-`admin`'s password is in `/etc/keycloak.secret`.
-
-- `Keycloak admin panel` is on `https://ucs-sso-ng.mydomain.corp/admin/`
-- Updating `/etc/keycloak.secret` doesn't change the password.
-- The `administrator` account cannot join the panel even the document says it
-  should be.
-
-Update `admin`'s password on
-
-- `https://ucs-sso-ng.mydomain.corp/admin/`
-- `Users` in `Master` realm
-- `admin` -> `Credentials` -> `Password` -> `Reset password`
-- Do not check `Temporary`
+`admin`'s password is in `/etc/keycloak.secret`. `Keycloak Admin Console` is on
+`https://ucs-sso-ng.mydomain.corp/admin/`. It is possible to use `administrator`
+account while connecting to `Keycloak Admin Console`.
 
 **Warning:** _Create a shapshot after this step_
 
