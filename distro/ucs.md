@@ -104,18 +104,16 @@ account while connecting to `Keycloak Admin Console`.
 
 ### SSO
 
-- `https://ucs-sso-ng.mydomain.corp/admin/`
-- `Create realm` -> `ucs`
-- Add a user
-
 - `https://ucs.mydomain.corp`
-- `System` -> `Univention Configuration Registry` -> `umc/saml/idp-server`\
+- `System` -> `Univention Configuration Registry` -> `umc/saml/idp-server`
+  \
   `https://ucs-sso-ng.mydomain.corp/realms/ucs/protocol/saml/descriptor`
 - `Domain` -> `Portal` -> `login-saml` -> `Activated` -> `Save`
 - `System` -> `System services` -> `slapd` -> `restart`
 
-There is stil a problem. User is redirected to
-`https://ucs-sso-ng.mydomain.corp/realms/ucs/protocol/saml` which doesn't work.
+There is stil a problem. There is an `internal server error` while connecting to
+`UCS Portal` through `Login SSO`. `administrator` can connect but a newly
+created user cannot connect.
 
 ### Links
 
