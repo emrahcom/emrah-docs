@@ -36,4 +36,4 @@ rm -rf ~/.local/share/linphone
 
 ### H.264 support
 
-![Linphone H.264 support](./images/linphone-h264.png)
+![Linphone H.264 support](/images/linphone-h264.png)
