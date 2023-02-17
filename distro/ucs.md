@@ -115,6 +115,12 @@ account while connecting to `Keycloak Admin Console`.
 
 Add users through `UCS Portal`. Don't add directly through `Keycloak`.
 
+- `Domain` -> `Mail` -> `Add`
+- `mydomain.corp` -> `Create mail object`
+
+- `Users` -> `Add`
+- Set `email` after adding
+
 ### Links
 
 - https://docs.software-univention.de/keycloak-app/latest/installation.html
