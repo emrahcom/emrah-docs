@@ -8,6 +8,14 @@ Tested on `Debian Bullseye`.
 apt-get install docker-compose --install-recommends
 ```
 
+#### permission
+
+Add the user account to `docker` group.
+
+```bash
+adduser emrah docker
+```
+
 #### version
 
 ```bash
