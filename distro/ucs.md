@@ -111,9 +111,9 @@ account while connecting to `Keycloak Admin Console`.
 - `Domain` -> `Portal` -> `login-saml` -> `Activated` -> `Save`
 - `System` -> `System services` -> `slapd` -> `restart`
 
-There is stil a problem. There is an `internal server error` while connecting to
-`UCS Portal` through `Login SSO`. `administrator` can connect but a newly
-created user cannot connect.
+### Users
+
+Add users through `UCS Portal`. Don't add directly through `Keycloak`.
 
 ### Links
 
