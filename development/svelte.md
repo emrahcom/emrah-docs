@@ -4,7 +4,8 @@ Tested on `Debian 11 Bullseye`
 
 ### packages
 
-Install `nodejs` (_16.x or newer_). See [nodejs](./nodejs.md).
+Install `nodejs`. See [nodejs](./nodejs.md).
+Install `yarn`. See [yarn](./yarn.md).
 
 ### create app
 
@@ -23,7 +24,7 @@ npm create svelte@latest my-app
   Add Playwright for browser testing? No
 
 cd my-app
-npm install
+yarn install
 ```
 
 ### adapter
@@ -31,7 +32,7 @@ npm install
 Install an adapter.
 
 ```bash
-npm i -D @sveltejs/adapter-node
+yarn add --dev @sveltejs/adapter-node
 ```
 
 Edit `svelte.config.js`
@@ -58,7 +59,7 @@ import adapter from "@sveltejs/adapter-node";
 ```
 
 ```bash
-npm run format
+yarn run format
 ```
 
 ### vite.config.ts
@@ -75,8 +76,8 @@ server: {
 ### check
 
 ```bash
-npm run check
-npm run lint
+yarn run check
+yarn run lint
 ```
 
 ```bash
@@ -88,13 +89,13 @@ deno lint
 ### run (dev)
 
 ```bash
-npm run dev -- --host --port 3000
+yarn run dev -- --host --port 3000
 ```
 
 ### build
 
 ```bash
-npm run build
+yarn run build
 ```
 
 ### run (prod)
