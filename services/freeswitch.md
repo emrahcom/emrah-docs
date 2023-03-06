@@ -102,8 +102,6 @@ See [/etc/freeswitch/directory/](./freeswitch/directory/) for a sample.
     <action application="set" data="continue_on_fail=false"/>
 ```
 
-See [/etc/freeswitch/dialplan/](./freeswitch/dialplan/) for a sample.
-
 ## Testing
 
 - `9195`: _instant echo_
