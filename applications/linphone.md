@@ -6,14 +6,18 @@ On `GNULinux`, download `AppImage` from
 [Linphone](https://download.linphone.org/releases/linux/app/) for `H.264`
 support.
 
-After download:
+After download as `root`:
 
 ```bash
-cp Linphone-5.0.10.AppImage /usr/local/bin/
-chmod 755 /usr/local/bin/Linphone-5.0.10.AppImage
+cp Linphone-5.0.12.AppImage /usr/local/bin/
+chmod 755 /usr/local/bin/Linphone-5.0.12.AppImage
+```
 
+As `user`:
+
+```bash
 mkdir -p ~/bin
-ln -s /usr/local/bin/Linphone-5.0.10.AppImage ~/bin/linphone
+ln -sf /usr/local/bin/Linphone-5.0.12.AppImage ~/bin/linphone
 ```
 
 ### clear old config
