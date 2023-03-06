@@ -88,6 +88,14 @@ in the container:
 <X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=172.17.17.36"/>
 ```
 
+or
+
+```xml
+<X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=host:sip.mydomain.corp"/>
+<X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=host:sip.mydomain.corp"/>
+```
+
+
 #### Directory
 
 See [/etc/freeswitch/directory/](./freeswitch/directory/) for a sample.
