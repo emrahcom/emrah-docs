@@ -59,21 +59,12 @@ Change the default password.
 
 #### Domain or IP
 
-Don't update `domain` in [/etc/freeswitch/vars.xml](./freeswitch/vars.xml). This
-is only for info.
+The default `domain` is the IP of the host. Update the following line in
+[/etc/freeswitch/vars.xml](./freeswitch/vars.xml) to set the `domain`.
 
 ```xml
-<X-PRE-PROCESS cmd="set" data="domain=$${local_ip_v4}"/>
-<X-PRE-PROCESS cmd="set" data="domain=freeswitch.mydomain.corp"/>
-```
-
-For multi-tenant system, comment followings in
-[/etc/freeswitch/sip_profiles/internal.xml](./freeswitch/sip_profiles/internal.xml)
-
-```xml
-<!-- <param name="force-register-domain" value="$${domain}"/> -->
-<!-- <param name="force-subscription-domain" value="$${domain}"/> -->
-<!-- <param name="force-register-db-domain" value="$${domain}"/> -->
+<!-- <X-PRE-PROCESS cmd="set" data="domain=$${local_ip_v4}"/> -->
+<X-PRE-PROCESS cmd="set" data="domain=sip.mydomain.corp"/>
 ```
 
 #### External SIP IP
@@ -84,15 +75,15 @@ in the container:
 [/etc/freeswitch/vars.xml](./freeswitch/vars.xml)
 
 ```xml
-<X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=172.17.17.36"/>
-<X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=172.17.17.36"/>
+<X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=host:sip.mydomain.corp"/>
+<X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=host:sip.mydomain.corp"/>
 ```
 
 or
 
 ```xml
-<X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=host:sip.mydomain.corp"/>
-<X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=host:sip.mydomain.corp"/>
+<X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=172.17.17.36"/>
+<X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=172.17.17.36"/>
 ```
 
 
