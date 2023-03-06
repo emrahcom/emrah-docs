@@ -89,11 +89,16 @@ or
 
 #### Directory
 
-See [/etc/freeswitch/directory/](./freeswitch/directory/) for a sample.
+- Update `/etc/freeswitch/directory/default.xml` to customize groups.
+- Update `password` in `/etc/freeswitch/directory/default/*` if needed.
+
+```xml
+<param name="password" value="$${default_password}"/>
+```
 
 #### Dialplan
 
-- Disable voicemail
+- Disabling `voicemail`
 
 ```xml
 <extension name="Local_Extension">
