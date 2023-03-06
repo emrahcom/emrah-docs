@@ -299,7 +299,7 @@
        Used by: sofia.conf.xml dingaling.conf.xml
   -->
   <!-- <X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=stun:stun.freeswitch.org"/> -->
-  <X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=172.17.17.36"/>
+  <X-PRE-PROCESS cmd="stun-set" data="external_rtp_ip=host:sip.mydomain.corp"/>
 
   <!-- external_sip_ip
       Used as the public IP address for SDP.
@@ -313,7 +313,7 @@
        Used by: sofia.conf.xml dingaling.conf.xml
   -->
   <!-- <X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=stun:stun.freeswitch.org"/> -->
-  <X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=172.17.17.36"/>
+  <X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=host:sip.mydomain.corp"/>
 
   <!-- unroll-loops
        Used to turn on sip loopback unrolling.
