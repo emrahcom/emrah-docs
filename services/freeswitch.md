@@ -86,7 +86,6 @@ or
 <X-PRE-PROCESS cmd="stun-set" data="external_sip_ip=172.17.17.36"/>
 ```
 
-
 #### Directory
 
 - Update `/etc/freeswitch/directory/default.xml` to customize groups.
