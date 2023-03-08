@@ -135,6 +135,12 @@ apt-get install sngrep
 sngrep
 ```
 
+### sipgrep
+
+```bash
+apt-get install sipgrep
+```
+
 ### loglevel
 
 In `fs_cli`
@@ -149,3 +155,4 @@ sofia loglevel all 9
 - https://freeswitch.org/confluence/display/FREESWITCH/Debian
 - https://freeswitch.org/confluence/display/FREESWITCH/HOWTO+Create+a+SignalWire+Personal+Access+Token
 - https://freeswitch.org/confluence/display/FREESWITCH/mod_conference
+- https://github.com/sipcapture/sipgrep
