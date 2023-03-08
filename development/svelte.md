@@ -5,6 +5,7 @@ Tested on `Debian 11 Bullseye`
 ### packages
 
 Install `nodejs`. See [nodejs](./nodejs.md).
+
 Install `yarn`. See [yarn](./yarn.md).
 
 ### create app
