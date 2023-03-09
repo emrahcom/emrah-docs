@@ -99,6 +99,8 @@ or
 
 - Disabling `voicemail`
 
+`/etc/freeswitch/dialplan/default.xml`
+
 ```xml
 <extension name="Local_Extension">
   <condition field="destination_number" expression="^(10[01][0-9])$">
