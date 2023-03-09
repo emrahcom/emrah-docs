@@ -69,6 +69,9 @@ The default `domain` is the IP of the host. Update the following line in
 
 #### External SIP IP
 
+The default `stun` seems unstable, don't use it for the external environment
+too.
+
 For internal test environent, set `host IP` as `external_ip` if `FreeSwitch` is
 in the container:
 
