@@ -41,7 +41,7 @@ apt-get --install-recommends install freeswitch-meta-all
 
 #### NAT
 
-- incoming `TCP/5060`
+- incoming `TCP/5060` ?
 - incoming `UDP/5060`
 - incoming `UDP/16384-32768`
   \
