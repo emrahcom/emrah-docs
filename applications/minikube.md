@@ -21,3 +21,11 @@ wget -O /tmp/minikube \
     https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 install /tmp/minikube /usr/local/bin/minikube
 ```
+
+#### start
+
+```bash
+minikube start
+
+kubectl get pods -A
+```
