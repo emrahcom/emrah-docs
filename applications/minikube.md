@@ -18,6 +18,12 @@ wget -O /tmp/kubectl https://dl.k8s.io/release/$VERSION//bin/linux/amd64/kubectl
 install /tmp/kubectl /usr/local/bin/kubectl
 ```
 
+Run it as `user`
+
+```bash
+kubectl version
+```
+
 ##### minikube
 
 Install `minikube` as `root`
@@ -35,6 +41,7 @@ minikube start
 
 kubectl get nodes
 kubectl get pods -A
+kubectl get all
 ```
 
 To delete all local clusters
