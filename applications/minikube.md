@@ -1,10 +1,14 @@
-## minikube & kubectl
+## minikube & kubectl & helm
 
 Tested on `Debian 11 Bullseye`
 
-#### installation
+#### Installation
+
+##### Docker
 
 Install `Docker`. See [Docker notes](docker.md)
+
+##### kubectl
 
 Install `kubectl` as `root`
 
@@ -14,6 +18,8 @@ wget -O /tmp/kubectl https://dl.k8s.io/release/$VERSION//bin/linux/amd64/kubectl
 install /tmp/kubectl /usr/local/bin/kubectl
 ```
 
+##### minikube
+
 Install `minikube` as `root`
 
 ```bash
@@ -22,10 +28,11 @@ wget -O /tmp/minikube \
 install /tmp/minikube /usr/local/bin/minikube
 ```
 
-#### start
+And start it as `user`
 
 ```bash
 minikube start
 
 kubectl get pods -A
+kubectl get nodes
 ```
