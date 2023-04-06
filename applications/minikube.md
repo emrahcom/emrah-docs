@@ -33,6 +33,12 @@ And start it as `user`
 ```bash
 minikube start
 
-kubectl get pods -A
 kubectl get nodes
+kubectl get pods -A
+```
+
+To delete all local clusters
+
+```bash
+minikube delete --all
 ```
