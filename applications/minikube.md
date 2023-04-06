@@ -42,3 +42,19 @@ To delete all local clusters
 ```bash
 minikube delete --all
 ```
+
+##### helm
+
+Install `helm` as `root`
+
+```bash
+wget -O /tmp/get_helm.sh \
+    https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+bash /tmp/get_helm.sh
+```
+
+And run it as `user`
+
+```bash
+helm version
+```
