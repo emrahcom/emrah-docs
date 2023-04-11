@@ -66,6 +66,15 @@ And run it as `user`
 helm version
 ```
 
+#### command examples
+
+To attach to a container in `Minicube`
+
+```bash
+kubectl get pods
+kubectl exec --stdin --tty <pod-name> -- /bin/bash
+```
+
 #### links
 
 - https://artifacthub.io/
