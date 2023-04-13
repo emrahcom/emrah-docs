@@ -68,11 +68,17 @@ helm version
 
 #### command examples
 
-To attach to a container in `Minicube`
+To attach to a container in `Minicube`:
 
 ```bash
 kubectl get pods
 kubectl exec --stdin --tty <pod-name> -- /bin/bash
+```
+
+Port forwarding:
+
+```bash
+kubectl port-forward --address 0.0.0.0 service/name 8080:80
 ```
 
 #### links
