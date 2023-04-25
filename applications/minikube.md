@@ -68,6 +68,23 @@ helm version
 
 #### command examples
 
+Check templates:
+
+```bash
+helm template --set key=value -f values.my.yaml .
+```
+
+Deployment:
+
+```bash
+helm upgrade --install --namespace default \
+  --set key1=value1 --set key2=value2 \
+  -f values.my.yaml \
+  <NAME> .
+
+kubectl get all
+```
+
 To attach to a container in `Minicube`:
 
 ```bash
