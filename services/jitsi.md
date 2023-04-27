@@ -20,7 +20,7 @@ Create `env` and customize it:
 
 ```bash
 cd docker-jitsi-meet-stable-8319
-cp env.example env
+cp env.example .env
 ```
 
 Create local directories:
