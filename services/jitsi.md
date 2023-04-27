@@ -14,7 +14,13 @@ Extract:
 
 ```bash
 tar xzf stable-8319.tar.gz
+```
+
+Create `env` and customize it:
+
+```bash
 cd docker-jitsi-meet-stable-8319
+cp env.example env
 ```
 
 Create local directories:
