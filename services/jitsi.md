@@ -23,6 +23,12 @@ cd docker-jitsi-meet-stable-8319
 cp env.example .env
 ```
 
+Generate secrets:
+
+```bash
+./gen-passwords.sh
+```
+
 Create local directories:
 
 ```bash
