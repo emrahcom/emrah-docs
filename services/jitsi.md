@@ -6,7 +6,8 @@ Download
 [the lastest stable](https://github.com/jitsi/docker-jitsi-meet/releases):
 
 ```bash
-wget https://github.com/jitsi/docker-jitsi-meet/archive/refs/tags/stable-8319.tar.gz
+ARCHIVE="https://github.com/jitsi/docker-jitsi-meet/archive/refs/tags"
+wget $ARCHIVE/stable-8319.tar.gz
 ```
 
 Extract:
@@ -14,6 +15,14 @@ Extract:
 ```bash
 tar xzf stable-8319.tar.gz
 cd docker-jitsi-meet-stable-8319
+```
+
+Create local directories:
+
+```bash
+mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config}
+mkdir -p ~/.jitsi-meet-cfg/{prosody/prosody-plugins-custom,jicofo,jvb}
+mkdir -p ~/.jitsi-meet-cfg/{jigasi,jibri}
 ```
 
 #### Multiple local pairs for `jvb`
