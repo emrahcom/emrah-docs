@@ -43,6 +43,9 @@ Run:
 docker-compose up -d
 ```
 
+See
+[Jitsi Docker Guide](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker/)
+
 #### Multiple local pairs for `jvb`
 
 ```bash
