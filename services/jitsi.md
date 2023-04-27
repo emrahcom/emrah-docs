@@ -7,7 +7,13 @@ Download
 
 ```bash
 wget https://github.com/jitsi/docker-jitsi-meet/archive/refs/tags/stable-8319.tar.gz
+```
+
+Extract:
+
+```bash
 tar xzf stable-8319.tar.gz
+cd docker-jitsi-meet-stable-8319
 ```
 
 #### Multiple local pairs for `jvb`
