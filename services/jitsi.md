@@ -1,5 +1,15 @@
 ## Jitsi
 
+#### Docker-Compose
+
+Download
+[the lastest stable](https://github.com/jitsi/docker-jitsi-meet/releases):
+
+```bash
+wget https://github.com/jitsi/docker-jitsi-meet/archive/refs/tags/stable-8319.tar.gz
+tar xzf stable-8319.tar.gz
+```
+
 #### Multiple local pairs for `jvb`
 
 ```bash
