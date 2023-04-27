@@ -37,6 +37,12 @@ mkdir -p ~/.jitsi-meet-cfg/{prosody/prosody-plugins-custom,jicofo,jvb}
 mkdir -p ~/.jitsi-meet-cfg/{jigasi,jibri}
 ```
 
+Run:
+
+```bash
+docker-compose up -d
+```
+
 #### Multiple local pairs for `jvb`
 
 ```bash
