@@ -107,6 +107,13 @@ kubectl logs <POD-NAME>
 kubectl logs -f <POD-NAME>
 ```
 
+File copy:
+
+```bash
+kubectl cp somefile <POD-NAME>:/tmp/
+kubectl cp <POD-NAME>:/tmp/somefile /tmp/
+```
+
 #### links
 
 - https://artifacthub.io/
