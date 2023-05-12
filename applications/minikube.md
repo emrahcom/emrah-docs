@@ -80,7 +80,7 @@ Deployment:
 helm upgrade --install --namespace default \
   --set key1=value1 --set key2=value2 \
   -f values.my.yaml \
-  <NAME> .
+  <RELEASE-NAME> <CHART-PATH>
 
 kubectl get all
 ```
@@ -89,13 +89,22 @@ To attach to a container in `Minicube`:
 
 ```bash
 kubectl get pods
-kubectl exec --stdin --tty <pod-name> -- /bin/bash
+kubectl exec --stdin --tty <POD-NAME> -- /bin/bash
 ```
 
 Port forwarding:
 
 ```bash
-kubectl port-forward --address 0.0.0.0 service/name 8080:80
+kubectl get services
+kubectl port-forward --address 0.0.0.0 service/<NAME> 8080:80
+```
+
+Logs:
+
+```bash
+minikube logs
+kubectl logs <POD-NAME>
+kubectl logs -f <POD-NAME>
 ```
 
 #### links
