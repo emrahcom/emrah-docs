@@ -114,6 +114,17 @@ kubectl cp somefile <POD-NAME>:/tmp/
 kubectl cp <POD-NAME>:/tmp/somefile /tmp/
 ```
 
+Minikube addons:
+
+```bash
+kubectl get pods -n kube-system
+
+minikube addons list
+minikube addons enable ingress
+
+kubectl get pods -n kube-system
+```
+
 #### links
 
 - https://artifacthub.io/
