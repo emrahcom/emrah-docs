@@ -117,12 +117,12 @@ kubectl cp <POD-NAME>:/tmp/somefile /tmp/
 Minikube addons:
 
 ```bash
-kubectl get pods -n kube-system
+kubectl get pods -A
 
 minikube addons list
 minikube addons enable ingress
 
-kubectl get pods -n kube-system
+kubectl get pods -A
 ```
 
 #### links
