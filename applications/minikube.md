@@ -123,6 +123,7 @@ minikube addons list
 minikube addons enable ingress
 
 kubectl get pods -A
+kubectl get ingress
 ```
 
 #### links
