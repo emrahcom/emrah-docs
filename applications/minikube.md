@@ -85,6 +85,12 @@ helm upgrade --install --namespace default \
 kubectl get all
 ```
 
+Uninstall:
+
+```bash
+helm uninstall --namespace default <RELEASE-NAME>
+```
+
 To attach to a container in `Minicube`:
 
 ```bash
