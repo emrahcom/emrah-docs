@@ -1,6 +1,6 @@
 ## Debian Bookworm Installation
 
-#### netinstall
+### netinstall
 
 - Select a language: `English`
 - Select your location: `other -> Asia -> Turkey`
@@ -27,9 +27,9 @@ Partitions
   - at least 8 GB
   - No swap during the installation.
 
-#### base repo
+### base repo
 
-##### initial packages
+#### initial packages
 
 ```bash
 apt-get update
@@ -46,7 +46,7 @@ apt-get purge os-prober
 apt-get autoremove --purge
 ```
 
-##### /etc/apt/sources.list
+#### /etc/apt/sources.list
 
 ```
 deb http://deb.debian.org/debian/ bookworm main non-free-firmware
@@ -54,22 +54,22 @@ deb http://security.debian.org/debian-security bookworm-security main non-free-f
 deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware
 ```
 
-##### /etc/apt/apt.conf.d/80recommends
+#### /etc/apt/apt.conf.d/80recommends
 
 ```
 APT::Install-Recommends "0";
 APT::Install-Suggests "0";
 ```
 
-##### repo update
+#### repo update
 
 ```bash
 apt-get update
 ```
 
-#### base config
+### base config
 
-##### SSH public keys
+#### SSH public keys
 
 Put public SSH keys if needed.
 
@@ -79,7 +79,7 @@ cat /tmp/gnu.pub >>.ssh/authorized_keys
 chmod 600 /root/.ssh/authorized_keys
 ```
 
-##### /etc/ssh/sshd_config.d/emrah.conf
+#### /etc/ssh/sshd_config.d/emrah.conf
 
 ```
 Port 22
@@ -87,7 +87,7 @@ PasswordAuthentication no
 GatewayPorts yes
 ```
 
-##### rc files
+#### rc files
 
 ```bash
 chsh -s /bin/zsh emrah
@@ -97,13 +97,13 @@ su -l emrah
 # (2)  Populate your...
 ```
 
-###### .bashrc
+##### .bashrc
 
 ```
 export TMOUT=1800
 ```
 
-###### .tmux.conf
+##### .tmux.conf
 
 ```
 bind '"' split-window -c "#{pane_current_path}"
@@ -112,11 +112,11 @@ bind c new-window -c "#{pane_current_path}"
 set -g history-limit 10000
 ```
 
-###### .vimrc
+##### .vimrc
 
 Check `vim` notes. `root` and `emrah` have different versions of `.vimrc`.
 
-###### .zshrc
+##### .zshrc
 
 ```
 #bindkey -e
