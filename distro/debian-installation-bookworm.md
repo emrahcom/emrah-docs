@@ -45,3 +45,24 @@ apt-get purge installation-report reportbug nano
 apt-get purge os-prober
 apt-get autoremove --purge
 ```
+
+##### /etc/apt/sources.list
+
+```
+deb http://deb.debian.org/debian/ bookworm main non-free-firmware
+deb http://security.debian.org/debian-security bookworm-security main non-free-firmware
+deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware
+```
+
+##### /etc/apt/apt.conf.d/80recommends
+
+```
+APT::Install-Recommends "0";
+APT::Install-Suggests "0";
+```
+
+##### repo update
+
+```bash
+apt-get update
+```
