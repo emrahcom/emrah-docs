@@ -69,6 +69,16 @@ apt-get update
 
 #### base config
 
+##### SSH public keys
+
+Put public SSH keys if needed.
+
+```bash
+ssh localhost
+cat /tmp/gnu.pub >>.ssh/authorized_keys
+chmod 600 /root/.ssh/authorized_keys
+```
+
 ##### /etc/ssh/sshd_config.d/emrah.conf
 
 ```
@@ -76,3 +86,18 @@ Port 22
 PasswordAuthentication no
 GatewayPorts yes
 ```
+
+##### rc files
+
+```bash
+chsh -s /bin/zsh emrah
+chsh -s /bin/zsh root
+
+su -l emrah
+# (2)  Populate your...
+```
+
+- `.bashrc`
+- `.tmux.conf`
+- `.vimrc`
+- `.zshrc`
