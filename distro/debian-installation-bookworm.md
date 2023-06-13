@@ -27,7 +27,7 @@ Partitions
   - at least 8 GB
   - No swap during the installation.
 
-#### base system
+#### base repo
 
 ##### initial packages
 
@@ -65,4 +65,14 @@ APT::Install-Suggests "0";
 
 ```bash
 apt-get update
+```
+
+#### base config
+
+##### /etc/ssh/sshd_config.d/emrah.conf
+
+```
+Port 22
+PasswordAuthentication no
+GatewayPorts yes
 ```
