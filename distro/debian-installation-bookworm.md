@@ -97,7 +97,39 @@ su -l emrah
 # (2)  Populate your...
 ```
 
-- `.bashrc`
-- `.tmux.conf`
-- `.vimrc`
-- `.zshrc`
+###### .bashrc
+
+```
+export TMOUT=1800
+```
+
+###### .tmux.conf
+
+```
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+set -g history-limit 10000
+```
+
+###### .vimrc
+
+Check `vim` notes. `root` and `emrah` have different versions of `.vimrc`.
+
+###### .zshrc
+
+```
+#bindkey -e
+bindkey -v
+
+export TMOUT=1800
+setopt hist_ignore_space
+
+alias ls='ls --color=auto'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+source /usr/share/autojump/autojump.sh
+```
