@@ -13,7 +13,7 @@
 - Partitition disks: `manual`
 - Partition table: `gpt`
 
-Partitions
+#### Partitions
 
 - /efi
   - 512 MB
