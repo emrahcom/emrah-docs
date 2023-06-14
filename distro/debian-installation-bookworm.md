@@ -579,3 +579,16 @@ sudo /usr/bin/systemctl start iwd.service
 xset r rate 250 40
 exec /usr/bin/spectrwm
 ```
+
+#### others
+
+Use seperate docs
+
+- apt-cacher
+- firefox config
+- lxc template containers
+- docker
+- libvirt
+- minikube
+- linphone
+- adb
