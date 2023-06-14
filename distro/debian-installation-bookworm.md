@@ -612,6 +612,8 @@ exec /usr/bin/spectrwm
 Use seperate docs
 
 - apt-cacher
+- em-sock
+- em-vpn
 - firefox config
 - lxc template containers
 - docker
