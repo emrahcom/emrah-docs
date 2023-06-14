@@ -570,3 +570,12 @@ bind[chromium]          = MOD+shift+c
 program[pavucontrol]    = pavucontrol
 bind[pavucontrol]       = MOD+shift+a
 ```
+
+#### .xinitrc
+
+```
+sudo /usr/bin/systemctl start iwd.service
+#mozilla2ram
+xset r rate 250 40
+exec /usr/bin/spectrwm
+```
