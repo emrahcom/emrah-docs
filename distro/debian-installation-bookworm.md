@@ -265,6 +265,8 @@ allow-hotplug wlan0
 iface wlan0 inet dhcp
 ```
 
+#### iwd
+
 ```bash
 apt-get purge wpasupplicant
 apt-get autoremove --purge
@@ -278,13 +280,8 @@ rfkill unblock <ID>
 ```
 
 If `iwd` is enabled by default, it slows down the boot. Start it later while
-loading the desktop.
-
-#### visudo
-
-```bash
-visudo /etc/sudoers.d/emrah
-```
+loading the desktop. Allow user to control the service with
+`visudo /etc/sudoers.d/emrah`
 
 ```
 emrah   ALL=NOPASSWD:/usr/bin/systemctl restart iwd.service
@@ -292,8 +289,6 @@ emrah   ALL=NOPASSWD:/usr/bin/systemctl start iwd.service
 emrah   ALL=NOPASSWD:/usr/bin/systemctl status iwd.service
 emrah   ALL=NOPASSWD:/usr/bin/systemctl stop iwd.service
 ```
-
-#### iwctl
 
 ```bash
 su -l emrah
