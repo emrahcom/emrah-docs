@@ -580,7 +580,7 @@ xset r rate 250 40
 exec /usr/bin/spectrwm
 ```
 
-#### others
+#### other applications
 
 Use seperate docs
 
@@ -592,3 +592,23 @@ Use seperate docs
 - minikube
 - linphone
 - adb
+
+#### web applications
+
+- Outlook
+- Teams
+- Jira
+- Holasprit
+
+- Translate
+- Matrix
+- WhatsApp
+- Skype
+- Sleak
+- Exchange
+- Coversation
+- InterPals
+- ChatGPT
+
+- Jitok
+- Google
