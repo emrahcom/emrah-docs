@@ -489,6 +489,37 @@ apt-get install zathura
 
 ### user
 
+#### archieves
+
+Copy archieves from the curren device.
+
+```bash
+IP=192.168.1.108
+
+rsync -avhe 'ssh -l emrah' .gitconfig ${IP}:~/
+rsync -avhe 'ssh -l emrah' .gnupg ${IP}:~/
+rsync -avhe 'ssh -l emrah' .ssh ${IP}:~/
+rsync -avhe 'ssh -l emrah' archive ${IP}:~/
+rsync -avhe 'ssh -l emrah' bin ${IP}:~/
+rsync -avhe 'ssh -l emrah' downloads ${IP}:~/
+rsync -avhe 'ssh -l emrah' git-repo ${IP}:~/
+rsync -avhe 'ssh -l emrah' installer ${IP}:~/
+rsync -avhe 'ssh -l emrah' media ${IP}:~/
+rsync -avhe 'ssh -l emrah' nordeck ${IP}:~/
+rsync -avhe 'ssh -l emrah' test ${IP}:~/
+```
+
+Testing on the new device:
+
+```bash
+su -l emrah
+ssh-agent bash
+ssh-add .ssh/gnu
+
+cd ~/git-repo
+./pull.sh
+```
+
 #### wireplumber
 
 It should be the native user shell, no `su -l`...
