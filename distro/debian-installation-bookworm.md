@@ -527,3 +527,46 @@ It should be the native user shell, no `su -l`...
 ```bash
 systemctl --user --now enable wireplumber.service
 ```
+
+#### .Xdefaults-$(hostname)
+
+```
+#UXTerm*background: white
+#UXTerm*foreground: black
+#UXTerm*faceSize: 18
+UXTerm*background: black
+UXTerm*foreground: green
+UXTerm*faceName: Liberation Mono
+UXTerm*faceSize: 15
+UXTerm*termName: xterm-256color
+UXTerm*on2Clicks: word
+UXTerm*on3Clicks: regex [^ \n]+
+UXTerm*on4Clicks: regex [^'"(){}\n]+
+UXTerm*on5Clicks: regex [^\n]+
+```
+
+#### .spectrwm.conf
+
+```bash
+cp /etc/spectrwm.conf .spectrwm.conf
+```
+
+```
+program[screenshot_all] = bash -c "mkdir -p /tmp/scrot; scrot /tmp/scrot/$(date +'%Y-%m-%d-%H%M%S').png"
+disable_border          = 1
+bar_at_bottom           = 1
+maximize_hide_bar       = 1
+bar_font                = -xos4-terminus-medium-r-normal--18-*-*-*-*-*-*-*
+bar_font_color[]        = rgb:00/d8/00
+clock_format            = %a %b %d %T
+
+modkey = Mod4
+
+program[lock]           = xtrlock
+program[firefox]        = firefox-esr
+bind[firefox]           = MOD+shift+f
+program[chromium]       = chromium
+bind[chromium]          = MOD+shift+c
+program[pavucontrol]    = pavucontrol
+bind[pavucontrol]       = MOD+shift+a
+```
