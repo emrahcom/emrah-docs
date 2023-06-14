@@ -207,6 +207,7 @@ apt-get install gnupg
 apt-get install jq unzip
 apt-get install git patch
 apt-get install net-tools bridge-utils
+apt-get install sudo
 ```
 
 #### /etc/apt/sources.list.d/nodesource.list
@@ -268,7 +269,39 @@ iface wlan0 inet dhcp
 apt-get purge wpasupplicant
 apt-get autoremove --purge
 
-apt-get install iwd
+apt-get install iwd rfkill
+
+systemctl disable iwd.service
+
+rfkill list all
+rfkill unblock <ID>
+```
+
+If it is enabled, it slows down the boot. Start it later while loading the
+desktop.
+
+#### visudo
+
+```bash
+visudo /etc/sudoers.d/emrah
+```
+
+```
+emrah   ALL=NOPASSWD:/usr/bin/systemctl restart iwd.service
+emrah   ALL=NOPASSWD:/usr/bin/systemctl start iwd.service
+emrah   ALL=NOPASSWD:/usr/bin/systemctl status iwd.service
+emrah   ALL=NOPASSWD:/usr/bin/systemctl stop iwd.service
+```
+
+### iwctl
+
+```bash
+su -l emrah
+sudo /usr/bin/systemctl start iwd.service
+iwctl
+  station wlan0 scan
+  station wlan0 get-networks
+  station wlan0 connect <NETWORK>
 ```
 
 #### /etc/network/interfaces.d/bridge_br0.cfg
