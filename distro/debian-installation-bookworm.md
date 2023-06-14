@@ -253,3 +253,60 @@ unzip deno.zip
 cp /tmp/deno /usr/local/bin/
 deno --version
 ```
+
+### network
+
+#### /etc/network/interfaces
+
+```
+# The primary wireless interface
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+```
+
+```bash
+apt-get purge wpasupplicant
+apt-get autoremove --purge
+
+apt-get install iwd
+```
+
+#### /etc/network/interfaces.d/bridge_br0.cfg
+
+```
+# private dummy interface
+auto edummy0
+iface edummy0 inet manual
+pre-up /sbin/ip link add edummy0 type dummy
+up /sbin/ip link set edummy0 address 52:54:05:20:06:32
+
+# private bridge
+auto br0
+iface br0 inet static
+address 172.17.17.1
+netmask 255.255.255.0
+bridge_ports edummy0
+bridge_stp off
+bridge_fd 0
+bridge_maxwait 0
+```
+
+#### /etc/network/interfaces.d/bridge_br1.cfg
+
+```
+# private dummy interface
+auto edummy1
+iface edummy1 inet manual
+pre-up /sbin/ip link add edummy1 type dummy
+up /sbin/ip link set edummy1 address 52:54:05:20:06:34
+
+# private bridge
+auto br1
+iface br1 inet static
+address 172.18.18.1
+netmask 255.255.255.0
+bridge_ports edummy1
+bridge_stp off
+bridge_fd 0
+bridge_maxwait 0
+```
