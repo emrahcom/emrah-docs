@@ -590,8 +590,11 @@ Use seperate docs
 - docker
 - libvirt
 - minikube
+- kubectl
+- helm
 - linphone
 - adb
+- thunderbird
 
 #### web applications
 
