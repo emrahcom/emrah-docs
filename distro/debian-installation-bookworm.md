@@ -204,7 +204,7 @@ deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware
 ```bash
 apt-get update
 apt-get install gnupg
-apt-get install jq unzip
+apt-get install ack jq unzip
 apt-get install git patch
 apt-get install net-tools bridge-utils
 apt-get install sudo
@@ -337,4 +337,47 @@ bridge_ports edummy1
 bridge_stp off
 bridge_fd 0
 bridge_maxwait 0
+```
+
+#### /etc/sysctl.d/90-ip-forward.conf
+
+```
+net.ipv4.ip_forward=1
+```
+
+#### dnsmasq
+
+```bash
+apt-get install dnsmasq dns-root-data
+```
+
+##### /etc/dnsmasq.d/my-networks
+
+```
+bind-interfaces
+interface=br0
+interface=br1
+resolv-file=/etc/resolv.conf
+
+# br0
+dhcp-range=interface:br0,172.17.17.100,172.17.17.200,48h
+dhcp-option=interface:br0,option:dns-server,172.17.17.1
+
+# br1
+dhcp-range=interface:br1,172.18.18.100,172.18.18.200,48h
+dhcp-option=interface:br1,option:dns-server,172.18.18.1
+
+# br0 static addresses
+address=/postgres.mydomain.loc/172.17.17.20
+
+# br1 static addresses
+address=/ucs.mydomain.corp/172.18.18.20
+```
+
+##### /etc/resolv.conf
+
+```
+nameserver 127.0.0.1
+nameserver 208.67.222.222
+nameserver 8.8.8.8
 ```
