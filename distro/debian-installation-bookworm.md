@@ -300,6 +300,8 @@ emrah   ALL=NOPASSWD:/usr/bin/systemctl restart iwd.service
 emrah   ALL=NOPASSWD:/usr/bin/systemctl start iwd.service
 emrah   ALL=NOPASSWD:/usr/bin/systemctl status iwd.service
 emrah   ALL=NOPASSWD:/usr/bin/systemctl stop iwd.service
+emrah   ALL=NOPASSWD:/usr/bin/systemctl restart em-sock
+emrah   ALL=NOPASSWD:/usr/bin/brightnessctl
 ```
 
 ```bash
@@ -462,6 +464,27 @@ table ip nat {
     type nat hook input priority 0; policy accept;
   }
 }
+```
+
+### applications
+
+#### desktop
+
+```bash
+apt-get install --install-recommends xorg
+apt-get install --install-recommends spectrwm
+apt-get install --install-recommends firefox-esr
+apt-get install --install-recommends chromium chromium-sandbox
+apt-get install --install-recommends libreoffice
+apt-get install --install-recommends gimp
+apt-get install dbus-x11
+apt-get install xterm
+apt-get install xtrlock unclutter
+apt-get install brightnessctl
+apt-get install scrot
+apt-get install pavucontrol
+apt-get install x11vnc xtightvncviewer freerdp2-x11
+apt-get install zathura
 ```
 
 ### user
