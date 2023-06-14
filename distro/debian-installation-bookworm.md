@@ -206,3 +206,19 @@ apt-get update
 apt-get install nodejs
 npm install npm -g
 ```
+
+#### /etc/apt/sources.list.d/yarn.list
+
+```
+deb [signed-by=/usr/share/keyrings/yarn.gpg] https://dl.yarnpkg.com/debian/ stable main
+```
+
+```bash
+wget -qO /tmp/yarn.gpg.key https://dl.yarnpkg.com/debian/pubkey.gpg
+cat /tmp/yarn.gpg.key | gpg --dearmor >/usr/share/keyrings/yarn.gpg
+
+apt-get update
+apt-get install yarn
+
+yarn --version
+```
