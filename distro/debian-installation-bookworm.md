@@ -277,8 +277,8 @@ rfkill list all
 rfkill unblock <ID>
 ```
 
-If it is enabled, it slows down the boot. Start it later while loading the
-desktop.
+If `iwd` is enabled by default, it slows down the boot. Start it later while
+loading the desktop.
 
 #### visudo
 
@@ -293,7 +293,7 @@ emrah   ALL=NOPASSWD:/usr/bin/systemctl status iwd.service
 emrah   ALL=NOPASSWD:/usr/bin/systemctl stop iwd.service
 ```
 
-### iwctl
+#### iwctl
 
 ```bash
 su -l emrah
