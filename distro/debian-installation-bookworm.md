@@ -187,7 +187,7 @@ deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware
 
 ```bash
 apt-get update
-apt-get install gnupg jq
+apt-get install gnupg jq unzip
 ```
 
 #### /etc/apt/sources.list.d/nodesource.list
@@ -221,4 +221,16 @@ apt-get update
 apt-get install yarn
 
 yarn --version
+```
+
+#### deno
+
+```bash
+cd /tmp
+wget -T 30 -O deno.zip https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip
+unzip deno.zip
+./deno --version
+
+cp /tmp/deno /usr/local/bin/
+deno --version
 ```
