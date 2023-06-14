@@ -204,10 +204,13 @@ deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware
 ```bash
 apt-get update
 apt-get install gnupg
-apt-get install ack jq unzip
 apt-get install git patch
-apt-get install net-tools bridge-utils
-apt-get install sudo
+apt-get install ack jq unzip
+apt-get install net-tools curl rsync bridge-utils
+apt-get install ngrep whois fping netcat-openbsd htop
+apt-get install sudo encfs
+apt-get install mpv ffmpeg
+apt-get install --install-recommends pipewire
 ```
 
 #### /etc/apt/sources.list.d/nodesource.list
