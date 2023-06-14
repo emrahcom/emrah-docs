@@ -116,7 +116,7 @@ set -g history-limit 10000
 
 Check `vim` notes. `root` and `emrah` have different versions of `.vimrc`.
 
-##### .zshrc
+##### .zshrc (root)
 
 ```
 #bindkey -e
@@ -132,4 +132,45 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 source /usr/share/autojump/autojump.sh
+```
+
+##### .zshrc (emrah)
+
+```
+#bindkey -e
+bindkey -v
+
+chronometer() {
+  stf=$(date +%s.%N)
+  for ((;;))
+  do
+    ctf=$( date +%s.%N )
+    echo -en "\r$(date -u -d "0 $ctf sec - $stf sec" "+%H:%M:%S.%N")"
+  done
+}
+
+export TMOUT=1800
+export GPG_TTY=$(tty)
+export PATH=$PATH:~/bin
+
+setopt autocd
+setopt hist_ignore_space
+
+alias x='ssh-agent startx'
+alias vv='vim $(fzf)'
+alias cdf='cd $(find . -type d | fzf)'
+
+alias ls='ls --color=auto'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+source /usr/share/autojump/autojump.sh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+if [[ -n "$DISPLAY" ]]; then
+  xset r rate 250 40
+fi
 ```
