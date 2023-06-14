@@ -209,8 +209,10 @@ apt-get install ack jq unzip
 apt-get install net-tools curl rsync bridge-utils
 apt-get install ngrep whois fping netcat-openbsd htop
 apt-get install sudo encfs
+apt-get install lxc debootstrap
 apt-get install mpv ffmpeg
 apt-get install --install-recommends pipewire
+apt-get install pulseaudio-utils
 ```
 
 #### /etc/apt/sources.list.d/nodesource.list
@@ -259,6 +261,13 @@ deno --version
 ```
 
 ### network
+
+#### /etc/default/lxc-net
+
+```
+#USE_LXC_BRIDGE="true"
+USE_LXC_BRIDGE="false"
+```
 
 #### /etc/network/interfaces
 
@@ -453,4 +462,14 @@ table ip nat {
     type nat hook input priority 0; policy accept;
   }
 }
+```
+
+### user
+
+#### wireplumber
+
+It should be the native user shell, no `su -l`...
+
+```bash
+systemctl --user --now enable wireplumber.service
 ```
