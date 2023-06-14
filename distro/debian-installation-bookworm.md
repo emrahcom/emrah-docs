@@ -37,7 +37,7 @@ apt-get autoclean
 apt-get dist-upgrade
 apt-get autoremove --purge
 
-apt-get install zsh tmux vim autojump
+apt-get install zsh tmux vim autojump fzf
 apt-get install openssh-server
 apt-get install net-tools bridge-utils
 
@@ -173,4 +173,36 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 if [[ -n "$DISPLAY" ]]; then
   xset r rate 250 40
 fi
+```
+
+### packages
+
+#### /etc/apt/sources.list
+
+```
+deb http://deb.debian.org/debian/ bookworm main non-free-firmware
+deb http://security.debian.org/debian-security bookworm-security main non-free-firmware
+deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware
+```
+
+```bash
+apt-get update
+apt-get install gnupg jq
+```
+
+#### /etc/apt/sources.list.d/nodesource.list
+
+```
+deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x bookworm main
+```
+
+```bash
+wget -qO /tmp/nodesource.gpg.key \
+  https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+cat /tmp/nodesource.gpg.key | gpg --dearmor \
+  >/usr/share/keyrings/nodesource.gpg
+
+apt-get update
+apt-get install nodejs
+npm install npm -g
 ```
