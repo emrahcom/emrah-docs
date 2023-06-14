@@ -494,7 +494,7 @@ apt-get install zathura
 Copy archieves from the curren device.
 
 ```bash
-IP=192.168.1.108
+IP=192.168.1.124
 
 rsync -avhe 'ssh -l emrah' .gitconfig ${IP}:~/
 rsync -avhe 'ssh -l emrah' .gnupg ${IP}:~/
