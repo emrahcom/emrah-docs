@@ -39,6 +39,7 @@ apt-get autoremove --purge
 
 apt-get install zsh tmux vim autojump fzf
 apt-get install openssh-server
+apt-get install parted
 
 apt-get purge installation-report reportbug nano
 apt-get purge os-prober
@@ -84,6 +85,32 @@ chmod 600 /root/.ssh/authorized_keys
 Port 22
 PasswordAuthentication no
 GatewayPorts yes
+```
+
+#### swap
+
+```bash
+parted /dev/sda
+  unit s
+  p
+  p free
+  mkpart
+    Partition name?  []?
+    File system type?  [ext2]? linux-swap
+    Start? xxx
+    End? yyy
+  q
+
+fdisk -l
+mkswap /dev/sda4
+swapon /dev/sda4
+free -m
+```
+
+##### /etc/fstab
+
+```
+/dev/sda4       none            swap sw 0 0
 ```
 
 #### grub
