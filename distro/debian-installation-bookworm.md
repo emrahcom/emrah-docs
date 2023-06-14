@@ -39,7 +39,6 @@ apt-get autoremove --purge
 
 apt-get install zsh tmux vim autojump fzf
 apt-get install openssh-server
-apt-get install net-tools bridge-utils
 
 apt-get purge installation-report reportbug nano
 apt-get purge os-prober
@@ -85,6 +84,27 @@ chmod 600 /root/.ssh/authorized_keys
 Port 22
 PasswordAuthentication no
 GatewayPorts yes
+```
+
+#### grub
+
+##### /etc/default/grub
+
+```
+GRUB_TIMEOUT=1
+```
+
+```bash
+update-grub
+```
+
+#### ctrl + alt + del
+
+```bash
+ln -s /lib/systemd/system/poweroff.target \
+  /etc/systemd/system/ctrl-alt-del.target
+
+systemctl daemon-reload
 ```
 
 #### rc files
@@ -169,10 +189,6 @@ alias ......="cd ../../../../.."
 
 source /usr/share/autojump/autojump.sh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
-
-if [[ -n "$DISPLAY" ]]; then
-  xset r rate 250 40
-fi
 ```
 
 ### packages
@@ -187,7 +203,10 @@ deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware
 
 ```bash
 apt-get update
-apt-get install gnupg jq unzip
+apt-get install gnupg
+apt-get install jq unzip
+apt-get install git patch
+apt-get install net-tools bridge-utils
 ```
 
 #### /etc/apt/sources.list.d/nodesource.list
