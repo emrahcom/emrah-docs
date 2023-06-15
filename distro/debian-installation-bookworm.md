@@ -238,7 +238,7 @@ apt-get install ngrep whois fping netcat-openbsd htop
 apt-get install sudo encfs
 apt-get install lxc debootstrap
 apt-get install mpv ffmpeg
-apt-get install --install-recommends pipewire
+apt-get install --install-recommends pipewire-audio
 apt-get install pulseaudio-utils
 ```
 
