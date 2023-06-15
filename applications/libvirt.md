@@ -1,20 +1,20 @@
 ## libvirt & virt-manager
 
-Tested on `Debian Bullseye`.
+Tested on `Debian Bookworm`.
 
-#### installation
+### installation
 
 ```bash
 apt-get install virt-manager --install-recommends
 ```
 
-#### configuration
+### configuration
 
 ```bash
 adduser my-account libvirt
 ```
 
-#### virt-manager
+### virt-manager
 
 `ctrl_l + alt_l` are the grap keys.
 
@@ -22,15 +22,16 @@ adduser my-account libvirt
 virt-manager
 ```
 
-#### virtual machine
+### Debian guest machine
 
-Install `open-vm-tools` if the guess is a Debian VM.
+- bridge `br0`
+- only `root`, no normal user
 
 ```bash
 apt-get install open-vm-tools
 ```
 
-#### links
+### links
 
 - https://libvirt.org/
 - https://virt-manager.org/
