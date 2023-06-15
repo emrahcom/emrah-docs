@@ -563,8 +563,8 @@ systemctl --user --now enable wireplumber.service
 #UXTerm*faceSize: 18
 UXTerm*background: black
 UXTerm*foreground: green
-UXTerm*faceName: Liberation Mono
-UXTerm*faceSize: 15
+UXTerm*faceName: DejaVu Sans Mono
+UXTerm*faceSize: 14
 UXTerm*termName: xterm-256color
 UXTerm*on2Clicks: word
 UXTerm*on3Clicks: regex [^ \n]+
