@@ -26,24 +26,65 @@ virt-manager
 
 - bridge `br0`
 - only `root`, no normal user
-- ssh
-
-_/etc/ssh/sshd_config.d/emrah.conf_
+- /etc/ssh/sshd_config.d/emrah.conf
 
 ```
 Port 22
 ```
 
+- /etc/apt/apt.conf
+
+```
+Acquire::http::Proxy "http://172.17.17.10:3142/";
+```
+
+- /etc/apt/apt.conf.d/80recommends
+
+```
+APT::Install-Recommends "0";
+APT::Install-Suggests "0";
+```
+
+- /etc/default/grub
+
+```
+GRUB_TIMEOUT=1
+```
+
+- initial commands
+
 ```bash
+update-grub
+
 cd /tmp
 wget https://emrah.com/files/emrah.pub
 cp emrah.pub /root/.ssh/authorized_keys
 chmod 600 /root/.ssh/authorized_keys
 systemctl restart ssh
+
+apt-get update
+apt-get install zsh tmux vim autojump fzf
+apt-get install open-vm-tools
+apt-get install ack net-tools
+apt-get purge installation-report reportbug nano
+apt-get purge os-prober
+apt-get autoremove --purge
+
+chsh -s /bin/zsh root
 ```
 
+- rc files
+  - .bashrc
+  - .tmux.conf
+  - .zshrc
+  - .vimrc
+
+- last commands
+
 ```bash
-apt-get install open-vm-tools
+apt-get update && apt-get autoclean && apt-get dist-upgrade -dy && \
+  apt-get dist-upgrade && apt-get autoremove --purge
+poweroff
 ```
 
 ### links
