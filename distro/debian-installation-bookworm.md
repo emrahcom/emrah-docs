@@ -583,7 +583,7 @@ program[screenshot_all] = bash -c "mkdir -p /tmp/scrot; scrot /tmp/scrot/$(date 
 disable_border          = 1
 bar_at_bottom           = 1
 maximize_hide_bar       = 1
-bar_font                = -xos4-terminus-medium-r-normal--18-*-*-*-*-*-*-*
+bar_font                = DejaVu Sans Mono:pixelsize=20:antialias=true
 bar_font_color[]        = rgb:00/d8/00
 clock_format            = %a %b %d %T
 
