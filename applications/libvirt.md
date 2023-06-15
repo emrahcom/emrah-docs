@@ -26,6 +26,21 @@ virt-manager
 
 - bridge `br0`
 - only `root`, no normal user
+- ssh
+
+_/etc/ssh/sshd_config.d/emrah.conf_
+
+```
+Port 22
+```
+
+```bash
+cd /tmp
+wget https://emrah.com/files/emrah.pub
+cp emrah.pub /root/.ssh/authorized_keys
+chmod 600 /root/.ssh/authorized_keys
+systemctl restart ssh
+```
 
 ```bash
 apt-get install open-vm-tools
