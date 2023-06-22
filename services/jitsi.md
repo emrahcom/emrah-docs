@@ -66,7 +66,11 @@ customizations.
 
 #### Reverse proxy
 
-Put `Jitsi` behind a reverse proxy such as `Nginx`
+Put `Jitsi` behind a reverse proxy such as `Nginx`.
+
+##### Option 1
+
+_/etc/nginx/sites-enabled/jitsi.docker.corp.conf_
 
 ```conf
 server_names_hash_bucket_size 64;
@@ -78,32 +82,46 @@ server {
   include snippets/snakeoil.conf;
   server_name jitsi.docker.corp;
 
-  location = /xmpp-websocket {
-    proxy_pass http://172.18.18.1:8000;
-    proxy_http_version 1.1;
-    proxy_set_header Host $http_host;
-    proxy_set_header X-Forwarded-For $remote_addr;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-    tcp_nodelay on;
-  }
-
-  location ~ ^/colibri-ws/default-id/(.*) {
-    proxy_pass http://172.18.18.1:8000;
-    proxy_http_version 1.1;
-    proxy_set_header Host $http_host;
-    proxy_set_header X-Forwarded-For $remote_addr;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-    tcp_nodelay on;
-  }
-
   location / {
     proxy_pass http://172.18.18.1:8000;
     proxy_http_version 1.1;
     proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $remote_addr;
-    proxy_set_header Connection "";
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    tcp_nodelay on;
+  }
+}
+```
+
+##### Option 2
+
+_/etc/nginx/modules-enabled/90-stream.conf_
+
+```conf
+stream {
+  upstream local {
+    server 127.0.0.1:8443;
+  }
+
+  upstream jitsi_docker {
+    server 172.18.18.1:8443;
+  }
+
+  map $ssl_preread_server_name $upstream {
+    jitsi.docker.corp jitsi_docker;
+    default local;
+  }
+
+  server {
+    listen 443;
+    listen [::]:443;
+
+    ssl_preread on;
+    proxy_pass $upstream;
+
+    proxy_buffer_size 10m;
   }
 }
 ```
