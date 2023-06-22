@@ -53,6 +53,63 @@ docker-compose ps
 docker-compose down
 ```
 
+#### Customization
+
+Update environment variables in `.env`.
+
+- `PUBLIC_URL`
+
+   _e.g. https://jitsi.docker.corp_
+
+#### Reverse proxy
+
+Put `Jitsi` behind a reverse proxy such as `Nginx`
+
+```conf
+server_names_hash_bucket_size 64;
+
+server {
+  listen 443 ssl;
+  listen [::]:443 ssl;
+
+  include snippets/snakeoil.conf;
+  server_name jitsi.docker.corp;
+
+  location = /xmpp-websocket {
+    proxy_pass http://172.18.18.1:8000;
+    proxy_http_version 1.1;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    tcp_nodelay on;
+  }
+
+  location ~ ^/colibri-ws/default-id/(.*) {
+    proxy_pass http://172.18.18.1:8000;
+    proxy_http_version 1.1;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    tcp_nodelay on;
+  }
+
+  location / {
+    proxy_pass http://172.18.18.1:8000;
+    proxy_http_version 1.1;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header Connection "";
+  }
+}
+```
+
+#### DNS records
+
+`Jitsi` domain should point to the IP address of the reverse proxy.
+_e.g. jitsi.docker.corp -> 172.18.18.40_
+
 #### References
 
 See
