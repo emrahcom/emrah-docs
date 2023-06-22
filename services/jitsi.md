@@ -61,6 +61,9 @@ Update environment variables in `.env`.
 
    _e.g. https://jitsi.docker.corp_
 
+Check `.jitsi-meet-cfg` folder for created config files and futher
+customizations.
+
 #### Reverse proxy
 
 Put `Jitsi` behind a reverse proxy such as `Nginx`
