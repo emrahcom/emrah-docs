@@ -49,6 +49,8 @@ mkdir -p ~/.jitsi-meet-cfg/{jigasi,jibri}
 
 ```bash
 docker-compose up -d
+docker-compose ps
+docker-compose down
 ```
 
 #### References
