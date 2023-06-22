@@ -59,9 +59,9 @@ Update environment variables in `.env`.
 
 - `PUBLIC_URL`
 
-   _e.g. https://jitsi.docker.corp_
+  _e.g. https://jitsi.docker.corp_
 
-Check `.jitsi-meet-cfg` folder for created config files and futher
+Check `.jitsi-meet-cfg` folder for created config files and further
 customizations.
 
 #### Reverse proxy
@@ -110,7 +110,7 @@ server {
 
 #### DNS records
 
-`Jitsi` domain should point to the IP address of the reverse proxy.
+`Jitsi` domain should point to the IP address of the reverse proxy.\
 _e.g. jitsi.docker.corp -> 172.18.18.40_
 
 #### References
