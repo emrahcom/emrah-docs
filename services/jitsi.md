@@ -1,33 +1,41 @@
 ## Jitsi
 
-#### Docker-Compose
+### Docker-Compose
+
+#### Download
 
 Download
 [the lastest stable](https://github.com/jitsi/docker-jitsi-meet/releases):
 
 ```bash
 ARCHIVE="https://github.com/jitsi/docker-jitsi-meet/archive/refs/tags"
-wget $ARCHIVE/stable-8319.tar.gz
+wget $ARCHIVE/stable-8719.tar.gz
 ```
 
-Extract:
+#### Extract
 
 ```bash
-tar xzf stable-8319.tar.gz
+tar xzf stable-8719.tar.gz
 ```
 
-Create `env` and customize it:
+#### Environment file
+
+Create `.env`:
 
 ```bash
-cd docker-jitsi-meet-stable-8319
+cd docker-jitsi-meet-stable-8719
 cp env.example .env
 ```
+
+#### Secrets
 
 Generate secrets:
 
 ```bash
 ./gen-passwords.sh
 ```
+
+#### Local directories
 
 Create local directories:
 
@@ -37,14 +45,18 @@ mkdir -p ~/.jitsi-meet-cfg/{prosody/prosody-plugins-custom,jicofo,jvb}
 mkdir -p ~/.jitsi-meet-cfg/{jigasi,jibri}
 ```
 
-Run:
+#### First run
 
 ```bash
 docker-compose up -d
 ```
 
+#### References
+
 See
 [Jitsi Docker Guide](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker/)
+
+### Additional notes
 
 #### Multiple local pairs for `jvb`
 
