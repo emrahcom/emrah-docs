@@ -427,7 +427,7 @@ nameserver 8.8.8.8
 ##### /etc/dhcp/dhclient.conf
 
 ```
-prepend domain-name-servers 127.0.0.1 172.17.17.1 172.18.18.1;
+prepend domain-name-servers 127.0.0.1,172.17.17.1,172.18.18.1;
 ```
 
 #### /etc/nftables.conf
