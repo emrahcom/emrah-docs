@@ -20,9 +20,9 @@ npm create svelte@latest my-app
   Ok to proceed? (y) y
   Which Svelte app template? Skeleton project
   Add type checking with TypeScript? Yes, using TypeScript syntax
-  Add ESLint for code linting? Yes
-  Add Prettier for code formatting? Yes
-  Add Playwright for browser testing? No
+  Select additional options
+    Add ESLint for code linting
+    Add Prettier for code formatting
 
 cd my-app
 yarn install
