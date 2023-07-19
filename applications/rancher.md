@@ -4,8 +4,7 @@
 
 - open the cluster
 - download `kubeconfig`
-- backup the default config as `~/.kube/config.old`
-- copy `kubeconfig` as `~/.kube.config`
+- copy `kubeconfig` as `~/.kube/config.mycode.rancher`
 
 ### Namespace
 
@@ -13,8 +12,9 @@
 - create a project
 - create a namespace inside this project
 
-### kubectl
+### Test
 
 ```bash
-kubectl -n my-name-space get pods
+kubectl --kubeconfig ~/.kube/config.mycode.rancher -n my-namespace get pods
+helm --kubeconfig ~/.kube/config.mycode.rancher -n my-namespace ls
 ```
