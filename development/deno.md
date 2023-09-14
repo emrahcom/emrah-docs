@@ -40,6 +40,12 @@ deno lint
 deno lint index.ts
 ```
 
+### check
+
+```bash
+deno check index.ts
+```
+
 ### cache
 
 ```bash
