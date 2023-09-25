@@ -90,7 +90,7 @@ deno lint
 ### run (dev)
 
 ```bash
-yarn run dev -- --host --port 3000
+yarn run dev --host --port 3000
 ```
 
 ### build
