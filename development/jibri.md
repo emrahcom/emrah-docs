@@ -19,7 +19,7 @@ git clone https://github.com/jitsi/jibri.git
 
 ```bash
 cd jibri
-mvn package
+mvn -B clean verify package -DskipTests
 ```
 
 ### deployment
