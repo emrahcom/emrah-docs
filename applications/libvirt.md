@@ -90,6 +90,8 @@ poweroff
 ### Shrink
 
 ```bash
+cd /var/lib/libvirt/images
+
 qemu-img convert -c -O qcow2 old.qcow2 new.qcow2
 mv new.qcow2 old.qcow2
 ```
