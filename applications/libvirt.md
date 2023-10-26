@@ -87,6 +87,13 @@ apt-get update && apt-get autoclean && apt-get dist-upgrade -dy && \
 poweroff
 ```
 
+### Shrink
+
+```bash
+qemu-img convert -c -O qcow2 old.qcow2 new.qcow2
+mv new.qcow2 old.qcow2
+```
+
 ### links
 
 - https://libvirt.org/
