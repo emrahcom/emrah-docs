@@ -7,7 +7,7 @@ Redirecting to `Keycloak` auth service to get a short-term authorization code.
 ```bash
 KEYCLOAK_ORIGIN="https://ucs-sso-ng.mydomain.corp"
 KEYCLOAK_REALM="ucs"
-KEYCLOAK_CLIENT_ID=jitsi
+KEYCLOAK_CLIENT_ID="jitsi"
 REDIRECT_URI="https://jitsi.mydomain.corp/hello"
 
 KEYCLOAK_AUTH_URI="$KEYCLOAK_ORIGIN/realms/$KEYCLOAK_REALM\
@@ -52,9 +52,10 @@ DATA="client_id=$KEYCLOAK_CLIENT_ID\
 &redirect_uri=$REDIRECT_URI\
 &code=$CODE"
 
-curl $KEYCLOAK_TOKEN_URI \
+curl -s $KEYCLOAK_TOKEN_URI \
   --header "Accept: application/json" \
-  -X POST --data "$DATA"
+  -X POST --data "$DATA" | \
+  jq .
 ```
 
 Response will contain the followings:
@@ -77,9 +78,10 @@ ACCESS_TOKEN="eyJhb...8B6Jy_Q"
 KEYCLOAK_INFO_URI="$KEYCLOAK_ORIGIN/realms/$KEYCLOAK_REALM\
 /protocol/openid-connect/userinfo"
 
-curl $KEYCLOAK_INFO_URI \
+curl -s $KEYCLOAK_INFO_URI \
   --header "Accept: application/json" \
-  --header "Authorization: Bearer $ACCESS_TOKEN"
+  --header "Authorization: Bearer $ACCESS_TOKEN" | \
+  jq .
 ```
 
 Response will contain the followings:
