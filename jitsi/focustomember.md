@@ -12,6 +12,15 @@ function setFocusedMember() {
           type: 'SELECT_LARGE_VIDEO_PARTICIPANT',
           participantId: p.id
         });
+
+        //APP.store.dispatch({
+        //  type: 'PIN_PARTICIPANT',
+        //  participant: {
+        //    id: p.id
+        //  }
+        //});
+
+        //APP.UI.updateLargeVideo(p.id);
       }
     });
   } catch(e) {
