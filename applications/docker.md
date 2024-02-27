@@ -37,6 +37,12 @@ cd my-project
 docker image build .
 ```
 
+#### clean up
+
+```bash
+docker image rm $(docker images | grep '<none>' | awk '{print $3}')
+```
+
 #### docker in LXC
 
 ```config
