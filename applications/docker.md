@@ -29,6 +29,14 @@ docker-compose --version
 docker run hello-world
 ```
 
+#### build
+
+```bash
+# go to the directory which contains Dockerfile
+cd my-project
+docker image build .
+```
+
 #### docker in LXC
 
 ```config
