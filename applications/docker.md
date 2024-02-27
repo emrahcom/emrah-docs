@@ -45,6 +45,12 @@ docker ps -a
 docker images
 ```
 
+#### attach
+
+```bash
+docker exec -it <CONTAINER-ID> /bin/bash
+```
+
 #### clean up
 
 ```bash
