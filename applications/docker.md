@@ -51,6 +51,12 @@ docker images
 docker exec -it <CONTAINER-ID> /bin/bash
 ```
 
+#### kill
+
+```bash
+docker kill <CONTAINER-ID>
+```
+
 #### clean up
 
 ```bash
