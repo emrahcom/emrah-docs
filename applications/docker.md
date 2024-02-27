@@ -37,6 +37,14 @@ cd my-project
 docker image build .
 ```
 
+#### listing
+
+```bash
+docker ps
+docker ps -a
+docker images
+```
+
 #### clean up
 
 ```bash
