@@ -43,6 +43,12 @@ docker image build -t MYTAG .
 docker run MYTAG
 ```
 
+#### environment variables and mounts
+
+```bash
+docker run -e MYENV=myvalue -v ${PWD}/app.conf:/app/app.conf MYTAG
+```
+
 #### listing
 
 ```bash
