@@ -9,15 +9,15 @@ support.
 After download as `root`:
 
 ```bash
-cp Linphone-5.0.12.AppImage /usr/local/bin/
-chmod 755 /usr/local/bin/Linphone-5.0.12.AppImage
+cp Linphone-5.2.2.AppImage /usr/local/bin/
+chmod 755 /usr/local/bin/Linphone-5.2.2.AppImage
 ```
 
 As `user`:
 
 ```bash
 mkdir -p ~/bin
-ln -sf /usr/local/bin/Linphone-5.0.12.AppImage ~/bin/linphone
+ln -sf /usr/local/bin/Linphone-5.2.2.AppImage ~/bin/linphone
 ```
 
 ### clear old config
