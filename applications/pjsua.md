@@ -47,3 +47,5 @@ pjsua --config-file=./pjsua.config "sip:dodo@172.17.17.33"
 ### References
 
 - [pjsua](https://www.pjsip.org/pjsua.htm)
+- [SRTP](https://docs.pjsip.org/en/latest/specific-guides/security/srtp.html)
+- [TLS](https://docs.pjsip.org/en/latest/specific-guides/security/ssl.html)
