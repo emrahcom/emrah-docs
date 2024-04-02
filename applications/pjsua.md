@@ -44,6 +44,44 @@ pjsua --config-file=./pjsua.config --auto-answer=200
 pjsua --config-file=./pjsua.config "sip:dodo@172.17.17.33"
 ```
 
+### TLS certificates
+
+```bash
+mkdir tls
+cd tls
+
+TAG=dodo
+APP=pjsua
+CN=172.17.17.33
+
+openssl req -nodes -new -x509 -days 10950 \
+  -keyout $TAG-CA.key -out $TAG-CA.pem \
+  -subj "/O=$TAG/OU=CA/CN=$TAG $DATE-$RANDOM"
+openssl req -nodes -newkey rsa:2048 \
+  -keyout $TAG-$APP.key -out $TAG-$APP.csr \
+  -subj "/O=$TAG/OU=$TAG-$APP/CN=$CN"
+openssl x509 -req -CA $TAG-CA.pem -CAkey $TAG-CA.key \
+  -CAcreateserial -days 10950 \
+  -in $TAG-$APP.csr -out $TAG-$APP.pem
+```
+
+### SIP over TLS
+
+Server
+
+```bash
+pjsua --config-file=./pjsua.config --use-tls \
+  --tls-ca-file tls/dodo-CA.pem --tls-cert-file tls/dodo-pjsua.pem \
+  --tls-privkey-file tls/dodo-pjsua.key --auto-answer=200
+```
+
+Client:
+
+```bash
+pjsua --config-file=./pjsua.config --use-tls \
+  "sip:dodo@172.17.17.33;transport=tls"
+```
+
 ### References
 
 - [pjsua](https://www.pjsip.org/pjsua.htm)
