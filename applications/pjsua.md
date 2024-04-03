@@ -67,19 +67,49 @@ openssl x509 -req -CA $TAG-CA.pem -CAkey $TAG-CA.key \
 
 ### SIP over TLS
 
-Server
+Server:
 
 ```bash
-pjsua --config-file=./pjsua.config --use-tls \
-  --tls-ca-file tls/dodo-CA.pem --tls-cert-file tls/dodo-pjsua.pem \
-  --tls-privkey-file tls/dodo-pjsua.key --auto-answer=200
+pjsua --config-file=./pjsua.config \
+  --use-tls --tls-ca-file tls/dodo-CA.pem \
+  --tls-cert-file tls/dodo-pjsua.pem --tls-privkey-file tls/dodo-pjsua.key \
+  --auto-answer=200
 ```
 
 Client:
 
 ```bash
-pjsua --config-file=./pjsua.config --use-tls \
+pjsua --config-file=./pjsua.config \
+  --use-tls \
   "sip:dodo@172.17.17.33;transport=tls"
+```
+
+### SRTP with unencrypted SIP
+
+- `--use-srtp=N`
+  - `0`: disabled
+  - `1`: optional
+  - `2`: mandatory
+
+- `--srtp-secure=N`
+  - `0`: no
+  - `1`: tls
+  - `2`: sips
+
+Server:
+
+```bash
+pjsua --config-file=./pjsua.config \
+  --use-srtp=2 --srtp-secure=0 \
+  --auto-answer=200
+```
+
+Client:
+
+```bash
+pjsua --config-file=./pjsua.config \
+  --use-srtp=2 --srtp-secure=0 \
+  "sip:dodo@172.17.17.33"
 ```
 
 ### References
