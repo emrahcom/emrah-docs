@@ -28,13 +28,13 @@
 #### Run as server
 
 ```bash
-pjsua --config-file=./pjsua.config --auto-answer=200
+pjsua --config-file=./pjsua.default.config --auto-answer=200
 ```
 
 #### Run as client
 
 ```bash
-pjsua --config-file=./pjsua.config "sip:dodo@172.17.17.33"
+pjsua --config-file=./pjsua.default.config "sip:dodo@172.17.17.33"
 ```
 
 ### SRTP with unencrypted SIP
@@ -49,20 +49,41 @@ pjsua --config-file=./pjsua.config "sip:dodo@172.17.17.33"
   - `1`: tls
   - `2`: sips
 
-Server:
+#### pjsua.srtp.config
 
-```bash
-pjsua --config-file=./pjsua.config \
-  --use-srtp=2 --srtp-secure=0 \
-  --auto-answer=200
+```config
+--use-srtp=2
+--srtp-secure=0
+--no-tcp
+--max-calls=1
+--auto-update-nat 0
+--disable-stun
+--video
+--dis-codec all
+--add-codec pcmu
+--add-codec pcma
+--add-codec speex
+--add-codec G722
+--add-codec opus
+--auto-keyframe=30
+--no-vad
+--ec-tail 0
+--quality 10
+--log-file=/home/dodo/pjsua/pjsua.log
+--no-stderr
+--no-color
 ```
 
-Client:
+#### Run as server
 
 ```bash
-pjsua --config-file=./pjsua.config \
-  --use-srtp=2 --srtp-secure=0 \
-  "sip:dodo@172.17.17.33"
+pjsua --config-file=./pjsua.srtp.config --auto-answer=200
+```
+
+#### Run as client
+
+```bash
+pjsua --config-file=./pjsua.srtp.config "sip:dodo@172.17.17.33"
 ```
 
 ### TLS certificates
