@@ -86,7 +86,9 @@ pjsua --config-file=./pjsua.srtp.config --auto-answer=200
 pjsua --config-file=./pjsua.srtp.config "sip:dodo@172.17.17.33"
 ```
 
-### TLS certificates
+### SRTP with encrypted SIP
+
+#### TLS certificates
 
 ```bash
 mkdir tls
@@ -107,23 +109,49 @@ openssl x509 -req -CA $TAG-CA.pem -CAkey $TAG-CA.key \
   -in $TAG-$APP.csr -out $TAG-$APP.pem
 ```
 
-### SIP over TLS
+#### pjsua.tls.config
 
-Server:
-
-```bash
-pjsua --config-file=./pjsua.config \
-  --use-tls --tls-ca-file tls/dodo-CA.pem \
-  --tls-cert-file tls/dodo-pjsua.pem --tls-privkey-file tls/dodo-pjsua.key \
-  --auto-answer=200
+```config
+--use-tls
+--no-udp
+--no-tcp
+--tls-ca-file tls/dodo-CA.pem
+--tls-cert-file tls/dodo-pjsua.pem
+--tls-privkey-file tls/dodo-pjsua.key
+--tls-verify-client
+--tls-verify-server
+--use-srtp=2
+--srtp-secure=1
+--max-calls=1
+--auto-update-nat 0
+--disable-stun
+--video
+--dis-codec all
+--add-codec pcmu
+--add-codec pcma
+--add-codec speex
+--add-codec G722
+--add-codec opus
+--auto-keyframe=30
+--no-vad
+--ec-tail 0
+--quality 10
+--log-file=/home/dodo/pjsua/pjsua.log
+--no-stderr
+--no-color
 ```
 
-Client:
+#### Run as server
 
 ```bash
-pjsua --config-file=./pjsua.config \
-  --use-tls \
-  "sip:dodo@172.17.17.33;transport=tls"
+pjsua --config-file=./pjsua.tls.config --auto-answer=200
+```
+
+#### Run as client
+
+```bash
+pjsua --config-file=./pjsua.tls.config \
+  "sip:dodo@172.17.17.33:5061;transport=tls"
 ```
 
 ### References
