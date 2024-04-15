@@ -111,6 +111,8 @@ openssl x509 -req -CA $TAG-CA.pem -CAkey $TAG-CA.key \
 
 #### pjsua.tls.config
 
+The order of `--use-tls`, `--no-udp` and `--no-tcp` is important.
+
 ```config
 --use-tls
 --no-udp
