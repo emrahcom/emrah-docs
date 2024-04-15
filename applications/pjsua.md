@@ -1,6 +1,49 @@
 ## pjsua
 
-### Unencrypted
+### Building
+
+#### Packages
+
+Install packages as `root`:
+
+```bash
+apt-get install build-essential
+apt-get install libv4l-dev libsdl2-dev libavcodec-dev libavdevice-dev \
+  libavfilter-dev libavformat-dev libavutil-dev libswscale-dev libasound2-dev \
+  libopus-dev libvpx-dev libssl-dev
+```
+
+#### Make
+
+Run the following as a non-root user:
+
+```bash
+PJPROJECT_REPO="https://github.com/jitsi/pjproject"
+PJPROJECT_BRANCH="jibri-2.13-dev1"
+
+mkdir -p ~/src
+cd ~/src
+
+git clone -b $PJPROJECT_BRANCH $PJPROJECT_REPO
+cd pjproject
+
+./configure
+make dep
+make
+
+cp ~/src/pjproject/pjsip-apps/bin/pjsua-x86_64-unknown-linux-gnu /tmp/pjsua
+```
+
+#### Executable
+
+Run the followings as `root`:
+
+```bash
+cp /tmp/pjsua /usr/local/bin/pjsua
+chmod 755 /usr/local/bin/pjsua
+```
+
+### Unencrypted SIP
 
 #### pjsua.default.config
 
