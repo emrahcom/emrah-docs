@@ -1,47 +1,68 @@
 ## pjsua
 
-### pjsua.config
+### Unencrypted
+
+#### pjsua.default.config
 
 ```config
---video
---no-color
---log-level=5
---app-log-level=5
+--no-tcp
+--max-calls=1
 --auto-update-nat 0
 --disable-stun
---no-tcp
---dis-codec GSM
---dis-codec H263
---dis-codec iLBC
---dis-codec G722
---dis-codec speex
---dis-codec pcmu
---dis-codec pcma
---dis-codec opus
+--video
+--dis-codec all
 --add-codec pcmu
 --add-codec pcma
 --add-codec speex
 --add-codec G722
 --add-codec opus
+--auto-keyframe=30
 --no-vad
 --ec-tail 0
 --quality 10
---max-calls=1
---auto-keyframe=30
---no-stderr
 --log-file=/home/dodo/pjsua/pjsua.log
+--no-stderr
+--no-color
 ```
 
-### Run as server
+#### Run as server
 
 ```bash
 pjsua --config-file=./pjsua.config --auto-answer=200
 ```
 
-### Run as client
+#### Run as client
 
 ```bash
 pjsua --config-file=./pjsua.config "sip:dodo@172.17.17.33"
+```
+
+### SRTP with unencrypted SIP
+
+- `--use-srtp=N`
+  - `0`: disabled
+  - `1`: optional
+  - `2`: mandatory
+
+- `--srtp-secure=N`
+  - `0`: no
+  - `1`: tls
+  - `2`: sips
+
+Server:
+
+```bash
+pjsua --config-file=./pjsua.config \
+  --use-srtp=2 --srtp-secure=0 \
+  --auto-answer=200
+```
+
+Client:
+
+```bash
+pjsua --config-file=./pjsua.config \
+  --use-srtp=2 --srtp-secure=0 \
+  "sip:dodo@172.17.17.33"
 ```
 
 ### TLS certificates
@@ -82,34 +103,6 @@ Client:
 pjsua --config-file=./pjsua.config \
   --use-tls \
   "sip:dodo@172.17.17.33;transport=tls"
-```
-
-### SRTP with unencrypted SIP
-
-- `--use-srtp=N`
-  - `0`: disabled
-  - `1`: optional
-  - `2`: mandatory
-
-- `--srtp-secure=N`
-  - `0`: no
-  - `1`: tls
-  - `2`: sips
-
-Server:
-
-```bash
-pjsua --config-file=./pjsua.config \
-  --use-srtp=2 --srtp-secure=0 \
-  --auto-answer=200
-```
-
-Client:
-
-```bash
-pjsua --config-file=./pjsua.config \
-  --use-srtp=2 --srtp-secure=0 \
-  "sip:dodo@172.17.17.33"
 ```
 
 ### References
