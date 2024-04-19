@@ -145,3 +145,7 @@ exten => 1002,1,Verbose(3,${EXTEN})
  same => n,Congestion(3)
  same => n,HangUp()
 ```
+
+### Links
+
+[How to install Asterisk](https://www.youtube.com/watch?v=Qt0KLR8K9MY)
