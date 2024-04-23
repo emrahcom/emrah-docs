@@ -1,6 +1,6 @@
 # FreeSwitch
 
-Tested in `Bullseye` container on `Debian 11 Bullseye` host.
+Tested in `Bookworm` container on `Debian 12 Bookworm` host.
 
 ## Installation
 
@@ -26,7 +26,7 @@ wget --http-user=signalwire --http-password=$TOKEN \
   https://freeswitch.signalwire.com/repo/deb/debian-release/signalwire-freeswitch-repo.gpg
 
 echo "deb [signed-by=/usr/share/keyrings/freeswitch.gpg]" \
-  "https://freeswitch.signalwire.com/repo/deb/debian-release/ bullseye main" \
+  "https://freeswitch.signalwire.com/repo/deb/debian-release/ bookworm main" \
   >/etc/apt/sources.list.d/freeswitch.list
 apt-get update
 ```
