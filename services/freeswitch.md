@@ -73,6 +73,20 @@ or
 <X-PRE-PROCESS cmd="set" data="domain=172.17.17.36"/>
 ```
 
+#### Profile domain
+
+In `/etc/freeswitch/sip_profiles/internal.xml`:
+
+```xml
+<domains>
+  <domain name="$${domain}" parse="true"/>
+</domains>
+```
+
+See
+[Sofia Configuration Files](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Configuration/Sofia-SIP-Stack/Sofia-Configuration-Files_7144453/)
+for more details.
+
 #### External SIP IP
 
 The default `stun` seems unstable, don't use it for the external environment
@@ -120,8 +134,8 @@ or
 #### Systemd
 
 If `FreeSwitch` starts before `eth0` is up then it listens only the loopback
-device and it doesn't work in this case. Don't start its Systemd unit before
-the network interface is ready.
+device and it doesn't work in this case. Don't start its Systemd unit before the
+network interface is ready.
 
 _/etc/systemd/system/wait-ifup.service_
 
