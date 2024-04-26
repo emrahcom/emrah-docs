@@ -66,6 +66,13 @@ The default `domain` is the IP of the host. Update the following line in
 <X-PRE-PROCESS cmd="set" data="domain=sip.mydomain.corp"/>
 ```
 
+or
+
+```xml
+<!-- <X-PRE-PROCESS cmd="set" data="domain=$${local_ip_v4}"/> -->
+<X-PRE-PROCESS cmd="set" data="domain=172.17.17.36"/>
+```
+
 #### External SIP IP
 
 The default `stun` seems unstable, don't use it for the external environment
