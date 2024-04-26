@@ -43,8 +43,7 @@ apt-get --install-recommends install freeswitch-meta-all
 
 - incoming `TCP/5060` and `TCP/5080`
 - incoming `UDP/5060` and `TCP/5080`
-- incoming `UDP/16384-32768`
-  \
+- incoming `UDP/16384-32768`\
   `iif "enp1s0" udp dport 16384-32768 dnat to 172.22.22.18`
 
 #### Default Password
@@ -110,6 +109,13 @@ or
     ...
     <action application="set" data="continue_on_fail=false"/>
 ```
+
+## Clients
+
+Use `extension@domain:5080` as SIP address. For example:
+
+- `1001@sip.mydomain.corp:5080`
+- `1002@1.2.3.4:5080`
 
 ## Testing
 
