@@ -117,6 +117,38 @@ or
     <action application="set" data="continue_on_fail=false"/>
 ```
 
+#### Systemd
+
+If `FreeSwitch` starts before `eth0` is up then it listens only the loopback
+device and it doesn't work in this case. Don't start its Systemd unit before
+the network interface is ready.
+
+_/etc/systemd/system/wait-ifup.service_
+
+```
+[Unit]
+Description=Wait for the network interface
+After=network.target
+Before=freeswitch.service
+
+[Service]
+User=root
+Group=root
+ExecStartPre=bash -c "while true; do ping -c1 host.loc && break; sleep 1; done"
+ExecStart=true
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable and activate the unit:
+
+```bash
+systemctl daemon-reload
+systemctl enable wait-ifup.service
+systemctl start wait-ifup.service
+```
+
 ## Clients
 
 Use `extension@domain:5080` as SIP address. For example:
