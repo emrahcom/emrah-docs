@@ -599,7 +599,7 @@ modkey = Mod4
 program[lock]           = xtrlock
 program[firefox]        = firefox-esr
 bind[firefox]           = MOD+shift+f
-program[chromium]       = chromium
+program[chromium]       = chromium --proxy-server="socks5://127.0.0.1:65022" --proxy-bypass-list="localhost;127.0.0.1/8;192.168.0.0/16;172.16.0.0/12;10.0.0.0/8;*mydomain.com;*.mydomain.corp;*.yourdomain.com"
 bind[chromium]          = MOD+shift+c
 program[pavucontrol]    = pavucontrol
 bind[pavucontrol]       = MOD+shift+a
