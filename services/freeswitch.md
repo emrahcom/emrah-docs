@@ -221,6 +221,39 @@ In `fs_cli`
 sofia loglevel all 9
 ```
 
+## Python
+
+```bash
+cd /usr/local/lib/python3.11/dist-packages
+mkdir -p mypackage
+touch mypackage/__init__.py
+```
+
+_/usr/local/lib/python3.11/dist-packages/mypackage/mymodule.py_
+
+```python
+import freeswitch
+
+def handler(session, args):
+    freeswitch.consoleLog("info", "hello1\n")
+
+def fsapi(session, stream, env, args):
+    freeswitch.consoleLog("info", "hello2\n")
+```
+
+_/etc/freeswitch/dialplan/public/01_myplan.xml_
+
+```xml
+<include>
+  <extension name="myplan">
+    <condition field="destination_number" expression="^(112233)$">
+      <action application="set" data="domain_name=$${domain}"/>
+      <action application="python" data="mypackage.mymodule"/>
+    </condition>
+  </extension>
+</include>
+```
+
 ## Links
 
 - https://github.com/signalwire/freeswitch
