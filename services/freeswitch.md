@@ -172,9 +172,9 @@ systemctl enable wait-ifup.service
 systemctl start wait-ifup.service
 ```
 
-## Clients
+## External Clients
 
-Use `extension@domain:5080` as SIP address. For example:
+Call `extension@domain:5080` as SIP address. For example:
 
 - `1001@sip.mydomain.corp:5080`
 - `1002@1.2.3.4:5080`
