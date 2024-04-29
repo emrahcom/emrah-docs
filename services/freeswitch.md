@@ -261,3 +261,4 @@ _/etc/freeswitch/dialplan/public/01_myplan.xml_
 - https://freeswitch.org/confluence/display/FREESWITCH/HOWTO+Create+a+SignalWire+Personal+Access+Token
 - https://freeswitch.org/confluence/display/FREESWITCH/mod_conference
 - https://github.com/sipcapture/sipgrep
+- https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Client-and-Developer-Interfaces/Lua-API-Reference/
