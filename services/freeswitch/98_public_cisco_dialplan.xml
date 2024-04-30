@@ -1,0 +1,10 @@
+<!-- put this file into /etc/freeswitch/dialplan/public/ -->
+
+<include>
+  <extension name="cisco">
+    <condition field="destination_number" expression="^(112233)$">
+      <action application="set" data="domain_name=$${domain}"/>
+      <action application="python" data="nordeck.cisco"/>   
+    </condition>                                            
+  </extension>                                              
+</include>
