@@ -1,7 +1,7 @@
 <!-- put this file inside /etc/freeswitch/dialplan/default/ -->
 
 <include>
-  <extension name="sipjibri">
+  <extension name="default_sipjibri">
     <condition field="destination_number" expression="^(\d{9})$">
       <action application="export" data="dialed_extension=$1"/>
       <action application="set" data="call_timeout=10"/>

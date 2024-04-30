@@ -1,10 +1,10 @@
 <!-- put this file into /etc/freeswitch/dialplan/public/ -->
 
 <include>
-  <extension name="cisco">
+  <extension name="public_sipjibri">
     <condition field="destination_number" expression="^(112233)$">
       <action application="set" data="domain_name=$${domain}"/>
-      <action application="python" data="nordeck.cisco"/>   
-    </condition>                                            
-  </extension>                                              
+      <action application="python" data="nordeck.sipjibri"/>
+    </condition>
+  </extension>
 </include>
