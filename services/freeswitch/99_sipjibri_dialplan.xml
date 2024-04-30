@@ -1,0 +1,10 @@
+<include>
+  <extension name="sipjibri">
+    <condition field="${toll_allow}" expression="local"/>
+    <condition field="destination_number" expression="^(\d{9})$">
+      <action application="export" data="dialed_extension=$1"/>
+      <action application="set" data="call_timeout=30"/>
+      <action application="bridge" data="user/${dialed_extension}@${domain_name}"/>
+    </condition>
+  </extension>
+</include>
