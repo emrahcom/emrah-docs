@@ -2,6 +2,10 @@
 This script is tested on Debian 12 Bookworm.
 Required packages: python3 python3-requests
 
+Enable python3 in /etc/freeswitch/autoload_configs/modules.conf.xml
+
+  <load module="mod_python3"/>
+
 Put this file into /usr/local/lib/python3.11/dist-packages/nordeck/
 
 Create /usr/local/lib/python3.11/dist-packages/nordeck/__init__.py
@@ -12,8 +16,10 @@ Add /etc/freeswitch/dialplan/public/98_public_sipjibri_dialplan.xml
 Add /etc/freeswitch/dialplan/default/99_default_sipjibri_dialplan.xml
 
 Add the component-selector URL in /etc/freeswitch/vars.xml
+Add component_verify_certificate if its certificate is self-signed
 
   <X-PRE-PROCESS cmd="set" data="component_selector_url=https://domain/path"/>
+  <X-PRE-PROCESS cmd="set" data="component_verify_certificate=false"/>
 
 Add "sipjibri-users" folder in /etc/freeswitch/directory/default.xml
 
@@ -40,8 +46,7 @@ import json
 from requests import post
 import freeswitch
 
-EXPIRE_MINUTES = 60
-COMPONENT_SELECTOR_URL = "https://app.eparto.net/api/pub/hello"
+EXTENSION_EXPIRE_MINUTES = 60
 USER_DIR = "/tmp/sipjibri"
 USER_TPL = """
 <include>
@@ -102,13 +107,14 @@ def request_meeting_data(pin):
     # Booking Portal by sending the pin number.
     if pin == "123456":
         return {
-            "name": "myroom",
+            "host": "https://jitsi.nordeck.corp",
+            "room": "myroom",
         }
 
     return {}
 
 # ------------------------------------------------------------------------------
-def request_sipjibri(api, session, sip_domain, sip_user, sip_pass, _meeting):
+def request_sipjibri(sip_domain, sip_user, sip_pass, meeting):
     """
     Send a request to component-selector for a SIP-Jibri instance
     """
@@ -120,8 +126,8 @@ def request_sipjibri(api, session, sip_domain, sip_user, sip_pass, _meeting):
         data = {
             "callParams": {
                 "callUrlInfo": {
-                    "baseUrl": "$JITSI_HOST",
-                    "callName": "$JITSI_ROOM"
+                    "baseUrl": meeting.get("host"),
+                    "callName": meeting.get("room")
                 }
             },
             "componentParams": {
@@ -133,6 +139,7 @@ def request_sipjibri(api, session, sip_domain, sip_user, sip_pass, _meeting):
                 "sipClientParams": {
                     "userName": f"{sip_user}@{sip_domain}",
                     "password": f"{sip_pass}",
+                    "contact": f"<sip:{sip_user}@{sip_domain}>",
                     "sipAddress": "sip:jibri@127.0.0.1",
                     "displayName": "Cisco",
                     "autoAnswer": True,
@@ -141,15 +148,34 @@ def request_sipjibri(api, session, sip_domain, sip_user, sip_pass, _meeting):
             }
         }
 
+        api = freeswitch.API()
         url = api.executeString("global_getvar component_selector_url")
         if not url:
             return False
-        freeswitch.consoleLog("info", f"component-selector-url: {url}")
+        freeswitch.consoleLog("info", f"component_selector_url: {url}")
+
+        verify = api.executeString("global_getvar component_verify_certificate")
+        if not verify:
+            verify = True
+        elif verify.lower() == "false":
+            verify = False
+        else:
+            verify = True
+        freeswitch.consoleLog("info", f"component_verify_certificate: {verify}")
 
         json_data = json.dumps(data)
-        res= post(url, data=json_data, headers=headers, timeout=10)
-        if res.status_code == 200:
-            session.sleep(2000)
+        freeswitch.consoleLog("info", f"post data: {json_data}")
+        res= post(
+            url,
+            headers=headers,
+            data=json_data,
+            timeout=10,
+            verify=verify,
+        )
+        json_res = res.json()
+        freeswitch.consoleLog("info", f"post result: {json_res}")
+
+        if json_res.get("componentKey"):
             return True
     except:
         pass
@@ -199,7 +225,7 @@ def remove_expired_extensions():
     """
 
     try:
-        expire_at = datetime.now() - timedelta(minutes=EXPIRE_MINUTES)
+        expire_at = datetime.now() - timedelta(minutes=EXTENSION_EXPIRE_MINUTES)
 
         # Trace SIP-Jibri extension folder and remove expired config files.
         for file in glob(f"{USER_DIR}/sipjibri_*.xml"):
@@ -228,19 +254,11 @@ def invite_sipjibri(session, meeting):
             return None
 
         # Send a request to component-selector for a SIP-Jibri instance
-        okay = request_sipjibri(
-            api,
-            session,
-            sip_domain,
-            sip_user,
-            sip_pass,
-            meeting,
-        )
+        okay = request_sipjibri(sip_domain, sip_user, sip_pass, meeting)
         if not okay:
             return None
 
-        #return sip_user
-        return "1001"
+        return sip_user
     except:
         return None
 
@@ -264,11 +282,6 @@ def handler(session, _args):
             session.hangup()
             return
 
-        # Request is accepted
-        freeswitch.consoleLog("info", "the conference request is accepted\n")
-        session.streamFile("conference/conf-conference_will_start_shortly.wav")
-        session.sleep(500)
-
         # Remove expired extensions
         remove_expired_extensions()
 
@@ -281,6 +294,11 @@ def handler(session, _args):
         if not sip_jibri_extension:
             session.hangup()
             return
+
+        # Request is accepted
+        freeswitch.consoleLog("info", "the conference request is accepted\n")
+        session.streamFile("conference/conf-conference_will_start_shortly.wav")
+        session.sleep(3000)
 
         # Transfer the call to SIP-Jibri extension
         session.transfer(sip_jibri_extension, "XML", "default")
