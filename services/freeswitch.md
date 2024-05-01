@@ -223,6 +223,12 @@ sofia loglevel all 9
 
 ## Python
 
+In _/etc/freeswitch/autoload_configs/modules.conf.xml_
+
+```xml
+<load module="mod_python3"/>
+```
+
 ```bash
 cd /usr/local/lib/python3.11/dist-packages
 mkdir -p mypackage
