@@ -16,10 +16,25 @@ Add /etc/freeswitch/dialplan/public/98_public_sipjibri_dialplan.xml
 Add /etc/freeswitch/dialplan/default/99_default_sipjibri_dialplan.xml
 
 Add the component-selector URL in /etc/freeswitch/vars.xml
-Add component_verify_certificate if its certificate is self-signed
+Add component_selector_verify if its certificate is self-signed
+Add component_selector_token if PROTECTED_SIGNAL_API is set in component-selector
 
   <X-PRE-PROCESS cmd="set" data="component_selector_url=https://domain/path"/>
-  <X-PRE-PROCESS cmd="set" data="component_verify_certificate=false"/>
+  <X-PRE-PROCESS cmd="set" data="component_selector_verify=false"/>
+  <X-PRE-PROCESS cmd="set" data="component_selector_token=eyJhbG..."/>
+
+To generate component_selector_token:
+  PRIVATE_KEY_FILE="/path/to/signal.key"
+
+  HEADER=$(echo -n '{"alg":"RS256","typ":"JWT","kid":"jitsi/signal"}' | \
+    base64 | tr '+/' '-_' | tr -d '=\n')
+  PAYLOAD=$(echo -n '{"iss":"signal","aud":"jitsi-component-selector"}' | \
+    base64 | tr '+/' '-_' | tr -d '=\n')
+  SIGN=$(echo -n "$HEADER.$PAYLOAD" | \
+    openssl dgst -sha256 -binary -sign $PRIVATE_KEY_FILE | \
+    openssl enc -base64 | tr '+/' '-_' | tr -d '=\n')
+
+  TOKEN="$HEADER.$PAYLOAD.$SIGN"
 
 Add "sipjibri-users" folder in /etc/freeswitch/directory/default.xml
 
@@ -46,6 +61,8 @@ import json
 from requests import post
 import freeswitch
 
+ALLOWED_ATTEMPTS = 3
+DISPLAYNAME = "Cisco"
 EXTENSION_EXPIRE_MINUTES = 60
 USER_DIR = "/tmp/sipjibri"
 USER_TPL = """
@@ -104,7 +121,8 @@ def request_meeting_data(pin):
         return {}
 
     # There will be some api request here which gets the meeting details from
-    # Booking Portal by sending the pin number.
+    # the conference mapper (Booking Portal) by sending the pin number.
+    # It returns a hardcoded value for now.
     if pin == "123456":
         return {
             "host": "https://jitsi.nordeck.corp",
@@ -116,7 +134,8 @@ def request_meeting_data(pin):
 # ------------------------------------------------------------------------------
 def request_sipjibri(sip_domain, sip_user, sip_pass, meeting):
     """
-    Send a request to component-selector for a SIP-Jibri instance
+    Send a request to component-selector to activate a SIP-Jibri instance for
+    this session.
     """
 
     try:
@@ -141,7 +160,7 @@ def request_sipjibri(sip_domain, sip_user, sip_pass, meeting):
                     "password": f"{sip_pass}",
                     "contact": f"<sip:{sip_user}@{sip_domain}>",
                     "sipAddress": "sip:jibri@127.0.0.1",
-                    "displayName": "Cisco",
+                    "displayName": DISPLAYNAME,
                     "autoAnswer": True,
                     "autoAnswerTimer": 30
                 }
@@ -150,21 +169,28 @@ def request_sipjibri(sip_domain, sip_user, sip_pass, meeting):
 
         api = freeswitch.API()
         url = api.executeString("global_getvar component_selector_url")
+        freeswitch.consoleLog("info", f"component_selector_url: {url}")
         if not url:
             return False
-        freeswitch.consoleLog("info", f"component_selector_url: {url}")
 
-        verify = api.executeString("global_getvar component_verify_certificate")
+        verify = api.executeString("global_getvar component_selector_verify")
+        freeswitch.consoleLog("info", f"component_selector_verify: {verify}")
         if not verify:
             verify = True
         elif verify.lower() == "false":
             verify = False
         else:
             verify = True
-        freeswitch.consoleLog("info", f"component_verify_certificate: {verify}")
+        freeswitch.consoleLog("info", f"generated verify: {verify}")
 
+        token = api.executeString("global_getvar component_selector_token")
+        freeswitch.consoleLog("debug", f"component_selector_token: {token}")
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+
+        # Post the request
         json_data = json.dumps(data)
-        freeswitch.consoleLog("info", f"post data: {json_data}")
+        freeswitch.consoleLog("debug", f"post data: {json_data}")
         res= post(
             url,
             headers=headers,
@@ -175,6 +201,8 @@ def request_sipjibri(sip_domain, sip_user, sip_pass, meeting):
         json_res = res.json()
         freeswitch.consoleLog("info", f"post result: {json_res}")
 
+        # If componentKey exists in response, this means that SIP-Jibri was
+        # activated.
         if json_res.get("componentKey"):
             return True
     except:
@@ -185,7 +213,8 @@ def request_sipjibri(sip_domain, sip_user, sip_pass, meeting):
 # ------------------------------------------------------------------------------
 def get_meeting(session):
     """
-    Ask the caller for PIN and get the meeting data from API service.
+    Ask the caller for PIN and get the meeting data from API service by using
+    this PIN.
     """
 
     try:
@@ -196,7 +225,7 @@ def get_meeting(session):
         while True:
             # get PIN
             pin = session.getDigits(6, "#", 8000)
-            freeswitch.consoleLog("info", f"PIN NUMBER {i}: {pin}")
+            freeswitch.consoleLog("debug", f"PIN NUMBER {i}: {pin}")
 
             # Completed if there is a valid reply from API service for this PIN
             meeting= request_meeting_data(pin)
@@ -205,7 +234,7 @@ def get_meeting(session):
 
             # Dont continue if there are many failed attempts.
             i += 1
-            if i > 3:
+            if i > ALLOWED_ATTEMPTS:
                 break
 
             # Ask again after the failed attempt.
@@ -222,6 +251,7 @@ def get_meeting(session):
 def remove_expired_extensions():
     """
     Remove expired SIP-Jibri extensions.
+    This is a rutin cleanup process, not directly related with ongoing session.
     """
 
     try:
@@ -239,6 +269,7 @@ def invite_sipjibri(session, meeting):
     """
      - Create a temporary SIP extension only for this session
      - Invite SIP-Jibri by using this extension
+     - Return the extension number if everything went right
     """
 
     try:
@@ -253,7 +284,7 @@ def invite_sipjibri(session, meeting):
         if not create_extension(api, session, sip_domain, sip_user, sip_pass):
             return None
 
-        # Send a request to component-selector for a SIP-Jibri instance
+        # Send a request to component-selector to activate a SIP-Jibri instance
         okay = request_sipjibri(sip_domain, sip_user, sip_pass, meeting)
         if not okay:
             return None
@@ -265,7 +296,7 @@ def invite_sipjibri(session, meeting):
 # ------------------------------------------------------------------------------
 def handler(session, _args):
     """
-    Call handler. This is the main entrypoint.
+    SIP-Jibri handler. This is the main entrypoint.
     """
 
     try:
@@ -275,14 +306,14 @@ def handler(session, _args):
         session.answer()
         session.sleep(2000)
 
-        # Get the meeting info. Cancel the request if no meeting info.
+        # Get the meeting info. Cancel the session if no meeting info.
         # The conference PIN number will be asked during this process.
         meeting = get_meeting(session)
         if not meeting:
             session.hangup()
             return
 
-        # Remove expired extensions
+        # Remove expired extensions (rutin cleanup process)
         remove_expired_extensions()
 
         # Invite SIP-Jibri to the meeting
