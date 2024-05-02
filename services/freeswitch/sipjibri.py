@@ -132,7 +132,7 @@ def request_meeting_data(pin):
     return {}
 
 # ------------------------------------------------------------------------------
-def request_sipjibri(sip_domain, sip_user, sip_pass, meeting):
+def request_sipjibri(sip_domain, sip_port, sip_user, sip_pass, meeting):
     """
     Send a request to component-selector to activate a SIP-Jibri instance for
     this session.
@@ -156,9 +156,9 @@ def request_sipjibri(sip_domain, sip_user, sip_pass, meeting):
             },
             "metadata": {
                 "sipClientParams": {
-                    "userName": f"{sip_user}@{sip_domain}",
+                    "userName": f"{sip_user}@{sip_domain}:{sip_port}",
                     "password": f"{sip_pass}",
-                    "contact": f"<sip:{sip_user}@{sip_domain}>",
+                    "contact": f"<sip:{sip_user}@{sip_domain}:{sip_port}>",
                     "sipAddress": "sip:jibri@127.0.0.1",
                     "displayName": DISPLAYNAME,
                     "autoAnswer": True,
@@ -277,6 +277,7 @@ def invite_sipjibri(session, meeting):
 
         # Generate extension data
         sip_domain = api.executeString("global_getvar domain")
+        sip_port = api.executeString("global_getvar internal_sip_port")
         sip_user = str(int(time() * 1000))[-9:]
         sip_pass = randint(10**8, 10**9 - 1)
 
@@ -285,7 +286,13 @@ def invite_sipjibri(session, meeting):
             return None
 
         # Send a request to component-selector to activate a SIP-Jibri instance
-        okay = request_sipjibri(sip_domain, sip_user, sip_pass, meeting)
+        okay = request_sipjibri(
+            sip_domain,
+            sip_port,
+            sip_user,
+            sip_pass,
+            meeting,
+        )
         if not okay:
             return None
 
