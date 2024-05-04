@@ -180,6 +180,20 @@ Call `extension@domain:5080` as SIP address. For example:
 - `1001@sip.mydomain.corp:5080`
 - `1002@1.2.3.4:5080`
 
+It is possible to set `5060` as external SIP port and `5080` as internal SIP
+port. So, external clients can call without using SIP port since `5060` is
+the default one.
+
+In _/etc/freeswitch/vars.xml_:
+
+```xml
+<X-PRE-PROCESS cmd="set" data="internal_sip_port=5080"/>
+<X-PRE-PROCESS cmd="set" data="internal_tls_port=5081"/>
+...
+<X-PRE-PROCESS cmd="set" data="external_sip_port=5060"/>
+<X-PRE-PROCESS cmd="set" data="external_tls_port=5061"/>
+```
+
 ## Testing
 
 - `9195`: _instant echo_
