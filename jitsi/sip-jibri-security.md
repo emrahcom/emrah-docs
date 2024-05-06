@@ -71,7 +71,7 @@ Heap-based Buffer Overflow
 **RES**: This was fixed in version `1.2.1`. The installed package is
 `1.3.1~dfsg0-1` and it is not vulnerable.
 
-### libnode72
+### nodejs and libnode72
 
 #### CVE-2023-32002
 
@@ -81,6 +81,6 @@ A vulnerability was found in NodeJS. This security issue occurs as the use of
 `Module._load()` can bypass the policy mechanism and require modules outside of
 the `policy.json` definition for a given module.
 
-**RES**: This package is not installed. The installed version of Node.js
+**RES**: `libnode72` is not installed. The installed version of `Node.js`
 doesn't use this package. The installed Node.js is `v20.11.1` (_released on Feb
 13th, 2024_) which has no known security issue.
