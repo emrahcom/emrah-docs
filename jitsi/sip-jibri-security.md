@@ -15,9 +15,9 @@ would not be properly carried.
 - Affected versions: `7.77.0` to and including `7.87`
 - Not affected versions: < `7.77.0` and >= `7.88.0`
 
-Curl is only used to send internal requests to Jibri's internal API. It
-is not used to fetch external sites. HSTS (HTTP Strict Transport Security)
-mechanism is not needed in our case.
+Curl is only used to send internal requests to Jibri's internal API. It is not
+used to fetch external sites. HSTS (HTTP Strict Transport Security) mechanism is
+not needed in our case.
 
 ### libaom0
 
