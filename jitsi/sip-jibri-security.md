@@ -81,6 +81,5 @@ A vulnerability was found in NodeJS. This security issue occurs as the use of
 `Module._load()` can bypass the policy mechanism and require modules outside of
 the `policy.json` definition for a given module.
 
-**RES**: `libnode72` is not installed. The installed version of `Node.js`
-doesn't use this package. The installed Node.js is `v20.11.1` (_released on Feb
-13th, 2024_) which has no known security issue.
+**RES**: `libnode72` is not installed. The installed Node.js is `v20.11.1`
+(_released on Feb 13th, 2024_) which has no known security issue.
