@@ -10,7 +10,7 @@ A flaw was found in the Curl package, where the HSTS mechanism would be ignored
 by subsequent transfers when done on the same command line because the state
 would not be properly carried.
 
-_RES_: Curl is only used to send internal requests to Jibri's internal API. It
+*RES*: Curl is only used to send internal requests to Jibri's internal API. It
 is not used to fetch external sites. HSTS (HTTP Strict Transport Security)
 mechanism is not needed in our case and therefore this issue is not applicable.
 
@@ -25,7 +25,7 @@ resolution of video frames during a multi-threaded encode, a heap overflow may
 occur in `av1_loop_restoration_dealloc()` within `thread_common.c`, leading to a
 denial of service or unauthorized reading of memory.
 
-_RES_: This package is not installed and it doesn't exists in Debian 12 Bookworm
+*RES*: This package is not installed and it doesn't exists in Debian 12 Bookworm
 repository. Currently, we provide `sip-jibri` container based on Debian 12.
 
 ### libblas3
