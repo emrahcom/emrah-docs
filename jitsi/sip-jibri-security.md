@@ -34,10 +34,8 @@ denial of service or unauthorized reading of memory.
 
 **RES**: https://security-tracker.debian.org/tracker/CVE-2023-6879
 
-This package is not installed and it doesn't exist in Debian 12
-Bookworm repository. Currently, we provide `sip-jibri` container based on
-Debian 12.
-
+This package is not installed and it doesn't exist in Debian 12 Bookworm
+repository. Currently, we provide `sip-jibri` container based on Debian 12.
 
 ### libblas3 and liblapack3
 
@@ -54,7 +52,6 @@ portions of its memory.
 
 The installed packages are not vulnerable.
 
-
 ### libdb5.3
 
 #### CVE-2019-8457
@@ -67,8 +64,8 @@ read in the rtreenode() function when handling invalid rtree tables.
 **RES**: https://security-tracker.debian.org/tracker/CVE-2019-8457
 
 Debian repository contains the newer version of this package which is not
-vulnerable. The installed version is `5.3.28+dfsg1-0.8` which is based on
-`3.28` of upstream.
+vulnerable. The installed version is `5.3.28+dfsg1-0.8` which is based on `3.28`
+of upstream.
 
 ### libmysofa1
 
@@ -95,8 +92,8 @@ the `policy.json` definition for a given module.
 
 **RES**: This package comes from the official Node.js repository.
 
-`libnode72` is not installed. The installed Node.js is `v20.11.1`
-(_released on Feb 13th, 2024_) which has no known security issue.
+`libnode72` is not installed. The installed Node.js is `v20.11.1` (_released on
+Feb 13th, 2024_) which has no known security issue.
 
 ### xserver-common, xserver-xorg-core
 
@@ -112,3 +109,19 @@ buttons, leading to a heap overflow if a bigger value was used.
 **RES**: https://security-tracker.debian.org/tracker/CVE-2023-6816
 
 The installed version (`2:21.1.7-3+deb12u7`) is not vulnerable.
+
+### zlib1g
+
+#### CVE-2023-45853
+
+https://www.openwall.com/lists/oss-security/2023/10/20/9
+
+MiniZip in zlib through 1.3 has an integer overflow and resultant heap-based
+buffer overflow in zipOpenNewFileInZip4_64 via a long filename, comment, or
+extra field.
+
+**RES**: https://security-tracker.debian.org/tracker/CVE-2023-45853
+
+This is not applicable since there is no binary affected by this issue in the
+provided container. See
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1054290 for more details.
