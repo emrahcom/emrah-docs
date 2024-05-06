@@ -1,6 +1,6 @@
 ## Critical
 
-### curl
+### curl and libcurl4
 
 #### CVE-2023-23914
 
@@ -39,3 +39,17 @@ An out-of-bounds read flaw was found in the CLARRV, DLARRV, SLARRV, and ZLARRV
 functions in lapack and OpenBLAS. A specially crafted input passed to these
 functions could cause an application using lapack to crash or possibly disclose
 portions of its memory.
+
+**RES**:
+
+### libdb5.3
+
+#### CVE-2019-8457
+
+https://access.redhat.com/security/cve/CVE-2019-8457
+
+SQLite3 from 3.6.0 to and including 3.27.2 is vulnerable to heap out-of-bound
+read in the rtreenode() function when handling invalid rtree tables.
+
+**RES**: Debian repository contains the newer version of this package which is
+not vulnerable. `5.3.28+dfsg1-0.8` which is based on `3.28`.
