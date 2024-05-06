@@ -10,7 +10,9 @@ A flaw was found in the Curl package, where the HSTS mechanism would be ignored
 by subsequent transfers when done on the same command line because the state
 would not be properly carried.
 
-**RES**: The installed version is `7.88.1-10+deb12u5` which is not affected.
+**RES**: https://security-tracker.debian.org/tracker/CVE-2023-23914
+
+The installed version is `7.88.1-10+deb12u5` which is not affected.
 
 - Affected versions: `7.77.0` to and including `7.87`
 - Not affected versions: < `7.77.0` and >= `7.88.0`
@@ -30,9 +32,12 @@ resolution of video frames during a multi-threaded encode, a heap overflow may
 occur in `av1_loop_restoration_dealloc()` within `thread_common.c`, leading to a
 denial of service or unauthorized reading of memory.
 
-**RES**: This package is not installed and it doesn't exist in Debian 12
+**RES**: https://security-tracker.debian.org/tracker/CVE-2023-6879
+
+This package is not installed and it doesn't exist in Debian 12
 Bookworm repository. Currently, we provide `sip-jibri` container based on
 Debian 12.
+
 
 ### libblas3 and liblapack3
 
@@ -45,7 +50,10 @@ functions in lapack and OpenBLAS. A specially crafted input passed to these
 functions could cause an application using lapack to crash or possibly disclose
 portions of its memory.
 
-**RES**:
+**RES**: https://security-tracker.debian.org/tracker/CVE-2021-4048
+
+The installed packages are not vulnerable.
+
 
 ### libdb5.3
 
@@ -56,8 +64,10 @@ https://access.redhat.com/security/cve/CVE-2019-8457
 SQLite3 from 3.6.0 to and including 3.27.2 is vulnerable to heap out-of-bound
 read in the rtreenode() function when handling invalid rtree tables.
 
-**RES**: Debian repository contains the newer version of this package which is
-not vulnerable. The installed version is `5.3.28+dfsg1-0.8` which is based on
+**RES**: https://security-tracker.debian.org/tracker/CVE-2019-8457
+
+Debian repository contains the newer version of this package which is not
+vulnerable. The installed version is `5.3.28+dfsg1-0.8` which is based on
 `3.28` of upstream.
 
 ### libmysofa1
@@ -68,8 +78,10 @@ https://github.com/hoene/libmysofa/pull/166/commits/890400ebd092c574707d0c132124
 
 Heap-based Buffer Overflow
 
-**RES**: This was fixed in version `1.2.1`. The installed package is
-`1.3.1~dfsg0-1` and it is not vulnerable.
+**RES**: https://security-tracker.debian.org/tracker/CVE-2021-3756
+
+This was fixed in version `1.2.1`. The installed package is `1.3.1~dfsg0-1` and
+it is not vulnerable.
 
 ### nodejs and libnode72
 
@@ -81,5 +93,22 @@ A vulnerability was found in NodeJS. This security issue occurs as the use of
 `Module._load()` can bypass the policy mechanism and require modules outside of
 the `policy.json` definition for a given module.
 
-**RES**: `libnode72` is not installed. The installed Node.js is `v20.11.1`
+**RES**: This package comes from the official Node.js repository.
+
+`libnode72` is not installed. The installed Node.js is `v20.11.1`
 (_released on Feb 13th, 2024_) which has no known security issue.
+
+### xserver-common, xserver-xorg-core
+
+#### CVE-2023-6816
+
+https://www.openwall.com/lists/oss-security/2024/01/18/1
+
+Both DeviceFocusEvent and the XIQueryPointer reply contain a bit for each
+logical button currently down. Buttons can be arbitrarily mapped to any value up
+to 255 but the X.Org Server was only allocating space for the device's number of
+buttons, leading to a heap overflow if a bigger value was used.
+
+**RES**: https://security-tracker.debian.org/tracker/CVE-2023-6816
+
+The installed version (`2:21.1.7-3+deb12u7`) is not vulnerable.
