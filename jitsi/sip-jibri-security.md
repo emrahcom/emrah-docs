@@ -52,4 +52,5 @@ SQLite3 from 3.6.0 to and including 3.27.2 is vulnerable to heap out-of-bound
 read in the rtreenode() function when handling invalid rtree tables.
 
 **RES**: Debian repository contains the newer version of this package which is
-not vulnerable. `5.3.28+dfsg1-0.8` which is based on `3.28`.
+not vulnerable. The installed version is `5.3.28+dfsg1-0.8` which is based on
+`3.28` of upstream.
