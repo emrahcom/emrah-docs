@@ -525,7 +525,7 @@ https://security-tracker.debian.org/tracker/CVE-2024-28085
 
 https://security-tracker.debian.org/tracker/CVE-2021-4156
 
-### libsndfile1 CVE-2022-33064
+### libsndfile1 CVE-2022-33064, CVE-2022-33065
 
 **Not fixed but not applicable**
 
@@ -539,3 +539,25 @@ SIP-Jibri. It uses `alsa` as sound system. There is no process in the system
 using this library.
 
 https://security-tracker.debian.org/tracker/CVE-2022-33064
+
+### libsqlite3-0 CVE-2021-31239
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2021-31239
+
+### libsqlite3-0 CVE-2023-7104
+
+**Not fixed but not applicable**
+
+A vulnerability was found in SQLite SQLite3 up to 3.43.0 and classified as
+critical. This issue affects the function sessionReadRecord of the file
+`ext/session/sqlite3session.c` of the component make alltest Handler.
+
+SQLite3 is only used by `chromium` to keep its internal data. There is no
+third-party application using SQLite3 in SIP-Jibri.
+
+It is marked as "moderated" in Red Hat database. It is marked as "minor issue"
+in Debian database.
+
+https://security-tracker.debian.org/tracker/CVE-2023-7104
