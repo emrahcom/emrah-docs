@@ -711,3 +711,29 @@ https://security-tracker.debian.org/tracker/CVE-2024-3205
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2022-4899
+
+### logsave CVE-2022-1304
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-1304
+
+### mount CVE-2024-28085
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-28085
+
+### nodejs CVE-2023-30581, CVE-2023-30589, CVE-2023-30590, CVE-2023-32006
+
+**Not vulnerable for the installed version**
+
+This package comes from the official Node.js repository. The installed Node.js
+is `v20.11.1` (_released on Feb 13th, 2024_) which has no known security issue.
+
+### nodejs CVE-2023-32559, CVE-2024-22019, CVE-2024-27983
+
+**Not vulnerable for the installed version**
+
+This package comes from the official Node.js repository. The installed Node.js
+is `v20.11.1` (_released on Feb 13th, 2024_) which has no known security issue.
