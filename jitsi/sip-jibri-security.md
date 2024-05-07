@@ -344,3 +344,9 @@ https://security-tracker.debian.org/tracker/CVE-2023-29499
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2024-0553
+
+### libgnutls30 CVE-2024-0567
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-0567
