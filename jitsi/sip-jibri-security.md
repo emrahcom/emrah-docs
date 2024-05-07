@@ -220,3 +220,9 @@ https://security-tracker.debian.org/tracker/CVE-2022-48434
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2022-48434
+
+### libblkid1 CVE-2024-28085
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-28085
