@@ -629,3 +629,30 @@ It is marked as "moderated" in Red Hat database. It is marked as "minor issue"
 in Debian database.
 
 https://security-tracker.debian.org/tracker/CVE-2023-52356
+
+### libudev1 CVE-2023-50387
+
+**Not fixed but not applicable**
+
+Certain DNSSEC aspects of the DNS protocol (in RFC 4033, 4034, 4035, 6840, and
+related RFCs) allow remote attackers to cause a denial of service (CPU
+consumption) via one or more DNSSEC responses, aka the "KeyTrap" issue.
+
+DNSSEC is disabled by default in `systemd-resolved` and `systemd-resolved`
+doesn't run in the container.
+
+https://security-tracker.debian.org/tracker/CVE-2023-50387
+
+### libudev1 CVE-2023-50868
+
+**Not fixed but not applicable**
+
+The Closest Encloser Proof aspect of the DNS protocol (in RFC 5155 when RFC 9276
+guidance is skipped) allows remote attackers to cause a denial of service (CPU
+consumption for SHA-1 computations) via DNSSEC responses in a random subdomain
+attack, aka the "NSEC3" issue.
+
+DNSSEC is disabled by default in `systemd-resolved` and `systemd-resolved`
+doesn't run in the container.
+
+https://security-tracker.debian.org/tracker/CVE-2023-50868
