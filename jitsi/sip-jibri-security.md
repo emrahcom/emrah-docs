@@ -158,8 +158,10 @@ https://security-tracker.debian.org/tracker/CVE-2022-43551
 
 It works only when an application tells libcurl it wants to allow HTTP/2 server
 push, and the amount of received headers for the push surpasses the maximum
-allowed limit (1000). There is no such application in the container and curl is
-only used for internal API service.
+allowed limit (1000).
+
+There is no such application in the container and curl is only used for internal
+API service.
 
 https://security-tracker.debian.org/tracker/CVE-2024-2398
 
@@ -281,7 +283,26 @@ https://security-tracker.debian.org/tracker/CVE-2022-43551
 
 It works only when an application tells libcurl it wants to allow HTTP/2 server
 push, and the amount of received headers for the push surpasses the maximum
-allowed limit (1000). There is no such application in the container and curl is
-only used for internal API service.
+allowed limit (1000).
+
+There is no such application in the container and curl is only used for internal
+API service.
 
 https://security-tracker.debian.org/tracker/CVE-2024-2398
+
+### libexpat1 CVE-2023-52425
+
+**Not fixed but not applicable**
+
+It works only when parsing a large token that requires multiple buffer fills to
+complete, Expat has to re-parse the token from start numerous times. This
+process may trigger excessive resource consumption, leading to a denial of
+service.
+
+The service requests the token from known, trusted location (Booking Portal) in
+our case. People cannot send a token directly to the service.
+
+It is marked as "moderated" in Red Hat database.
+
+https://security-tracker.debian.org/tracker/CVE-2023-52425
+https://access.redhat.com/security/cve/CVE-2023-52425
