@@ -125,3 +125,52 @@ extra field.
 This is not applicable since there is no binary affected by this issue in the
 provided container. See
 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1054290 for more details.
+
+## High
+
+### bash CVE-2022-3715
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-3715
+
+### bsdutils CVE-2024-28085
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-28085
+
+### curl CVE-2022-42916
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-42916
+
+### curl CVE-2022-43551
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-43551
+
+### curl CVE-2024-2398
+
+**Not fixed but not applicable**
+
+It works only when an application tells libcurl it wants to allow HTTP/2 server
+push, and the amount of received headers for the push surpasses the maximum
+allowed limit (1000). There is no such server in the container and curl is only
+used for internal API service.
+
+https://security-tracker.debian.org/tracker/CVE-2024-2398
+
+### e2fsprogs CVE-2022-1304
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-1304
+
+### ffmpeg CVE-2022-48434
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-48434
