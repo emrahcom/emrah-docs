@@ -737,3 +737,33 @@ is `v20.11.1` (_released on Feb 13th, 2024_) which has no known security issue.
 
 This package comes from the official Node.js repository. The installed Node.js
 is `v20.11.1` (_released on Feb 13th, 2024_) which has no known security issue.
+
+### openjdk-11-jre-headless, openjdk-17-jre-headless CVE-2024-20918
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-20918
+
+### openjdk-11-jre-headless, openjdk-17-jre-headless CVE-2024-20952
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-20952
+
+### perl-base CVE-2020-16156, CVE-2023-47038
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2020-16156
+https://security-tracker.debian.org/tracker/CVE-2023-47038
+
+### perl-base CVE-2023-31484
+
+**Not fixed but not applicable**
+
+CPAN.pm before 2.35 does not verify TLS certificates when downloading
+distributions over HTTPS.
+
+SIP-Jibri doesn't download any Perl package from CPAN or from somewhere else.
+
+https://security-tracker.debian.org/tracker/CVE-2023-31484
