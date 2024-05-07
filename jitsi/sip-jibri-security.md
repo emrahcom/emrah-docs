@@ -512,3 +512,9 @@ https://security-tracker.debian.org/tracker/CVE-2022-28739
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2022-4743
+
+### libsmartcols1 CVE-2024-28085
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-28085
