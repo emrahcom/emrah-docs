@@ -238,3 +238,15 @@ https://security-tracker.debian.org/tracker/CVE-2024-2961
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2024-2961
+
+### libcaca0 CVE-2021-30498
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2021-30498
+
+### libcaca0 CVE-2021-30499
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2021-30499
