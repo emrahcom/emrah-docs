@@ -767,3 +767,10 @@ distributions over HTTPS.
 SIP-Jibri doesn't download any Perl package from CPAN or from somewhere else.
 
 https://security-tracker.debian.org/tracker/CVE-2023-31484
+
+### ruby-rubygems CVE-2020-36327, CVE-2021-43809
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2020-36327
+https://security-tracker.debian.org/tracker/CVE-2021-43809
