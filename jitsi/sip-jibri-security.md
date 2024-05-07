@@ -158,8 +158,8 @@ https://security-tracker.debian.org/tracker/CVE-2022-43551
 
 It works only when an application tells libcurl it wants to allow HTTP/2 server
 push, and the amount of received headers for the push surpasses the maximum
-allowed limit (1000). There is no such server in the container and curl is only
-used for internal API service.
+allowed limit (1000). There is no such application in the container and curl is
+only used for internal API service.
 
 https://security-tracker.debian.org/tracker/CVE-2024-2398
 
@@ -170,6 +170,28 @@ https://security-tracker.debian.org/tracker/CVE-2024-2398
 https://security-tracker.debian.org/tracker/CVE-2022-1304
 
 ### ffmpeg CVE-2022-48434
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-48434
+
+### libaom0 CVE-2020-0478
+
+**This package is not installed**
+
+### libavcodec58 CVE-2022-48434
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-48434
+
+### libavcodec58 CVE-2022-48434
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-48434
+
+### libavdevice58 CVE-2022-48434
 
 **Not vulnerable for the installed version**
 
