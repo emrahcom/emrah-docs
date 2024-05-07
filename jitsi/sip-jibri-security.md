@@ -573,3 +573,15 @@ https://security-tracker.debian.org/tracker/CVE-2022-1304
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2020-22218
+
+### libswresample3 CVE-2022-48434
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-48434
+
+### libswscale5 CVE-2022-48434
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-48434
