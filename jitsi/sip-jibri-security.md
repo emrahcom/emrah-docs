@@ -518,3 +518,24 @@ https://security-tracker.debian.org/tracker/CVE-2022-4743
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2024-28085
+
+### libsndfile1 CVE-2021-4156
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2021-4156
+
+### libsndfile1 CVE-2022-33064
+
+**Not fixed but not applicable**
+
+An off-by-one error in function `wav_read_header` in `src/wav.c` in
+`libsndfile 1.1.0`, results in a write out of bound, which allows an attacker to
+execute arbitrary code, Denial of Service or other unspecified impacts.
+
+This package is installed because of `libpulse0` dependency and `libpulse0` is
+installed because of `chromium` dependency. But `pulseaudio` is not enabled in
+SIP-Jibri. It uses `alsa` as sound system. There is no process in the system
+using this library.
+
+https://security-tracker.debian.org/tracker/CVE-2022-33064
