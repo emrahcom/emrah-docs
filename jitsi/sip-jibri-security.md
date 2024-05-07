@@ -656,3 +656,9 @@ DNSSEC is disabled by default in `systemd-resolved` and `systemd-resolved`
 doesn't run in the container.
 
 https://security-tracker.debian.org/tracker/CVE-2023-50868
+
+### libuuid1 CVE-2024-28085
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-28085
