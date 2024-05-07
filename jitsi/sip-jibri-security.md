@@ -262,3 +262,26 @@ https://security-tracker.debian.org/tracker/CVE-2023-2603
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2022-1304
+
+### libcurl4 CVE-2022-42916
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-42916
+
+### libcurl4 CVE-2022-43551
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-43551
+
+### libcurl4 CVE-2024-2398
+
+**Not fixed but not applicable**
+
+It works only when an application tells libcurl it wants to allow HTTP/2 server
+push, and the amount of received headers for the push surpasses the maximum
+allowed limit (1000). There is no such application in the container and curl is
+only used for internal API service.
+
+https://security-tracker.debian.org/tracker/CVE-2024-2398
