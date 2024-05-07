@@ -677,7 +677,7 @@ https://security-tracker.debian.org/tracker/CVE-2022-2309
 
 ### libxml2 CVE-2024-25062
 
-**Not fixed but not applicable**
+**Not fixed but difficult to apply**
 
 An issue was discovered in libxml2 before 2.11.7 and 2.12.x before 2.12.5. When
 using the XML Reader interface with DTD validation and XInclude expansion
@@ -690,3 +690,24 @@ It is marked as "moderated" in Red Hat database. It is marked as "minor issue"
 in Debian database.
 
 https://security-tracker.debian.org/tracker/CVE-2024-25062
+
+### libyaml-0-2 CVE-2024-3205
+
+**Not fixed and status is not clear**
+
+A flaw was found in the libyaml library. A specially crafted YAML file can cause
+a heap-based buffer over-read in the `yaml_emitter_emit_flow_sequence_item`
+function in the src/emitter.c file, resulting in denial of service in the
+application linked to the library.
+
+A crafted YAML file is needed in the system to exploit it.
+
+It is marked as "moderated" in Red Hat database.
+
+https://security-tracker.debian.org/tracker/CVE-2024-3205
+
+### libzstd1 CVE-2022-4899
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-4899
