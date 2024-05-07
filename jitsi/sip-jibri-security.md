@@ -364,3 +364,20 @@ It is marked as "moderated" in Red Hat database.
 
 https://security-tracker.debian.org/tracker/CVE-2024-26462
 https://access.redhat.com/security/cve/CVE-2024-26462
+
+### libharfbuzz0b CVE-2023-25193
+
+**Not fixed but not applicable**
+
+A vulnerability was found HarfBuzz. This flaw allows attackers to trigger O(n^2)
+growth via consecutive marks during the process of looking back for base glyphs
+when attaching marks.
+
+An application prepared by an attacker must be installed inside the container to
+exploid this issue.
+
+It is marked as "moderated" in Red Hat database.
+It is marked as "minor issue" in Debian database.
+
+https://security-tracker.debian.org/tracker/CVE-2023-25193
+https://access.redhat.com/security/cve/CVE-2023-25193
