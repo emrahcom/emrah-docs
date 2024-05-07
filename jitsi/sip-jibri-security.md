@@ -488,3 +488,21 @@ https://security-tracker.debian.org/tracker/CVE-2023-50868
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2022-48434
+
+### libruby2.7 CVE-2021-33621
+
+**Not vulnerable for the installed version**
+
+`libruby2.7` is not installed. This is already fixed for `libruby3.1` which is
+installed in SIP-Jibri.
+
+https://security-tracker.debian.org/tracker/CVE-2021-33621
+
+### libruby2.7 CVE-2022-28739
+
+**Not vulnerable for the installed version**
+
+`libruby2.7` is not installed. This is already fixed for `libruby3.1` which is
+installed in SIP-Jibri.
+
+https://security-tracker.debian.org/tracker/CVE-2022-28739
