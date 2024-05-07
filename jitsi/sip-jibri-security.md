@@ -482,3 +482,9 @@ DNSSEC is disabled by default in `systemd-resolved` and `systemd-resolved`
 doesn't run in the container.
 
 https://security-tracker.debian.org/tracker/CVE-2023-50868
+
+### libpostproc55 CVE-2022-48434
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-48434
