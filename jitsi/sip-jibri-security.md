@@ -306,3 +306,9 @@ It is marked as "moderated" in Red Hat database.
 
 https://security-tracker.debian.org/tracker/CVE-2023-52425
 https://access.redhat.com/security/cve/CVE-2023-52425
+
+### libext2fs2 CVE-2022-1304
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-1304
