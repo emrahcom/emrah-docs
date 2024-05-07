@@ -662,3 +662,31 @@ https://security-tracker.debian.org/tracker/CVE-2023-50868
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2024-28085
+
+### libuv1 CVE-2024-24806
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-24806
+
+### libxml2 CVE-2022-2309
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-2309
+
+### libxml2 CVE-2024-25062
+
+**Not fixed but not applicable**
+
+An issue was discovered in libxml2 before 2.11.7 and 2.12.x before 2.12.5. When
+using the XML Reader interface with DTD validation and XInclude expansion
+enabled, processing crafted XML documents can lead to an xmlValidatePopElement
+use-after-free.
+
+A crafted XML file is needed in the system to exploit it.
+
+It is marked as "moderated" in Red Hat database. It is marked as "minor issue"
+in Debian database.
+
+https://security-tracker.debian.org/tracker/CVE-2024-25062
