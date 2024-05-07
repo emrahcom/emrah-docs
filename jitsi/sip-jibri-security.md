@@ -350,3 +350,17 @@ https://security-tracker.debian.org/tracker/CVE-2024-0553
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2024-0567
+
+### libgssapi-krb5-2 CVE-2024-26462
+
+**Not fixed but not applicable**
+
+Kerberos 5 (aka krb5) 1.21.2 contains a memory leak vulnerability.
+
+This package is installed because of multiple dependencies but Kerberos is no
+used in anywhere in SIP-Jibri.
+
+It is marked as "moderated" in Red Hat database.
+
+https://security-tracker.debian.org/tracker/CVE-2024-26462
+https://access.redhat.com/security/cve/CVE-2024-26462
