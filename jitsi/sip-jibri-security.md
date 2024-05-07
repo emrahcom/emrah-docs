@@ -196,3 +196,9 @@ https://security-tracker.debian.org/tracker/CVE-2022-48434
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2022-48434
+
+### libavfilter7 CVE-2022-48434
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-48434
