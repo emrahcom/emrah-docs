@@ -351,7 +351,7 @@ https://security-tracker.debian.org/tracker/CVE-2024-0553
 
 https://security-tracker.debian.org/tracker/CVE-2024-0567
 
-### libgssapi-krb5-2 CVE-2024-26462
+### libgssapi-krb5-2, libk5crypto3, libkrb5-3, libkrb5support0 CVE-2024-26462
 
 **Not fixed but not applicable**
 
@@ -376,8 +376,8 @@ when attaching marks.
 An application prepared by an attacker must be installed inside the container to
 exploid this issue.
 
-It is marked as "moderated" in Red Hat database.
-It is marked as "minor issue" in Debian database.
+It is marked as "moderated" in Red Hat database. It is marked as "minor issue"
+in Debian database.
 
 https://security-tracker.debian.org/tracker/CVE-2023-25193
 https://access.redhat.com/security/cve/CVE-2023-25193
@@ -399,3 +399,15 @@ https://security-tracker.debian.org/tracker/CVE-2024-25448
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2024-25450
+
+### libldap-2.4-2, libldap-2.5-0 CVE-2023-2953
+
+**Not fixed but not applicable**
+
+A vulnerability was found in openldap. This security flaw causes a null pointer
+dereference in `ber_memalloc_x()` function.
+
+This package is installed because of multiple dependencies but `openldap` is not
+used anywhere in SIP-Jibri.
+
+https://security-tracker.debian.org/tracker/CVE-2023-2953
