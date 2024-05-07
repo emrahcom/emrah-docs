@@ -256,3 +256,9 @@ https://security-tracker.debian.org/tracker/CVE-2021-30499
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2023-2603
+
+### libcom-err2 CVE-2022-1304
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-1304
