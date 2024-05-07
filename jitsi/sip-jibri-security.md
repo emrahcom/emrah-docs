@@ -250,3 +250,9 @@ https://security-tracker.debian.org/tracker/CVE-2021-30498
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2021-30499
+
+### libcap2 CVE-2023-2603
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2023-2603
