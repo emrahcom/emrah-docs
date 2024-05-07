@@ -381,3 +381,21 @@ It is marked as "minor issue" in Debian database.
 
 https://security-tracker.debian.org/tracker/CVE-2023-25193
 https://access.redhat.com/security/cve/CVE-2023-25193
+
+### libimlib2 CVE-2024-25447
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-25447
+
+### libimlib2 CVE-2024-25448
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-25448
+
+### libimlib2 CVE-2024-25450
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-25450
