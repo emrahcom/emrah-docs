@@ -318,3 +318,23 @@ https://security-tracker.debian.org/tracker/CVE-2022-1304
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2021-33560
+
+### libgdk-pixbuf-2.0-0, libgdk-pixbuf2.0-common CVE-2022-48622
+
+**Not fixed but not applicable**
+
+In GNOME GdkPixbuf (aka gdk-pixbuf) through 2.42.10, the ANI (Windows animated
+cursor) decoder encounters heap memory corruption (in `ani_load_chunk` in
+io-ani.c) when parsing chunks in a crafted .ani file. A crafted file could allow
+an attacker to overwrite heap metadata, leading to a denial of service or code
+execution attack.
+
+There is no .ani file or animated cursor in our case.
+
+https://security-tracker.debian.org/tracker/CVE-2022-48622
+
+### libglib2.0-0 CVE-2023-29499
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2023-29499
