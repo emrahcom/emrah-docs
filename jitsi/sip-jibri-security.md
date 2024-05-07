@@ -312,3 +312,9 @@ https://access.redhat.com/security/cve/CVE-2023-52425
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2022-1304
+
+### libgcrypt20 CVE-2021-33560
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2021-33560
