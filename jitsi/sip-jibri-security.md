@@ -585,3 +585,17 @@ https://security-tracker.debian.org/tracker/CVE-2022-48434
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2022-48434
+
+### libsystemd0 CVE-2023-50868, CVE-2023-50387
+
+**Not fixed but not applicable**
+
+Certain DNSSEC aspects of the DNS protocol (in RFC 4033, 4034, 4035, 6840, and
+related RFCs) allow remote attackers to cause a denial of service (CPU
+consumption) via one or more DNSSEC responses, aka the "KeyTrap" issue.
+
+DNSSEC is disabled by default in `systemd-resolved` and `systemd-resolved`
+doesn't run in the container.
+
+https://security-tracker.debian.org/tracker/CVE-2023-50387
+https://security-tracker.debian.org/tracker/CVE-2023-50868
