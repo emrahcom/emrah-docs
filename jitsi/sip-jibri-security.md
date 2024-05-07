@@ -774,3 +774,13 @@ https://security-tracker.debian.org/tracker/CVE-2023-31484
 
 https://security-tracker.debian.org/tracker/CVE-2020-36327
 https://security-tracker.debian.org/tracker/CVE-2021-43809
+
+### ruby2.7 CVE-2021-33621, CVE-2022-28739
+
+**Not vulnerable for the installed version**
+
+`ruby2.7` is not installed. `ruby3.1` is installed and these are already fixed
+for it.
+
+https://security-tracker.debian.org/tracker/CVE-2021-33621
+
