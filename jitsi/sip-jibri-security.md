@@ -411,3 +411,17 @@ This package is installed because of multiple dependencies but `openldap` is not
 used anywhere in SIP-Jibri.
 
 https://security-tracker.debian.org/tracker/CVE-2023-2953
+
+### libmount1 CVE-2024-28085
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-28085
+
+### libnode72 CVE-2023-30581, CVE-2023-30589, CVE-2023-30590, CVE-2023-32006
+
+**This package is not installed**
+
+### libnode72 CVE-2023-32559, CVE-2024-22019, CVE-2024-27983
+
+**This package is not installed**
