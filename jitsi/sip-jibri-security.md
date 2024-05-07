@@ -425,3 +425,16 @@ https://security-tracker.debian.org/tracker/CVE-2024-28085
 ### libnode72 CVE-2023-32559, CVE-2024-22019, CVE-2024-27983
 
 **This package is not installed**
+
+### libnss3 CVE-2024-0743
+
+**Not fixed but not applicable**
+
+An unchecked return value in TLS handshake code could have caused a potentially
+exploitable crash. This vulnerability affects Firefox < 122, Firefox ESR <
+115.9, and Thunderbird < 115.9.
+
+This package is installed because of multiple dependencies but it is not
+exploidable since `Firefox` or `Thunderbird` are not installed in SIP-Jibri.
+
+https://security-tracker.debian.org/tracker/CVE-2024-0743
