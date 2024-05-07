@@ -208,3 +208,9 @@ https://security-tracker.debian.org/tracker/CVE-2022-48434
 **Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2022-48434
+
+### libavresample4 CVE-2022-48434
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-48434
