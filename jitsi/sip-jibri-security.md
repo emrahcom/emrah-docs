@@ -506,3 +506,9 @@ https://security-tracker.debian.org/tracker/CVE-2021-33621
 installed in SIP-Jibri.
 
 https://security-tracker.debian.org/tracker/CVE-2022-28739
+
+### libsdl2-2.0-0 CVE-2022-4743
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-4743
