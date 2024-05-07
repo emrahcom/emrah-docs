@@ -797,12 +797,48 @@ https://security-tracker.debian.org/tracker/CVE-2024-28085
 When xdg-mail is configured to use thunderbird for mailto URLs, improper parsing
 of the URL can lead to additional headers being passed to thunderbird that
 should not be included per RFC 2368. An attacker can use this method to create a
-mailto URL that looks safe to users, but will actually attach files when clicked
+mailto URL that looks safe to users, but will actually attach files when
+clicked.
 
 This package is installed because of `chromium` dependency. It is not
-exploitable since there is no Thunderbird` or any mail client in the system.
+exploitable since there is no `Thunderbird` or any mail client in the system.
 
 It is marked as "moderated" in Red Hat database. It is marked as "minor issue"
 in Debian database.
 
 https://security-tracker.debian.org/tracker/CVE-2022-4055
+
+### xserver-common CVE-2023-5574
+
+**Not fixed but not applicable**
+
+A use-after-free flaw was found in xorg-x11-server-Xvfb. This issue occurs in
+Xvfb with a very specific and legacy configuration (a multi-screen setup with
+multiple protocol screens, also known as Zaphod mode). If the pointer is warped
+from a screen 1 to a screen 0, a use-after-free issue may be triggered during
+shutdown or reset of the Xvfb server, allowing for possible escalation of
+privileges or denial of service.
+
+`xvfb` is not installed in SIP-Jibri.
+
+It is marked as "important" in Red Hat database. It is marked as "minor issue"
+in Debian database.
+
+https://security-tracker.debian.org/tracker/CVE-2023-5574
+
+### xserver-common CVE-2024-0229, CVE-2024-0409, CVE-2024-21885, CVE-2024-21886
+
+**Not fixed but not applicable**
+
+https://security-tracker.debian.org/tracker/CVE-2024-0229
+https://security-tracker.debian.org/tracker/CVE-2024-0409
+https://security-tracker.debian.org/tracker/CVE-2024-21885
+https://security-tracker.debian.org/tracker/CVE-2024-21886
+
+### xserver-common CVE-2024-31080, CVE-2024-31081, CVE-2024-31083
+
+**Not fixed but not applicable**
+
+https://security-tracker.debian.org/tracker/CVE-2024-31080
+https://security-tracker.debian.org/tracker/CVE-2024-31081
+https://security-tracker.debian.org/tracker/CVE-2024-31083
