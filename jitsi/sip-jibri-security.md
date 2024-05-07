@@ -599,3 +599,33 @@ doesn't run in the container.
 
 https://security-tracker.debian.org/tracker/CVE-2023-50387
 https://security-tracker.debian.org/tracker/CVE-2023-50868
+
+### libtiff5, libtiff6 CVE-2023-52355
+
+**Not fixed but not applicable**
+
+An out-of-memory flaw was found in libtiff that could be triggered by passing a
+crafted tiff file to the `TIFFRasterScanlineSize64()` API.
+
+This package is installed because of multiple dependencies but TIFF file is not
+used in SIP-Jibri.
+
+It is marked as "moderated" in Red Hat database. It is marked as "minor issue"
+in Debian database.
+
+https://security-tracker.debian.org/tracker/CVE-2023-52355
+
+### libtiff5, libtiff6 CVE-2023-52356
+
+**Not fixed but not applicable**
+
+A segment fault (SEGV) flaw was found in libtiff that could be triggered by
+passing a crafted tiff file to the `TIFFReadRGBATileExt()` API.
+
+This package is installed because of multiple dependencies but TIFF file is not
+used in SIP-Jibri.
+
+It is marked as "moderated" in Red Hat database. It is marked as "minor issue"
+in Debian database.
+
+https://security-tracker.debian.org/tracker/CVE-2023-52356
