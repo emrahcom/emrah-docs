@@ -561,3 +561,15 @@ It is marked as "moderated" in Red Hat database. It is marked as "minor issue"
 in Debian database.
 
 https://security-tracker.debian.org/tracker/CVE-2023-7104
+
+### libss2 CVE-2022-1304
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2022-1304
+
+### libssh2-1 CVE-2020-22218
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2020-22218
