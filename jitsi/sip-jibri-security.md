@@ -808,7 +808,7 @@ in Debian database.
 
 https://security-tracker.debian.org/tracker/CVE-2022-4055
 
-### xserver-common CVE-2023-5574
+### xserver-common, xserver-xorg-core CVE-2023-5574
 
 **Not fixed but not applicable**
 
@@ -826,19 +826,29 @@ in Debian database.
 
 https://security-tracker.debian.org/tracker/CVE-2023-5574
 
-### xserver-common CVE-2024-0229, CVE-2024-0409, CVE-2024-21885, CVE-2024-21886
+### xserver-common, xserver-xorg-core CVE-2024-0229, CVE-2024-0409
 
-**Not fixed but not applicable**
+**Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2024-0229
 https://security-tracker.debian.org/tracker/CVE-2024-0409
+
+### xserver-common, xserver-xorg-core CVE-2024-21885, CVE-2024-21886
+
+**Not vulnerable for the installed version**
+
 https://security-tracker.debian.org/tracker/CVE-2024-21885
 https://security-tracker.debian.org/tracker/CVE-2024-21886
 
-### xserver-common CVE-2024-31080, CVE-2024-31081, CVE-2024-31083
+### xserver-common, xserver-xorg-core CVE-2024-31080, CVE-2024-31081
 
-**Not fixed but not applicable**
+**Not vulnerable for the installed version**
 
 https://security-tracker.debian.org/tracker/CVE-2024-31080
 https://security-tracker.debian.org/tracker/CVE-2024-31081
+
+### xserver-common, xserver-xorg-core CVE-2024-31083
+
+**Not vulnerable for the installed version**
+
 https://security-tracker.debian.org/tracker/CVE-2024-31083
