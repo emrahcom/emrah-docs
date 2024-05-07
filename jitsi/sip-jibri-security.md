@@ -456,7 +456,7 @@ Debian database.
 
 https://security-tracker.debian.org/tracker/CVE-2021-3575
 
-### libpam-systemd CVE-2023-50387
+### libpam-systemd, systemd, systemd-sysv CVE-2023-50387
 
 **Not fixed but not applicable**
 
@@ -469,7 +469,7 @@ doesn't run in the container.
 
 https://security-tracker.debian.org/tracker/CVE-2023-50387
 
-### libpam-systemd CVE-2023-50868
+### libpam-systemd, systemd, systemd-sysv CVE-2023-50868
 
 **Not fixed but not applicable**
 
@@ -630,7 +630,7 @@ in Debian database.
 
 https://security-tracker.debian.org/tracker/CVE-2023-52356
 
-### libudev1 CVE-2023-50387
+### libudev1, udev CVE-2023-50387
 
 **Not fixed but not applicable**
 
@@ -643,7 +643,7 @@ doesn't run in the container.
 
 https://security-tracker.debian.org/tracker/CVE-2023-50387
 
-### libudev1 CVE-2023-50868
+### libudev1, udev CVE-2023-50868
 
 **Not fixed but not applicable**
 
@@ -784,3 +784,25 @@ for it.
 
 https://security-tracker.debian.org/tracker/CVE-2021-33621
 
+### util-linux CVE-2024-28085
+
+**Not vulnerable for the installed version**
+
+https://security-tracker.debian.org/tracker/CVE-2024-28085
+
+### xdg-utils CVE-2022-4055
+
+**Not fixed but not applicable**
+
+When xdg-mail is configured to use thunderbird for mailto URLs, improper parsing
+of the URL can lead to additional headers being passed to thunderbird that
+should not be included per RFC 2368. An attacker can use this method to create a
+mailto URL that looks safe to users, but will actually attach files when clicked
+
+This package is installed because of `chromium` dependency. It is not
+exploitable since there is no Thunderbird` or any mail client in the system.
+
+It is marked as "moderated" in Red Hat database. It is marked as "minor issue"
+in Debian database.
+
+https://security-tracker.debian.org/tracker/CVE-2022-4055
