@@ -247,7 +247,7 @@ apt-get install chromium chromium-sandbox
 `~/.spectrwm.conf`
 
 ```conf
-program[chromium]= chromium --proxy-server="socks5://127.0.0.1:65022" --proxy-bypass-list="localhost;127.0.0.1/8;192.168.0.0/16;172.16.0.0/12;10.0.0.0/8;*mydomain.com;*.mydomain.corp;*.yourdomain.com"
+program[chromium]       = chromium --proxy-server="socks5://127.0.0.1:65022" --proxy-bypass-list="localhost;127.0.0.1/8;192.168.0.0/16;172.16.0.0/12;10.0.0.0/8;*.corp;*.loc;*.local;*.yourdomain.com"
 bind[chromium]   = MOD+shift+c
 ```
 
