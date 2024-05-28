@@ -77,7 +77,7 @@ helm lint .
 Check templates:
 
 ```bash
-helm template --set key=value -f values.my.yaml .
+helm template --set key=value -f values.my.yaml myrelease .
 ```
 
 Deployment:
