@@ -8,3 +8,4 @@ spec:
   resources:
     requests:
       storage: 50Mi
+  volumeName: keycloak-pv1
