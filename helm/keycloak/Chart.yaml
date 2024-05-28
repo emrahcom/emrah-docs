@@ -1,0 +1,6 @@
+apiVersion: v2
+type: application
+appVersion: "24.0.4"
+description: The reference implementation for Keycloak
+name: keycloak
+version: v0.1.0
