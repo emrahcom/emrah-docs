@@ -22,9 +22,9 @@ spec:
         - name: DB_VENDOR
           value: h2
         - name: KEYCLOAK_USER
-          value: {{ .Values.settings.keycloakUser | quote }}
+          value: {{ .Values.keycloak.settings.keycloakUser | quote }}
         - name: KEYCLOAK_PASSWORD
-          value: {{ .Values.settings.keycloakPassword | quote }}
+          value: {{ .Values.keycloak.settings.keycloakPassword | quote }}
         volumeMounts:
         - name: keycloak-data
           mountPath: /opt/keycloak/data
