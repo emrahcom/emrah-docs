@@ -68,6 +68,12 @@ helm version
 
 #### command examples
 
+Lint:
+
+```bash
+helm lint .
+```
+
 Check templates:
 
 ```bash
