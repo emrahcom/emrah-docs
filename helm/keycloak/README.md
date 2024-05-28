@@ -6,10 +6,10 @@ minikube addons enable ingress
 
 helm upgrade --install --namespace default --create-namespace \
   --values values.yaml --wait --debug \
-  keycloak .
+  myrelease .
 
 kubectl get pods
 kubectl get ingress
 
-helm uninstall --namespace default keycloak
+helm uninstall --namespace default myrelease
 ```
