@@ -17,3 +17,5 @@ spec:
   tls:
   - hosts:
     - {{ .Values.keycloak.settings.keycloakHost }}
+    secretName: "{{ .Release.Name }}.{{ .Release.Namespace }}.tls"
+  ingressClassName: {{ .Values.ingress.ingressClassName }}

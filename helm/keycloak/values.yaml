@@ -1,3 +1,6 @@
+ingress:
+  ingressClassName: nginx
+
 keycloak:
   image:
     repository: quay.io/keycloak/keycloak
