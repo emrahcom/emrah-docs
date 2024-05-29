@@ -6,6 +6,7 @@ keycloak:
   settings:
     keycloakAdminUser: admin
     keycloakAdminPassword: admin
+    keycloakHost: id.mydomain.local
 
 pvc:
   size: 50Mi
