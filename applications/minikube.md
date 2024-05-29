@@ -138,6 +138,17 @@ kubectl get pods -A
 kubectl get ingress
 ```
 
+Minikube storage:
+
+```bash
+kubectl get storageclass
+kubectl get pvc
+kubectl get pv
+
+kubectl delete pvc pvc-name
+kubectl delete pv pv-name
+```
+
 #### links
 
 - https://artifacthub.io/
