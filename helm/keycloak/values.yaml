@@ -6,3 +6,6 @@ keycloak:
   settings:
     keycloakUser: admin
     keycloakPassword: admin
+
+pvc:
+  size: 50Mi

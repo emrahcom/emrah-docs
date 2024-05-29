@@ -1,11 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: keycloak-pvc
+  name: {{ include "keycloak.name-pvc" . }}
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 50Mi
-  volumeName: keycloak-pv1
+      storage: {{ .Values.pvc.size | quote }}
