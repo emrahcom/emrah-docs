@@ -8,3 +8,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.pvc.size | quote }}
+  storageClassName: {{ .Values.pvc.storageClassName | quote }}

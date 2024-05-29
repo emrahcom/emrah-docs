@@ -4,8 +4,9 @@ keycloak:
     tag: 24.0.4
     pullPolicy: Always
   settings:
-    keycloakUser: admin
-    keycloakPassword: admin
+    keycloakAdminUser: admin
+    keycloakAdminPassword: admin
 
 pvc:
   size: 50Mi
+  storageClassName: standard
