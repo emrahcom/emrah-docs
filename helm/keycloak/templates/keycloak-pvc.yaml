@@ -4,7 +4,7 @@ metadata:
   name: {{ include "keycloak.name-pvc" . }}
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: {{ .Values.pvc.size | quote }}
