@@ -1,7 +1,7 @@
 ingress:
-  ingressClassName: nginx
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  ingressClassName: nginx
 
 keycloak:
   image:
@@ -14,5 +14,7 @@ keycloak:
     keycloakHost: id.mydomain.local
 
 pvc:
+  annotations:
+    helm.sh/resource-policy: "keep"
   size: 50Mi
   storageClassName: standard

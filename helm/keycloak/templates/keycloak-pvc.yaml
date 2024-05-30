@@ -2,6 +2,10 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ include "keycloak.name-pvc" . }}
+  annotations:
+    {{- with .Values.pvc.annotations }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   accessModes:
     - ReadWriteMany
