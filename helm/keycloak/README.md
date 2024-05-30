@@ -15,3 +15,13 @@ kubectl get pvc
 
 helm uninstall --namespace default myrelease
 ```
+
+PV and PVC are keeped even after uninstall. To delete them permanently:
+
+```bash
+kubectl get pvc
+kubectl delete pvc PVC-Name
+
+kubectl get pvc
+kubectl get pv
+```
