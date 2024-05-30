@@ -15,30 +15,30 @@ spec:
         app: {{ include "keycloak.name-app" . }}
     spec:
       containers:
-      - name: {{ include "keycloak.name-app" . }}
-        image: {{ .Values.keycloak.image.repository }}:{{ .Values.keycloak.image.tag }}
-        imagePullPolicy: {{ .Values.keycloak.image.pullPolicy }}
-        args: ["start-dev"]
-        env:
-        - name: DB_VENDOR
-          value: h2
-        - name: KEYCLOAK_ADMIN
-          value: {{ .Values.keycloak.settings.keycloakAdminUser | quote }}
-        - name: KEYCLOAK_ADMIN_PASSWORD
-          value: {{ .Values.keycloak.settings.keycloakAdminPassword | quote }}
-        - name: KC_PROXY
-          value: "edge"
-        ports:
-          - name: http
-            containerPort: 8080
-        readinessProbe:
-          httpGet:
-            path: /realms/master
-            port: 8080
-        volumeMounts:
-        - name: keycloak-data
-          mountPath: /opt/keycloak/data
+        - name: {{ include "keycloak.name-app" . }}
+          image: {{ .Values.keycloak.image.repository }}:{{ .Values.keycloak.image.tag }}
+          imagePullPolicy: {{ .Values.keycloak.image.pullPolicy }}
+          args: ["start-dev"]
+          env:
+            - name: DB_VENDOR
+              value: h2
+            - name: KEYCLOAK_ADMIN
+              value: {{ .Values.keycloak.settings.keycloakAdminUser | quote }}
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: {{ .Values.keycloak.settings.keycloakAdminPassword | quote }}
+            - name: KC_PROXY
+              value: "edge"
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /realms/master
+              port: 8080
+          volumeMounts:
+            - name: keycloak-data
+              mountPath: /opt/keycloak/data
       volumes:
-      - name: keycloak-data
-        persistentVolumeClaim:
-          claimName: {{ include "keycloak.name-pvc" . }}
+        - name: keycloak-data
+          persistentVolumeClaim:
+            claimName: {{ include "keycloak.name-pvc" . }}

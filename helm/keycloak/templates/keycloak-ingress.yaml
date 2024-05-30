@@ -7,19 +7,19 @@ metadata:
       {{- toYaml . | nindent 4 }}
     {{- end }}
 spec:
-  rules:
-  - host: {{ .Values.keycloak.settings.keycloakHost }}
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: {{ include "keycloak.name-app" . }}
-            port:
-              number: 8080
-  tls:
-  - hosts:
-    - {{ .Values.keycloak.settings.keycloakHost }}
-    secretName: "{{ .Release.Name }}.{{ .Release.Namespace }}.tls"
   ingressClassName: {{ .Values.ingress.ingressClassName }}
+  rules:
+    - host: {{ .Values.keycloak.settings.keycloakHost }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "keycloak.name-app" . }}
+                port:
+                  number: 8080
+  tls:
+    - hosts:
+        - {{ .Values.keycloak.settings.keycloakHost }}
+      secretName: "{{ .Release.Name }}.{{ .Release.Namespace }}.tls"
