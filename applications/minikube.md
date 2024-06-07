@@ -149,6 +149,27 @@ kubectl delete pvc pvc-name
 kubectl delete pv pv-name
 ```
 
+Image pull secret:
+
+First, create a personal access token (classic) in GitHub to be able to pull
+private packages.
+
+```bash
+export GITHUB_TOKEN=...
+echo $GITHUB_TOKEN | \
+  docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+```
+
+This token will go to `~/.docker/config.json`. Then create the secret for
+`Minikube`:
+
+```bash
+kubectl create secret generic regcred \
+  --from-file=.dockerconfigjson=/home/emrah/.docker/config.json \
+  --type=kubernetes.io/dockerconfigjson
+kubectl get secret
+```
+
 #### links
 
 - https://artifacthub.io/
