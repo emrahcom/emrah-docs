@@ -77,7 +77,19 @@ kubectl apply -n argocd \
 
 kubectl get namespaces
 kubectl -n argocd get pods
+kubectl -n argocd port-forward svc/argocd-server 8443:443
 ```
+
+ArgoCD UI:
+
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o json | \
+  jq -r .data.password | base64 --decode
+kubectl -n argocd get svc
+kubectl -n argocd port-forward svc/argocd-server 8443:443
+```
+
+Go to [https://127.0.0.1:8443](https://127.0.0.1:8443). Use `admin` as username.
 
 #### command examples
 
