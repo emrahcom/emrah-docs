@@ -66,6 +66,19 @@ And run it as `user`
 helm version
 ```
 
+#### ArgoCD
+
+Install it using the normal user account:
+
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd \
+  -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+kubectl get namespaces
+kubectl -n argocd get pods
+```
+
 #### command examples
 
 Lint:
