@@ -77,7 +77,6 @@ kubectl apply -n argocd \
 
 kubectl get namespaces
 kubectl -n argocd get pods
-kubectl -n argocd port-forward svc/argocd-server 8443:443
 ```
 
 ArgoCD UI:
