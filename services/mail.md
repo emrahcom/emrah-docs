@@ -605,3 +605,4 @@ the proxy and the mail server are on the same host.
 - [server-world](https://www.server-world.info/en/note?os=Debian_11&p=mail&f=1)
 - [OpenDKIM in Debian Wiki](https://wiki.debian.org/opendkim)
 - [SPF, DKIM, DMARC](https://www.linode.com/docs/guides/configure-spf-and-dkim-in-postfix-on-debian-9/)
+- [Understanding SPF, DKIM, and DMARC](https://github.com/nicanorflavier/spf-dkim-dmarc-simplified)
