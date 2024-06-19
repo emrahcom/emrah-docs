@@ -1,6 +1,6 @@
 # nodejs
 
-Tested on `Debian 11 Bullseye`
+Tested on `Debian 12 Bullseye`
 
 ### packages
 
@@ -8,11 +8,11 @@ run as `root`
 
 ```bash
 wget -qO /tmp/nodesource.gpg.key \
-    https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key
 cat /tmp/nodesource.gpg.key | gpg --dearmor \
     >/usr/share/keyrings/nodesource.gpg
 echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] \
-    https://deb.nodesource.com/node_20.x bullseye main" \
+    https://deb.nodesource.com/node_20.x nodistro main" \
     >/etc/apt/sources.list.d/nodesource.list
 
 apt-get update
