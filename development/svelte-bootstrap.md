@@ -20,8 +20,8 @@ yarn add -D @types/bootstrap
 ## Tooltip
 
 ```javascript
-  import { Tooltip } from "bootstrap";
   import { onMount } from "svelte";
+  import { Tooltip } from "bootstrap";
 
   onMount(() => {
     const elementsWithTooltip = document.querySelectorAll(
