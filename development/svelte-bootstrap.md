@@ -3,7 +3,7 @@
 ## Packages
 
 ```bash
-yarn add @popperjs/core jquery
+yarn add @popperjs/core
 yarn add bootstrap
 yarn add bootstrap-icons
 yarn add -D @types/bootstrap
