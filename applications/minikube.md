@@ -143,6 +143,12 @@ kubectl logs <POD-NAME>
 kubectl logs -f <POD-NAME>
 ```
 
+Ingress logs:
+
+```bash
+kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
+```
+
 File copy:
 
 ```bash
