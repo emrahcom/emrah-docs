@@ -245,12 +245,12 @@ apt-get install pulseaudio-utils
 #### /etc/apt/sources.list.d/nodesource.list
 
 ```
-deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x bookworm main
+deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main
 ```
 
 ```bash
 wget -qO /tmp/nodesource.gpg.key \
-  https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+  https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key
 cat /tmp/nodesource.gpg.key | gpg --dearmor \
   >/usr/share/keyrings/nodesource.gpg
 
