@@ -18,8 +18,8 @@ apt-get install libv4l-dev libsdl2-dev libavcodec-dev libavdevice-dev \
 Run the following as a non-root user:
 
 ```bash
-PJPROJECT_REPO="https://github.com/jitsi/pjproject"
-PJPROJECT_BRANCH="jibri-2.13-dev1"
+PJPROJECT_REPO="https://github.com/jitsi-contrib/pjproject"
+PJPROJECT_BRANCH="sipjibri"
 
 mkdir -p ~/src
 cd ~/src
