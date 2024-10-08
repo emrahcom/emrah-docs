@@ -40,7 +40,7 @@ kubectl version
 
 ##### krew
 
-This is the package management pluging for `kubectl`. Install it as `user`:
+This is the package management plugin for `kubectl`. Install it as `user`:
 
 ```bash
 cd /tmp
