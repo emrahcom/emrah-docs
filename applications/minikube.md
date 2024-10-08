@@ -163,7 +163,14 @@ To attach to a container in `Minicube`:
 
 ```bash
 kubectl get pods
-kubectl exec --stdin --tty <POD-NAME> -- /bin/bash
+kubectl exec -it <POD-NAME> -- /bin/bash
+```
+
+To attach to a container in a specific container:
+
+```bash
+kubectl --kubeconfig ~/.kube/config.mycluster -n mynamespace get pods
+kubectl --kubeconfig ~/.kube/config.mycluster -n mynamespace exec it <POD-NAME> -- /bin/bash
 ```
 
 Port forwarding:
