@@ -10,12 +10,26 @@ Install `Docker`. See [Docker notes](docker.md)
 
 ##### kubectl
 
-Install `kubectl` as `root`
+Install `kubectl` as `root`.
+
+Download Kubernetes GPG key:
 
 ```bash
-VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
-wget -O /tmp/kubectl https://dl.k8s.io/release/$VERSION//bin/linux/amd64/kubectl
-install /tmp/kubectl /usr/local/bin/kubectl
+wget -qO /tmp/kubernetes.gpg.key https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key
+cat /tmp/kubernetes.gpg.key | gpg --dearmor >/usr/share/keyrings/kubernetes.gpg
+```
+
+Create _/etc/apt/sources.list.d/kubernetes.list_:
+
+```
+deb [signed-by=/usr/share/keyrings/kubernetes.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /
+```
+
+Install the package:
+
+```bash
+apt-get update
+apt-get install kubectl
 ```
 
 Run it as `user`
