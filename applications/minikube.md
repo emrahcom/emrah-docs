@@ -38,6 +38,30 @@ Run it as `user`
 kubectl version
 ```
 
+##### krew
+
+This is the package management pluging for `kubectl`. Install it as `user`:
+
+```bash
+cd /tmp
+wget -O krew-linux_amd64.tar.gz \
+  https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-linux_amd64.tar.gz
+tar zxf krew-linux_amd64.tar.gz
+./krew-linux_amd64 install krew
+```
+
+Add `krew` into `PATH`. In `~/.zshrc`:
+
+```
+export PATH=$PATH:~/bin:~/.krew/bin
+```
+
+Test it:
+
+```bash
+kubectl krew
+```
+
 ##### minikube
 
 Install `minikube` as `root`
