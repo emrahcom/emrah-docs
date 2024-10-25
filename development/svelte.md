@@ -1,6 +1,6 @@
 # svelte
 
-Tested on `Debian 11 Bullseye`
+Tested on `Debian 12 Bookworm`
 
 ### packages
 
@@ -16,13 +16,17 @@ run as `user`
 mkdir -p ~/git-repo
 cd ~/git-repo
 
-npm create svelte@latest my-app
+npx sv create myapp
   Ok to proceed? (y) y
-  Which Svelte app template? Skeleton project
-  Add type checking with TypeScript? Yes, using TypeScript syntax
-  Select additional options
-    Add ESLint for code linting
-    Add Prettier for code formatting
+  Which template would you like?
+    SvelteKit minimal
+  Add type checking with Typescript?
+    Yes, using Typescript syntax
+  What would you like to add to your project?
+    prettier
+    eslint
+  Which package manager do you want to install dependencies with?
+    yarn
 
 cd my-app
 yarn install
