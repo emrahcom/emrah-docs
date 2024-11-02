@@ -463,7 +463,7 @@ systemctl restart postfix.service
 - `25/TCP` SMTP
 - `110/TCP` POP3 (closed on firewall)
 - `143/TCP` IMAP
-- `465/TCP` SMTPS (closed on firewall)
+- `465/TCP` SMTPS
 - `587/TCP` SMTP-submission
 - `993/TCP` IMAPS (closed on firewall)
 - `995/TCP` POP3S (closed on firewall, only IMAP STARTTLS allowed)
@@ -472,10 +472,20 @@ systemctl restart postfix.service
 
 ```conf
 table ip eb-nat {
+  set spam {
+    type ipv4_addr
+    flags interval
+    elements = {
+      1.183.13.194,
+    }
+  }
+
   chain prerouting {
+    iif "eth0" ip saddr @spam drop
     iif "eth0" tcp dport 25 dnat to 172.22.22.x
+    iif "eth0" tcp dport 143 dnat to 172.22.22.x
+    iif "eth0" tcp dport 465 dnat to 172.22.22.x
     iif "eth0" tcp dport 587 dnat to 172.22.22.x
-    iif "eth0" tcp dport 993 dnat to 172.22.22.x
   }
 }
 ```
