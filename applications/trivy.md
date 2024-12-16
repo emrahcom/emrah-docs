@@ -22,7 +22,7 @@ trivy --version
 
 trivy image ghcr.io/nordeck/jitsi-keycloak-adapter
 trivy image ghcr.io/nordeck/jitsi-keycloak-adapter \
-  --scanners vuln --severity CRITICAL
+  --scanners vuln --severity HIGH,CRITICAL
 ```
 
 ## Links
