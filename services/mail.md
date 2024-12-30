@@ -610,6 +610,43 @@ pflogsumm -d yesterday /var/log/mail.log
 If there is a proxy for clients, add related IP to the proxy's `/etc/hosts` when
 the proxy and the mail server are on the same host.
 
+### Attacker list
+
+```bash
+journalctl | grep 'SASL PLAIN authentication failed' |
+  cut -d '[' -f3 | cut -d ']' -f1 | sort -n | uniq >/tmp/spam.txt
+
+sed -i 's/$/,/' /tmp/spam.txt
+
+cat spam-previous.txt /tmp/spam.txt | sort -n | \
+  uniq >/tmp/spam-$(date +"%Y%m%d").txt
+```
+
+Use these list as a source in `nftables` to block IPs:
+
+```conf
+table ip eb-nat {
+  set spam {
+    type ipv4_addr
+    flags interval
+    elements = {
+      1.1.1.1,
+      1.1.2.2,
+    }
+  }
+
+  chain prerouting {
+    iif "eth0" ip saddr @spam drop
+    ...
+  }
+```
+
+To monitor, in the mail container:
+
+```bash
+journalctl -f
+```
+
 ### links
 
 - [server-world](https://www.server-world.info/en/note?os=Debian_11&p=mail&f=1)
