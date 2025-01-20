@@ -32,7 +32,9 @@ rm -rf ~/.local/share/linphone
 ### after installation
 
 - Add account
-- Set `audio` devices
+- Set `Registration duration` as 90 sec (see also
+  [FreeSwitch](/services/freeswitch.md) notes)
+- Set `audio` devices (_default looks fine_)
 - Set `video` to `720p`
 - Set `auto answer` to `2000ms`
 - Set `auto answer (with video)`
