@@ -32,9 +32,11 @@ rm -rf ~/.local/share/linphone
 ### after installation
 
 - Add account
+  - Use `TCP`.
 - Set `Registration duration` as 90 sec (see also
   [FreeSwitch](/services/freeswitch.md) notes)
-- Set `audio` devices (_default looks fine_)
+- Set `audio` devices
+  - Disable `G729`. It breaks `Jigasi` communication.
 - Set `video` to `720p`
 - Set `auto answer` to `2000ms`
 - Set `auto answer (with video)`
