@@ -124,9 +124,16 @@ for more details.
 - Update `/etc/freeswitch/directory/default.xml` to customize groups.
 - Update `password` in `/etc/freeswitch/directory/default/*` if needed.
 
-```xml
-<param name="password" value="$${default_password}"/>
-```
+  ```xml
+  <param name="password" value="$${default_password}"/>
+  ```
+- Set `sip-force-contact` for profiles behind a NAT. Linphone needs this to stay
+  connected during the session. Also set Linphone's `Registration duration` to
+  90 sec to keep it alive.
+
+  ```xml
+  <variable name="sip-force-contact" value="NDLB-connectile-dysfunction"/>
+  ```
 
 #### Dialplan
 
@@ -181,8 +188,8 @@ Call `extension@domain:5080` as SIP address. For example:
 - `1002@1.2.3.4:5080`
 
 It is possible to set `5060` as external SIP port and `5080` as internal SIP
-port. So, external clients can call without using SIP port since `5060` is
-the default one.
+port. So, external clients can call without using SIP port since `5060` is the
+default one.
 
 In _/etc/freeswitch/vars.xml_:
 
