@@ -34,7 +34,7 @@ docker run hello-world
 ```bash
 # go to the directory which contains Dockerfile
 cd my-project
-docker image build -t MYTAG .
+docker image build --progress=plain -t MYTAG .
 ```
 
 #### run
