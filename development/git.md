@@ -1,5 +1,21 @@
 # git
 
+### Global gitignore
+
+- Create `~/.config/git/ignore`
+
+  ```
+  *~
+  *.sw?
+  *.log
+  ```
+
+- Set `core.excludesFile`
+
+  ```bash
+  git config --global core.excludesFile $HOME/.config/git/ignore
+  ```
+
 ### github pull request
 
 - Fork the repo using `GitHub` panel
