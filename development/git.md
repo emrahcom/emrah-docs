@@ -98,6 +98,7 @@ To use SSH key for signing
 
 ```bash
 git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/mykey.pub
 ```
 
 #### GPG key
