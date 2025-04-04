@@ -88,6 +88,7 @@ git branch -d fix-my-branch
 
 ```bash
 git push origin --delete fix-my-branch
+git fetch --prune
 ```
 
 ### Signed commit
