@@ -77,6 +77,13 @@ In `.prettierrc`:
 }
 ```
 
+Use `tsconfig.app.json` as `tsconfig.json` for SPA:
+
+```bash
+mv tsconfig.app.json tsconfig.json
+rm tsconfig.node.json
+```
+
 In `index.html`:
 
 ```html
