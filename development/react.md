@@ -84,6 +84,12 @@ mv tsconfig.app.json tsconfig.json
 rm tsconfig.node.json
 ```
 
+Add `base` inti `vite.config.ts` if it will run in a subpath:
+
+```json
+base: '/myapp',
+```
+
 In `index.html`:
 
 ```html
