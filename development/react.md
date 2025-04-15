@@ -30,6 +30,16 @@ yarn add -D prettier
 
 ### Config
 
+In `.dockerignore`:
+
+```
+.git
+build
+dist
+node_modules
+Dockerfile
+```
+
 In `eslint.config.js`:
 
 ```json
@@ -43,14 +53,14 @@ build
 *~
 ```
 
-In `.dockerignore`:
+In `index.html`:
 
-```
-.git
-build
-dist
-node_modules
-Dockerfile
+```html
+<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+<title>My App</title>
+
+<script type="module" src="/src/index.tsx"></script>
 ```
 
 In `.prettierignore`:
@@ -84,19 +94,9 @@ mv tsconfig.app.json tsconfig.json
 rm tsconfig.node.json
 ```
 
-Add `base` inti `vite.config.ts` if it will run in a subpath:
+Add `base` into `vite.config.ts` if it will run in a subpath:
 
 ```json
 base: '/myapp',
-```
-
-In `index.html`:
-
-```html
-<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-
-<title>My App</title>
-
-<script type="module" src="/src/index.tsx"></script>
 ```
 
