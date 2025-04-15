@@ -115,3 +115,56 @@ base: '/myapp',
 ```bash
 mv src/main.tsx src/index.tsx
 ```
+
+### Format
+
+Format files
+
+```bash
+yarn run check
+yarn run format
+```
+
+### Coomands
+
+Install dependencies:
+
+```bash
+yarn install
+```
+
+Format checking:
+
+```bash
+yarn run check
+```
+
+Format:
+
+```bash
+yarn run format
+```
+
+Linter:
+
+```bash
+yarn run lint
+```
+
+Run in dev mode:
+
+```bash
+yarn run dev
+```
+
+Build:
+
+```bash
+yarn run build
+```
+
+Run in preview mode:
+
+```bash
+yarn run preview
+```
