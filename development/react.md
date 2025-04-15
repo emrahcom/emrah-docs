@@ -125,7 +125,7 @@ yarn run check
 yarn run format
 ```
 
-### Coomands
+### Commands
 
 Install dependencies:
 
