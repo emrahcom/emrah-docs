@@ -110,3 +110,8 @@ Add `base` into `vite.config.ts` if it will run in a subpath:
 base: '/myapp',
 ```
 
+`src/`:
+
+```bash
+mv src/main.tsx src/index.tsx
+```
