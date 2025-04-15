@@ -63,6 +63,16 @@ In `index.html`:
 <script type="module" src="/src/index.tsx"></script>
 ```
 
+In `package.json`:
+
+```json
+"name": "my-app",
+
+"check": "prettier --check .",
+"format": "prettier --write .",
+"lint": "prettier --check . && eslint .",
+```
+
 In `.prettierignore`:
 
 ```
