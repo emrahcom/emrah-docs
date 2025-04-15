@@ -40,20 +40,20 @@ node_modules
 Dockerfile
 ```
 
-In `eslint.config.js`:
+Update followings in `eslint.config.js`:
 
 ```
 { ignores: ['build', 'dist', 'node_modules'] },
 ```
 
-In `.gitignore`:
+Add the followings in `.gitignore`:
 
 ```
 build
 *~
 ```
 
-In `index.html`:
+Update followings in `index.html`:
 
 ```html
 <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -63,7 +63,7 @@ In `index.html`:
 <script type="module" src="/src/index.tsx"></script>
 ```
 
-In `package.json`:
+Update and add the followings in `package.json`:
 
 ```
 "name": "my-app",
