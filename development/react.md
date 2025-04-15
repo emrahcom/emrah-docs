@@ -42,13 +42,13 @@ Dockerfile
 
 In `eslint.config.js`:
 
-```json
+```
 { ignores: ['build', 'dist', 'node_modules'] },
 ```
 
 In `.gitignore`:
 
-```json
+```
 build
 *~
 ```
@@ -65,7 +65,7 @@ In `index.html`:
 
 In `package.json`:
 
-```json
+```
 "name": "my-app",
 
 "check": "prettier --check .",
@@ -83,7 +83,7 @@ dist
 
 In `.prettierrc`:
 
-```json
+```
 {
   "semi": true,
   "singleQuote": true,
@@ -106,7 +106,7 @@ rm tsconfig.node.json
 
 Add `base` into `vite.config.ts` if it will run in a subpath:
 
-```json
+```
 base: '/myapp',
 ```
 
