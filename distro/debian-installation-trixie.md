@@ -26,7 +26,7 @@
   - Reserved block: 1%
 - swap
   - at least 8 GB
-  - No swap during the installation.
+  - No swap during the installation
 
 ### base repo
 
