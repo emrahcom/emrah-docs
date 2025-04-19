@@ -271,12 +271,26 @@ fi
 
 ### packages
 
-#### /etc/apt/sources.list
+#### /etc/apt/sources.list.d/debian.sources
 
 ```
-deb http://deb.debian.org/debian/ bookworm main non-free-firmware
-deb http://security.debian.org/debian-security bookworm-security main non-free-firmware
-deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware
+Types: deb
+URIs: http://deb.debian.org/debian/
+Suites: trixie
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: http://security.debian.org/debian-security/
+Suites: trixie-security
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: http://deb.debian.org/debian/
+Suites: trixie-updates
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 ```
 
 ```bash
@@ -293,10 +307,14 @@ apt-get install --install-recommends pipewire-audio
 apt-get install pulseaudio-utils
 ```
 
-#### /etc/apt/sources.list.d/nodesource.list
+#### /etc/apt/sources.list.d/nodesource.sources
 
 ```
-deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main
+Types: deb
+URIs: https://deb.nodesource.com/node_22.x/
+Suites: nodistro
+Components: main
+Signed-By: /usr/share/keyrings/nodesource.gpg
 ```
 
 ```bash
@@ -307,13 +325,18 @@ cat /tmp/nodesource.gpg.key | gpg --dearmor \
 
 apt-get update
 apt-get install nodejs
-npm install npm -g
+
+nodejs --version
 ```
 
-#### /etc/apt/sources.list.d/yarn.list
+#### /etc/apt/sources.list.d/yarn.sources
 
 ```
-deb [signed-by=/usr/share/keyrings/yarn.gpg] https://dl.yarnpkg.com/debian/ stable main
+Types: deb
+URIs: https://dl.yarnpkg.com/debian/
+Suites: stable
+Components: main
+Signed-By: /usr/share/keyrings/yarn.gpg
 ```
 
 ```bash
