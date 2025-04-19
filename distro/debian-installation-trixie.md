@@ -263,10 +263,6 @@ alias ..............="cd ../../../../../../../../../../../../.."
 
 source /usr/share/autojump/autojump.sh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
-
-if [[ -n "$DISPLAY" ]]; then
-  xset r rate 250 40
-fi
 ```
 
 ### packages
@@ -585,6 +581,8 @@ rsync -avhe 'ssh -l emrah' installer ${IP}:~/
 rsync -avhe 'ssh -l emrah' media ${IP}:~/
 rsync -avhe 'ssh -l emrah' nordeck ${IP}:~/
 rsync -avhe 'ssh -l emrah' test ${IP}:~/
+
+rsync -avhe 'ssh -l emrah' .config/chromium* ${IP}:~/.config/
 ```
 
 Testing on the new device:
@@ -653,10 +651,19 @@ modkey = Mod4
 program[lock]           = xtrlock
 program[firefox]        = firefox-esr
 bind[firefox]           = MOD+shift+f
-program[chromium]       = chromium --proxy-server="socks5://127.0.0.1:65022" --proxy-bypass-list="localhost;127.0.0.1/8;192.168.0.0/16;172.16.0.0/12;10.0.0.0/8;*.corp;*.loc;*.local;*.yourdomain.com"
-bind[chromium]          = MOD+shift+c
 program[pavucontrol]    = pavucontrol
 bind[pavucontrol]       = MOD+shift+a
+program[python3]        = x-terminal-emulator -e /usr/bin/python3
+bind[python3]           = MOD+shift+p
+
+program[chromium]       = chromium --user-data-dir=.config/chromium.default --proxy-server="socks5://127.0.0.1:65022" --proxy-bypass-list="localhost;127.0.0.1/8;192.168.0.0/16;172.16.0.0/12;10.0.0.0/8;*.corp;*.loc;*.local;*.internal;*.yourdomain.com;"
+bind[chromium]          = MOD+shift+c
+
+program[chromium.cb]    = chromium --user-data-dir=.config/chromium.conceptboard"
+bind[chromium.cb]       = MOD+shift+m
+
+program[chromium.no]    = chromium --user-data-dir=.config/chromium.nordeck"
+bind[chromium.no]       = MOD+shift+n
 ```
 
 #### .xinitrc
@@ -666,6 +673,15 @@ sudo /usr/bin/systemctl start iwd.service
 #mozilla2ram
 xset r rate 250 40
 exec /usr/bin/spectrwm
+```
+
+#### commands for history
+
+```bash
+sudo brightnessctl
+sudo brightnessctl s 9000
+
+setxkbmap us
 ```
 
 #### other applications
@@ -697,9 +713,9 @@ Use seperate docs
 - Matrix
 - WhatsApp
 - Skype
-- Sleak
+- Speak
 - Exchange
-- Coversation
+- Conversation
 - InterPals
 - ChatGPT
 
