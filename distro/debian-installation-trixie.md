@@ -464,7 +464,7 @@ net.ipv4.ip_forward=1
 #### dnsmasq
 
 ```bash
-apt-get install dnsmasq dns-root-data
+apt-get install dnsmasq
 ```
 
 ##### /etc/dnsmasq.d/my-networks
@@ -508,11 +508,12 @@ nameserver 8.8.8.8
 
 #### /etc/nftables.conf
 
+Use `tab` for spaces.
+
 ```
 #!/usr/sbin/nft -f
 
 flush ruleset
-
 
 table inet filter {
         chain input {
@@ -557,7 +558,7 @@ apt-get install xtrlock unclutter
 apt-get install brightnessctl
 apt-get install scrot
 apt-get install pavucontrol
-apt-get install x11vnc xtightvncviewer freerdp2-x11
+apt-get install x11vnc xtightvncviewer
 apt-get install zathura
 ```
 
@@ -565,7 +566,7 @@ apt-get install zathura
 
 #### archieves
 
-Copy archieves from the curren device.
+Copy archieves from the current device.
 
 ```bash
 IP=192.168.1.124
