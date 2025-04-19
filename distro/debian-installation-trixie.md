@@ -409,6 +409,7 @@ emrah   ALL=NOPASSWD:/usr/bin/brightnessctl
 su -l emrah
 sudo /usr/bin/systemctl start iwd.service
 iwctl
+  station list
   station wlan0 scan
   station wlan0 get-networks
   station wlan0 connect <NETWORK>
@@ -489,19 +490,20 @@ address=/postgres.mydomain.loc/172.17.17.20
 address=/ucs.mydomain.corp/172.18.18.20
 ```
 
+##### /etc/dhcpcd.conf
+
+```
+nohook resolv.conf
+```
+
 ##### /etc/resolv.conf
 
 ```
+nameserver 127.0.0.1
 nameserver 172.17.17.1
 nameserver 172.18.18.1
 nameserver 208.67.222.222
 nameserver 8.8.8.8
-```
-
-##### /etc/dhcp/dhclient.conf
-
-```
-prepend domain-name-servers 127.0.0.1,172.17.17.1,172.18.18.1;
 ```
 
 #### /etc/nftables.conf
@@ -511,66 +513,30 @@ prepend domain-name-servers 127.0.0.1,172.17.17.1,172.18.18.1;
 
 flush ruleset
 
+
 table inet filter {
-  chain input {
-    type filter hook input priority 0; policy accept;
-  }
-
-  chain forward {
-    type filter hook forward priority 0; policy accept;
-  }
-
-  chain output {
-    type filter hook output priority 0; policy accept;
-    iifname "wlan*" ip daddr 172.17.17.0/24 drop
-    iifname "enp*" ip daddr 172.17.17.0/24 drop
-    iifname "wlan*" ip daddr 172.18.18.0/24 drop
-    iifname "enp*" ip daddr 172.18.18.0/24 drop
-    #udp dport 10000 drop
-    #ip daddr 88.255.123.45 udp dport 10000 drop
-  }
+        chain input {
+                type filter hook input priority filter;
+        }
+        chain forward {
+                type filter hook forward priority filter;
+        }
+        chain output {
+                type filter hook output priority filter;
+                iifname "enp*" ip daddr 172.17.17.0/24 drop;
+                iifname "enp*" ip daddr 172.18.18.0/24 drop;
+                iifname "wlan*" ip daddr 172.17.17.0/24 drop;
+                iifname "wlan*" ip daddr 172.18.18.0/24 drop;
+                #udp dport 10000 drop;
+        }
 }
 
 table ip nat {
-  map tcp2ip {
-    type inet_service : ipv4_addr
-    elements = { 3142 : 172.17.17.10 }
-  }
-
-  map tcp2port {
-    type inet_service : inet_service
-    elements = { 3142 : 3142 }
-  }
-
-  map udp2ip {
-    type inet_service : ipv4_addr
-  }
-
-  map udp2port {
-    type inet_service : inet_service
-  }
-
-  chain prerouting {
-    type nat hook prerouting priority 0; policy accept;
-    iifname "wlan*" dnat to tcp dport map @tcp2ip:tcp dport map @tcp2port
-    iifname "wlan*" dnat to udp dport map @udp2ip:udp dport map @udp2port
-    iifname "enp*" dnat to tcp dport map @tcp2ip:tcp dport map @tcp2port
-    iifname "enp*" dnat to udp dport map @udp2ip:udp dport map @udp2port
-  }
-
-  chain postrouting {
-    type nat hook postrouting priority 100; policy accept;
-    ip saddr 172.17.17.0/24 masquerade
-    ip saddr 172.18.18.0/24 masquerade
-  }
-
-  chain output {
-    type nat hook output priority 0; policy accept;
-  }
-
-  chain input {
-    type nat hook input priority 0; policy accept;
-  }
+        chain postrouting {
+                type nat hook postrouting priority filter;
+                ip saddr 172.17.17.0/24 masquerade;
+                ip saddr 172.18.18.0/24 masquerade;
+        }
 }
 ```
 
