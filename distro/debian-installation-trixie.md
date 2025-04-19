@@ -571,11 +571,14 @@ Copy archieves from the current device.
 ```bash
 IP=192.168.1.124
 
+ssh -l emrah ${IP} -- mkdir -p ~/.config ~/bin
+rsync -avhe 'ssh -l emrah' .config/git ${IP}:~/.config/
 rsync -avhe 'ssh -l emrah' .gitconfig ${IP}:~/
 rsync -avhe 'ssh -l emrah' .gnupg ${IP}:~/
 rsync -avhe 'ssh -l emrah' .ssh ${IP}:~/
 rsync -avhe 'ssh -l emrah' archive ${IP}:~/
 rsync -avhe 'ssh -l emrah' bin ${IP}:~/
+rsync -avhe 'ssh -l emrah' conceptboard ${IP}:~/
 rsync -avhe 'ssh -l emrah' downloads ${IP}:~/
 rsync -avhe 'ssh -l emrah' git-repo ${IP}:~/
 rsync -avhe 'ssh -l emrah' installer ${IP}:~/
@@ -593,6 +596,12 @@ ssh-add .ssh/gnu
 
 cd ~/git-repo
 ./pull.sh
+
+cd ~/conceptboard/repo
+./pull.sh
+
+cd ~/nordeck/repo
+./pull.sh
 ```
 
 #### wireplumber
@@ -603,7 +612,7 @@ It should be the native user shell, no `su -l`...
 systemctl --user --now enable wireplumber.service
 ```
 
-#### .Xdefaults-$(hostname)
+#### .Xdefaults
 
 ```
 #UXTerm*background: white
@@ -618,6 +627,10 @@ UXTerm*on2Clicks: word
 UXTerm*on3Clicks: regex [^ \n]+
 UXTerm*on4Clicks: regex [^'"(){}\n]+
 UXTerm*on5Clicks: regex [^\n]+
+```
+
+```bash
+ln -s .Xdefaults ~/.Xdefaults-$(hostname)
 ```
 
 #### .spectrwm.conf
