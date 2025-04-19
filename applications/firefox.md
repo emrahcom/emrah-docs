@@ -22,7 +22,6 @@ systemctl daemon-reload
 
 ### ~/bin/mozilla2disk
 
-
 ```bash
 #!/bin/bash
 
@@ -45,9 +44,11 @@ mkdir -p /var/cache/browser/mozilla.cache
 cp -arp ~/archive/browser/mozilla.cache/* /var/cache/browser/mozilla.cache/
 ```
 
-### Links
+### Links and permissions
 
 ```bash
+chmod 700 ~/bin/mozilla2disk ~/bin/mozilla2ram
+
 mkdir -p ~/archive/browser
 
 rm -rf ~/.mozilla
