@@ -498,6 +498,7 @@ nohook resolv.conf
 nameserver 127.0.0.1
 nameserver 172.17.17.1
 nameserver 172.18.18.1
+nameserver 1.1.1.1
 nameserver 208.67.222.222
 nameserver 8.8.8.8
 ```
