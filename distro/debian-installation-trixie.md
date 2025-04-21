@@ -263,6 +263,10 @@ alias ..............="cd ../../../../../../../../../../../../.."
 
 source /usr/share/autojump/autojump.sh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+if [[ -n "$DISPLAY" ]]; then
+  xset r rate 250 40
+fi
 ```
 
 ### packages
