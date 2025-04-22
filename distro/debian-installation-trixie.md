@@ -542,6 +542,13 @@ table ip nat {
 }
 ```
 
+Enable and start the service:
+
+```bash
+systemctl enable nftables
+systemctl start nftables
+```
+
 ### applications
 
 #### desktop
