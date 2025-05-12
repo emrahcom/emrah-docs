@@ -4,21 +4,76 @@ Tested on `Debian 13 Trixie`
 
 #### Installation
 
-##### Docker
+##### Libvirt or Docker
 
 Install `libvirt` for `kvm2` driver. See [Libvirt notes](libvirt.md)
+
 Install `Docker` for `docker` driver. See [Docker notes](docker-trixie.md)
 
 If `kvm2` is selected then overwrite `libvirt-guests` unit to reload `nftables`.
 Otherwise `dnat` rules to `minikube` doesn't work. Docker doesn't work correctly
-with `nftables`.
+with `nftables`. So, `kvm2` is a better option if there are external clients.
 
-`/etc/systemd/system/libvirt-guests.service.d/override.conf`:
+_/etc/systemd/system/libvirt-guests.service.d/override.conf_:
 
 ```
 [Service]
 ExecStartPost=sleep 3
 ExecStartPost=systemctl reload nftables.service
+```
+
+_/etc/nftables.conf_:
+
+```
+#!/usr/sbin/nft -f
+
+flush ruleset
+
+table inet filter {
+  chain input {
+    type filter hook input priority filter;
+    policy accept;
+  }
+
+  chain forward {
+    type filter hook forward priority filter;
+    policy accept;
+  }
+
+  chain output {
+    type filter hook output priority filter;
+    policy accept;
+  }
+}
+
+table ip nat {
+  chain prerouting {
+    type nat hook prerouting priority 0; policy accept;
+      iif "enp1s0" tcp dport 80 dnat to 192.168.39.27
+      iif "enp1s0" tcp dport 443 dnat to 192.168.39.27
+      iif "enp1s0" tcp dport 30000-32767 dnat to 192.168.39.27
+      iif "enp1s0" udp dport 30000-32767 dnat to 192.168.39.27
+  }
+
+  chain postrouting {
+    type nat hook postrouting priority 100; policy accept;
+    ip saddr 192.168.39.0/24 masquerade
+  }
+
+  chain output {
+    type nat hook output priority 0; policy accept;
+  }
+
+  chain input {
+    type nat hook input priority 0; policy accept;
+  }
+}
+```
+
+_/etc/sysctl.d/90-ip-forward.conf_:
+
+```
+net.ipv4.ip_forward=1
 ```
 
 ##### kubectl

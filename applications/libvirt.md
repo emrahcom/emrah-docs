@@ -25,6 +25,7 @@ virt-manager
 ### Files
 
 Machines are in `/etc/libvirt/qemu/`.
+
 Images are in `/etc/libvirt/qemu/images/`.
 
 ### Debian guest machine
