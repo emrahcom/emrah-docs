@@ -94,6 +94,13 @@ kubectl get pods -A
 kubectl get all
 ```
 
+Enable `ingress`:
+
+```bash
+minikube addons list
+minikube addons enable ingress
+```
+
 To delete all local clusters
 
 ```bash
