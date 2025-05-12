@@ -6,7 +6,8 @@ Tested on `Debian 13 Trixie`
 
 ##### Docker
 
-Install `Docker`. See [Docker notes](docker-trixie.md)
+Install `libvirt` for `kvm2` driver. See [Libvirt notes](libvirt.md)
+Install `Docker` for `docker` driver. See [Docker notes](docker-trixie.md)
 
 ##### kubectl
 
