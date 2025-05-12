@@ -9,6 +9,18 @@ Tested on `Debian 13 Trixie`
 Install `libvirt` for `kvm2` driver. See [Libvirt notes](libvirt.md)
 Install `Docker` for `docker` driver. See [Docker notes](docker-trixie.md)
 
+If `kvm2` is selected then overwrite `libvirt-guests` unit to reload `nftables`.
+Otherwise `dnat` rules to `minikube` doesn't work. Docker doesn't work correctly
+with `nftables`.
+
+`/etc/systemd/system/libvirt-guests.service.d/override.conf`:
+
+```
+[Service]
+ExecStartPost=sleep 3
+ExecStartPost=systemctl reload nftables.service
+```
+
 ##### kubectl
 
 Install `kubectl` as `root`.
