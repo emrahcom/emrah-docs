@@ -178,6 +178,15 @@ Uninstall:
 helm uninstall --namespace default <RELEASE-NAME>
 ```
 
+Repo:
+
+```bash
+helm repo --help
+helm repo list
+helm repo add jitsi https://jitsi-contrib.github.io/jitsi-helm/
+helm repo remove jitsi
+```
+
 To attach to a container in `Minicube`:
 
 ```bash
