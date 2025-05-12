@@ -2,7 +2,7 @@
 
 Tested on `Debian 13 Trixie` with `minikube`.
 
-## Cluster
+### Cluster
 
 Start `minikube`:
 
@@ -10,7 +10,7 @@ Start `minikube`:
 minukube start
 ```
 
-## Helm Chart Repository
+### Helm Chart Repository
 
 Add `jitsi-helm` repo:
 
