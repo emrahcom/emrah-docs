@@ -17,7 +17,6 @@ Add `jitsi-helm` repo:
 ```bash
 helm repo list
 helm repo add jitsi https://jitsi-contrib.github.io/jitsi-helm
-helm install myjitsi jitsi/jitsi-meet
 ```
 
 ### Deployment
