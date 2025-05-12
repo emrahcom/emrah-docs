@@ -1,28 +1,40 @@
 ## minikube & kubectl & helm
 
-Tested on `Debian 11 Bullseye`
+Tested on `Debian 13 Trixie`
 
 #### Installation
 
 ##### Docker
 
-Install `Docker`. See [Docker notes](docker.md)
+Install `Docker`. See [Docker notes](docker-trixie.md)
 
 ##### kubectl
 
 Install `kubectl` as `root`.
 
+Learn the available version:
+
+```bash
+VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt  | cut -d '.' -f1-2)
+echo $VERSION
+```
+
 Download Kubernetes GPG key:
 
 ```bash
-wget -qO /tmp/kubernetes.gpg.key https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key
+wget -qO /tmp/kubernetes.gpg.key https://pkgs.k8s.io/core:/stable:/$VERSION/deb/Release.key
 cat /tmp/kubernetes.gpg.key | gpg --dearmor >/usr/share/keyrings/kubernetes.gpg
 ```
 
-Create _/etc/apt/sources.list.d/kubernetes.list_:
+Create _/etc/apt/sources.list.d/kubernetes.sources_. Update the version
+according the latest release:
 
 ```
-deb [signed-by=/usr/share/keyrings/kubernetes.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /
+Types: deb
+URIs: https://pkgs.k8s.io/core:/stable:/v1.33/deb/
+Suites: /
+Components:
+Signed-By: /usr/share/keyrings/kubernetes.gpg
 ```
 
 Install the package:
