@@ -18,3 +18,7 @@ Add `jitsi-helm` repo:
 helm repo list
 helm repo add jitsi https://jitsi-contrib.github.io/jitsi-helm/
 ```
+
+### Links
+
+- https://github.com/jitsi-contrib/jitsi-helm
