@@ -12,70 +12,48 @@ Install `libvirt` for `kvm2` driver. See [Libvirt notes](libvirt.md)
 
 Install `Docker` for `docker` driver. See [Docker notes](docker-trixie.md)
 
-If `kvm2` is selected then overwrite `libvirt-guests` unit to reload `nftables`.
-Otherwise `dnat` rules to `minikube` doesn't work. Docker doesn't work correctly
-with `nftables`. So, `kvm2` is a better option if there are external clients.
-
-_**/etc/systemd/system/libvirt-guests.service.d/override.conf**_
-
-```
-[Service]
-ExecStartPost=sleep 3
-ExecStartPost=systemctl reload nftables.service
-```
-
-_**/etc/nftables.conf**_
-
-```
-#!/usr/sbin/nft -f
-
-flush ruleset
-
-table inet filter {
-  chain input {
-    type filter hook input priority filter;
-    policy accept;
-  }
-
-  chain forward {
-    type filter hook forward priority filter;
-    policy accept;
-  }
-
-  chain output {
-    type filter hook output priority filter;
-    policy accept;
-  }
-}
-
-table ip nat {
-  chain prerouting {
-    type nat hook prerouting priority 0; policy accept;
-      iif "enp1s0" tcp dport 80 dnat to 192.168.39.27
-      iif "enp1s0" tcp dport 443 dnat to 192.168.39.27
-      iif "enp1s0" tcp dport 30000-32767 dnat to 192.168.39.27
-      iif "enp1s0" udp dport 30000-32767 dnat to 192.168.39.27
-  }
-
-  chain postrouting {
-    type nat hook postrouting priority 100; policy accept;
-    ip saddr 192.168.39.0/24 masquerade
-  }
-
-  chain output {
-    type nat hook output priority 0; policy accept;
-  }
-
-  chain input {
-    type nat hook input priority 0; policy accept;
-  }
-}
-```
+Looks like `kvm2` is a better option if there are external clients. Use
+`iptables` for port-fowarding, not `nftables`...
 
 _**/etc/sysctl.d/90-ip-forward.conf**_
 
 ```
 net.ipv4.ip_forward=1
+```
+
+_**/etc/systemd/system/minikube-iptables.service**_
+
+```
+[Unit]
+Description=Minikube Iptables Rules
+After=network-online.target
+After=libvirtd.service
+After=libvirt-guest.service
+
+[Service]
+Type=oneshot
+Environment=MINIKUBE_IP=192.168.39.58
+Environment=INTERFACE=enp1s0
+ExecStartPre=sleep 3
+ExecStartPre=iptables -I FORWARD -p tcp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
+ExecStartPre=iptables -I FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 443 -j DNAT --to ${MINIKUBE_IP}
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30000:30099 -j DNAT --to ${MINIKUBE_IP}
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30101:32767 -j DNAT --to ${MINIKUBE_IP}
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p udp --dport 30000:32767 -j DNAT --to ${MINIKUBE_IP}
+ExecStartPre=iptables -t nat -I POSTROUTING -s ${MINIKUBE_IP} -o ${INTERFACE} -j MASQUERADE
+ExecStart=true
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable and start the service:
+
+```bash
+systemctl daemon-reload
+systemctl enable minikube-iptables.service
+systemctl start minikube-iptables.service
 ```
 
 ### kubectl
