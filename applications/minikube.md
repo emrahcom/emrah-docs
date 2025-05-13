@@ -121,8 +121,8 @@ kubectl version
 
 ### krew
 
-This is the package management plugin for `kubectl`. Don't install it if really
-needed. Install it as `user`:
+This is the package management plugin for `kubectl`. Don't install it if not
+really needed. Install it as `user`:
 
 ```bash
 cd /tmp
