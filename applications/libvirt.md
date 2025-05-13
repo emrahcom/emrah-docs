@@ -8,6 +8,13 @@ Tested on `Debian Bookworm`.
 apt-get install virt-manager --install-recommends
 ```
 
+For VM:
+
+```bash
+apt-get install virt-manager --no-install-recommends
+apt-get install libvirt-daemon-system libvirt-clients
+```
+
 ### configuration
 
 ```bash
