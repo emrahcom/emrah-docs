@@ -94,7 +94,7 @@ wget -qO /tmp/kubernetes.gpg.key https://pkgs.k8s.io/core:/stable:/$VERSION/deb/
 cat /tmp/kubernetes.gpg.key | gpg --dearmor >/usr/share/keyrings/kubernetes.gpg
 ```
 
-Create the source file. Update the version according the latest release.
+Create the source file. Update the version according to the latest release.
 
 _**/etc/apt/sources.list.d/kubernetes.sources**_
 
