@@ -113,7 +113,7 @@ apt-get update
 apt-get install kubectl
 ```
 
-Run it as `user`
+Run it as `user`:
 
 ```bash
 kubectl version
