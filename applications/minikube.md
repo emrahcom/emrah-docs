@@ -14,7 +14,7 @@ If `kvm2` is selected then overwrite `libvirt-guests` unit to reload `nftables`.
 Otherwise `dnat` rules to `minikube` doesn't work. Docker doesn't work correctly
 with `nftables`. So, `kvm2` is a better option if there are external clients.
 
-_**/etc/systemd/system/libvirt-guests.service.d/override.conf**_:
+_**/etc/systemd/system/libvirt-guests.service.d/override.conf**_
 
 ```
 [Service]
@@ -22,7 +22,7 @@ ExecStartPost=sleep 3
 ExecStartPost=systemctl reload nftables.service
 ```
 
-_**/etc/nftables.conf**_:
+_**/etc/nftables.conf**_
 
 ```
 #!/usr/sbin/nft -f
@@ -70,7 +70,7 @@ table ip nat {
 }
 ```
 
-_/etc/sysctl.d/90-ip-forward.conf_:
+_**/etc/sysctl.d/90-ip-forward.conf**_
 
 ```
 net.ipv4.ip_forward=1
@@ -94,8 +94,9 @@ wget -qO /tmp/kubernetes.gpg.key https://pkgs.k8s.io/core:/stable:/$VERSION/deb/
 cat /tmp/kubernetes.gpg.key | gpg --dearmor >/usr/share/keyrings/kubernetes.gpg
 ```
 
-Create _/etc/apt/sources.list.d/kubernetes.sources_. Update the version
-according the latest release:
+Create the source file. Update the version according the latest release.
+
+_**/etc/apt/sources.list.d/kubernetes.sources**_
 
 ```
 Types: deb
