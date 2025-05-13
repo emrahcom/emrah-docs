@@ -171,7 +171,7 @@ minikube addons list
 minikube addons enable ingress
 ```
 
-To delete all local clusters
+To delete all local clusters:
 
 ```bash
 minikube delete --all
