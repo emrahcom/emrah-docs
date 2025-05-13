@@ -37,6 +37,8 @@ Environment=INTERFACE=enp1s0
 ExecStartPre=sleep 3
 ExecStartPre=iptables -I FORWARD -p tcp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
 ExecStartPre=iptables -I FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
+ExecStartPre=iptables -I FORWARD -p udp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
+ExecStartPre=iptables -I FORWARD -p udp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 443 -j DNAT --to ${MINIKUBE_IP}
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30000:30099 -j DNAT --to ${MINIKUBE_IP}
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30101:32767 -j DNAT --to ${MINIKUBE_IP}
