@@ -2,9 +2,9 @@
 
 Tested on `Debian 13 Trixie`
 
-### Installation
+## Installation
 
-#### Libvirt or Docker
+### Libvirt or Docker
 
 Install `libvirt` for `kvm2` driver. See [Libvirt notes](libvirt.md)
 
@@ -76,7 +76,7 @@ _/etc/sysctl.d/90-ip-forward.conf_:
 net.ipv4.ip_forward=1
 ```
 
-#### kubectl
+### kubectl
 
 Install `kubectl` as `root`.
 
@@ -118,7 +118,7 @@ Run it as `user`
 kubectl version
 ```
 
-#### krew
+### krew
 
 This is the package management plugin for `kubectl`. Don't install it if really
 needed. Install it as `user`:
@@ -143,7 +143,7 @@ Test it:
 kubectl krew
 ```
 
-#### minikube
+### minikube
 
 Install `minikube` as `root`
 
@@ -176,7 +176,7 @@ To delete all local clusters
 minikube delete --all
 ```
 
-#### helm
+### helm
 
 Install `helm` as `root`
 
@@ -192,7 +192,7 @@ And run it as `user`
 helm version
 ```
 
-### ArgoCD
+## ArgoCD
 
 Install it using the normal user account:
 
@@ -216,7 +216,7 @@ kubectl -n argocd port-forward svc/argocd-server 8443:443
 
 Go to [https://127.0.0.1:8443](https://127.0.0.1:8443). Use `admin` as username.
 
-### command examples
+## command examples
 
 Lint:
 
@@ -342,6 +342,6 @@ kubectl create secret generic regcred \
 kubectl get secret
 ```
 
-### links
+## links
 
 - https://artifacthub.io/
