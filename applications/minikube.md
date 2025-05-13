@@ -1,6 +1,8 @@
 # minikube & kubectl & helm
 
-Tested on `Debian 13 Trixie`
+Tested on `Debian 13 Trixie`.
+
+Set the hostname as `minikube` if this is a VM.
 
 ## Installation
 
