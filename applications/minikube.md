@@ -45,6 +45,18 @@ ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30101:
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p udp --dport 30000:32767 -j DNAT --to ${MINIKUBE_IP}
 ExecStartPre=iptables -t nat -I POSTROUTING -s ${MINIKUBE_IP} -o ${INTERFACE} -j MASQUERADE
 ExecStart=true
+RemainAfterExit=yes
+ExecStop=true
+ExecStopPost=iptables -t nat -D POSTROUTING -s ${MINIKUBE_IP} -o ${INTERFACE} -j MASQUERADE
+ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p udp --dport 30000:32767 -j DNAT --to ${MINIKUBE_IP}
+ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 30101:32767 -j DNAT --to ${MINIKUBE_IP}
+ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 30000:30099 -j DNAT --to ${MINIKUBE_IP}
+ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 443 -j DNAT --to ${MINIKUBE_IP}
+ExecStopPost=iptables -D FORWARD -p udp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
+ExecStopPost=iptables -D FORWARD -p udp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
+ExecStopPost=iptables -D FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
+ExecStopPost=iptables -D FORWARD -p tcp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
+
 
 [Install]
 WantedBy=multi-user.target
