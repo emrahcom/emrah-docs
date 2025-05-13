@@ -146,7 +146,7 @@ kubectl krew
 
 ### minikube
 
-Install `minikube` as `root`
+Install `minikube` as `root`:
 
 ```bash
 wget -O /tmp/minikube \
@@ -154,7 +154,7 @@ wget -O /tmp/minikube \
 install /tmp/minikube /usr/local/bin/minikube
 ```
 
-And start it as `user`
+And start it as `user`:
 
 ```bash
 minikube start
@@ -179,7 +179,7 @@ minikube delete --all
 
 ### helm
 
-Install `helm` as `root`
+Install `helm` as `root`:
 
 ```bash
 wget -O /tmp/get_helm.sh \
@@ -187,7 +187,7 @@ wget -O /tmp/get_helm.sh \
 bash /tmp/get_helm.sh
 ```
 
-And run it as `user`
+And run it as `user`:
 
 ```bash
 helm version
