@@ -41,7 +41,7 @@ To show the default `values.yaml`:
 helm show values charts/jitsi-meet-1.4.1.tgz
 ```
 
-A few lines from our `myvalues.yaml`:
+A few lines from the custom `myvalues.yaml`:
 
 ```yaml
 jitsi:
