@@ -102,6 +102,18 @@ poweroff
 
 ### Shrink
 
+For a better result, run the following commands inside VM before shrinking:
+
+```bash
+dd if=/dev/zero of=/zero.file bs=1M status=progress
+rm /zero.file
+sync
+poweroff
+```
+
+`-c` is an optional flag for compressing. Run without `-c` for a quicker but
+less aggresive reducing:
+
 ```bash
 cd /var/lib/libvirt/images
 
