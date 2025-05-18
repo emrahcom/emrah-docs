@@ -57,7 +57,6 @@ ExecStopPost=iptables -D FORWARD -p udp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACC
 ExecStopPost=iptables -D FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
 ExecStopPost=iptables -D FORWARD -p tcp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
 
-
 [Install]
 WantedBy=multi-user.target
 ```
