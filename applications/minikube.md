@@ -70,6 +70,12 @@ systemctl enable minikube-iptables.service
 systemctl start minikube-iptables.service
 ```
 
+### packages
+
+```bash
+apt-get install curl gnupg
+```
+
 ### kubectl
 
 Install `kubectl` as `root`.
