@@ -1,6 +1,6 @@
 ## bluetoothctl
 
-It is available by default in most cases.
+It is available by default in most cases. In Debian Trixie:
 
 ```bash
 dpkg -l '*blue*' | egrep '^ii'
