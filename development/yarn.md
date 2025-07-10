@@ -18,3 +18,21 @@ apt-get install yarn
 
 yarn --version
 ```
+
+### Commands
+
+##### install
+
+Install packages
+
+```bash
+yarn install
+```
+
+##### outdated
+
+Show outdated packages:
+
+```bash
+yarn outdated
+```
