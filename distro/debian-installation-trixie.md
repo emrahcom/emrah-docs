@@ -501,7 +501,7 @@ address=/ucs.mydomain.corp/172.18.18.20
 nohook resolv.conf
 ```
 
-##### /etc/resolv.conf
+##### /etc/resolv.conf.head
 
 ```
 nameserver 127.0.0.1
