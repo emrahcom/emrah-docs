@@ -716,7 +716,7 @@ Use seperate docs
 
 - em-sock
 - em-vpn
-- firefox config
+- [firefox config](/applications/firefox.md)
 - thunderbird
 - [docker](/applications/docker-trixie.md)
 - [libvirt](/applications/libvirt.md)
