@@ -24,6 +24,7 @@ cd scrcpy
 bash install_release.sh
   # ctrl+c in sudo line
 cp build-auto/app/scrcpy ~/bin/
+chmod 700 ~/bin/scrcpy
 ```
 
 As `root`:
@@ -32,6 +33,8 @@ As `root`:
 mkdir -p /usr/local/share/scrcpy
 cp /home/emrah/git-repo/scrcpy/build-auto/server/scrcpy-server \
   /usr/local/share/scrcpy/
+
+# chmod ?
 ```
 
 #### Enabling the debug mode on phone
