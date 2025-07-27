@@ -9,7 +9,11 @@ chmod 700 /home/vpn
 
 mkdir /home/vpn/.ssh
 chmod 700 /home/vpn/.ssh
+
 cp em-vpn em-vpn.pub /home/vpn/.ssh/
+cp /root/.ssh/authorized_keys /home/vpn/.ssh/
+chmod 644 /home/vpn/.ssh/authorized_keys
+
 chown vpn:vpn /home/vpn/.ssh -R
 ```
 
