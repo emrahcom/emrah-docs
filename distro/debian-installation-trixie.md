@@ -333,6 +333,8 @@ nodejs --version
 
 #### /etc/apt/sources.list.d/yarn.sources
 
+See also [yarn](/development/yarn.md)
+
 ```
 Types: deb
 URIs: https://dl.yarnpkg.com/debian/
