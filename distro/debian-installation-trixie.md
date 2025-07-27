@@ -719,7 +719,7 @@ Use seperate docs
 - firefox config
 - thunderbird
 - [docker](/applications/docker-trixie.md)
-- libvirt
+- [libvirt](/applications/libvirt.md)
 - minikube (in minikube VM)
 - kubectl (in minikube VM)
 - helm (in minikube VM)
