@@ -19,8 +19,7 @@ Download `iso` from [freepbx.org](https://www.freepbx.org/downloads/)
 - ~10 GB storage
 - properties
   - `name`: _freepbx_
-  - `network`: _bridge / br0_
-    \
+  - `network`: _bridge / br0_\
     _depends on your environment_
 
 - Select the recommended\
@@ -89,8 +88,7 @@ systemctl disable fail2ban
 
 - Click `Settings` -> `Asterisk SIP settings`
 - Set `External Address` and `Local Networks` by clicking
-  `Detect Network Settings`.
-  \
+  `Detect Network Settings`.\
   On my setup:
   - `External IP`: _85.110.x.y_
   - `Local networks`:

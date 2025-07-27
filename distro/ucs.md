@@ -105,8 +105,7 @@ account while connecting to `Keycloak Admin Console`.
 ### SSO
 
 - `https://ucs.mydomain.corp`
-- `System` -> `Univention Configuration Registry` -> `umc/saml/idp-server`
-  \
+- `System` -> `Univention Configuration Registry` -> `umc/saml/idp-server`\
   `https://ucs-sso-ng.mydomain.corp/realms/ucs/protocol/saml/descriptor`
 - `Domain` -> `Portal` -> `login-saml` -> `Activated` -> `Save`
 - `System` -> `System services` -> `slapd` -> `restart`
