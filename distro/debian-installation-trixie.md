@@ -309,6 +309,8 @@ apt-get install pulseaudio-utils
 
 #### /etc/apt/sources.list.d/nodesource.sources
 
+See also [nodejs](/development/nodejs.md)
+
 ```
 Types: deb
 URIs: https://deb.nodesource.com/node_22.x/
