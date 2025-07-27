@@ -718,7 +718,7 @@ Use seperate docs
 - em-vpn
 - firefox config
 - thunderbird
-- docker
+- [docker](/applications/docker-trixie.md)
 - libvirt
 - minikube (in minikube VM)
 - kubectl (in minikube VM)
