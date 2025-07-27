@@ -738,12 +738,15 @@ Use seperate docs
 - Translate
 - Matrix
 - WhatsApp
-- Skype
+- Teams (Skype)
 - Speak
 - Exchange
 - Conversation
 - InterPals
 - ChatGPT
+- Gemini
+- Deepseek
+- Claude
 
 - Jitok
 - Google
