@@ -497,6 +497,7 @@ address=/ucs.mydomain.corp/172.18.18.20
 ##### /etc/dhcpcd.conf
 
 ```
+# emrah: dont update resolv.conf
 nohook resolv.conf
 ```
 
