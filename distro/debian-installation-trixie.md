@@ -720,8 +720,8 @@ setxkbmap us
 
 Use seperate docs
 
-- em-sock
-- em-vpn
+- [em-sock](/services/em-sock.md)
+- [em-vpn](/services/em-sock.md)
 - [firefox config](/applications/firefox.md)
 - thunderbird
 - [docker](/applications/docker-trixie.md)
