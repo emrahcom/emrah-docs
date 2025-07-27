@@ -714,19 +714,19 @@ setxkbmap us
 
 Use seperate docs
 
-- apt-cacher
 - em-sock
 - em-vpn
 - firefox config
-- lxc template containers
+- thunderbird
 - docker
 - libvirt
-- minikube
-- kubectl
-- helm
-- linphone
+- minikube (in minikube VM)
+- kubectl (in minikube VM)
+- helm (in minikube VM)
 - adb
-- thunderbird
+- linphone (when needed)
+- apt-cacher (?)
+- lxc template containers (?)
 
 #### web applications
 
