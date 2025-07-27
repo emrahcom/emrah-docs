@@ -88,3 +88,30 @@ systemctl daemon-reload
 systemctl enable em-sock.service
 systemctl start em-sock.service
 ```
+
+#### /etc/systemd/system/em-vpn.service
+
+```
+[Unit]
+Description=My VPN
+After=network.target
+
+[Service]
+User=vpn
+Group=vpn
+WorkingDirectory=/home/vpn
+ExecStart=/usr/bin/ssh em-vpn
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Activate the service:
+
+```bash
+systemctl daemon-reload
+systemctl enable em-vpn.service
+systemctl start em-vpn.service
+```
