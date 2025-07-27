@@ -524,7 +524,7 @@ nameserver 8.8.8.8
 
 Use the same content with /etc/resolv.conf.
 
-Actually it will not have an effect in this config since `nohook` is set in
+Actually it will not have an effect in this setup since `nohook` is set in
 `dhcpcd.conf`.
 
 #### /etc/nftables.conf
