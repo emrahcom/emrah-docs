@@ -355,6 +355,8 @@ yarn --version
 
 #### deno
 
+See also [deno](/development/deno.md)
+
 ```bash
 cd /tmp
 wget -T 30 -O deno.zip https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip
