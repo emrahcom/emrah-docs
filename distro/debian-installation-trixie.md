@@ -433,6 +433,10 @@ bridge_ports edummy0
 bridge_stp off
 bridge_fd 0
 bridge_maxwait 0
+
+# routing for css development environment
+post-up ip route add 192.168.90.0/24 via 172.17.17.50
+pre-down ip route del 192.168.90.0/24 via 172.17.17.50
 ```
 
 #### /etc/network/interfaces.d/bridge_br1.cfg
@@ -453,10 +457,6 @@ bridge_ports edummy1
 bridge_stp off
 bridge_fd 0
 bridge_maxwait 0
-
-# routing for css development environment
-post-up ip route add 192.168.90.0/24 via 172.17.17.50
-pre-down ip route del 192.168.90.0/24 via 172.17.17.50
 ```
 
 #### /etc/sysctl.d/90-ip-forward.conf
