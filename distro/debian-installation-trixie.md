@@ -53,7 +53,7 @@ apt-get purge os-prober
 apt-get autoremove --purge
 ```
 
-#### /etc/apt/sources.list/debian.sources
+#### /etc/apt/sources.list.d/debian.sources
 
 ```
 Types: deb
