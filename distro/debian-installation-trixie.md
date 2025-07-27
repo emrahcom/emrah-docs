@@ -590,6 +590,18 @@ apt-get install x11vnc xtightvncviewer
 apt-get install zathura
 ```
 
+#### nvidia
+
+If there is a Nvidia graphic card with GeForce, NVS, Quadro, RTX, Tesla, ...
+GPUs based on the Maxwell, Pascal, Volta, Turing, Ampere, Ada, Hopper or newer
+architectures then add `contrib` and `non-free` into `debian.sources` and
+install Nvidia driver.
+
+```bash
+apt-get update
+apt-get install nvidia-driver --install-recommends
+```
+
 ### user
 
 #### archieves
