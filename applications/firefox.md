@@ -54,6 +54,9 @@ mkdir -p ~/archive/browser
 rm -rf ~/.mozilla
 ln -s /var/cache/browser/mozilla ~/.mozilla
 
+mkdir -p .cache
+chmod 700 .cache
+
 rm -rf ~/.cache/mozilla
 ln -s /var/cache/browser/mozilla.cache ~/.cache/mozilla
 ```
