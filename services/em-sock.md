@@ -17,9 +17,24 @@ chown vpn:vpn /home/vpn/.ssh -R
 
 ```
 Host em-sock
-    Hostname mydomain.com
+    Hostname mydomain0.com
     User vpn
     Port 10251
+    DynamicForward 65022
+    IdentityFile ~/.ssh/em-vpn
+    IdentitiesOnly yes
+    ConnectTimeout 10
+    ServerAliveInterval 10
+    ServerAliveCountMax 3
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    BatchMode yes
+    LogLevel ERROR
+
+Host em-sock-1
+    Hostname mydomain1.com
+    User vpn
+    Port 22
     DynamicForward 65022
     IdentityFile ~/.ssh/em-vpn
     IdentitiesOnly yes
