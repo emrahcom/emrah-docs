@@ -720,10 +720,10 @@ Use seperate docs
 - thunderbird
 - [docker](/applications/docker-trixie.md)
 - [libvirt](/applications/libvirt.md)
+- [adb](/applications/adb.md)
 - minikube (in minikube VM)
 - kubectl (in minikube VM)
 - helm (in minikube VM)
-- adb
 - linphone (when needed)
 - apt-cacher (?)
 - lxc template containers (?)
