@@ -588,6 +588,7 @@ apt-get install scrot
 apt-get install pavucontrol
 apt-get install x11vnc xtightvncviewer xdotool
 apt-get install zathura
+apt-get install oathtool
 ```
 
 #### nvidia
