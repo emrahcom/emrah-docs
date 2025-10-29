@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // Usage:
-//   deno run --allow-net wss-server.ts
+//    deno run --allow-net wss-server.ts
 // -----------------------------------------------------------------------------
 import { serve } from "https://deno.land/std/http/server.ts";
 
