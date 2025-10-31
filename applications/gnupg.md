@@ -22,9 +22,7 @@ gpg --full-generate-key
   Passphrase:
 ```
 
-#### GnuPG commands
-
-List keys
+#### List keys
 
 ```bash
 gpg --list-keys --keyid-format LONG
@@ -35,7 +33,19 @@ gpg --list-keys --keyid-format LONG
 >>> sub   rsa4096/D2B9868686867A7D 2025-10-31 [E]
 ```
 
-Delete a key
+#### Publish public key
+
+```bash
+gpg --keyserver hkps://keys.openpgp.org --send-keys 21BD2878787A63C9
+```
+
+#### Validate public key
+
+```bash
+gpg --keyserver hkps://keys.openpgp.org --recv-keys 21BD2878787A63C9
+```
+
+#### Delete a key
 
 ```bash
 gpg --delete-secret-keys 'hello@emrah.com'
