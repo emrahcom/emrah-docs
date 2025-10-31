@@ -51,3 +51,13 @@ gpg --keyserver hkps://keys.openpgp.org --recv-keys 21BD2878787A63C9
 gpg --delete-secret-keys 'hello@emrah.com'
 gpg --delete-keys 'hello@emrah.com'
 ```
+
+#### Keys in old format
+
+`helm` command needs the old format. So
+
+```bash
+gpg --export > ~/.gnupg/pubring.gpg
+gpg --export-secret-keys > ~/.gnupg/secring.gpg
+chmod 600 ~/.gnupg/secring.gpg
+```
