@@ -12,22 +12,22 @@ yarn add -D @types/bootstrap
 ## layout.svelte
 
 ```javascript
-  import "bootstrap-icons/font/bootstrap-icons.css";
-  import "bootstrap/dist/css/bootstrap.min.css";
-  import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 ```
 
 ## Tooltip
 
 ```javascript
-  import { onMount } from "svelte";
-  import { Tooltip } from "bootstrap";
+import { onMount } from "svelte";
+import { Tooltip } from "bootstrap";
 
-  onMount(() => {
-    const elementsWithTooltip = document.querySelectorAll(
-      '[data-bs-toggle="tooltip"]',
-    );
+onMount(() => {
+  const elementsWithTooltip = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]',
+  );
 
-    [...elementsWithTooltip].map((el) => new Tooltip(el));
-  });
+  [...elementsWithTooltip].map((el) => new Tooltip(el));
+});
 ```
