@@ -2,12 +2,14 @@
 
 Tested on `Debian Trixie`.
 
+
 #### packages
 
 ```bash
 apt-get update
 apt-get install gpg
 ```
+
 
 #### installation
 
@@ -29,6 +31,16 @@ apt-get install docker-ce docker-buildx-plugin docker-compose-plugin
 docker --version
 docker compose version
 ```
+
+
+#### installation from Debian repo
+
+```bash
+apt-get install docker.io --install-recommends
+
+docker --version
+```
+
 
 #### permission
 
