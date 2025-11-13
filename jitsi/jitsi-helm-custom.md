@@ -54,7 +54,6 @@ jitsi:
       tag: "stable-10184"
 ```
 
-
 ### Install
 
 ```bash
