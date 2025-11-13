@@ -1,5 +1,6 @@
 ## GNUPG
-GnuPG  is  a  set  of programs for public key encryption and digital signatures.
+
+GnuPG is a set of programs for public key encryption and digital signatures.
 
 #### Package
 
