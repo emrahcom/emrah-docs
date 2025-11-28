@@ -221,7 +221,7 @@ Go to [https://127.0.0.1:8443](https://127.0.0.1:8443). Use `admin` as username.
 Lint:
 
 ```bash
-helm lint .
+helm lint --set key=value -f values.my.yaml .
 ```
 
 Check templates:
