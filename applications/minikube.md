@@ -33,13 +33,20 @@ After=libvirt-guest.service
 [Service]
 Type=oneshot
 Environment=MINIKUBE_IP=192.168.39.58
+Environment=MINIKUBE_LB1=192.168.39.200
 Environment=INTERFACE=enp1s0
 ExecStartPre=sleep 3
 ExecStartPre=iptables -I FORWARD -p tcp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
 ExecStartPre=iptables -I FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
 ExecStartPre=iptables -I FORWARD -p udp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
 ExecStartPre=iptables -I FORWARD -p udp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
+ExecStartPre=iptables -I FORWARD -p tcp -s ${MINIKUBE_LB1} -o ${INTERFACE} -j ACCEPT
+ExecStartPre=iptables -I FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_LB1} -j ACCEPT
+ExecStartPre=iptables -I FORWARD -p udp -s ${MINIKUBE_LB1} -o ${INTERFACE} -j ACCEPT
+ExecStartPre=iptables -I FORWARD -p udp -i ${INTERFACE} -d ${MINIKUBE_LB1} -j ACCEPT
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 443 -j DNAT --to ${MINIKUBE_IP}
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 3478 -j DNAT --to ${MINIKUBE_LB1}
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p udp --dport 3478 -j DNAT --to ${MINIKUBE_LB1}
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30000:30099 -j DNAT --to ${MINIKUBE_IP}
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30101:32767 -j DNAT --to ${MINIKUBE_IP}
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p udp --dport 30000:32767 -j DNAT --to ${MINIKUBE_IP}
@@ -51,7 +58,13 @@ ExecStopPost=iptables -t nat -D POSTROUTING -s ${MINIKUBE_IP} -o ${INTERFACE} -j
 ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p udp --dport 30000:32767 -j DNAT --to ${MINIKUBE_IP}
 ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 30101:32767 -j DNAT --to ${MINIKUBE_IP}
 ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 30000:30099 -j DNAT --to ${MINIKUBE_IP}
+ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p udp --dport 3478 -j DNAT --to ${MINIKUBE_LB1}
+ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 3478 -j DNAT --to ${MINIKUBE_LB1}
 ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 443 -j DNAT --to ${MINIKUBE_IP}
+ExecStopPost=iptables -D FORWARD -p udp -i ${INTERFACE} -d ${MINIKUBE_LB1} -j ACCEPT
+ExecStopPost=iptables -D FORWARD -p udp -s ${MINIKUBE_LB1} -o ${INTERFACE} -j ACCEPT
+ExecStopPost=iptables -D FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_LB1} -j ACCEPT
+ExecStopPost=iptables -D FORWARD -p tcp -s ${MINIKUBE_LB1} -o ${INTERFACE} -j ACCEPT
 ExecStopPost=iptables -D FORWARD -p udp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
 ExecStopPost=iptables -D FORWARD -p udp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
 ExecStopPost=iptables -D FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
@@ -168,6 +181,13 @@ Enable `ingress`:
 ```bash
 minikube addons list
 minikube addons enable ingress
+
+# Use the same range for metallb IPs
+minikube ip
+minikube addons enable metallb
+minikube addons configure metallb
+  start: 192.168.39.200
+  end: 192.168.39.220
 ```
 
 To delete all local clusters:
