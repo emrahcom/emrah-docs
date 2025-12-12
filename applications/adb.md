@@ -1,6 +1,6 @@
 ## Android Debug Bridge
 
-Tested on `Debian Bookworm`
+Tested on `Debian Trixie`
 
 #### installation
 
