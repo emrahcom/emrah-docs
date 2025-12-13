@@ -1,6 +1,6 @@
 # nodejs
 
-Tested on `Debian 12 Bullseye`
+Tested on `Debian 13 Trixie`
 
 ### packages
 
@@ -12,7 +12,7 @@ wget -qO /tmp/nodesource.gpg.key \
 cat /tmp/nodesource.gpg.key | gpg --dearmor \
     >/usr/share/keyrings/nodesource.gpg
 echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] \
-    https://deb.nodesource.com/node_22.x nodistro main" \
+    https://deb.nodesource.com/node_24.x nodistro main" \
     >/etc/apt/sources.list.d/nodesource.list
 
 apt-get update
