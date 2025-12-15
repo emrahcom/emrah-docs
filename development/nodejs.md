@@ -31,7 +31,7 @@ apt-get install nodejs
 ### npm upgrade
 
 ```bash
-npm install npm -g
+npm install -g npm
 ```
 
 ### purge

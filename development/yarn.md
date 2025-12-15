@@ -28,6 +28,20 @@ apt-get install yarn
 yarn --version
 ```
 
+### removing
+
+As `root`:
+
+```bash
+apt-get purge yarn
+```
+
+As user:
+
+```bash
+rm -rf ~/.yarn ~/.yarnrc ~/.cache/yarn
+```
+
 ### Commands
 
 ##### install
