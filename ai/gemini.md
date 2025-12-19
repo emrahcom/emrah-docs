@@ -19,3 +19,23 @@ Tested on Debian 13 Trixie virtual machine.
   mkdir -p ~/bin
   ln -s ~/node_modules/.bin/gemini  ~/bin/
   ```
+
+#### Settings
+
+Update `.gemini/settings.json`:
+
+```json
+{
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "tools": {
+    "sandbox": "docker"
+  },
+  "general": {
+    "preferredEditor": "vim"
+  }
+}
+```
