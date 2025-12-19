@@ -50,3 +50,4 @@ npm update @google/gemini-cli
 
 - Work only inside a project folder, not directly in the `home` folder.
 - `/auth` to authenticate.
+- `/init` to create `GEMINI.md` in project folders.
