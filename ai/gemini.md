@@ -39,3 +39,14 @@ Update `.gemini/settings.json`:
   }
 }
 ```
+
+#### Updating
+
+```bash
+npm update @google/gemini-cli
+```
+
+#### Working
+
+- Work only inside a project folder, not directly in the `home` folder.
+- `/auth` to authenticate.
