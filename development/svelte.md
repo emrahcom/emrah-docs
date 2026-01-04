@@ -28,7 +28,7 @@ npx sv create myapp
   Which package manager do you want to install dependencies with?
     yarn
 
-cd my-app
+cd myapp
 yarn install
 ```
 
