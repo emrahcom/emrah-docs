@@ -181,13 +181,42 @@ Enable `ingress`:
 ```bash
 minikube addons list
 minikube addons enable ingress
+```
 
+Enable `metallb`:
+
+```bash
 # Use the same range for metallb IPs
 minikube ip
 minikube addons enable metallb
 minikube addons configure metallb
   start: 192.168.39.200
   end: 192.168.39.220
+```
+
+Install `cert-manager`:
+
+```bash
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.19.3/cert-manager.yaml
+kubectl -n cert-manager get pods
+```
+
+Create `local-issuer.yaml` to add a self-signed issuer :
+
+```yaml
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: selfsigned-issuer
+spec:
+  selfSigned: {}
+```
+
+And add it:
+
+```bash
+kubectl apply -f local-issuer.yaml
+kubectl get clusterissuer
 ```
 
 To delete all local clusters:
