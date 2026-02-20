@@ -1,0 +1,150 @@
+#publicURL: ""
+publicURL: "https://meet.minikube.loc"
+
+#turnHost: ""
+turnHost: "turn.minikube.loc"
+
+websockets:
+  colibri:
+    enabled: false
+  xmpp:
+    #enabled: false
+    enabled: true
+
+## #############################################################################
+## Web configuration
+## #############################################################################
+web:
+  image:
+    repository: ghcr.io/jitsi-contrib/hardened-images/web
+
+  extraVolumes:
+    - name: web-run
+      emptyDir:
+        medium: Memory
+        sizeLimit: 16Mi
+    - name: web-tmp
+      emptyDir:
+        medium: Memory
+        sizeLimit: 16Mi
+
+  extraVolumeMounts:
+    - name: web-run
+      mountPath: /run
+    - name: web-tmp
+      mountPath: /tmp
+
+  ingress:
+    # emrah (ingress)
+    #enabled: false
+    enabled: true
+
+    #annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "selfsigned-issuer"
+
+    hosts:
+      - host: meet.minikube.loc
+        paths: ["/"]
+
+    #tls: []
+    tls:
+      - secretName: jitsi-tls
+        hosts:
+          - meet.minikube.loc
+
+
+## #############################################################################
+## Prosody configuration
+## #############################################################################
+prosody:
+  image:
+    repository: ghcr.io/jitsi-contrib/hardened-images/prosody
+
+  extraVolumes:
+    - name: prosody-run
+      emptyDir:
+        medium: Memory
+        sizeLimit: 16Mi
+    - name: prosody-tmp
+      emptyDir:
+        medium: Memory
+        sizeLimit: 16Mi
+    - name: prosody-lib
+      emptyDir:
+        medium: Memory
+        sizeLimit: 16Mi
+
+  extraVolumeMounts:
+    - name: prosody-run
+      mountPath: /run
+    - name: prosody-tmp
+      mountPath: /tmp
+    - name: prosody-lib
+      mountPath: /var/lib/prosody
+
+  #dataDir: /data
+
+
+## #############################################################################
+## Jicofo configuration
+## #############################################################################
+jicofo:
+  image:
+    repository: ghcr.io/jitsi-contrib/hardened-images/jicofo
+
+  extraVolumes:
+    - name: jicofo-run
+      emptyDir:
+        medium: Memory
+        sizeLimit: 16Mi
+    - name: jicofo-tmp
+      emptyDir:
+        medium: Memory
+        sizeLimit: 16Mi
+
+  extraVolumeMounts:
+    - name: jicofo-run
+      mountPath: /run
+    - name: jicofo-tmp
+      mountPath: /tmp
+
+## #############################################################################
+## JVB configuration
+## #############################################################################
+jvb:
+  image:
+    repository: ghcr.io/jitsi-contrib/hardened-images/jvb
+
+  extraVolumes:
+    - name: jvb-run
+      emptyDir:
+        medium: Memory
+        sizeLimit: 16Mi
+    - name: jvb-tmp
+      emptyDir:
+        medium: Memory
+        sizeLimit: 16Mi
+
+  extraVolumeMounts:
+    - name: jvb-run
+      mountPath: /run
+    - name: jvb-tmp
+      mountPath: /tmp
+
+  publicIPs:
+    - 172.18.18.21
+
+  #stunServers: "meet-jit-si-turnrelay.jitsi.net:443"
+  stunServers: ""
+
+  #useInternalStun: true
+  useInternalStun: false
+
+  #useHostPort: false
+  useHostPort: true
+  UDPPort: 10000
+
+  service:
+    #enabled: true
+    enabled: false

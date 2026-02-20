@@ -1,0 +1,73 @@
+#publicURL: ""
+publicURL: "https://meet.minikube.loc"
+
+enableAuth: true
+enableGuests: true
+
+websockets:
+  colibri:
+    enabled: false
+  xmpp:
+    #enabled: false
+    enabled: true
+
+## #############################################################################
+## Web configuration
+## #############################################################################
+web:
+  ingress:
+    # emrah (ingress)
+    #enabled: false
+    enabled: true
+
+    #annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "selfsigned-issuer"
+
+    hosts:
+      - host: meet.minikube.loc
+        paths: ["/"]
+
+    #tls: []
+    tls:
+      - secretName: jitsi-tls
+        hosts:
+          - meet.minikube.loc
+
+## #############################################################################
+## Excalidraw configuration
+## #############################################################################
+excalidraw:
+  #enabled: false
+  enabled: true
+
+## #############################################################################
+## Jicofo configuration
+## #############################################################################
+#jicofo:
+
+## #############################################################################
+## JVB configuration
+## #############################################################################
+jvb:
+  #replicaCount: 1
+
+  publicIPs:
+    - 172.18.18.21
+
+  #stunServers: "meet-jit-si-turnrelay.jitsi.net:443"
+  stunServers: ""
+
+  #useHostPort: false
+  useHostPort: true
+  UDPPort: 10000
+
+  #portRangeSize: 1
+
+  service:
+    #enabled: true
+    enabled: false
+
+  extraEnvs:
+    JVB_DISABLE_STUN: "true"
+    DISABLE_AWS_HARVESTER: "true"
