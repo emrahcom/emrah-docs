@@ -48,6 +48,42 @@ coturn:
   #enabled: false
   enabled: true
 
+  turns:
+    # test with
+    #   chromium --ignore-certificate-errors
+
+    #enabled: false
+    enabled: true
+    relayPortRange:
+      min: 50000
+      max: 54999
+    certificate:
+      # Create Certificate resource using cert-manager
+      create: true
+      # ClusterIssuer or Issuer to use
+      issuerRef:
+        name: selfsigned-issuer
+        kind: ClusterIssuer
+        group: cert-manager.io
+      # Or use existing TLS secret (requires tls.crt and tls.key)
+      existingSecretName: ""
+
+      # ACME challenge proxy - enables certificate validation when
+      # TURN runs on separate IP from ingress controller
+      # This will proxy ACME challenges to the specified ingress
+      # Requires Kubernetes native sidecar containers support
+      acmeProxy:
+        enabled: false
+        # Internal cluster address of ingress controller
+        # Defaults to traefik service in "traefik" namespace
+        target: traefik.traefik.svc.cluster.local
+        targetPort: 80
+
+  service:
+    ports:
+      #turns: 443
+      turns: 5349
+
   allowedPeerIp:
     - "192.168.39.112"
   #  - "10.244.0.0-10.244.255.255"
