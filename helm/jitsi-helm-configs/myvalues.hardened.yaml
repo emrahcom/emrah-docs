@@ -18,20 +18,23 @@ web:
   image:
     repository: ghcr.io/jitsi-contrib/hardened-images/web
 
+  securityContext:
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
+
   extraVolumes:
-    - name: web-run
+    - name: run
       emptyDir:
-        medium: Memory
-        sizeLimit: 16Mi
-    - name: web-tmp
+        sizeLimit: 32Mi
+    - name: tmp
       emptyDir:
-        medium: Memory
-        sizeLimit: 16Mi
+        sizeLimit: 32Mi
 
   extraVolumeMounts:
-    - name: web-run
+    - name: run
       mountPath: /run
-    - name: web-tmp
+    - name: tmp
       mountPath: /tmp
 
   ingress:
@@ -61,29 +64,29 @@ prosody:
   image:
     repository: ghcr.io/jitsi-contrib/hardened-images/prosody
 
+  securityContext:
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
+
   extraVolumes:
-    - name: prosody-run
+    - name: run
       emptyDir:
-        medium: Memory
-        sizeLimit: 16Mi
-    - name: prosody-tmp
+        sizeLimit: 32Mi
+    - name: tmp
       emptyDir:
-        medium: Memory
-        sizeLimit: 16Mi
-    - name: prosody-lib
+        sizeLimit: 32Mi
+    - name: storage
       emptyDir:
-        medium: Memory
-        sizeLimit: 16Mi
+        sizeLimit: 32Mi
 
   extraVolumeMounts:
-    - name: prosody-run
+    - name: run
       mountPath: /run
-    - name: prosody-tmp
+    - name: tmp
       mountPath: /tmp
-    - name: prosody-lib
+    - name: storage
       mountPath: /var/lib/prosody
-
-  #dataDir: /data
 
 
 ## #############################################################################
@@ -93,20 +96,23 @@ jicofo:
   image:
     repository: ghcr.io/jitsi-contrib/hardened-images/jicofo
 
+  securityContext:
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
+
   extraVolumes:
-    - name: jicofo-run
+    - name: run
       emptyDir:
-        medium: Memory
-        sizeLimit: 16Mi
-    - name: jicofo-tmp
+        sizeLimit: 32Mi
+    - name: tmp
       emptyDir:
-        medium: Memory
-        sizeLimit: 16Mi
+        sizeLimit: 32Mi
 
   extraVolumeMounts:
-    - name: jicofo-run
+    - name: run
       mountPath: /run
-    - name: jicofo-tmp
+    - name: tmp
       mountPath: /tmp
 
 ## #############################################################################
@@ -116,20 +122,23 @@ jvb:
   image:
     repository: ghcr.io/jitsi-contrib/hardened-images/jvb
 
+  securityContext:
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
+
   extraVolumes:
-    - name: jvb-run
+    - name: run
       emptyDir:
-        medium: Memory
-        sizeLimit: 16Mi
-    - name: jvb-tmp
+        sizeLimit: 32Mi
+    - name: tmp
       emptyDir:
-        medium: Memory
-        sizeLimit: 16Mi
+        sizeLimit: 32Mi
 
   extraVolumeMounts:
-    - name: jvb-run
+    - name: run
       mountPath: /run
-    - name: jvb-tmp
+    - name: tmp
       mountPath: /tmp
 
   publicIPs:
