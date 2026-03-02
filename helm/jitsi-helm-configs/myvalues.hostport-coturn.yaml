@@ -48,6 +48,9 @@ coturn:
   #enabled: false
   enabled: true
 
+  turn:
+    transport: "udp"
+
   turns:
     # test with
     #   chromium --ignore-certificate-errors
