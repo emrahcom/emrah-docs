@@ -87,7 +87,7 @@ coturn:
       #turns: 443
       turns: 5349
 
-  allowedPeerIp:
+  allowedPeerIPs:
     - "192.168.39.112"
   #  - "10.244.0.0-10.244.255.255"
 
