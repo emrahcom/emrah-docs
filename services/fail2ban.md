@@ -68,3 +68,9 @@ nft list ruleset
 
 tail -f /var/log/fail2ban.log
 ```
+
+## Unban
+
+```bash
+fail2ban-client unban --all
+```
