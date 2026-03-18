@@ -13,6 +13,23 @@ apt-get install fail2ban
 Install `rsyslog` in the mail container. So, `/var/log/mail/log` will be
 created.
 
+_/etc/fail2ban/jail.d/defaults-debian.conf_
+
+```
+[DEFAULT]
+banaction = nftables
+banaction_allports = nftables[type=allports]
+
+[sshd]
+backend = systemd
+journalmatch = _SYSTEMD_UNIT=ssh.service + _COMM=sshd
+enabled = true
+maxretry = 3
+findtime = 1h
+bantime = 24h
+action = nftables[port="22", blocktype=drop]
+```
+
 _/etc/fail2ban/jail.d/mycustom.conf_
 
 ```
@@ -26,7 +43,7 @@ logpath = /var/lib/lxc/mail/rootfs/var/log/mail.log
 maxretry = 3
 findtime = 24h
 bantime = 24h
-action = nftables[table_family=ip, port="25,143,465,587", chain_type=nat, chain_hook=prerouting, chain_priority=-2]
+action = nftables[table_family=ip, port="25,143,465,587", chain_type=nat, chain_hook=prerouting, chain_priority=-2, blocktype=drop]
 
 [dovecot]
 enabled = true
@@ -35,7 +52,7 @@ logpath = /var/lib/lxc/mail/rootfs/var/log/mail.log
 maxretry = 3
 findtime = 24h
 bantime = 24h
-action = nftables[table_family=ip, port="25,143,465,587", chain_type=nat, chain_hook=prerouting, chain_priority=-2]
+action = nftables[table_family=ip, port="25,143,465,587", chain_type=nat, chain_hook=prerouting, chain_priority=-2, blocktype=drop]
 ```
 
 Restart `fail2ban`
