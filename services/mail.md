@@ -62,6 +62,14 @@ systemctl restart certbot.service
 
 ### packages
 
+##### rsyslog
+
+Install `rsyslog` if it will be `fail2ban`:
+
+```bash
+apt-get -y --no-install-recommends install rsyslog
+```
+
 ##### postfix
 
 ```bash
