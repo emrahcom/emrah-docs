@@ -27,7 +27,7 @@ enabled = true
 maxretry = 3
 findtime = 1h
 bantime = 24h
-action = nftables[port="22", blocktype=drop]
+action = nftables[port="22,30000:65000", blocktype=drop]
 ```
 
 _/etc/fail2ban/jail.d/mycustom.conf_
