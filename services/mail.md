@@ -213,6 +213,7 @@ _/etc/dovecot/conf.d/10-auth.conf_
 ```conf
 disable_plaintext_auth = no
 auth_mechanisms = cram-md5 plain login
+auth_failure_delay = 2 secs
 #!include auth-system.conf.ext
 !include auth-passwdfile.conf.ext
 !include auth-static.conf.ext
