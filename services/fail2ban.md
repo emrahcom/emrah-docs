@@ -8,7 +8,7 @@ Tested on Debian 13 Trixie.
 apt-get install fail2ban
 ```
 
-## Postfix
+## Postfix and Dovecot
 
 Install `rsyslog` in the mail container. So, `/var/log/mail/log` will be
 created.
@@ -42,4 +42,12 @@ Restart `fail2ban`
 
 ```bash
 systemctl restart fail2ban
+```
+
+## Monitoring
+
+```bash
+nft list ruleset
+
+tail -f /var/log/fail2ban.log
 ```
