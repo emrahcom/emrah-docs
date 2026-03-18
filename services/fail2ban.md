@@ -5,7 +5,7 @@ Tested on Debian 13 Trixie.
 ## Installation
 
 ```bash
-apt-get install fail2ban
+apt-get install fail2ban --no-install-recommends
 ```
 
 ## Postfix and Dovecot
