@@ -19,9 +19,19 @@ web:
     repository: ghcr.io/jitsi-contrib/hardened-images/web
 
   securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
+
+  extraEnvs:
+    # https://github.com/just-containers/s6-overlay/issues/600
+    S6_YES_I_WANT_A_WORLD_WRITABLE_RUN_BECAUSE_KUBERNETES: "1"
 
   extraVolumes:
     - name: run
@@ -56,6 +66,19 @@ web:
         hosts:
           - meet.minikube.loc
 
+  service:
+    port: 8000
+
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 8000
+
+  readinessProbe:
+    httpGet:
+      path: /
+      port: 8000
+
 
 ## #############################################################################
 ## Prosody configuration
@@ -64,10 +87,23 @@ prosody:
   image:
     repository: ghcr.io/jitsi-contrib/hardened-images/prosody
 
+  podSecurityContext:
+    fsGroup: 1000
+
   securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
+
+  extraEnvs:
+    # https://github.com/just-containers/s6-overlay/issues/600
+    S6_YES_I_WANT_A_WORLD_WRITABLE_RUN_BECAUSE_KUBERNETES: "1"
 
   extraVolumes:
     - name: run
@@ -96,10 +132,23 @@ jicofo:
   image:
     repository: ghcr.io/jitsi-contrib/hardened-images/jicofo
 
+  podSecurityContext:
+    fsGroup: 1000
+
   securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
+
+  extraEnvs:
+    # https://github.com/just-containers/s6-overlay/issues/600
+    S6_YES_I_WANT_A_WORLD_WRITABLE_RUN_BECAUSE_KUBERNETES: "1"
 
   extraVolumes:
     - name: run
@@ -123,9 +172,19 @@ jvb:
     repository: ghcr.io/jitsi-contrib/hardened-images/jvb
 
   securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
+
+  extraEnvs:
+    # https://github.com/just-containers/s6-overlay/issues/600
+    S6_YES_I_WANT_A_WORLD_WRITABLE_RUN_BECAUSE_KUBERNETES: "1"
 
   extraVolumes:
     - name: run
