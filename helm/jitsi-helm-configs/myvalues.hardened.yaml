@@ -87,9 +87,6 @@ prosody:
   image:
     repository: ghcr.io/jitsi-contrib/hardened-images/prosody
 
-  podSecurityContext:
-    fsGroup: 1000
-
   securityContext:
     allowPrivilegeEscalation: false
     capabilities:
@@ -131,9 +128,6 @@ prosody:
 jicofo:
   image:
     repository: ghcr.io/jitsi-contrib/hardened-images/jicofo
-
-  podSecurityContext:
-    fsGroup: 1000
 
   securityContext:
     allowPrivilegeEscalation: false
