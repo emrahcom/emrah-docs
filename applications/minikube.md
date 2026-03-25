@@ -195,7 +195,10 @@ helm install eg oci://docker.io/envoyproxy/gateway-helm \
   --create-namespace \
   --version v1.7.1 \
   -n envoy-gateway-system
+
 kubectl get crds | grep gateway.networking.k8s.io
+kubectl get crds | grep gateway.envoyproxy.io
+kubectl get pods -n envoy-gateway-system
 ```
 
 Create `gateway-class.yaml` to create the GatewayClass:
