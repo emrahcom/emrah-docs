@@ -183,6 +183,39 @@ kubectl get pods -A
 kubectl get all
 ```
 
+#### Gateway API
+
+To install Gateway API CRDs and Envoy Gateway controller, first check the
+version on [releases](https://github.com/envoyproxy/gateway/releases)
+
+And run:
+
+```bash
+helm install eg oci://docker.io/envoyproxy/gateway-helm \
+  --create-namespace \
+  --version v1.7.1 \
+  -n envoy-gateway-system
+kubectl get crds | grep gateway.networking.k8s.io
+```
+
+Create `gateway-class.yaml` to create the GatewayClass:
+
+```
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: envoy-gateway-class
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+```
+
+And apply it:
+
+```bash
+kubectl apply -f gateway-class.yaml
+kubectl get gatewayclass
+```
+
 #### Ingress
 
 To enable `ingress`:
@@ -207,7 +240,7 @@ minikube addons configure metallb
 
 #### cert-manager
 
-To install `cert-manager`, first check the version from
+To install `cert-manager`, first check the version on
 [releases](https://github.com/cert-manager/cert-manager/releases)
 
 And run:
