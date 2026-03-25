@@ -161,9 +161,8 @@ kubectl krew
 Install `minikube` as `root`:
 
 ```bash
-wget -O /tmp/minikube \
-    https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-install /tmp/minikube /usr/local/bin/minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+dpkg -i minikube_latest_amd64.deb
 ```
 
 And start it as `user`:
@@ -219,10 +218,16 @@ kubectl apply -f local-issuer.yaml
 kubectl get clusterissuer
 ```
 
-To delete all local clusters:
+To delete all local clusters as `user`:
 
 ```bash
-minikube delete --all
+minikube delete --all --purge
+```
+
+To remove it as `root`:
+
+```bash
+apt-get purge minikube
 ```
 
 ### helm
