@@ -158,7 +158,9 @@ kubectl krew
 
 ### minikube
 
-Install `minikube` as `root`:
+#### Installation
+
+To install `minikube` as `root`:
 
 ```bash
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
@@ -170,19 +172,29 @@ And start it as `user`:
 ```bash
 minikube start
 
+minikube profile list
+minikube ip
+
+minikube kubectl -- get pods -A
+minikube kubectl version
+
 kubectl get nodes
 kubectl get pods -A
 kubectl get all
 ```
 
-Enable `ingress`:
+#### Ingress
+
+To enable `ingress`:
 
 ```bash
 minikube addons list
 minikube addons enable ingress
 ```
 
-Enable `metallb`:
+#### Metallb
+
+To enable `metallb`:
 
 ```bash
 # Use the same range for metallb IPs
@@ -193,10 +205,15 @@ minikube addons configure metallb
   end: 192.168.39.220
 ```
 
-Install `cert-manager`:
+#### cert-manager
+
+To install `cert-manager`, first check the version from
+[releases](https://github.com/cert-manager/cert-manager/releases)
+
+And run:
 
 ```bash
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.19.3/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.yaml
 kubectl -n cert-manager get pods
 ```
 
@@ -218,13 +235,16 @@ kubectl apply -f local-issuer.yaml
 kubectl get clusterissuer
 ```
 
-To delete all local clusters as `user`:
+#### Removing
+
+To delete all local clusters and config, run as `user`:
 
 ```bash
 minikube delete --all --purge
+rm -rf ~/.minikube
 ```
 
-To remove it as `root`:
+To remove the package, run as `root`:
 
 ```bash
 apt-get purge minikube
