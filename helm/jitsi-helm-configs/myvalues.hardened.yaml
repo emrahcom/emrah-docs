@@ -64,7 +64,7 @@ web:
     tls:
       #enabled: false
       enabled: true
-      secretName: jitsi-web-certificate
+      secretName: jitsi-web-tls
 
   ingress:
     enabled: false
@@ -80,7 +80,7 @@ web:
 
     #tls: []
     tls:
-      - secretName: jitsi-tls
+      - secretName: jitsi-web-tls
         hosts:
           - meet.minikube.loc
 
