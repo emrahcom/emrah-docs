@@ -15,6 +15,25 @@ websockets:
 ## Web configuration
 ## #############################################################################
 web:
+  gateway:
+    #enabled: false
+    enabled: true
+
+    gatewayClassName: envoy-gateway-class
+
+    # annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "selfsigned-issuer"
+
+    host: "meet.minikube.loc"
+    paths:
+      - "/"
+
+    tls:
+      #enabled: false
+      enabled: true
+      secretName: jitsi-web-certificate
+
   ingress:
     enabled: false
 
