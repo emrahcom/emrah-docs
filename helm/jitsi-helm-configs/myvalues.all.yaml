@@ -16,9 +16,7 @@ websockets:
 ## #############################################################################
 web:
   ingress:
-    # emrah (ingress)
-    #enabled: false
-    enabled: true
+    enabled: false
 
     #annotations: {}
     annotations:
@@ -26,7 +24,8 @@ web:
 
     hosts:
       - host: meet.minikube.loc
-        paths: ["/"]
+        paths:
+          - "/"
 
     #tls: []
     tls:
