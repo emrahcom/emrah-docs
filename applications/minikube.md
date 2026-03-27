@@ -251,6 +251,9 @@ And run:
 ```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.yaml
 kubectl -n cert-manager get pods
+
+kubectl patch deployment cert-manager -n cert-manager --type='json' \
+  -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--enable-gateway-api"}]'
 ```
 
 Create `local-issuer.yaml` to add a self-signed issuer :
