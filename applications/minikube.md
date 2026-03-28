@@ -29,47 +29,42 @@ Description=Minikube Iptables Rules
 After=network-online.target
 After=libvirtd.service
 After=libvirt-guest.service
-
+ 
 [Service]
 Type=oneshot
-Environment=MINIKUBE_IP=192.168.39.58
+Environment=MINIKUBE_NET=192.168.39.0/24
+Environment=MINIKUBE_IP=192.168.39.34
+#Environment=MINIKUBE_WEB=192.168.39.34
+Environment=MINIKUBE_WEB=192.168.39.201
 Environment=MINIKUBE_LB1=192.168.39.200
 Environment=INTERFACE=enp1s0
 ExecStartPre=sleep 3
-ExecStartPre=iptables -I FORWARD -p tcp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
-ExecStartPre=iptables -I FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
-ExecStartPre=iptables -I FORWARD -p udp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
-ExecStartPre=iptables -I FORWARD -p udp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
-ExecStartPre=iptables -I FORWARD -p tcp -s ${MINIKUBE_LB1} -o ${INTERFACE} -j ACCEPT
-ExecStartPre=iptables -I FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_LB1} -j ACCEPT
-ExecStartPre=iptables -I FORWARD -p udp -s ${MINIKUBE_LB1} -o ${INTERFACE} -j ACCEPT
-ExecStartPre=iptables -I FORWARD -p udp -i ${INTERFACE} -d ${MINIKUBE_LB1} -j ACCEPT
-ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 443 -j DNAT --to ${MINIKUBE_IP}
+ExecStartPre=iptables -I FORWARD -s ${MINIKUBE_NET} -o ${INTERFACE} -j ACCEPT
+ExecStartPre=iptables -I FORWARD -i ${INTERFACE} -d ${MINIKUBE_NET} -j ACCEPT
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 443 -j DNAT --to ${MINIKUBE_WEB}
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 3478 -j DNAT --to ${MINIKUBE_LB1}
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p udp --dport 3478 -j DNAT --to ${MINIKUBE_LB1}
-ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30000:30099 -j DNAT --to ${MINIKUBE_IP}
-ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30101:32767 -j DNAT --to ${MINIKUBE_IP}
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p udp --dport 10000:10010 -j DNAT --to ${MINIKUBE_IP}
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30000:30021 -j DNAT --to ${MINIKUBE_IP}
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p tcp --dport 30023:32767 -j DNAT --to ${MINIKUBE_IP}
 ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p udp --dport 30000:32767 -j DNAT --to ${MINIKUBE_IP}
-ExecStartPre=iptables -t nat -I POSTROUTING -s ${MINIKUBE_IP} -o ${INTERFACE} -j MASQUERADE
+ExecStartPre=iptables -t nat -I PREROUTING -i ${INTERFACE} -p udp --dport 30300:30310 -j DNAT --to ${MINIKUBE_IP}
+ExecStartPre=iptables -t nat -I POSTROUTING -s ${MINIKUBE_NET} -o ${INTERFACE} -j MASQUERADE
 ExecStart=true
 RemainAfterExit=yes
 ExecStop=true
-ExecStopPost=iptables -t nat -D POSTROUTING -s ${MINIKUBE_IP} -o ${INTERFACE} -j MASQUERADE
+ExecStopPost=iptables -t nat -D POSTROUTING -s ${MINIKUBE_NET} -o ${INTERFACE} -j MASQUERADE
+ExecStartPre=iptables -t nat -D PREROUTING -i ${INTERFACE} -p udp --dport 30300:30310 -j DNAT --to ${MINIKUBE_IP}
 ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p udp --dport 30000:32767 -j DNAT --to ${MINIKUBE_IP}
-ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 30101:32767 -j DNAT --to ${MINIKUBE_IP}
-ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 30000:30099 -j DNAT --to ${MINIKUBE_IP}
+ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 30023:32767 -j DNAT --to ${MINIKUBE_IP}
+ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 30000:30021 -j DNAT --to ${MINIKUBE_IP}
+ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p udp --dport 10000:10010 -j DNAT --to ${MINIKUBE_IP}
 ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p udp --dport 3478 -j DNAT --to ${MINIKUBE_LB1}
 ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 3478 -j DNAT --to ${MINIKUBE_LB1}
-ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 443 -j DNAT --to ${MINIKUBE_IP}
-ExecStopPost=iptables -D FORWARD -p udp -i ${INTERFACE} -d ${MINIKUBE_LB1} -j ACCEPT
-ExecStopPost=iptables -D FORWARD -p udp -s ${MINIKUBE_LB1} -o ${INTERFACE} -j ACCEPT
-ExecStopPost=iptables -D FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_LB1} -j ACCEPT
-ExecStopPost=iptables -D FORWARD -p tcp -s ${MINIKUBE_LB1} -o ${INTERFACE} -j ACCEPT
-ExecStopPost=iptables -D FORWARD -p udp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
-ExecStopPost=iptables -D FORWARD -p udp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
-ExecStopPost=iptables -D FORWARD -p tcp -i ${INTERFACE} -d ${MINIKUBE_IP} -j ACCEPT
-ExecStopPost=iptables -D FORWARD -p tcp -s ${MINIKUBE_IP} -o ${INTERFACE} -j ACCEPT
-
+ExecStopPost=iptables -t nat -D PREROUTING -i ${INTERFACE} -p tcp --dport 443 -j DNAT --to ${MINIKUBE_WEB}
+ExecStopPost=iptables -D FORWARD -i ${INTERFACE} -d ${MINIKUBE_NET} -j ACCEPT
+ExecStopPost=iptables -D FORWARD -s ${MINIKUBE_NET} -o ${INTERFACE} -j ACCEPT
+ 
 [Install]
 WantedBy=multi-user.target
 ```
