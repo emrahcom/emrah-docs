@@ -282,6 +282,7 @@ To remove the package, run as `root`:
 
 ```bash
 apt-get purge minikube
+rm -f /usr/local/bin/minikube
 ```
 
 ### helm
