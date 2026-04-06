@@ -90,7 +90,7 @@ function getRecorder(localStream, remoteStream, mixedStream, audioContext) {
 
     setTimeout(() => {
       URL.revokeObjectURL(url);
-    }, 100);
+    }, 1000);
 
     [remoteStream, localStream].forEach((s) =>
       s.getTracks().forEach((t) => t.stop())
