@@ -35,4 +35,29 @@ Build depending on the hardware:
 ```bash
 cmake -B build -DGGML_CUDA=ON
 cmake --build build --config Release -j $(nproc)
+
+./build/bin/llama-cli --version
+```
+
+```bash
+mkdir -p ~/bin
+
+ln -s ~/git-repo/llama.cpp/build/bin/llama-cli ~/bin/
+ln -s ~/git-repo/llama.cpp/build/bin/llama-server ~/bin/
+```
+
+## Model
+
+```bash
+cd
+
+llama-cli -hf ggml-org/gemma-3-1b-it-GGUF
+llama-cli -hf unsloth/gemma-4-E2B-it-GGUF:Q8_0
+llama-cli -hf unsloth/gemma-4-E4B-it-GGUF:Q8_0
+llama-cli -hf unsloth/Qwen3.5-9B-GGUF:Q6_K
+
+llama-server -hf ggml-org/gemma-3-1b-it-GGUF -ngl 26 -fa -c 8192
+llama-server -hf unsloth/gemma-4-E2B-it-GGUF:Q8_0 -ngl 35 -fa -c 8192
+llama-server -hf unsloth/gemma-4-E4B-it-GGUF:Q8_0 -ngl 42 -fa -c 8192
+llama-server -hf unsloth/Qwen3.5-9B-GGUF:Q6_K -ngl 32 -fa -c 8192
 ```
