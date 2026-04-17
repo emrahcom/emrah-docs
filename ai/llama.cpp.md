@@ -13,6 +13,7 @@ For `nvidia`, add `contrib` and `non-free` into `debian.sources` and run:
 apt-get update
 apt-get install linux-headers-amd64
 apt-get install nvidia-driver nvidia-cuda-toolkit
+apt-get install nvtop
 
 reboot
 ```
