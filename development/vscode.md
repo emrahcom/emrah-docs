@@ -29,3 +29,9 @@ Go to the project folder and run
 ```bash
 code .
 ```
+
+## Extensions
+
+### Claude Code for VS Code
+
+From `View` -> `Extensions`, find "Claude Code for VS Code" and install it.
