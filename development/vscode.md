@@ -1,4 +1,4 @@
-# VS Studio
+# VS Code
 
 ## Installation
 
@@ -18,4 +18,6 @@ EOF
 
 apt-get update
 apt-get install code --install-recommends
+   >>> Add Microsoft apt repository for Visual Studio Code?
+   <<< NO
 ```
