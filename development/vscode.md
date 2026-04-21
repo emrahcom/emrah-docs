@@ -32,6 +32,21 @@ code .
 
 ## Extensions
 
+### VSCodeVim
+
+From `View` -> `Extensions`, find "VSCodeVim" and install it.
+
+### Remote - SSH
+
+From `View` -> `Extensions`, find "Remote - SSH (Microsoft)" and install it.
+
+Add hosts into `~/.ssh/config` and open it with:
+
+```bash
+code --remote ssh-remote+hostname /tmp
+```
+
 ### Claude Code for VS Code
 
-From `View` -> `Extensions`, find "Claude Code for VS Code" and install it.
+From `View` -> `Extensions`, find "Claude Code for VS Code (Anthropic)" and
+install it.
