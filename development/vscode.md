@@ -21,3 +21,11 @@ apt-get install code --install-recommends
    >>> Add Microsoft apt repository for Visual Studio Code?
    <<< NO
 ```
+
+## Running
+
+Go to the project folder and run
+
+```bash
+code .
+```
