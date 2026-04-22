@@ -1,0 +1,118 @@
+# ------------------------------------------------------------------------------
+# DEFAULT JITSI CONFIGURATION
+# ------------------------------------------------------------------------------
+.jitsiDefaults: &jitsiDefaults
+  #publicURL: ""
+  publicURL: "https://meet.minikube.loc"
+  #turnHost: ""
+  turnHost: "turn.minikube.loc"
+  tz: "UTC"
+
+  websockets:
+    colibri:
+      enabled: false
+    xmpp:
+      enabled: true
+
+  web:
+    gateway:
+      enabled: false
+    ingress:
+      enabled: false
+
+  jvb:
+    replicaCount: 2
+
+    useHostPort: true
+    UDPPort: 10000
+    service:
+      enabled: false
+
+  octo:
+    enabled: true
+
+# ------------------------------------------------------------------------------
+# SHARD CONFIGURATION
+# ------------------------------------------------------------------------------
+shard0:
+  enabled: true
+  <<: *jitsiDefaults
+
+  # Auxiliary services
+  coturn:
+    enabled: false
+  excalidraw:
+    enabled: false
+  etherpad:
+    enabled: false
+
+shard1:
+  enabled: true
+  <<: *jitsiDefaults
+
+shard2:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard3:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard4:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard5:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard6:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard7:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard8:
+  enabled: false
+  <<: *jitsiDefaults
+
+shard9:
+  enabled: false
+  <<: *jitsiDefaults
+
+# ------------------------------------------------------------------------------
+# HAPROXY CONFIGURATION
+# ------------------------------------------------------------------------------
+haproxy:
+  enabled: true
+  replicaCount: 2
+
+  gateway:
+    #enabled: false
+    enabled: true
+    gatewayClassName: envoy-gateway-class
+    #annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "selfsigned-issuer"
+    host: "meet.minikube.loc"
+    paths:
+      - "/"
+    tls:
+      #enabled: false
+      enabled: true
+      secretName: jitsi-web-tls
+
+  ingress:
+    enabled: false
+    ingressClassName: nginx
+    #annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "selfsigned-issuer"
+    host: "meet.minikube.loc"
+    paths:
+      - "/"
+    tls:
+      enabled: false
+      secretName: jitsi-web-tls
