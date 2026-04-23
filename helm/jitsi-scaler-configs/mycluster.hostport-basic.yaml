@@ -6,27 +6,9 @@
   publicURL: "https://meet.minikube.loc"
   #turnHost: ""
   turnHost: "turn.minikube.loc"
-  tz: "UTC"
-
-  websockets:
-    colibri:
-      enabled: false
-    xmpp:
-      enabled: true
-
-  web:
-    gateway:
-      enabled: false
-    ingress:
-      enabled: false
 
   jvb:
     replicaCount: 2
-
-    useHostPort: true
-    UDPPort: 10000
-    service:
-      enabled: false
 
   octo:
     enabled: true
