@@ -8,7 +8,8 @@
   turnHost: "turn.minikube.loc"
 
   jvb:
-    replicaCount: 2
+    replicaCount: 1
+    portRangeSize: 1
 
   octo:
     enabled: true
