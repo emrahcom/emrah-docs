@@ -10,6 +10,8 @@
   jvb:
     replicaCount: 1
     portRangeSize: 1
+    publicIPs:
+    - 172.18.18.21
 
   octo:
     enabled: true
