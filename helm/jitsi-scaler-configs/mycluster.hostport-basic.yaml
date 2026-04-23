@@ -90,8 +90,7 @@ haproxy:
   replicaCount: 2
 
   gateway:
-    #enabled: false
-    enabled: true
+    enabled: false
     gatewayClassName: envoy-gateway-class
     #annotations: {}
     annotations:
@@ -105,7 +104,8 @@ haproxy:
       secretName: jitsi-web-tls
 
   ingress:
-    enabled: false
+    #enabled: false
+    enabled: true
     ingressClassName: nginx
     #annotations: {}
     annotations:
@@ -114,5 +114,6 @@ haproxy:
     paths:
       - "/"
     tls:
-      enabled: false
+      #enabled: false
+      enabled: true
       secretName: jitsi-web-tls
