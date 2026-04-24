@@ -1,71 +1,4 @@
 # ------------------------------------------------------------------------------
-# DEFAULT JITSI CONFIGURATION
-# ------------------------------------------------------------------------------
-.jitsiDefaults: &jitsiDefaults
-  #publicURL: ""
-  publicURL: "https://meet.minikube.loc"
-  #turnHost: ""
-  turnHost: "turn.minikube.loc"
-
-  excalidraw:
-    enabled: true
-
-  etherpad:
-    enabled: true
-
-  jvb:
-    replicaCount: 1
-    portRangeSize: 1
-    publicIPs:
-    - 172.18.18.21
-
-  octo:
-    enabled: true
-
-# ------------------------------------------------------------------------------
-# SHARD CONFIGURATION
-# ------------------------------------------------------------------------------
-shard0:
-  enabled: true
-  <<: *jitsiDefaults
-
-shard1:
-  enabled: true
-  <<: *jitsiDefaults
-
-shard2:
-  enabled: false
-  <<: *jitsiDefaults
-
-shard3:
-  enabled: false
-  <<: *jitsiDefaults
-
-shard4:
-  enabled: false
-  <<: *jitsiDefaults
-
-shard5:
-  enabled: false
-  <<: *jitsiDefaults
-
-shard6:
-  enabled: false
-  <<: *jitsiDefaults
-
-shard7:
-  enabled: false
-  <<: *jitsiDefaults
-
-shard8:
-  enabled: false
-  <<: *jitsiDefaults
-
-shard9:
-  enabled: false
-  <<: *jitsiDefaults
-
-# ------------------------------------------------------------------------------
 # HAPROXY CONFIGURATION
 # ------------------------------------------------------------------------------
 haproxy:
@@ -100,3 +33,38 @@ haproxy:
       #enabled: false
       enabled: true
       secretName: "jitsi-web-tls"
+
+# ------------------------------------------------------------------------------
+# DEFAULT JITSI CONFIGURATION
+# ------------------------------------------------------------------------------
+.jitsiDefaults: &jitsiDefaults
+  #publicURL: ""
+  publicURL: "https://meet.minikube.loc"
+  #turnHost: ""
+  turnHost: "turn.minikube.loc"
+
+  excalidraw:
+    enabled: true
+
+  etherpad:
+    enabled: true
+
+  jvb:
+    replicaCount: 1
+    portRangeSize: 1
+    publicIPs:
+    - 172.18.18.21
+
+  octo:
+    enabled: true
+
+# ------------------------------------------------------------------------------
+# SHARD CONFIGURATION
+# ------------------------------------------------------------------------------
+shard0:
+  enabled: true
+  <<: *jitsiDefaults
+
+shard1:
+  enabled: true
+  <<: *jitsiDefaults

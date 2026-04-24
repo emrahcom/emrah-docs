@@ -1,37 +1,4 @@
 # ------------------------------------------------------------------------------
-# DEFAULT JITSI CONFIGURATION
-# ------------------------------------------------------------------------------
-.jitsiDefaults: &jitsiDefaults
-  publicURL: "https://meet.minikube.loc"
-
-  excalidraw:
-    enabled: true
-
-  etherpad:
-    enabled: true
-
-  jvb:
-    replicaCount: 1
-    portRangeSize: 3
-    publicIPs:
-    - 172.18.18.21
-
-# ------------------------------------------------------------------------------
-# SHARD CONFIGURATION
-# ------------------------------------------------------------------------------
-shard0:
-  enabled: true
-  <<: *jitsiDefaults
-
-shard1:
-  enabled: true
-  <<: *jitsiDefaults
- 
-shard2:
-  enabled: true
-  <<: *jitsiDefaults
-
-# ------------------------------------------------------------------------------
 # HAPROXY CONFIGURATION
 # ------------------------------------------------------------------------------
 haproxy:
@@ -66,3 +33,36 @@ haproxy:
       #enabled: false
       enabled: true
       secretName: "jitsi-web-tls"
+
+# ------------------------------------------------------------------------------
+# DEFAULT JITSI CONFIGURATION
+# ------------------------------------------------------------------------------
+.jitsiDefaults: &jitsiDefaults
+  publicURL: "https://meet.minikube.loc"
+
+  excalidraw:
+    enabled: true
+
+  etherpad:
+    enabled: true
+
+  jvb:
+    replicaCount: 1
+    portRangeSize: 3
+    publicIPs:
+    - 172.18.18.21
+
+# ------------------------------------------------------------------------------
+# SHARD CONFIGURATION
+# ------------------------------------------------------------------------------
+shard0:
+  enabled: true
+  <<: *jitsiDefaults
+
+shard1:
+  enabled: true
+  <<: *jitsiDefaults
+ 
+shard2:
+  enabled: true
+  <<: *jitsiDefaults
