@@ -4,6 +4,12 @@
 .jitsiDefaults: &jitsiDefaults
   publicURL: "https://meet.minikube.loc"
 
+  excalidraw:
+    enabled: true
+
+  etherpad:
+    enabled: true
+
   jvb:
     replicaCount: 1
     portRangeSize: 3
@@ -16,10 +22,6 @@
 shard0:
   enabled: true
   <<: *jitsiDefaults
-
-  # Auxiliary services
-  excalidraw:
-    enabled: true
 
 shard1:
   enabled: true

@@ -7,6 +7,12 @@
   #turnHost: ""
   turnHost: "turn.minikube.loc"
 
+  excalidraw:
+    enabled: true
+
+  etherpad:
+    enabled: true
+
   jvb:
     replicaCount: 1
     portRangeSize: 1
@@ -22,14 +28,6 @@
 shard0:
   enabled: true
   <<: *jitsiDefaults
-
-  # Auxiliary services
-  coturn:
-    enabled: false
-  excalidraw:
-    enabled: false
-  etherpad:
-    enabled: false
 
 shard1:
   enabled: true
