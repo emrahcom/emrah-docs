@@ -51,7 +51,7 @@ web:
     #enabled: false
     enabled: true
 
-    gatewayClassName: envoy-gateway-class
+    gatewayClassName: "envoy-gateway-class"
 
     # annotations: {}
     annotations:
@@ -64,7 +64,7 @@ web:
     tls:
       #enabled: false
       enabled: true
-      secretName: jitsi-web-tls
+      secretName: "jitsi-web-tls"
 
   ingress:
     enabled: false
@@ -74,15 +74,15 @@ web:
       cert-manager.io/cluster-issuer: "selfsigned-issuer"
 
     hosts:
-      - host: meet.minikube.loc
+      - host: "meet.minikube.loc"
         paths:
           - "/"
 
     #tls: []
     tls:
-      - secretName: jitsi-web-tls
+      - secretName: "jitsi-web-tls"
         hosts:
-          - meet.minikube.loc
+          - "meet.minikube.loc"
 
   service:
     port: 8000
