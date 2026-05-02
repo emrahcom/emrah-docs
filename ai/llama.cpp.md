@@ -67,6 +67,10 @@ llama-server -hf ggml-org/gemma-4-E4B-it-GGUF:Q8_0
 llama-server -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M
 ```
 
+### parameters
+
+- `--reasoning [on|off|auto]`
+
 ### removing the model
 
 ```bash
