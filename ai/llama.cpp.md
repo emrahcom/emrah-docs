@@ -70,6 +70,7 @@ llama-server -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M
 ### parameters
 
 - `--reasoning [on|off|auto]`
+- `--embeddings --pooling mean`
 
 ### removing the model
 
