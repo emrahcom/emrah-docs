@@ -9,7 +9,7 @@ Create a Debian 13 Trixie virtual machine.
 #### Deb packages
 
 ```bash
-apt-get install curl ripgrep
+apt-get install curl ripgrep gh
 ```
 
 #### Application
