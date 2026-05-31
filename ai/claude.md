@@ -26,6 +26,13 @@ Put `~/.local/bin` into `PATH`. In `.zshrc`:
 export PATH=$PATH:~/.local/bin
 ```
 
+#### Checking
+
+```bash
+claude --version
+claude doctor
+```
+
 ### Configuration
 
 #### Tmux
