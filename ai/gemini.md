@@ -4,7 +4,7 @@ Tested on Debian 13 Trixie virtual machine.
 
 #### Installation
 
-- Create a Debian 13 Trixie vritual machine
+- Create a Debian 13 Trixie virtual machine
 - Install [NodeJS](../development/nodejs.md)
 - Install Docker from Debian repo.\
   _Docker is needed for sandboxing._
