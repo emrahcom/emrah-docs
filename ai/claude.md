@@ -42,3 +42,24 @@ Add the following line into `.tmux.conf`
 ```
 set -g focus-events on
 ```
+
+### Commands
+
+#### Sessions
+
+Create a named session:
+
+```bash
+claude -n "session-name"
+```
+
+Attaching a session:
+
+```bash
+claude -r "session-name"
+
+# or just -r to get a list
+claude -r
+```
+
+Use "/resume" to change the session during the runtime.
