@@ -62,4 +62,7 @@ claude -r "session-name"
 claude -r
 ```
 
-Use `/resume` to change the session during the runtime.
+- Use `/resume` to change the session during the runtime.
+- Use `/rename` to change the session name.
+- Using two separate sessions for planning and implementing works great.\
+  Such as "project-planner" and "project-worker"
