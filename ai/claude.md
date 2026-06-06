@@ -47,13 +47,13 @@ set -g focus-events on
 
 #### Sessions
 
-Create a named session:
+Creating a named session:
 
 ```bash
 claude -n "session-name"
 ```
 
-Attaching a session:
+Attaching the session:
 
 ```bash
 claude -r "session-name"
@@ -62,4 +62,4 @@ claude -r "session-name"
 claude -r
 ```
 
-Use "/resume" to change the session during the runtime.
+Use `/resume` to change the session during the runtime.
