@@ -38,6 +38,7 @@ cmake -B build -DGGML_CUDA=ON
 cmake --build build --config Release -j $(nproc)
 
 ./build/bin/llama-cli --version
+./build/bin/llama-cli --list-devices
 ```
 
 ```bash
