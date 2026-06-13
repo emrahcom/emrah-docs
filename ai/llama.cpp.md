@@ -39,6 +39,9 @@ cmake --build build --config Release -j $(nproc)
 
 ./build/bin/llama-cli --version
 ./build/bin/llama-cli --list-devices
+
+# Use GGML_VK_VISIBLE_DEVICES to force a device such as
+GGML_VK_VISIBLE_DEVICES=0 llama-cli ...
 ```
 
 ```bash
