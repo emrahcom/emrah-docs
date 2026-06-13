@@ -53,6 +53,7 @@ ln -s ~/git-repo/llama.cpp/build/bin/llama-server ~/bin/
 ### llama-cli
 
 ```bash
+llama-cli -hf unsloth/gemma-4-E2B-it-GGUF:UD-Q4_K_XL
 llama-cli -hf ggml-org/gemma-4-E4B-it-GGUF:Q4_K_M
 llama-cli -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M
 ```
