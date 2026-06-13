@@ -53,18 +53,14 @@ ln -s ~/git-repo/llama.cpp/build/bin/llama-server ~/bin/
 ### llama-cli
 
 ```bash
-llama-cli -hf ggml-org/gemma-3-1b-it-GGUF
-llama-cli -hf ggml-org/gemma-4-E2B-it-GGUF:Q8_0
-llama-cli -hf ggml-org/gemma-4-E4B-it-GGUF:Q8_0
+llama-cli -hf ggml-org/gemma-4-E4B-it-GGUF:Q4_K_M
 llama-cli -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M
 ```
 
 ### llama-server
 
 ```bash
-llama-server -hf ggml-org/gemma-3-1b-it-GGUF
-llama-server -hf ggml-org/gemma-4-E2B-it-GGUF:Q8_0
-llama-server -hf ggml-org/gemma-4-E4B-it-GGUF:Q8_0
+llama-server -hf ggml-org/gemma-4-E4B-it-GGUF:Q4_K_M
 llama-server -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M
 ```
 
