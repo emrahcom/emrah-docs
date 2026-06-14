@@ -58,14 +58,14 @@ ln -s ~/git-repo/llama.cpp/build/bin/llama-server ~/bin/
 ```bash
 llama-cli -hf Qwen/Qwen2.5-3B-Instruct-GGUF:Q3_K_M -ngl 99 -c 4096 -b 512
 llama-cli -hf ggml-org/gemma-4-E4B-it-GGUF:Q4_K_M -ngl 99
-llama-cli -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M -ngl 99
+llama-cli -hf unsloth/Qwen3.5-9B-GGUF:UD-Q4_K_XL -ngl 99 -c 8192
 ```
 
 ### llama-server
 
 ```bash
 llama-server -hf ggml-org/gemma-4-E4B-it-GGUF:Q4_K_M -ngl 99
-llama-server -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M -ngl 99
+llama-server -hf unsloth/Qwen3.5-9B-GGUF:UD-Q4_K_XL -ngl 99 -c 8192
 ```
 
 ### parameters
@@ -79,4 +79,10 @@ llama-server -hf unsloth/Qwen3.5-9B-GGUF:Q4_K_M -ngl 99
 cd ~/.cache/huggingface/hub
 ls
 rm -rf folder
+```
+
+### VRAM status
+
+```bash
+nvtop
 ```
