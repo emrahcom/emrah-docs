@@ -22,3 +22,11 @@ apt-get install claude-desktop virtiofsd --no-install-recommends
 adduser emrah kvm
 ln -s /usr/lib/qemu/virtiofsd /usr/bin/virtiofsd
 ```
+
+## Running
+
+Use as the normal user:
+
+```bash
+claude-desktop
+```
