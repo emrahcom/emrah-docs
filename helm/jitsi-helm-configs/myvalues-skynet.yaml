@@ -1,0 +1,93 @@
+#publicURL: ""
+publicURL: "https://meet.minikube.loc"
+
+#turnHost: ""
+turnHost: "turn.minikube.loc"
+
+websockets:
+  colibri:
+    enabled: false
+  xmpp:
+    #enabled: false
+    enabled: true
+
+## #############################################################################
+## Web configuration
+## #############################################################################
+web:
+  gateway:
+    #enabled: false
+    enabled: true
+
+    gatewayClassName: "envoy-gateway-class"
+
+    # annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "selfsigned-issuer"
+
+    host: "meet.minikube.loc"
+    paths:
+      - "/"
+
+    tls:
+      #enabled: false
+      enabled: true
+      secretName: "jitsi-web-tls"
+
+  ingress:
+    enabled: false
+
+    #annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "selfsigned-issuer"
+
+    hosts:
+      - host: "meet.minikube.loc"
+        paths:
+          - "/"
+
+    #tls: []
+    tls:
+      - secretName: "jitsi-web-tls"
+        hosts:
+          - "meet.minikube.loc"
+
+## #############################################################################
+## JVB configuration
+## #############################################################################
+jvb:
+  replicaCount: 1
+
+  publicIPs:
+    - 172.18.18.21
+
+  #useHostPort: false
+  useHostPort: true
+  UDPPort: 10000
+
+  portRangeSize: 1
+
+  service:
+    enabled: true
+
+## #############################################################################
+## Transcriber configuration
+## #############################################################################
+transcriber:
+  #enabled: false
+  enabled: true
+
+## #############################################################################
+## Skynet configuration
+## #############################################################################
+skynet:
+  #enabled: false
+  enabled: true
+
+  whisper:
+    model: small
+
+  persistence:
+    enabled: false
+    #storageClass: ""
+    #size: 10Gi
