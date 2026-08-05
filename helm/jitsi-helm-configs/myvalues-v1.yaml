@@ -45,9 +45,6 @@ image:
 #  upstream `meet.jit.si` setup. Keep both disabled to replicate
 #  older setups which might be more compatible in some cases.
 websockets:
-  ## Colibri (JVB signalling):
-  colibri:
-    enabled: false
   ## XMPP (Prosody signalling):
   xmpp:
     # emrah

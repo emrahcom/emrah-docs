@@ -5,8 +5,6 @@ publicURL: "https://meet.minikube.loc"
 turnHost: "turn.minikube.loc"
 
 websockets:
-  colibri:
-    enabled: false
   xmpp:
     #enabled: false
     enabled: true

@@ -5,8 +5,6 @@ enableAuth: true
 enableGuests: true
 
 websockets:
-  colibri:
-    enabled: false
   xmpp:
     #enabled: false
     enabled: true
