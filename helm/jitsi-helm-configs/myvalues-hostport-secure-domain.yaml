@@ -14,8 +14,7 @@ websockets:
 ## #############################################################################
 web:
   gateway:
-    #enabled: false
-    enabled: true
+    enabled: false
 
     gatewayClassName: "envoy-gateway-class"
 
@@ -33,7 +32,8 @@ web:
       secretName: "jitsi-web-tls"
 
   ingress:
-    enabled: false
+    #enabled: false
+    enabled: true
 
     #annotations: {}
     annotations:
