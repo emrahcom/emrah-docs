@@ -41,7 +41,7 @@ jvb:
   publicIPs:
     - 192.168.39.200
 
-  UDPPort: 10000
+  UDPPort: 40000
 
   #portRangeSize: 1
   portRangeSize: 2
