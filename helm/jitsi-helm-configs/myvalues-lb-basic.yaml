@@ -1,0 +1,56 @@
+#publicURL: ""
+publicURL: "https://meet.minikube.loc"
+
+#turnHost: ""
+turnHost: "turn.minikube.loc"
+
+websockets:
+  xmpp:
+    #enabled: false
+    enabled: true
+
+## #############################################################################
+## Web configuration
+## #############################################################################
+web:
+  ingress:
+    #enabled: false
+    enabled: true
+
+    #annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "selfsigned-issuer"
+
+    hosts:
+      - host: "meet.minikube.loc"
+        paths:
+          - "/"
+
+    #tls: []
+    tls:
+      - secretName: "jitsi-web-tls"
+        hosts:
+          - "meet.minikube.loc"
+
+## #############################################################################
+## JVB configuration
+## #############################################################################
+jvb:
+  replicaCount: 1
+
+  publicIPs:
+    - 192.168.39.202
+
+  UDPPort: 10000
+
+  #portRangeSize: 1
+  portRangeSize: 2
+
+  service:
+    enabled: true
+
+    #type: ClusterIP
+    type: LoadBalancer
+
+octo:
+  enabled: false
