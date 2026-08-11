@@ -39,7 +39,7 @@ jvb:
   replicaCount: 1
 
   publicIPs:
-    - 192.168.39.202
+    - 192.168.39.200
 
   UDPPort: 10000
 
