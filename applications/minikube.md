@@ -162,6 +162,13 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest
 dpkg -i minikube_latest_amd64.deb
 ```
 
+And initialize it as `user`:
+
+```bash
+minikube config set cpus 4
+minikube config set memory 16384
+```
+
 And start it as `user`:
 
 ```bash
