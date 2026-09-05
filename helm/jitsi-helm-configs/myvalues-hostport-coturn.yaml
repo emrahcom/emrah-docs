@@ -72,7 +72,7 @@ coturn:
   enabled: true
 
   turn:
-    transport: "udp"
+    transport: "udp,tcp"
 
   turns:
     # test with
@@ -107,8 +107,10 @@ coturn:
 
   service:
     ports:
+      #turn: 443
+      turn: 3478
       #turns: 443
-      turns: 5349
+      turns: 3478
 
   allowedPeerIPs:
     - "192.168.39.80"
