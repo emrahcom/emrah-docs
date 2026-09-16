@@ -230,6 +230,18 @@ minikube addons list
 minikube addons enable ingress
 ```
 
+#### metrics-server
+
+To enable `metrics-server`:
+
+```bash
+minikube addons enable metrics-server
+
+# Rollout or restart Minikube
+kubectl -n kube-system rollout status deploy/metrics-server
+kubectl top pods
+```
+
 #### Metallb
 
 To enable `metallb`:
