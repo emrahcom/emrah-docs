@@ -237,7 +237,7 @@ To enable `metrics-server`:
 ```bash
 minikube addons enable metrics-server
 
-# Rollout or restart Minikube
+# Rollout to activate it
 kubectl -n kube-system rollout status deploy/metrics-server
 kubectl top pods
 ```
