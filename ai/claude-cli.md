@@ -24,6 +24,7 @@ Put `~/.local/bin` into `PATH`. In `.zshrc`:
 
 ```shell
 export PATH=$PATH:~/.local/bin
+export ANTHROPIC_MODEL=claude-opus-5-5
 ```
 
 #### Checking
@@ -34,6 +35,20 @@ claude doctor
 ```
 
 ### Configuration
+
+#### Global settings
+
+~/.claude/settings.json
+
+```json
+{
+  "env": {
+    "CLAUDE_CODE_DISABLE_MOUSE": "1"
+  },
+  "tui": "fullscreen",
+  "theme": "auto"
+}
+```
 
 #### Tmux
 
