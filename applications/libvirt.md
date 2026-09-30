@@ -121,6 +121,76 @@ qemu-img convert -c -O qcow2 old.qcow2 new.qcow2
 mv new.qcow2 old.qcow2
 ```
 
+### Audio
+
+Run VMs with the user account:
+
+/etc/libvirt/qemu.conf
+
+```
+user = "emrah"
+group = "emrah"
+```
+
+Restart the service:
+
+```bash
+systemctl restart libvirtd.service
+systemctl is-active libvirtd.service
+```
+
+Permissions:
+
+```bash
+mkdir -p /etc/apparmor.d/local/abstractions
+```
+
+/etc/apparmor.d/local/abstractions/libvirt-qemu
+
+```
+/usr/share/pipewire/** r,
+/etc/pipewire/** r,
+/home/emrah/.config/pipewire/** r,
+/usr/lib/@{multiarch}/spa-0.2/** mr,
+/usr/lib/@{multiarch}/pipewire-0.3/** mr,
+/run/user/1000/ r,
+/run/user/1000/pipewire-[0-9]* rw,
+/run/user/1000/pipewire-[0-9]*-manager rw,
+```
+
+```bash
+systemctl reload apparmor
+```
+
+Per VM:
+
+```bash
+virsh --connect qemu:///system edit <VM name>
+```
+
+Keep the address:
+
+```
+<sound model='ich9'>
+  <audio id='1'/>
+</sound>
+<audio id='1' type='pipewire' runtimeDir='/run/user/1000'/>
+```
+
+Restart the VM and connect:
+
+```bash
+apt-get install alsa-utils
+adduser emrah audio
+```
+
+Test with the user account:
+
+```bash
+arecord -f cd -d 5 /tmp/t.wav
+aplay /tmp/t.wav
+```
+
 ### links
 
 - https://libvirt.org/
