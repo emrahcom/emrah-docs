@@ -125,6 +125,6 @@ jibri:
 
   #hostAliases: []
   hostAliases:
-    - ip: "192.168.39.80"
+    - ip: "192.168.39.54"
       hostnames:
         - "meet.minikube.loc"
