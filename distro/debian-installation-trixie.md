@@ -717,6 +717,10 @@ bind[chromium.no]       = MOD+shift+n
 sudo /usr/bin/systemctl start iwd.service
 #mozilla2ram
 xset r rate 250 40
+
+export XDG_CURRENT_DESKTOP=spectrwm
+dbus-update-activation-environment --systemd DISPLAY XAUTHORITY XDG_CURRENT_DESKTOP
+
 exec /usr/bin/spectrwm
 ```
 
