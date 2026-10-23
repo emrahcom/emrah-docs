@@ -33,8 +33,8 @@ After=libvirt-guest.service
 [Service]
 Type=oneshot
 Environment=MINIKUBE_NET=192.168.39.0/24
-Environment=MINIKUBE_IP=192.168.39.34
-#Environment=MINIKUBE_WEB=192.168.39.34
+Environment=MINIKUBE_IP=192.168.39.192
+#Environment=MINIKUBE_WEB=192.168.39.192
 Environment=MINIKUBE_WEB=192.168.39.201
 Environment=MINIKUBE_LB1=192.168.39.200
 Environment=INTERFACE=enp1s0
