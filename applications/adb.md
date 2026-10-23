@@ -10,7 +10,7 @@ As `root`:
 apt-get install adb
 apt-get install ffmpeg wget git
 apt-get install gcc pkg-config meson ninja-build
-apt-get install libsdl2-2.0-0 libsdl2-dev libusb-1.0-0 libusb-1.0-0-dev \
+apt-get install libsdl3-0 libsdl3-dev libusb-1.0-0 libusb-1.0-0-dev \
   libavcodec-dev libavdevice-dev libavformat-dev libavutil-dev libswresample-dev
 ```
 
