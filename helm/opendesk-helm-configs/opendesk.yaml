@@ -6,6 +6,14 @@ global:
   hosts:
     keycloak: "ucs-sso-ng"
 
+# Local build of jitsi-oidc-adapter, loaded into minikube. Remove after the
+# adapter release.
+image:
+  registry: "docker.io"
+  repository: "library/jitsi-oidc-adapter"
+  tag: "silent-login"
+  imagePullPolicy: "Never"
+
 patchJVB:
   configuration:
     staticLoadbalancerIP: "172.18.18.21"
