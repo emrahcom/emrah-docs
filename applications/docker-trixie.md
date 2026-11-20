@@ -45,3 +45,18 @@ Add the user account to `docker` group.
 ```bash
 adduser emrah docker
 ```
+
+#### network
+
+/etc/docker/daemon.json
+
+```
+{
+  "default-address-pools": [
+    { "base": "172.19.0.0/16", "size": 16 },
+    { "base": "172.20.0.0/14", "size": 16 },
+    { "base": "172.24.0.0/14", "size": 16 },
+    { "base": "172.28.0.0/14", "size": 16 }
+  ]
+}
+```
